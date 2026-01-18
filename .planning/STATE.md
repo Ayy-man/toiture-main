@@ -15,7 +15,7 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 |-------|--------|-------|----------|
 | 1 | ✓ Complete | 2/2 | 100% |
 | 2 | ✓ Complete | 2/2 | 100% |
-| 3 | ○ Pending | 0/2 | 0% |
+| 3 | In Progress | 1/2 | 50% |
 | 4 | ○ Pending | 0/2 | 0% |
 | 5 | ○ Pending | 0/? | 0% |
 | 6 | ○ Pending | 0/? | 0% |
@@ -33,8 +33,14 @@ Progress: [█████░░░░░░░░░░░░░░░] 25%
 **Phase 3: LLM Reasoning**
 - Goal: Estimates include human-readable explanations
 - Requirements: LLM-01, LLM-02, LLM-03
-- Status: Not started
+- Status: In progress (1/2 plans complete)
 - Dependencies: OpenRouter API key (configured)
+
+### Plan 03-01 Complete ✓
+- LLM reasoning service module created
+- OpenRouter client with 30s timeout and retry logic
+- generate_reasoning() and format_similar_cases() functions
+- Config: openrouter_api_key, openrouter_model, openrouter_base_url, app_url
 
 ### Phase 2 Complete ✓
 - **02-01:** Pinecone services and embedding upload (8,132 vectors)
@@ -56,6 +62,10 @@ Progress: [█████░░░░░░░░░░░░░░░] 25%
 | Sync def for estimate endpoint | 01-02 | sklearn is CPU-bound, async would block event loop |
 | Accept both accented/non-accented Elastomere | 01-02 | User convenience with field_validator normalization |
 | TestClient as context manager in fixtures | 01-02 | Required for lifespan events to trigger model loading |
+| openai pkg with OpenRouter base_url | 03-01 | Mature SDK, OpenAI API compatibility |
+| Default model openai/gpt-4o-mini | 03-01 | Best cost/quality balance ($0.15/$0.60 per 1M tokens) |
+| 30s timeout with 3 retry attempts | 03-01 | Prevents hangs, handles transient 401s |
+| Temperature 0.3 for reasoning | 03-01 | Consistent, factual responses |
 
 ## Session History
 
@@ -66,11 +76,12 @@ Progress: [█████░░░░░░░░░░░░░░░] 25%
 | 2026-01-18 | Plan 01-01 executed | Backend structure with lifespan and CORS |
 | 2026-01-18 | Plan 01-02 executed | API endpoints, schemas, 9 tests passing |
 | 2026-01-18 | Phase 1 verified | All 4 success criteria met, goal achieved |
+| 2026-01-18 | Plan 03-01 executed | LLM reasoning service with OpenRouter |
 
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 01-02-PLAN.md
+Stopped at: Completed 03-01-PLAN.md
 Resume file: None
 
 ## Blockers
