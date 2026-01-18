@@ -70,3 +70,4 @@ class EstimateResponse(BaseModel):
     confidence: Literal["HIGH", "MEDIUM", "LOW"]
     model: str
     similar_cases: List[SimilarCase] = []
+    reasoning: Optional[str] = None  # LLM-generated explanation
