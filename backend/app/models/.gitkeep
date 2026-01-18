@@ -1,0 +1,6 @@
+# Placeholder for ML model files
+# Copy from cortex-data/:
+# - cortex_model_global.pkl
+# - cortex_model_Bardeaux.pkl
+# - category_encoder_v3.pkl
+# - cortex_config_v3.json
