@@ -16,6 +16,12 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
+  --color-brick-red: var(--brick-red);
+  --color-brick-red-foreground: var(--brick-red-foreground);
+  --color-sidebar-dark: var(--sidebar-dark);
+  --color-sidebar-dark-foreground: var(--sidebar-dark-foreground);
+  --color-sidebar-dark-accent: var(--sidebar-dark-accent);
+  --color-sidebar-dark-muted: var(--sidebar-dark-muted);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
@@ -48,6 +54,12 @@
 
 :root {
   --radius: 0.625rem;
+  --brick-red: 10 72% 34%;
+  --brick-red-foreground: 0 0% 98%;
+  --sidebar-dark: 0 0% 10%;
+  --sidebar-dark-foreground: 0 0% 90%;
+  --sidebar-dark-accent: 10 72% 34%;
+  --sidebar-dark-muted: 0 0% 20%;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
