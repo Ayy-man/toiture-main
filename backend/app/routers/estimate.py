@@ -54,28 +54,9 @@ def create_estimate(request: EstimateRequest):
             logger.warning(f"CBR lookup failed: {e}")
             similar_cases = []
 
-        # Generate LLM reasoning (graceful degradation)
-        try:
-            reasoning = generate_reasoning(
-                estimate=result["estimate"],
-                confidence=result["confidence"],
-                sqft=request.sqft,
-                category=request.category,
-                similar_cases=[
-                    {
-                        "category": c.category,
-                        "sqft": c.sqft,
-                        "total": c.total,
-                        "per_sqft": c.per_sqft,
-                        "similarity": c.similarity,
-                        "year": c.year,
-                    }
-                    for c in similar_cases
-                ],
-            )
-        except Exception as e:
-            logger.warning(f"LLM reasoning failed: {e}")
-            reasoning = None
+        # LLM reasoning disabled for speed (was taking 15-30s)
+        # TODO: Re-enable with faster model or async loading
+        reasoning = None
 
         response = EstimateResponse(
             estimate=result["estimate"],
