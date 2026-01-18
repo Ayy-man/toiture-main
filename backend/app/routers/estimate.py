@@ -7,8 +7,15 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 
 from app.schemas.estimate import EstimateRequest, EstimateResponse, SimilarCase
+from app.schemas.materials import (
+    MaterialEstimateRequest,
+    MaterialEstimateResponse,
+    MaterialPrediction,
+    FullEstimateResponse,
+)
 from app.services.embeddings import build_query_text, generate_query_embedding
 from app.services.llm_reasoning import generate_reasoning_stream
+from app.services.material_predictor import predict_materials
 from app.services.pinecone_cbr import query_similar_cases
 from app.services.predictor import predict
 from app.services.supabase_client import get_supabase
@@ -218,3 +225,81 @@ def create_estimate_stream(request: EstimateRequest):
             "X-Accel-Buffering": "no",
         },
     )
+
+
+@router.post("/estimate/materials", response_model=MaterialEstimateResponse)
+def predict_materials_endpoint(request: MaterialEstimateRequest):
+    """Predict material IDs and quantities for roofing job.
+
+    Uses multi-label classifier for ID selection and per-material regressors
+    for quantity prediction. Applies co-occurrence rules and feature triggers.
+    """
+    try:
+        result = predict_materials(
+            sqft=request.sqft,
+            category=request.category,
+            complexity=request.complexity,
+            has_chimney=request.has_chimney,
+            has_skylights=request.has_skylights,
+            material_lines=request.material_lines,
+            labor_lines=request.labor_lines,
+            has_subs=request.has_subs,
+            quoted_total=request.quoted_total,
+        )
+
+        return MaterialEstimateResponse(
+            materials=[MaterialPrediction(**m) for m in result["materials"]],
+            total_materials_cost=result["total_materials_cost"],
+            model_info=result["model_info"],
+            applied_rules=result["applied_rules"],
+        )
+    except Exception as e:
+        logger.error(f"Material prediction error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/estimate/full", response_model=FullEstimateResponse)
+def create_full_estimate(request: MaterialEstimateRequest):
+    """Generate complete estimate with price prediction AND material list.
+
+    Combines:
+    - Price estimate from existing ML model
+    - Material predictions from material model
+    """
+    try:
+        # Get price prediction (existing)
+        price_result = predict(
+            sqft=request.sqft,
+            category=request.category,
+            material_lines=request.material_lines,
+            labor_lines=request.labor_lines,
+            has_subs=1 if request.has_subs else 0,
+            complexity=request.complexity,
+        )
+
+        # Get material predictions (new)
+        material_result = predict_materials(
+            sqft=request.sqft,
+            category=request.category,
+            complexity=request.complexity,
+            has_chimney=request.has_chimney,
+            has_skylights=request.has_skylights,
+            material_lines=request.material_lines,
+            labor_lines=request.labor_lines,
+            has_subs=request.has_subs,
+            quoted_total=request.quoted_total,
+        )
+
+        return FullEstimateResponse(
+            estimate=price_result["estimate"],
+            range_low=price_result["range_low"],
+            range_high=price_result["range_high"],
+            confidence=price_result["confidence"],
+            model=price_result["model"],
+            materials=[MaterialPrediction(**m) for m in material_result["materials"]],
+            total_materials_cost=material_result["total_materials_cost"],
+            applied_rules=material_result["applied_rules"],
+        )
+    except Exception as e:
+        logger.error(f"Full estimate error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))

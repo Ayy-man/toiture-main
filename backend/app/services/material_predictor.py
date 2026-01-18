@@ -96,14 +96,16 @@ def predict_materials(
     predicted_ids = _models["binarizer"].inverse_transform(predicted_binary)[0]
     predicted_ids = list(predicted_ids)
 
-    # Apply feature triggers
+    # Apply feature triggers (each trigger is an object with material_id key)
     if has_chimney and "chimney_materials" in _models["triggers"]:
-        for mat_id in _models["triggers"]["chimney_materials"]:
+        for trigger in _models["triggers"]["chimney_materials"]:
+            mat_id = trigger["material_id"]
             if mat_id not in predicted_ids:
                 predicted_ids.append(mat_id)
 
     if has_skylights and "skylight_materials" in _models["triggers"]:
-        for mat_id in _models["triggers"]["skylight_materials"]:
+        for trigger in _models["triggers"]["skylight_materials"]:
+            mat_id = trigger["material_id"]
             if mat_id not in predicted_ids:
                 predicted_ids.append(mat_id)
 
