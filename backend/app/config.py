@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     pinecone_api_key: str = ""
     pinecone_index_host: str = ""
 
-    model_config = {"env_file": "backend/.env"}
+    model_config = {"env_file": "backend/.env", "extra": "ignore"}
 
 
 settings = Settings()
