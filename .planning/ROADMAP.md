@@ -47,6 +47,12 @@ Plans:
 
 **Requirements:** PIN-01, PIN-02, PIN-03
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Pinecone services and embedding upload script
+- [ ] 02-02-PLAN.md — Endpoint integration with similar cases and tests
+
 **Success Criteria:**
 1. All 8,132 embeddings uploaded to Pinecone index
 2. Query returns top 5 similar cases with job details
