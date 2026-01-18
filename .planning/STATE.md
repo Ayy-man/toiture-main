@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 11 - Cortex Admin Dashboard (Complete)
+**Current focus:** Phase 8 - Deployment (In Progress)
 
 ## Progress
 
@@ -18,24 +18,33 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 3 | Complete | 2/2 | 100% |
 | 4 | Complete | 2/2 | 100% |
 | 5 | Complete | 2/2 | 100% |
-| 6 | In Progress | 1/2 | 50% |
+| 6 | Complete | 2/2 | 100% |
 | 7 | Complete | 1/1 | 100% |
 | 8 | In Progress | 1/2 | 50% |
 | 9 | Complete | 1/1 | 100% |
 | 10 | Complete | 2/2 | 100% |
 | 11 | Complete | 6/6 | 100% |
 
-**Overall:** 21/24 plans complete (88%)
+**Overall:** 22/24 plans complete (92%)
 
 ```
-Progress: [██████████████████░░] 88%
+Progress: [██████████████████░░] 92%
 ```
 
 ## Current Phase
 
-**Phase 11: Cortex Admin Dashboard** (Complete)
-- Goal: 4-tab professional admin interface (Estimateur, Historique, Apercu, Clients)
-- Status: All 6 plans complete
+**Phase 8: Deployment** (In Progress)
+- Goal: Deploy backend to Railway, frontend to Vercel
+- Status: Config files ready, deployment execution pending
+
+### Phase 8 In Progress
+- **08-01:** Deployment configuration files (Complete)
+  - Dockerfile with CPU-only PyTorch (~2GB smaller)
+  - railway.json with health check and restart policy
+  - vercel.json with Next.js framework config
+  - Fixed all Python imports (backend.app.* to app.*)
+  - Environment variable documentation (.env.example)
+- **08-02:** Deployment execution (Pending)
 
 ### Phase 11 Complete
 - **11-01:** Admin dashboard layout with shadcn/ui Sidebar (Complete)
@@ -87,20 +96,19 @@ Progress: [██████████████████░░] 88%
   - Progressive LLM reasoning with Server-Sent Events
   - Cerebras integration for fast streaming
 
-### Phase 8 In Progress
-- **08-01:** Deployment configuration files
-  - Dockerfile with CPU-only PyTorch (~2GB smaller)
-  - railway.json with health check and restart policy
-  - vercel.json with Next.js framework config
-  - Fixed all Python imports (backend.app.* to app.*)
-  - Environment variable documentation (.env.example)
-
-### Phase 6 In Progress
+### Phase 6 Complete
 - **06-01:** Analytics data layer with React Query and Supabase hooks
   - React Query provider with 5-min staleTime
   - Supabase browser client for RPC calls
   - Analytics hooks: useAccuracyStats, useCategoryBreakdown, useConfidenceAccuracy
   - Time period filtering (7d, 30d, all)
+- **06-02:** Analytics dashboard charts (Complete)
+  - Dashboard page at /dashboard route
+  - Accuracy bar chart (DASH-01)
+  - Confidence vs accuracy grouped chart (DASH-02)
+  - Category breakdown donut chart (DASH-03)
+  - Stats cards with KPIs (DASH-04)
+  - Time period filter toggle
 
 ### Phase 5 Complete
 - **05-01:** Supabase integration with feedback API endpoints
@@ -168,6 +176,8 @@ Progress: [██████████████████░░] 88%
 | useDeferredValue over custom debounce | 11-04 | Native React concurrent feature |
 | Exact match for /estimateur route | 11-06 | Prevents sub-routes from highlighting root tab |
 | Amber placeholder styling | 11-06 | Light amber for "coming soon" visibility |
+| Client wrapper for dashboard hooks | 06-02 | dashboard-content.tsx owns all hook calls |
+| Empty state messages in charts | 06-02 | Friendly UX when no data available |
 
 ## Session History
 
@@ -193,11 +203,12 @@ Progress: [██████████████████░░] 88%
 | 2026-01-18 | Plan 11-03 executed | Historique quote browser with pagination |
 | 2026-01-19 | Plan 11-04 executed | Clients customer search with segment badges |
 | 2026-01-19 | Plan 11-06 executed | Estimateur sub-views with tab navigation |
+| 2026-01-19 | Plan 06-02 executed | Analytics dashboard charts (Phase 6 complete) |
 
 ## Session Continuity
 
 Last session: 2026-01-19
-Stopped at: Completed 11-06-PLAN.md (Phase 11 complete)
+Stopped at: Completed 06-02-PLAN.md (Phase 6 complete)
 Resume file: None
 
 ## Blockers
@@ -207,14 +218,15 @@ None currently.
 ## Notes
 
 - Tech stack: FastAPI (Railway) + Next.js (Vercel) + Pinecone + Supabase + OpenRouter
-- Frontend complete: estimate form, review queue, password gate, analytics hooks, admin dashboard (all 4 tabs)
+- Frontend complete: estimate form, review queue, password gate, analytics dashboard, admin dashboard (all 4 tabs)
 - Backend complete: ML prediction, CBR, LLM reasoning, feedback API, material prediction, dashboard API
 - Deployment config ready: Dockerfile, railway.json, vercel.json
 - Docker build test skipped (Docker not installed locally) - will validate on Railway
 - Material prediction models: F1-micro 70.3%, 122 quantity regressors, 506 rules, 21 feature triggers
 - Material endpoints: POST /estimate/materials, POST /estimate/full (lazy loading)
 - Phase 11 Admin Dashboard complete: all 4 tabs (Estimateur, Historique, Apercu, Clients)
-- Next: Phase 6-02 (analytics charts) or Phase 8-02 (deployment execution)
+- Phase 6 Analytics Dashboard complete: /dashboard route with charts
+- Next: Phase 8-02 (deployment execution)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
@@ -224,4 +236,4 @@ None currently.
 - Phase 11 added: Cortex Admin Dashboard (4-tab professional interface) - moved after material prediction
 
 ---
-*State updated: 2026-01-19 (Phase 11 Plan 06 complete - Phase 11 complete with all 6 plans)*
+*State updated: 2026-01-19 (Phase 6 Plan 02 complete - Phase 6 complete with all 2 plans)*
