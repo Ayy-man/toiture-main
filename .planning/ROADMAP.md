@@ -25,6 +25,12 @@
 
 **Requirements:** API-01, API-02, API-03, API-04
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Backend structure, model loading, CORS configuration
+- [ ] 01-02-PLAN.md — Health and estimate endpoints with validation and tests
+
 **Success Criteria:**
 1. `GET /health` returns 200 OK
 2. `POST /estimate` with valid inputs returns estimate, range, and confidence
