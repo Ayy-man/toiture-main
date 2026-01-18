@@ -91,6 +91,12 @@ Plans:
 
 **Requirements:** FORM-01, FORM-02, FORM-03, FORM-04, FORM-05
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Next.js setup with shadcn/ui, Zod schemas, API client
+- [ ] 04-02-PLAN.md — Estimate form component with result display
+
 **Success Criteria:**
 1. Form with all 6 inputs renders correctly
 2. Submit fetches from backend and displays results
