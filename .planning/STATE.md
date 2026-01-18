@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 11 - Cortex Admin Dashboard (Plan 05 complete)
+**Current focus:** Phase 11 - Cortex Admin Dashboard (Plans 02, 03, 05 complete)
 
 ## Progress
 
@@ -23,12 +23,12 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 8 | In Progress | 1/2 | 50% |
 | 9 | Complete | 1/1 | 100% |
 | 10 | Complete | 2/2 | 100% |
-| 11 | In Progress | 2/4 | 50% |
+| 11 | In Progress | 3/4 | 75% |
 
-**Overall:** 18/23 plans complete (78%)
+**Overall:** 19/23 plans complete (83%)
 
 ```
-Progress: [███████████████░░░░░] 78%
+Progress: [████████████████░░░░] 83%
 ```
 
 ## Current Phase
@@ -47,7 +47,11 @@ Progress: [███████████████░░░░░] 78%
   - Quotes pagination and filters
   - Customer search and detail
   - Dashboard metrics and charts endpoints
-- **11-03:** Historique quote browser (Pending)
+- **11-03:** Historique quote browser (Complete)
+  - Paginated quote table with TanStack Table
+  - 8 filter types: category, city, sqft, price, dates
+  - CSV export with UTF-8 BOM for French characters
+  - French locale formatting (CAD currency, fr-CA dates)
 - **11-04:** Clients customer search (Pending)
 - **11-05:** Apercu dashboard metrics (Complete)
   - 4 KPI cards: Revenue, Quotes, Margin, Active Clients
@@ -150,6 +154,9 @@ Progress: [███████████████░░░░░] 78%
 | Route group (admin) for layout isolation | 11-01 | Separates admin layout from login/other pages |
 | Custom tooltip components per chart | 11-05 | Specific data formatting for each chart type |
 | Brick red (#8B2323) for charts | 11-05 | Consistent with Cortex branding |
+| Generic exportToCSV<T> for type safety | 11-03 | Works with Quote[] without Record<string, unknown> |
+| keepPreviousData for pagination | 11-03 | Prevents table flicker on page changes |
+| Server-side pagination with manualPagination | 11-03 | Backend handles paging for 8k+ quotes |
 
 ## Session History
 
@@ -172,11 +179,12 @@ Progress: [███████████████░░░░░] 78%
 | 2026-01-18 | Plan 10-02 executed | Material prediction API endpoints |
 | 2026-01-18 | Plan 11-01 executed | Admin dashboard layout with sidebar |
 | 2026-01-18 | Plan 11-05 executed | Apercu dashboard with KPIs and charts |
+| 2026-01-18 | Plan 11-03 executed | Historique quote browser with pagination |
 
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 11-05-PLAN.md
+Stopped at: Completed 11-03-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -186,13 +194,13 @@ None currently.
 ## Notes
 
 - Tech stack: FastAPI (Railway) + Next.js (Vercel) + Pinecone + Supabase + OpenRouter
-- Frontend complete: estimate form, review queue, password gate, analytics hooks, apercu dashboard
+- Frontend complete: estimate form, review queue, password gate, analytics hooks, apercu dashboard, historique browser
 - Backend complete: ML prediction, CBR, LLM reasoning, feedback API, material prediction, dashboard API
 - Deployment config ready: Dockerfile, railway.json, vercel.json
 - Docker build test skipped (Docker not installed locally) - will validate on Railway
 - Material prediction models: F1-micro 70.3%, 122 quantity regressors, 506 rules, 21 feature triggers
 - Material endpoints: POST /estimate/materials, POST /estimate/full (lazy loading)
-- Next: Phase 11-03 (Historique frontend) or 11-04 (Clients frontend)
+- Next: Phase 11-04 (Clients customer search) to complete Phase 11
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
@@ -202,4 +210,4 @@ None currently.
 - Phase 11 added: Cortex Admin Dashboard (4-tab professional interface) - moved after material prediction
 
 ---
-*State updated: 2026-01-18 (Phase 11 Plan 05 complete)*
+*State updated: 2026-01-18 (Phase 11 Plan 03 complete)*
