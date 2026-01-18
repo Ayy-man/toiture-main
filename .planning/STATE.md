@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 8 - Deployment (in progress)
+**Current focus:** Phase 10 - Material ID Prediction Model Training (complete)
 
 ## Progress
 
@@ -21,19 +21,35 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 6 | In Progress | 1/2 | 50% |
 | 7 | Complete | 1/1 | 100% |
 | 8 | In Progress | 1/2 | 50% |
+| 9 | Complete | 1/1 | 100% |
+| 10 | Complete | 1/1 | 100% |
 
-**Overall:** 13/16 plans complete (81%)
+**Overall:** 15/18 plans complete (83%)
 
 ```
-Progress: [████████████████░░░░] 81%
+Progress: [████████████████░░░░] 83%
 ```
 
 ## Current Phase
 
-**Phase 8: Deployment** (In Progress)
-- Goal: Deploy backend to Railway, frontend to Vercel
-- Requirements: DEPLOY-01, DEPLOY-02, DEPLOY-03
-- Status: Plan 01 complete, Plan 02 pending
+**Phase 10: Material ID Prediction Model Training** (Complete)
+- Goal: Train multi-label classifier for material ID selection
+- Requirements: F1-micro >= 70%, MAPE <= 30% (for predictable materials)
+- Status: Complete - F1-micro 70.3%, 122 quantity regressors
+
+### Phase 10 Complete
+- **10-01:** Material ID prediction model training
+  - Multi-label classifier with OneVsRestClassifier + GradientBoosting (F1-micro 70.3%)
+  - 122 per-material quantity regressors
+  - 506 co-occurrence rules (confidence >= 0.7)
+  - 21 feature triggers (20 chimney, 1 skylight)
+  - 824 material median prices
+  - Model artifacts copied to backend/app/models/
+
+### Phase 9 Complete
+- **09-01:** Streaming estimates with Cerebras fast inference
+  - Progressive LLM reasoning with Server-Sent Events
+  - Cerebras integration for fast streaming
 
 ### Phase 8 In Progress
 - **08-01:** Deployment configuration files
@@ -101,6 +117,9 @@ Progress: [████████████████░░░░] 81%
 | CPU-only PyTorch in Docker | 08-01 | ~2GB smaller image, no GPU needed |
 | Import path backend.app.* to app.* | 08-01 | Railway runs from backend/ directory |
 | Health check timeout 300s | 08-01 | ML models need time to load |
+| GradientBoosting over RandomForest for material classifier | 10-01 | 20x smaller model (11MB vs 200MB+) |
+| Threshold 0.35 for multi-label classification | 10-01 | Better F1 on imbalanced data |
+| Feature trigger ratio threshold (2x) | 10-01 | Captures meaningful correlations |
 
 ## Session History
 
@@ -119,11 +138,12 @@ Progress: [████████████████░░░░] 81%
 | 2026-01-18 | Plan 05-02 executed | Review queue UI with TanStack Table |
 | 2026-01-18 | Plan 06-01 executed | Analytics data layer with React Query hooks |
 | 2026-01-18 | Plan 08-01 executed | Deployment config: Dockerfile, railway.json, vercel.json |
+| 2026-01-18 | Plan 10-01 executed | Material ID prediction models trained |
 
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 08-01-PLAN.md
+Stopped at: Completed 10-01-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -134,15 +154,18 @@ None currently.
 
 - Tech stack: FastAPI (Railway) + Next.js (Vercel) + Pinecone + Supabase + OpenRouter
 - Frontend complete: estimate form, review queue, password gate, analytics hooks
-- Backend complete: ML prediction, CBR, LLM reasoning, feedback API
+- Backend complete: ML prediction, CBR, LLM reasoning, feedback API, material prediction models
 - Deployment config ready: Dockerfile, railway.json, vercel.json
 - Docker build test skipped (Docker not installed locally) - will validate on Railway
-- Next: Phase 9 (Streaming Estimates with Cerebras)
+- Material prediction models: F1-micro 70.3%, 122 quantity regressors, 506 rules
+- Next: Phase 11 (Cortex Admin Dashboard) or Phase 6-02/8-02 completion
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
 
 - Phase 9 added: Streaming estimates with Cerebras fast inference
+- Phase 10 added: Material ID Prediction Model Training (7,433 samples, multi-label classifier)
+- Phase 11 added: Cortex Admin Dashboard (4-tab professional interface) - moved after material prediction
 
 ---
 *State updated: 2026-01-18*
