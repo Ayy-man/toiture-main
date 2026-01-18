@@ -99,3 +99,26 @@ def test_estimate_with_optional_params(client):
     assert data["estimate"] > 0
     assert data["range_low"] < data["estimate"]
     assert data["range_high"] > data["estimate"]
+
+
+def test_estimate_response_has_reasoning_field(client):
+    """Test that estimate response includes reasoning field."""
+    response = client.post(
+        "/estimate",
+        json={
+            "sqft": 2500,
+            "category": "Bardeaux",
+            "material_lines": 5,
+            "labor_lines": 2,
+            "has_subs": 0,
+            "complexity": 10,
+        },
+    )
+    assert response.status_code == 200
+    data = response.json()
+    # reasoning field exists (may be None if no API key or string if working)
+    assert "reasoning" in data
+    # If reasoning is present, it should be a string
+    if data["reasoning"] is not None:
+        assert isinstance(data["reasoning"], str)
+        assert len(data["reasoning"]) > 0
