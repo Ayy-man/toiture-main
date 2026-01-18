@@ -12,7 +12,7 @@
 | 2 | Pinecone CBR ✓ | Similar case retrieval works | PIN-01, PIN-02, PIN-03 | 3 |
 | 3 | LLM Reasoning ✓ | Estimates include explanations | LLM-01, LLM-02, LLM-03 | 3 |
 | 4 | Estimate Form ✓ | Users can get estimates | FORM-01 to FORM-05 | 5 |
-| 5 | Feedback System | Laurent can review and provide prices | DB-01 to DB-03, REVIEW-01 to REVIEW-04 | 7 |
+| 5 | Feedback System ✓ | Laurent can review and provide prices | DB-01 to DB-03, REVIEW-01 to REVIEW-04 | 7 |
 | 6 | Analytics Dashboard | Team sees accuracy trends | DASH-01 to DASH-04 | 4 |
 | 7 | Authentication ✓ | Password-protected access | AUTH-01, AUTH-02 | 2 |
 | 8 | Deployment | Live on Railway + Vercel | DEPLOY-01 to DEPLOY-03 | 3 |
@@ -113,24 +113,26 @@ Plans:
 
 ---
 
-## Phase 5: Feedback System
+## Phase 5: Feedback System ✓
 
 **Goal:** Laurent can review estimates and enter his prices
 
 **Requirements:** DB-01, DB-02, DB-03, REVIEW-01, REVIEW-02, REVIEW-03, REVIEW-04
 
+**Status:** Complete (2026-01-18)
+
 **Plans:** 2 plans
 
 Plans:
-- [ ] 05-01-PLAN.md — Backend Supabase integration (client, save estimates, feedback endpoints)
-- [ ] 05-02-PLAN.md — Frontend review queue (TanStack Table, feedback dialog, /review page)
+- [x] 05-01-PLAN.md — Backend Supabase integration (client, save estimates, feedback endpoints)
+- [x] 05-02-PLAN.md — Frontend review queue (TanStack Table, feedback dialog, /review page)
 
 **Success Criteria:**
-1. Supabase tables created (estimates, feedback)
-2. New estimates saved to database
-3. Review queue shows pending estimates
-4. Laurent can enter his price and mark reviewed
-5. Feedback queryable for analytics
+1. Supabase tables created (estimates, feedback) ✓
+2. New estimates saved to database ✓
+3. Review queue shows pending estimates ✓
+4. Laurent can enter his price and mark reviewed ✓
+5. Feedback queryable for analytics ✓
 
 **Dependencies:** Phase 4 complete, Supabase project created
 
