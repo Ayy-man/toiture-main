@@ -5,7 +5,7 @@ import logging
 
 from pinecone.grpc import PineconeGRPC as Pinecone
 
-from backend.app.config import settings
+from app.config import settings
 
 logger = logging.getLogger(__name__)
 

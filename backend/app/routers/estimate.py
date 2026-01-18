@@ -4,12 +4,12 @@ import logging
 
 from fastapi import APIRouter, HTTPException
 
-from backend.app.schemas.estimate import EstimateRequest, EstimateResponse, SimilarCase
-from backend.app.services.embeddings import build_query_text, generate_query_embedding
-from backend.app.services.llm_reasoning import generate_reasoning
-from backend.app.services.pinecone_cbr import query_similar_cases
-from backend.app.services.predictor import predict
-from backend.app.services.supabase_client import get_supabase
+from app.schemas.estimate import EstimateRequest, EstimateResponse, SimilarCase
+from app.services.embeddings import build_query_text, generate_query_embedding
+from app.services.llm_reasoning import generate_reasoning
+from app.services.pinecone_cbr import query_similar_cases
+from app.services.predictor import predict
+from app.services.supabase_client import get_supabase
 
 logger = logging.getLogger(__name__)
 

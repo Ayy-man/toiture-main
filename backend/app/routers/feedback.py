@@ -5,13 +5,13 @@ from typing import List
 
 from fastapi import APIRouter, HTTPException
 
-from backend.app.schemas.feedback import (
+from app.schemas.feedback import (
     EstimateDetail,
     EstimateListItem,
     FeedbackResponse,
     SubmitFeedbackRequest,
 )
-from backend.app.services.supabase_client import get_supabase
+from app.services.supabase_client import get_supabase
 
 logger = logging.getLogger(__name__)
 

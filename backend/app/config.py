@@ -19,7 +19,11 @@ class Settings(BaseSettings):
     openrouter_base_url: str = "https://openrouter.ai/api/v1"
     app_url: str = "https://toiturelv-cortex.railway.app"
 
-    model_config = {"env_file": "backend/.env", "extra": "ignore"}
+    # Supabase settings (feedback system)
+    supabase_url: str = ""
+    supabase_service_key: str = ""
+
+    model_config = {"env_file": ".env", "extra": "ignore"}
 
 
 settings = Settings()

@@ -5,13 +5,13 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.app.config import settings
-from backend.app.routers import estimate, feedback, health
-from backend.app.services.embeddings import load_embedding_model, unload_embedding_model
-from backend.app.services.llm_reasoning import close_llm_client, init_llm_client
-from backend.app.services.pinecone_cbr import close_pinecone, init_pinecone
-from backend.app.services.predictor import load_models, unload_models
-from backend.app.services.supabase_client import close_supabase, init_supabase
+from app.config import settings
+from app.routers import estimate, feedback, health
+from app.services.embeddings import load_embedding_model, unload_embedding_model
+from app.services.llm_reasoning import close_llm_client, init_llm_client
+from app.services.pinecone_cbr import close_pinecone, init_pinecone
+from app.services.predictor import load_models, unload_models
+from app.services.supabase_client import close_supabase, init_supabase
 
 
 @asynccontextmanager
