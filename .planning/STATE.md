@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 6 - Analytics Dashboard (next)
+**Current focus:** Phase 6 - Analytics Dashboard (in progress)
 
 ## Progress
 
@@ -18,22 +18,29 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 3 | Complete | 2/2 | 100% |
 | 4 | Complete | 2/2 | 100% |
 | 5 | Complete | 2/2 | 100% |
-| 6 | Pending | 0/2 | 0% |
+| 6 | In Progress | 1/2 | 50% |
 | 7 | Complete | 1/1 | 100% |
 | 8 | Pending | 0/? | 0% |
 
-**Overall:** 11/15 plans complete (73%)
+**Overall:** 12/15 plans complete (80%)
 
 ```
-Progress: [██████████████░░░░░░] 73%
+Progress: [████████████████░░░░] 80%
 ```
 
 ## Current Phase
 
-**Phase 5: Feedback System** (Complete)
-- Goal: Enable feedback collection on AI estimates
-- Requirements: DB-01 to DB-03, REVIEW-01 to REVIEW-04
-- Status: All plans complete
+**Phase 6: Analytics Dashboard** (In Progress)
+- Goal: Build analytics dashboard with accuracy metrics and charts
+- Requirements: DASH-01 to DASH-04
+- Status: Plan 01 complete, Plan 02 pending
+
+### Phase 6 In Progress
+- **06-01:** Analytics data layer with React Query and Supabase hooks
+  - React Query provider with 5-min staleTime
+  - Supabase browser client for RPC calls
+  - Analytics hooks: useAccuracyStats, useCategoryBreakdown, useConfidenceAccuracy
+  - Time period filtering (7d, 30d, all)
 
 ### Phase 5 Complete
 - **05-01:** Supabase integration with feedback API endpoints
@@ -81,6 +88,8 @@ Progress: [██████████████░░░░░░] 73%
 | Feedback endpoints return 503 when unavailable | 05-01 | Clear signal for unconfigured service |
 | Generic DataTable component | 05-02 | Reusable for analytics dashboard |
 | createColumns factory with onReview callback | 05-02 | Avoids prop drilling |
+| Type assertions for Supabase RPC | 06-01 | No generated types for custom functions |
+| 5-min staleTime for analytics | 06-01 | Balance freshness and performance |
 
 ## Session History
 
@@ -97,11 +106,12 @@ Progress: [██████████████░░░░░░] 73%
 | 2026-01-18 | Plan 04-02 executed | Estimate form with 6 fields, result display |
 | 2026-01-18 | Plan 05-01 executed | Supabase integration, feedback API endpoints |
 | 2026-01-18 | Plan 05-02 executed | Review queue UI with TanStack Table |
+| 2026-01-18 | Plan 06-01 executed | Analytics data layer with React Query hooks |
 
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 05-02-PLAN.md
+Stopped at: Completed 06-01-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -111,10 +121,11 @@ None currently.
 ## Notes
 
 - Tech stack: FastAPI (Railway) + Next.js (Vercel) + Pinecone + Supabase + OpenRouter
-- Frontend complete: estimate form, review queue, password gate
+- Frontend complete: estimate form, review queue, password gate, analytics hooks
 - Backend complete: ML prediction, CBR, LLM reasoning, feedback API
 - Full end-to-end testing requires backend deployment to Railway (Phase 8)
-- Next: Phase 6 (Analytics Dashboard) or Phase 8 (Deployment)
+- Next: Phase 6 Plan 02 (Dashboard Charts) or Phase 8 (Deployment)
+- PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ---
 *State updated: 2026-01-18*
