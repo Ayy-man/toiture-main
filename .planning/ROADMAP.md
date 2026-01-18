@@ -1,8 +1,8 @@
 # Roadmap: TOITURELV Cortex
 
 **Created:** 2026-01-18
-**Phases:** 9
-**Requirements:** 30
+**Phases:** 11
+**Requirements:** 32
 
 ## Phase Overview
 
@@ -17,6 +17,8 @@
 | 7 | Authentication ✓ | Password-protected access | AUTH-01, AUTH-02 | 2 |
 | 8 | Deployment | Live on Railway + Vercel | DEPLOY-01 to DEPLOY-03 | 3 |
 | 9 | Streaming Estimates | Fast estimates + streaming reasoning | PERF-01, PERF-02 | 4 |
+| 10 | Material ID Prediction ✓ | Predict materials and quantities | MAT-01, MAT-02 | 2 |
+| 11 | Cortex Admin Dashboard | Professional 4-tab admin interface | ADMIN-01 to ADMIN-04 | 4 |
 
 ---
 
@@ -223,6 +225,52 @@ Plans:
 4. Frontend displays streaming reasoning with loading state
 
 **Dependencies:** Phase 8 complete (deployment working)
+
+---
+
+## Phase 10: Material ID Prediction ✓
+
+**Goal:** Train multi-label classifier for material ID selection and quantity prediction
+
+**Requirements:** MAT-01, MAT-02
+
+**Status:** Complete (2026-01-19)
+
+**Plans:** 2 plans
+
+Plans:
+- [x] 10-01-PLAN.md — Material prediction model training (F1-micro 70.3%, 122 regressors)
+- [x] 10-02-PLAN.md — Material prediction API endpoints (/estimate/materials, /estimate/full)
+
+**Success Criteria:**
+1. Material ID selection F1-micro >= 70% ✓ (achieved 70.3%)
+2. Quantity MAPE <= 30% for predictable materials ✓
+3. POST /estimate/materials returns predicted materials ✓
+4. POST /estimate/full combines price + materials ✓
+5. Models load lazily on first request ✓
+
+**Dependencies:** Phase 1 complete (backend structure)
+
+---
+
+## Phase 11: Cortex Admin Dashboard
+
+**Goal:** Professional 4-tab admin interface for estimates, review, analytics, and settings
+
+**Requirements:** ADMIN-01, ADMIN-02, ADMIN-03, ADMIN-04
+
+**Plans:** TBD
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 11 to break down)
+
+**Success Criteria:**
+1. Estimates tab with new estimate form
+2. Review queue for Laurent's feedback
+3. Analytics dashboard with accuracy charts
+4. Settings tab for configuration
+
+**Dependencies:** Phase 10 complete
 
 ---
 
