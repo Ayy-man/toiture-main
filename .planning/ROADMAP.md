@@ -134,6 +134,12 @@ Plans:
 
 **Requirements:** DASH-01, DASH-02, DASH-03, DASH-04
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 06-01-PLAN.md — Analytics infrastructure (dependencies, Supabase client, React Query, hooks)
+- [ ] 06-02-PLAN.md — Dashboard UI (charts, stats cards, time filter, /dashboard page)
+
 **Success Criteria:**
 1. Accuracy chart shows % within 10%/20% of Laurent's prices
 2. Confidence correlation visible (high confidence = more accurate?)
