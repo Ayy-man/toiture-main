@@ -119,6 +119,12 @@ Plans:
 
 **Requirements:** DB-01, DB-02, DB-03, REVIEW-01, REVIEW-02, REVIEW-03, REVIEW-04
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Backend Supabase integration (client, save estimates, feedback endpoints)
+- [ ] 05-02-PLAN.md — Frontend review queue (TanStack Table, feedback dialog, /review page)
+
 **Success Criteria:**
 1. Supabase tables created (estimates, feedback)
 2. New estimates saved to database
