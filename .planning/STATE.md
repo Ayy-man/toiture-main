@@ -1,13 +1,13 @@
 # Project State: TOITURELV Cortex
 
-**Last Updated:** 2026-01-19
+**Last Updated:** 2026-01-18
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 11 - Cortex Admin Dashboard (Plan 01 complete)
+**Current focus:** Phase 11 - Cortex Admin Dashboard (Plan 05 complete)
 
 ## Progress
 
@@ -23,19 +23,19 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 8 | In Progress | 1/2 | 50% |
 | 9 | Complete | 1/1 | 100% |
 | 10 | Complete | 2/2 | 100% |
-| 11 | In Progress | 1/4 | 25% |
+| 11 | In Progress | 2/4 | 50% |
 
-**Overall:** 17/23 plans complete (74%)
+**Overall:** 18/23 plans complete (78%)
 
 ```
-Progress: [██████████████░░░░░░] 74%
+Progress: [███████████████░░░░░] 78%
 ```
 
 ## Current Phase
 
 **Phase 11: Cortex Admin Dashboard** (In Progress)
 - Goal: 4-tab professional admin interface (Estimateur, Historique, Apercu, Clients)
-- Status: Plan 01 complete - sidebar layout and navigation
+- Status: Plan 05 complete - Apercu dashboard with KPIs and charts
 
 ### Phase 11 In Progress
 - **11-01:** Admin dashboard layout with shadcn/ui Sidebar (Complete)
@@ -43,9 +43,18 @@ Progress: [██████████████░░░░░░] 74%
   - French navigation: Estimateur, Historique, Apercu, Clients
   - Mobile responsive with collapsible sidebar
   - Root redirects to /estimateur
-- **11-02:** Historique quote browser (Pending)
-- **11-03:** Apercu dashboard metrics (Pending)
+- **11-02:** Dashboard backend API (Complete)
+  - Quotes pagination and filters
+  - Customer search and detail
+  - Dashboard metrics and charts endpoints
+- **11-03:** Historique quote browser (Pending)
 - **11-04:** Clients customer search (Pending)
+- **11-05:** Apercu dashboard metrics (Complete)
+  - 4 KPI cards: Revenue, Quotes, Margin, Active Clients
+  - Revenue by year bar chart
+  - Revenue by category pie chart
+  - Monthly trend line chart
+  - Top 10 clients ranked list
 
 ### Phase 10 Complete
 - **10-01:** Material ID prediction model training
@@ -139,6 +148,8 @@ Progress: [██████████████░░░░░░] 74%
 | Extract material_id from trigger objects | 10-02 | Feature triggers are objects, not raw IDs |
 | Custom sidebar over shadcn CLI | 11-01 | CLI was hanging, manual implementation works |
 | Route group (admin) for layout isolation | 11-01 | Separates admin layout from login/other pages |
+| Custom tooltip components per chart | 11-05 | Specific data formatting for each chart type |
+| Brick red (#8B2323) for charts | 11-05 | Consistent with Cortex branding |
 
 ## Session History
 
@@ -160,11 +171,12 @@ Progress: [██████████████░░░░░░] 74%
 | 2026-01-18 | Plan 10-01 executed | Material ID prediction models trained |
 | 2026-01-18 | Plan 10-02 executed | Material prediction API endpoints |
 | 2026-01-18 | Plan 11-01 executed | Admin dashboard layout with sidebar |
+| 2026-01-18 | Plan 11-05 executed | Apercu dashboard with KPIs and charts |
 
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 11-01-PLAN.md
+Stopped at: Completed 11-05-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -174,13 +186,13 @@ None currently.
 ## Notes
 
 - Tech stack: FastAPI (Railway) + Next.js (Vercel) + Pinecone + Supabase + OpenRouter
-- Frontend complete: estimate form, review queue, password gate, analytics hooks
-- Backend complete: ML prediction, CBR, LLM reasoning, feedback API, material prediction models + endpoints
+- Frontend complete: estimate form, review queue, password gate, analytics hooks, apercu dashboard
+- Backend complete: ML prediction, CBR, LLM reasoning, feedback API, material prediction, dashboard API
 - Deployment config ready: Dockerfile, railway.json, vercel.json
 - Docker build test skipped (Docker not installed locally) - will validate on Railway
 - Material prediction models: F1-micro 70.3%, 122 quantity regressors, 506 rules, 21 feature triggers
 - Material endpoints: POST /estimate/materials, POST /estimate/full (lazy loading)
-- Next: Phase 11-02 (Historique quote browser) or Phase 6-02/8-02 completion
+- Next: Phase 11-03 (Historique frontend) or 11-04 (Clients frontend)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
@@ -190,4 +202,4 @@ None currently.
 - Phase 11 added: Cortex Admin Dashboard (4-tab professional interface) - moved after material prediction
 
 ---
-*State updated: 2026-01-18 (Phase 11 Plan 01 complete)*
+*State updated: 2026-01-18 (Phase 11 Plan 05 complete)*
