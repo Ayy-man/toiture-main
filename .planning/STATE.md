@@ -7,47 +7,51 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 3 - LLM Reasoning
+**Current focus:** Phase 4 - Frontend
 
 ## Progress
 
 | Phase | Status | Plans | Progress |
 |-------|--------|-------|----------|
-| 1 | ✓ Complete | 2/2 | 100% |
-| 2 | ✓ Complete | 2/2 | 100% |
-| 3 | ✓ Complete | 2/2 | 100% |
-| 4 | ○ Pending | 0/2 | 0% |
-| 5 | ○ Pending | 0/? | 0% |
-| 6 | ○ Pending | 0/? | 0% |
-| 7 | ○ Pending | 0/? | 0% |
-| 8 | ○ Pending | 0/? | 0% |
+| 1 | Complete | 2/2 | 100% |
+| 2 | Complete | 2/2 | 100% |
+| 3 | Complete | 2/2 | 100% |
+| 4 | In Progress | 1/2 | 50% |
+| 5 | Pending | 0/? | 0% |
+| 6 | Pending | 0/? | 0% |
+| 7 | Pending | 0/? | 0% |
+| 8 | Pending | 0/? | 0% |
 
-**Overall:** 3/8 phases complete (37.5%)
+**Overall:** 7/14 plans complete (50%)
 
 ```
-Progress: [███████░░░░░░░░░░░░░] 37.5%
+Progress: [██████████░░░░░░░░░░] 50%
 ```
 
 ## Current Phase
 
-**Phase 4: Frontend** (Next)
+**Phase 4: Frontend** (In Progress)
 - Goal: Next.js frontend with estimate form
 - Requirements: FE-01, FE-02
-- Status: Pending
+- Status: Plan 01 complete, Plan 02 pending
 
-### Phase 3 Complete ✓
+### Phase 4 Progress
+- **04-01:** Next.js 15 project with shadcn/ui, Zod schemas, API client
+- Next: Form component with validation and result display
+
+### Phase 3 Complete
 - **03-01:** LLM reasoning service module with OpenRouter
 - **03-02:** LLM integration into /estimate endpoint
 - LLM client lifecycle in FastAPI lifespan
 - reasoning field in EstimateResponse (graceful degradation)
 - 16 tests passing
 
-### Phase 2 Complete ✓
+### Phase 2 Complete
 - **02-01:** Pinecone services and embedding upload (8,132 vectors)
 - **02-02:** Endpoint integration with similar cases
 - **Verified:** 3/3 must-haves, 6/6 CBR tests passing
 
-### Phase 1 Complete ✓
+### Phase 1 Complete
 - **01-01:** Backend structure and model loading
 - **01-02:** API endpoints with Pydantic validation
 - **Verified:** 7/7 must-haves, 9/9 tests passing
@@ -69,6 +73,10 @@ Progress: [███████░░░░░░░░░░░░░] 37.5%
 | LLM init last, close first in lifespan | 03-02 | Proper dependency order |
 | Optional[str] reasoning with None default | 03-02 | Graceful degradation when LLM unavailable |
 | Catch all exceptions in reasoning generation | 03-02 | Never block estimates due to LLM failures |
+| Zod 4 with message param for enum | 04-01 | Zod 4.x uses simplified API for enum options |
+| Frontend uses Elastomere without accent | 04-01 | Backend field_validator normalizes to accented version |
+| Boolean to 0/1 conversion in API client | 04-01 | Backend expects Literal[0, 1] for has_subs |
+| types/estimate.ts re-export pattern | 04-01 | Cleaner imports from single location |
 
 ## Session History
 
@@ -81,11 +89,12 @@ Progress: [███████░░░░░░░░░░░░░] 37.5%
 | 2026-01-18 | Phase 1 verified | All 4 success criteria met, goal achieved |
 | 2026-01-18 | Plan 03-01 executed | LLM reasoning service with OpenRouter |
 | 2026-01-18 | Plan 03-02 executed | LLM integration into /estimate endpoint |
+| 2026-01-18 | Plan 04-01 executed | Next.js 15, shadcn/ui, Zod schemas, API client |
 
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 03-02-PLAN.md, Phase 3 complete
+Stopped at: Completed 04-01-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -98,6 +107,7 @@ None currently.
 - 8,132 CBR embeddings ready for Pinecone upload
 - Tech stack: FastAPI (Railway) + Next.js (Vercel) + Pinecone + Supabase + OpenRouter
 - ML model files need to be copied from cortex-data/ to backend/app/models/ before running
+- Frontend ready for form component in 04-02
 
 ---
 *State updated: 2026-01-18*
