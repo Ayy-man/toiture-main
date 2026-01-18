@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 7 - Authentication
+**Current focus:** Phase 5 - Case History (or Phase 6 - Analytics Dashboard)
 
 ## Progress
 
@@ -16,24 +16,29 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 1 | Complete | 2/2 | 100% |
 | 2 | Complete | 2/2 | 100% |
 | 3 | Complete | 2/2 | 100% |
-| 4 | In Progress | 1/2 | 50% |
+| 4 | Complete | 2/2 | 100% |
 | 5 | Pending | 0/? | 0% |
 | 6 | Pending | 0/? | 0% |
 | 7 | Complete | 1/1 | 100% |
 | 8 | Pending | 0/? | 0% |
 
-**Overall:** 8/14 plans complete (57%)
+**Overall:** 9/14 plans complete (64%)
 
 ```
-Progress: [███████████░░░░░░░░░] 57%
+Progress: [█████████████░░░░░░░] 64%
 ```
 
 ## Current Phase
 
-**Phase 7: Authentication** (Complete)
-- Goal: Simple password gate for internal tool access
-- Requirements: AUTH-01, AUTH-02
-- Status: Plan 01 complete
+**Phase 4: Estimate Form** (Complete)
+- Goal: Frontend form for estimate requests
+- Requirements: FORM-01 through FORM-05
+- Status: All plans complete
+
+### Phase 4 Complete
+- **04-01:** Next.js 15 project with shadcn/ui, Zod schemas, API client
+- **04-02:** EstimateForm with 6 fields, validation, result display components
+- Form displays correctly (testing deferred until backend deployed to Railway)
 
 ### Phase 7 Complete
 - **07-01:** Password gate with iron-session, middleware protection, login/logout
@@ -41,10 +46,6 @@ Progress: [███████████░░░░░░░░░] 57%
 - Server Actions for auth (authenticate/logout)
 - Middleware-based route protection
 - LogoutButton component ready for layout integration
-
-### Phase 4 Progress
-- **04-01:** Next.js 15 project with shadcn/ui, Zod schemas, API client
-- Next: Form component with validation and result display
 
 ### Phase 3 Complete
 - **03-01:** LLM reasoning service module with OpenRouter

@@ -54,8 +54,8 @@
 
 ### Authentication
 
-- [ ] **AUTH-01**: Simple password gate on frontend
-- [ ] **AUTH-02**: Password stored as env var, not hardcoded
+- [x] **AUTH-01**: Simple password gate on frontend
+- [x] **AUTH-02**: Password stored as env var, not hardcoded
 
 ### Deployment
 
@@ -116,8 +116,8 @@
 | DASH-02 | Phase 6 | Pending |
 | DASH-03 | Phase 6 | Pending |
 | DASH-04 | Phase 6 | Pending |
-| AUTH-01 | Phase 7 | Pending |
-| AUTH-02 | Phase 7 | Pending |
+| AUTH-01 | Phase 7 | Complete |
+| AUTH-02 | Phase 7 | Complete |
 | DEPLOY-01 | Phase 8 | Pending |
 | DEPLOY-02 | Phase 8 | Pending |
 | DEPLOY-03 | Phase 8 | Pending |

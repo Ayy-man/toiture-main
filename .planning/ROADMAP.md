@@ -14,7 +14,7 @@
 | 4 | Estimate Form | Users can get estimates | FORM-01 to FORM-05 | 5 |
 | 5 | Feedback System | Laurent can review and provide prices | DB-01 to DB-03, REVIEW-01 to REVIEW-04 | 7 |
 | 6 | Analytics Dashboard | Team sees accuracy trends | DASH-01 to DASH-04 | 4 |
-| 7 | Authentication | Password-protected access | AUTH-01, AUTH-02 | 2 |
+| 7 | Authentication ✓ | Password-protected access | AUTH-01, AUTH-02 | 2 |
 | 8 | Deployment | Live on Railway + Vercel | DEPLOY-01 to DEPLOY-03 | 3 |
 
 ---
@@ -150,21 +150,23 @@ Plans:
 
 ---
 
-## Phase 7: Authentication
+## Phase 7: Authentication ✓
 
 **Goal:** Only authorized users can access the app
 
 **Requirements:** AUTH-01, AUTH-02
 
+**Status:** Complete (2026-01-18)
+
 **Plans:** 1 plan
 
 Plans:
-- [ ] 07-01-PLAN.md — Password gate with iron-session, login page, middleware protection
+- [x] 07-01-PLAN.md — Password gate with iron-session, login page, middleware protection
 
 **Success Criteria:**
-1. Unauthenticated users see password prompt
-2. Correct password grants access to all features
-3. Password stored in environment variable
+1. Unauthenticated users see password prompt ✓
+2. Correct password grants access to all features ✓
+3. Password stored in environment variable ✓
 
 **Dependencies:** Phase 4 complete (frontend exists)
 
