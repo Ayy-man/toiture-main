@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 4 - Frontend
+**Current focus:** Phase 7 - Authentication
 
 ## Progress
 
@@ -19,21 +19,28 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 4 | In Progress | 1/2 | 50% |
 | 5 | Pending | 0/? | 0% |
 | 6 | Pending | 0/? | 0% |
-| 7 | Pending | 0/? | 0% |
+| 7 | Complete | 1/1 | 100% |
 | 8 | Pending | 0/? | 0% |
 
-**Overall:** 7/14 plans complete (50%)
+**Overall:** 8/14 plans complete (57%)
 
 ```
-Progress: [██████████░░░░░░░░░░] 50%
+Progress: [███████████░░░░░░░░░] 57%
 ```
 
 ## Current Phase
 
-**Phase 4: Frontend** (In Progress)
-- Goal: Next.js frontend with estimate form
-- Requirements: FE-01, FE-02
-- Status: Plan 01 complete, Plan 02 pending
+**Phase 7: Authentication** (Complete)
+- Goal: Simple password gate for internal tool access
+- Requirements: AUTH-01, AUTH-02
+- Status: Plan 01 complete
+
+### Phase 7 Complete
+- **07-01:** Password gate with iron-session, middleware protection, login/logout
+- iron-session 8.x for encrypted cookie sessions
+- Server Actions for auth (authenticate/logout)
+- Middleware-based route protection
+- LogoutButton component ready for layout integration
 
 ### Phase 4 Progress
 - **04-01:** Next.js 15 project with shadcn/ui, Zod schemas, API client
@@ -77,6 +84,10 @@ Progress: [██████████░░░░░░░░░░] 50%
 | Frontend uses Elastomere without accent | 04-01 | Backend field_validator normalizes to accented version |
 | Boolean to 0/1 conversion in API client | 04-01 | Backend expects Literal[0, 1] for has_subs |
 | types/estimate.ts re-export pattern | 04-01 | Cleaner imports from single location |
+| iron-session 8.x over NextAuth.js | 07-01 | Lightweight stateless sessions for simple shared password |
+| Server Actions over API routes for auth | 07-01 | Direct form action, simpler pattern |
+| await cookies() pattern | 07-01 | Required for Next.js 15 async dynamic APIs |
+| Redirect param preservation | 07-01 | Unauthenticated users return to intended destination |
 
 ## Session History
 
@@ -90,11 +101,12 @@ Progress: [██████████░░░░░░░░░░] 50%
 | 2026-01-18 | Plan 03-01 executed | LLM reasoning service with OpenRouter |
 | 2026-01-18 | Plan 03-02 executed | LLM integration into /estimate endpoint |
 | 2026-01-18 | Plan 04-01 executed | Next.js 15, shadcn/ui, Zod schemas, API client |
+| 2026-01-18 | Plan 07-01 executed | Password gate auth with iron-session |
 
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 04-01-PLAN.md
+Stopped at: Completed 07-01-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -108,6 +120,7 @@ None currently.
 - Tech stack: FastAPI (Railway) + Next.js (Vercel) + Pinecone + Supabase + OpenRouter
 - ML model files need to be copied from cortex-data/ to backend/app/models/ before running
 - Frontend ready for form component in 04-02
+- Authentication complete - all routes protected except /login, API, and static assets
 
 ---
 *State updated: 2026-01-18*
