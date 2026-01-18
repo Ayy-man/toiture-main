@@ -89,6 +89,9 @@ Progress: [█████████████░░░░░░░] 64%
 | Server Actions over API routes for auth | 07-01 | Direct form action, simpler pattern |
 | await cookies() pattern | 07-01 | Required for Next.js 15 async dynamic APIs |
 | Redirect param preservation | 07-01 | Unauthenticated users return to intended destination |
+| Controlled form with react-hook-form | 04-02 | Consistent state management with Zod validation |
+| Color-coded confidence badge | 04-02 | Visual clarity: green (HIGH), yellow (MEDIUM), red (LOW) |
+| Inline result display below form | 04-02 | Single-page UX without navigation |
 
 ## Session History
 
@@ -103,11 +106,12 @@ Progress: [█████████████░░░░░░░] 64%
 | 2026-01-18 | Plan 03-02 executed | LLM integration into /estimate endpoint |
 | 2026-01-18 | Plan 04-01 executed | Next.js 15, shadcn/ui, Zod schemas, API client |
 | 2026-01-18 | Plan 07-01 executed | Password gate auth with iron-session |
+| 2026-01-18 | Plan 04-02 executed | Estimate form with 6 fields, result display (testing deferred) |
 
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 07-01-PLAN.md
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -120,8 +124,10 @@ None currently.
 - 8,132 CBR embeddings ready for Pinecone upload
 - Tech stack: FastAPI (Railway) + Next.js (Vercel) + Pinecone + Supabase + OpenRouter
 - ML model files need to be copied from cortex-data/ to backend/app/models/ before running
-- Frontend ready for form component in 04-02
+- Frontend estimate form complete with all 6 input fields
 - Authentication complete - all routes protected except /login, API, and static assets
+- Backend needs deployment to Railway for full end-to-end testing
+- Phase 4 complete: Ready for Phase 5 (Case History) or Phase 6 (Analytics Dashboard)
 
 ---
 *State updated: 2026-01-18*
