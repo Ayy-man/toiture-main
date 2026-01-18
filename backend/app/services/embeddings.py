@@ -2,20 +2,30 @@
 
 from typing import List, Optional
 import logging
-
-from sentence_transformers import SentenceTransformer
+import gc
 
 logger = logging.getLogger(__name__)
 
-_model: SentenceTransformer = None
+_model = None
 
 
 def load_embedding_model():
-    """Load the embedding model at startup. Called from lifespan."""
+    """Lazy load - model loaded on first use to reduce startup memory."""
+    # Don't load at startup - load lazily on first embed call
+    logger.info("Embedding model will load on first use (lazy loading)")
+
+
+def _get_model():
+    """Get or load the embedding model (lazy singleton)."""
     global _model
-    logger.info("Loading sentence-transformers model...")
-    _model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
-    logger.info("Embedding model loaded successfully")
+    if _model is None:
+        from sentence_transformers import SentenceTransformer
+        logger.info("Loading sentence-transformers model (first use)...")
+        # Use smaller model: L6 instead of L12 (half the memory)
+        _model = SentenceTransformer('all-MiniLM-L6-v2')
+        gc.collect()  # Force garbage collection
+        logger.info("Embedding model loaded")
+    return _model
 
 
 def unload_embedding_model():
@@ -26,9 +36,8 @@ def unload_embedding_model():
 
 def generate_query_embedding(text: str) -> List[float]:
     """Generate 384-dim embedding for query text."""
-    if _model is None:
-        raise RuntimeError("Embedding model not loaded. Ensure lifespan started.")
-    embedding = _model.encode(text, convert_to_numpy=True)
+    model = _get_model()
+    embedding = model.encode(text, convert_to_numpy=True)
     return embedding.tolist()
 
 
