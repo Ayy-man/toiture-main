@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 6 - Analytics Dashboard (in progress)
+**Current focus:** Phase 8 - Deployment (in progress)
 
 ## Progress
 
@@ -20,20 +20,28 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 5 | Complete | 2/2 | 100% |
 | 6 | In Progress | 1/2 | 50% |
 | 7 | Complete | 1/1 | 100% |
-| 8 | Pending | 0/? | 0% |
+| 8 | In Progress | 1/2 | 50% |
 
-**Overall:** 12/15 plans complete (80%)
+**Overall:** 13/16 plans complete (81%)
 
 ```
-Progress: [████████████████░░░░] 80%
+Progress: [████████████████░░░░] 81%
 ```
 
 ## Current Phase
 
-**Phase 6: Analytics Dashboard** (In Progress)
-- Goal: Build analytics dashboard with accuracy metrics and charts
-- Requirements: DASH-01 to DASH-04
+**Phase 8: Deployment** (In Progress)
+- Goal: Deploy backend to Railway, frontend to Vercel
+- Requirements: DEPLOY-01, DEPLOY-02, DEPLOY-03
 - Status: Plan 01 complete, Plan 02 pending
+
+### Phase 8 In Progress
+- **08-01:** Deployment configuration files
+  - Dockerfile with CPU-only PyTorch (~2GB smaller)
+  - railway.json with health check and restart policy
+  - vercel.json with Next.js framework config
+  - Fixed all Python imports (backend.app.* to app.*)
+  - Environment variable documentation (.env.example)
 
 ### Phase 6 In Progress
 - **06-01:** Analytics data layer with React Query and Supabase hooks
@@ -90,6 +98,9 @@ Progress: [████████████████░░░░] 80%
 | createColumns factory with onReview callback | 05-02 | Avoids prop drilling |
 | Type assertions for Supabase RPC | 06-01 | No generated types for custom functions |
 | 5-min staleTime for analytics | 06-01 | Balance freshness and performance |
+| CPU-only PyTorch in Docker | 08-01 | ~2GB smaller image, no GPU needed |
+| Import path backend.app.* to app.* | 08-01 | Railway runs from backend/ directory |
+| Health check timeout 300s | 08-01 | ML models need time to load |
 
 ## Session History
 
@@ -107,11 +118,12 @@ Progress: [████████████████░░░░] 80%
 | 2026-01-18 | Plan 05-01 executed | Supabase integration, feedback API endpoints |
 | 2026-01-18 | Plan 05-02 executed | Review queue UI with TanStack Table |
 | 2026-01-18 | Plan 06-01 executed | Analytics data layer with React Query hooks |
+| 2026-01-18 | Plan 08-01 executed | Deployment config: Dockerfile, railway.json, vercel.json |
 
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 06-01-PLAN.md
+Stopped at: Completed 08-01-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -123,8 +135,9 @@ None currently.
 - Tech stack: FastAPI (Railway) + Next.js (Vercel) + Pinecone + Supabase + OpenRouter
 - Frontend complete: estimate form, review queue, password gate, analytics hooks
 - Backend complete: ML prediction, CBR, LLM reasoning, feedback API
-- Full end-to-end testing requires backend deployment to Railway (Phase 8)
-- Next: Phase 6 Plan 02 (Dashboard Charts) or Phase 8 (Deployment)
+- Deployment config ready: Dockerfile, railway.json, vercel.json
+- Docker build test skipped (Docker not installed locally) - will validate on Railway
+- Next: Phase 8 Plan 02 (Actual Deployment) or Phase 6 Plan 02 (Dashboard Charts)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ---
