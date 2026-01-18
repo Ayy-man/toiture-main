@@ -3,19 +3,19 @@
  * Produces Excel-compatible CSV files.
  */
 
-export function exportToCSV(
-  data: Record<string, unknown>[],
+export function exportToCSV<T extends object>(
+  data: T[],
   filename: string
 ): void {
   if (data.length === 0) return;
 
-  const headers = Object.keys(data[0]);
+  const headers = Object.keys(data[0]) as (keyof T)[];
   const csvContent = [
     headers.join(","),
     ...data.map((row) =>
       headers
         .map((header) => {
-          const value = row[header];
+          const value = row[header as keyof T];
           const str = String(value ?? "").replace(/"/g, '""');
           return str.includes(",") || str.includes('"') || str.includes("\n")
             ? `"${str}"`
