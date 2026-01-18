@@ -6,6 +6,7 @@ from fastapi import APIRouter, HTTPException
 
 from backend.app.schemas.estimate import EstimateRequest, EstimateResponse, SimilarCase
 from backend.app.services.embeddings import build_query_text, generate_query_embedding
+from backend.app.services.llm_reasoning import generate_reasoning
 from backend.app.services.pinecone_cbr import query_similar_cases
 from backend.app.services.predictor import predict
 
@@ -52,6 +53,29 @@ def create_estimate(request: EstimateRequest):
             logger.warning(f"CBR lookup failed: {e}")
             similar_cases = []
 
+        # Generate LLM reasoning (graceful degradation)
+        try:
+            reasoning = generate_reasoning(
+                estimate=result["estimate"],
+                confidence=result["confidence"],
+                sqft=request.sqft,
+                category=request.category,
+                similar_cases=[
+                    {
+                        "category": c.category,
+                        "sqft": c.sqft,
+                        "total": c.total,
+                        "per_sqft": c.per_sqft,
+                        "similarity": c.similarity,
+                        "year": c.year,
+                    }
+                    for c in similar_cases
+                ],
+            )
+        except Exception as e:
+            logger.warning(f"LLM reasoning failed: {e}")
+            reasoning = None
+
         return EstimateResponse(
             estimate=result["estimate"],
             range_low=result["range_low"],
@@ -59,6 +83,7 @@ def create_estimate(request: EstimateRequest):
             confidence=result["confidence"],
             model=result["model"],
             similar_cases=similar_cases,
+            reasoning=reasoning,
         )
     except Exception as e:
         logger.error(f"Estimate error: {e}")
