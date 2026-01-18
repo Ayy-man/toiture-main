@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 5 - Case History (or Phase 6 - Analytics Dashboard)
+**Current focus:** Phase 5 - Feedback System (in progress)
 
 ## Progress
 
@@ -17,23 +17,30 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 2 | Complete | 2/2 | 100% |
 | 3 | Complete | 2/2 | 100% |
 | 4 | Complete | 2/2 | 100% |
-| 5 | Pending | 0/? | 0% |
+| 5 | In Progress | 1/2 | 50% |
 | 6 | Pending | 0/? | 0% |
 | 7 | Complete | 1/1 | 100% |
 | 8 | Pending | 0/? | 0% |
 
-**Overall:** 9/14 plans complete (64%)
+**Overall:** 10/15 plans complete (67%)
 
 ```
-Progress: [█████████████░░░░░░░] 64%
+Progress: [█████████████░░░░░░░] 67%
 ```
 
 ## Current Phase
 
-**Phase 4: Estimate Form** (Complete)
-- Goal: Frontend form for estimate requests
-- Requirements: FORM-01 through FORM-05
-- Status: All plans complete
+**Phase 5: Feedback System** (In Progress)
+- Goal: Enable feedback collection on AI estimates
+- Requirements: FEEDBACK-01 through FEEDBACK-04
+- Status: 05-01 complete, 05-02 pending
+
+### Phase 5 Progress
+- **05-01:** Supabase integration with feedback API endpoints (complete)
+- Supabase client singleton with graceful degradation
+- Estimates auto-saved to database after prediction
+- Feedback endpoints: GET /pending, GET /estimate/{id}, POST /submit
+- Ready for 05-02: Feedback UI
 
 ### Phase 4 Complete
 - **04-01:** Next.js 15 project with shadcn/ui, Zod schemas, API client
@@ -92,6 +99,9 @@ Progress: [█████████████░░░░░░░] 64%
 | Controlled form with react-hook-form | 04-02 | Consistent state management with Zod validation |
 | Color-coded confidence badge | 04-02 | Visual clarity: green (HIGH), yellow (MEDIUM), red (LOW) |
 | Inline result display below form | 04-02 | Single-page UX without navigation |
+| get_supabase() returns None vs raises | 05-01 | Matches LLM client pattern, allows graceful degradation |
+| Estimate save wrapped in try/except | 05-01 | Prediction should never fail because of database issues |
+| Feedback endpoints return 503 when unavailable | 05-01 | Clear signal that service is not configured vs server error |
 
 ## Session History
 
@@ -107,11 +117,12 @@ Progress: [█████████████░░░░░░░] 64%
 | 2026-01-18 | Plan 04-01 executed | Next.js 15, shadcn/ui, Zod schemas, API client |
 | 2026-01-18 | Plan 07-01 executed | Password gate auth with iron-session |
 | 2026-01-18 | Plan 04-02 executed | Estimate form with 6 fields, result display (testing deferred) |
+| 2026-01-18 | Plan 05-01 executed | Supabase integration, feedback API endpoints |
 
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 04-02-PLAN.md
+Stopped at: Completed 05-01-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -127,7 +138,8 @@ None currently.
 - Frontend estimate form complete with all 6 input fields
 - Authentication complete - all routes protected except /login, API, and static assets
 - Backend needs deployment to Railway for full end-to-end testing
-- Phase 4 complete: Ready for Phase 5 (Case History) or Phase 6 (Analytics Dashboard)
+- Supabase tables created, feedback API ready
+- Next: 05-02 (Feedback UI) or Phase 6 (Analytics Dashboard)
 
 ---
 *State updated: 2026-01-18*
