@@ -15,32 +15,32 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 |-------|--------|-------|----------|
 | 1 | ✓ Complete | 2/2 | 100% |
 | 2 | ✓ Complete | 2/2 | 100% |
-| 3 | In Progress | 1/2 | 50% |
+| 3 | ✓ Complete | 2/2 | 100% |
 | 4 | ○ Pending | 0/2 | 0% |
 | 5 | ○ Pending | 0/? | 0% |
 | 6 | ○ Pending | 0/? | 0% |
 | 7 | ○ Pending | 0/? | 0% |
 | 8 | ○ Pending | 0/? | 0% |
 
-**Overall:** 2/8 phases complete (25%)
+**Overall:** 3/8 phases complete (37.5%)
 
 ```
-Progress: [█████░░░░░░░░░░░░░░░] 25%
+Progress: [███████░░░░░░░░░░░░░] 37.5%
 ```
 
 ## Current Phase
 
-**Phase 3: LLM Reasoning**
-- Goal: Estimates include human-readable explanations
-- Requirements: LLM-01, LLM-02, LLM-03
-- Status: In progress (1/2 plans complete)
-- Dependencies: OpenRouter API key (configured)
+**Phase 4: Frontend** (Next)
+- Goal: Next.js frontend with estimate form
+- Requirements: FE-01, FE-02
+- Status: Pending
 
-### Plan 03-01 Complete ✓
-- LLM reasoning service module created
-- OpenRouter client with 30s timeout and retry logic
-- generate_reasoning() and format_similar_cases() functions
-- Config: openrouter_api_key, openrouter_model, openrouter_base_url, app_url
+### Phase 3 Complete ✓
+- **03-01:** LLM reasoning service module with OpenRouter
+- **03-02:** LLM integration into /estimate endpoint
+- LLM client lifecycle in FastAPI lifespan
+- reasoning field in EstimateResponse (graceful degradation)
+- 16 tests passing
 
 ### Phase 2 Complete ✓
 - **02-01:** Pinecone services and embedding upload (8,132 vectors)
@@ -66,6 +66,9 @@ Progress: [█████░░░░░░░░░░░░░░░] 25%
 | Default model openai/gpt-4o-mini | 03-01 | Best cost/quality balance ($0.15/$0.60 per 1M tokens) |
 | 30s timeout with 3 retry attempts | 03-01 | Prevents hangs, handles transient 401s |
 | Temperature 0.3 for reasoning | 03-01 | Consistent, factual responses |
+| LLM init last, close first in lifespan | 03-02 | Proper dependency order |
+| Optional[str] reasoning with None default | 03-02 | Graceful degradation when LLM unavailable |
+| Catch all exceptions in reasoning generation | 03-02 | Never block estimates due to LLM failures |
 
 ## Session History
 
@@ -77,11 +80,12 @@ Progress: [█████░░░░░░░░░░░░░░░] 25%
 | 2026-01-18 | Plan 01-02 executed | API endpoints, schemas, 9 tests passing |
 | 2026-01-18 | Phase 1 verified | All 4 success criteria met, goal achieved |
 | 2026-01-18 | Plan 03-01 executed | LLM reasoning service with OpenRouter |
+| 2026-01-18 | Plan 03-02 executed | LLM integration into /estimate endpoint |
 
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 03-01-PLAN.md
+Stopped at: Completed 03-02-PLAN.md, Phase 3 complete
 Resume file: None
 
 ## Blockers
