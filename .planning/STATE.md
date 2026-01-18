@@ -1,13 +1,13 @@
 # Project State: TOITURELV Cortex
 
-**Last Updated:** 2026-01-18
+**Last Updated:** 2026-01-19
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 11 - Cortex Admin Dashboard (Plans 02, 03, 05 complete)
+**Current focus:** Phase 11 - Cortex Admin Dashboard (Complete)
 
 ## Progress
 
@@ -23,21 +23,21 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 8 | In Progress | 1/2 | 50% |
 | 9 | Complete | 1/1 | 100% |
 | 10 | Complete | 2/2 | 100% |
-| 11 | In Progress | 3/4 | 75% |
+| 11 | Complete | 4/4 | 100% |
 
-**Overall:** 19/23 plans complete (83%)
+**Overall:** 20/23 plans complete (87%)
 
 ```
-Progress: [████████████████░░░░] 83%
+Progress: [█████████████████░░░] 87%
 ```
 
 ## Current Phase
 
-**Phase 11: Cortex Admin Dashboard** (In Progress)
+**Phase 11: Cortex Admin Dashboard** (Complete)
 - Goal: 4-tab professional admin interface (Estimateur, Historique, Apercu, Clients)
-- Status: Plan 05 complete - Apercu dashboard with KPIs and charts
+- Status: All 4 plans complete
 
-### Phase 11 In Progress
+### Phase 11 Complete
 - **11-01:** Admin dashboard layout with shadcn/ui Sidebar (Complete)
   - Dark sidebar (#1A1A1A) with brick red (#8B2323) Cortex branding
   - French navigation: Estimateur, Historique, Apercu, Clients
@@ -52,7 +52,10 @@ Progress: [████████████████░░░░] 83%
   - 8 filter types: category, city, sqft, price, dates
   - CSV export with UTF-8 BOM for French characters
   - French locale formatting (CAD currency, fr-CA dates)
-- **11-04:** Clients customer search (Pending)
+- **11-04:** Clients customer search (Complete)
+  - Debounced search with useDeferredValue
+  - Segment badges (VIP gold, Regular gray, New outline)
+  - Quote history table with fr-CA formatting
 - **11-05:** Apercu dashboard metrics (Complete)
   - 4 KPI cards: Revenue, Quotes, Margin, Active Clients
   - Revenue by year bar chart
@@ -157,6 +160,7 @@ Progress: [████████████████░░░░] 83%
 | Generic exportToCSV<T> for type safety | 11-03 | Works with Quote[] without Record<string, unknown> |
 | keepPreviousData for pagination | 11-03 | Prevents table flicker on page changes |
 | Server-side pagination with manualPagination | 11-03 | Backend handles paging for 8k+ quotes |
+| useDeferredValue over custom debounce | 11-04 | Native React concurrent feature |
 
 ## Session History
 
@@ -180,11 +184,12 @@ Progress: [████████████████░░░░] 83%
 | 2026-01-18 | Plan 11-01 executed | Admin dashboard layout with sidebar |
 | 2026-01-18 | Plan 11-05 executed | Apercu dashboard with KPIs and charts |
 | 2026-01-18 | Plan 11-03 executed | Historique quote browser with pagination |
+| 2026-01-19 | Plan 11-04 executed | Clients customer search with segment badges |
 
 ## Session Continuity
 
-Last session: 2026-01-18
-Stopped at: Completed 11-03-PLAN.md
+Last session: 2026-01-19
+Stopped at: Completed 11-04-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -194,13 +199,14 @@ None currently.
 ## Notes
 
 - Tech stack: FastAPI (Railway) + Next.js (Vercel) + Pinecone + Supabase + OpenRouter
-- Frontend complete: estimate form, review queue, password gate, analytics hooks, apercu dashboard, historique browser
+- Frontend complete: estimate form, review queue, password gate, analytics hooks, admin dashboard (all 4 tabs)
 - Backend complete: ML prediction, CBR, LLM reasoning, feedback API, material prediction, dashboard API
 - Deployment config ready: Dockerfile, railway.json, vercel.json
 - Docker build test skipped (Docker not installed locally) - will validate on Railway
 - Material prediction models: F1-micro 70.3%, 122 quantity regressors, 506 rules, 21 feature triggers
 - Material endpoints: POST /estimate/materials, POST /estimate/full (lazy loading)
-- Next: Phase 11-04 (Clients customer search) to complete Phase 11
+- Phase 11 Admin Dashboard complete: all 4 tabs (Estimateur, Historique, Apercu, Clients)
+- Next: Phase 6-02 (analytics charts) or Phase 8-02 (deployment execution)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
@@ -210,4 +216,4 @@ None currently.
 - Phase 11 added: Cortex Admin Dashboard (4-tab professional interface) - moved after material prediction
 
 ---
-*State updated: 2026-01-18 (Phase 11 Plan 03 complete)*
+*State updated: 2026-01-19 (Phase 11 Plan 04 complete - Phase 11 now complete)*
