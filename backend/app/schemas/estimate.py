@@ -1,6 +1,6 @@
 """Pydantic models for estimate endpoint request/response."""
 
-from typing import Literal
+from typing import List, Literal, Optional
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -49,6 +49,18 @@ class EstimateRequest(BaseModel):
         return v
 
 
+class SimilarCase(BaseModel):
+    """A similar historical case from CBR."""
+
+    case_id: str
+    similarity: float  # Cosine similarity score 0-1
+    category: Optional[str] = None
+    sqft: Optional[float] = None
+    total: Optional[float] = None
+    per_sqft: Optional[float] = None
+    year: Optional[int] = None
+
+
 class EstimateResponse(BaseModel):
     """Response model for estimate endpoint."""
 
@@ -57,3 +69,4 @@ class EstimateResponse(BaseModel):
     range_high: float
     confidence: Literal["HIGH", "MEDIUM", "LOW"]
     model: str
+    similar_cases: List[SimilarCase] = []
