@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.config import settings
+from backend.app.routers import estimate, health
 from backend.app.services.predictor import load_models, unload_models
 
 
@@ -35,3 +36,7 @@ app.add_middleware(
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
+
+# Include routers
+app.include_router(health.router)
+app.include_router(estimate.router)
