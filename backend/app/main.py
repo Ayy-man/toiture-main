@@ -6,11 +6,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.config import settings
-from backend.app.routers import estimate, health
+from backend.app.routers import estimate, feedback, health
 from backend.app.services.embeddings import load_embedding_model, unload_embedding_model
 from backend.app.services.llm_reasoning import close_llm_client, init_llm_client
 from backend.app.services.pinecone_cbr import close_pinecone, init_pinecone
 from backend.app.services.predictor import load_models, unload_models
+from backend.app.services.supabase_client import close_supabase, init_supabase
 
 
 @asynccontextmanager
@@ -24,8 +25,10 @@ async def lifespan(app: FastAPI):
     load_embedding_model()  # sentence-transformers model
     init_pinecone()         # Pinecone connection
     init_llm_client()       # OpenRouter LLM client
+    init_supabase()         # Supabase connection (feedback system)
     yield
     # Shutdown
+    close_supabase()
     close_llm_client()
     close_pinecone()
     unload_embedding_model()
@@ -51,3 +54,4 @@ app.add_middleware(
 # Include routers
 app.include_router(health.router)
 app.include_router(estimate.router)
+app.include_router(feedback.router)

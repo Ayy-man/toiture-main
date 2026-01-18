@@ -9,6 +9,7 @@ from backend.app.services.embeddings import build_query_text, generate_query_emb
 from backend.app.services.llm_reasoning import generate_reasoning
 from backend.app.services.pinecone_cbr import query_similar_cases
 from backend.app.services.predictor import predict
+from backend.app.services.supabase_client import get_supabase
 
 logger = logging.getLogger(__name__)
 
@@ -76,7 +77,7 @@ def create_estimate(request: EstimateRequest):
             logger.warning(f"LLM reasoning failed: {e}")
             reasoning = None
 
-        return EstimateResponse(
+        response = EstimateResponse(
             estimate=result["estimate"],
             range_low=result["range_low"],
             range_high=result["range_high"],
@@ -85,6 +86,30 @@ def create_estimate(request: EstimateRequest):
             similar_cases=similar_cases,
             reasoning=reasoning,
         )
+
+        # Save estimate to Supabase (graceful degradation)
+        try:
+            supabase = get_supabase()
+            if supabase is not None:
+                supabase.table("estimates").insert({
+                    "sqft": request.sqft,
+                    "category": request.category,
+                    "material_lines": request.material_lines,
+                    "labor_lines": request.labor_lines,
+                    "has_subs": bool(request.has_subs),
+                    "complexity": request.complexity,
+                    "ai_estimate": result["estimate"],
+                    "range_low": result["range_low"],
+                    "range_high": result["range_high"],
+                    "confidence": result["confidence"],
+                    "model": result["model"],
+                    "reasoning": reasoning,
+                }).execute()
+                logger.info("Estimate saved to Supabase")
+        except Exception as e:
+            logger.warning(f"Failed to save estimate to Supabase: {e}")
+
+        return response
     except Exception as e:
         logger.error(f"Estimate error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
