@@ -14,9 +14,9 @@
 
 ### Pinecone Integration
 
-- [ ] **PIN-01**: Upload 8,132 CBR embeddings to Pinecone index
-- [ ] **PIN-02**: Query similar cases by embedding similarity
-- [ ] **PIN-03**: Return top 5 similar cases with metadata
+- [x] **PIN-01**: Upload 8,132 CBR embeddings to Pinecone index
+- [x] **PIN-02**: Query similar cases by embedding similarity
+- [x] **PIN-03**: Return top 5 similar cases with metadata
 
 ### LLM Integration
 
@@ -94,9 +94,9 @@
 | API-02 | Phase 1 | Complete |
 | API-03 | Phase 1-3 | Partial |
 | API-04 | Phase 1 | Complete |
-| PIN-01 | Phase 2 | Pending |
-| PIN-02 | Phase 2 | Pending |
-| PIN-03 | Phase 2 | Pending |
+| PIN-01 | Phase 2 | Complete |
+| PIN-02 | Phase 2 | Complete |
+| PIN-03 | Phase 2 | Complete |
 | LLM-01 | Phase 3 | Pending |
 | LLM-02 | Phase 3 | Pending |
 | LLM-03 | Phase 3 | Pending |

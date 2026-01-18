@@ -7,34 +7,39 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 2 - Pinecone CBR
+**Current focus:** Phase 3 - LLM Reasoning
 
 ## Progress
 
 | Phase | Status | Plans | Progress |
 |-------|--------|-------|----------|
 | 1 | ✓ Complete | 2/2 | 100% |
-| 2 | ○ Pending | 0/2 | 0% |
-| 3 | ○ Pending | 0/? | 0% |
-| 4 | ○ Pending | 0/? | 0% |
+| 2 | ✓ Complete | 2/2 | 100% |
+| 3 | ○ Pending | 0/2 | 0% |
+| 4 | ○ Pending | 0/2 | 0% |
 | 5 | ○ Pending | 0/? | 0% |
 | 6 | ○ Pending | 0/? | 0% |
 | 7 | ○ Pending | 0/? | 0% |
 | 8 | ○ Pending | 0/? | 0% |
 
-**Overall:** 1/8 phases complete (12.5%)
+**Overall:** 2/8 phases complete (25%)
 
 ```
-Progress: [████░░░░░░░░░░░░░░░░] 12.5%
+Progress: [█████░░░░░░░░░░░░░░░] 25%
 ```
 
 ## Current Phase
 
-**Phase 2: Pinecone CBR**
-- Goal: Upload embeddings and retrieve similar historical cases
-- Requirements: PIN-01, PIN-02, PIN-03
+**Phase 3: LLM Reasoning**
+- Goal: Estimates include human-readable explanations
+- Requirements: LLM-01, LLM-02, LLM-03
 - Status: Not started
-- Dependencies: Pinecone API key
+- Dependencies: OpenRouter API key (configured)
+
+### Phase 2 Complete ✓
+- **02-01:** Pinecone services and embedding upload (8,132 vectors)
+- **02-02:** Endpoint integration with similar cases
+- **Verified:** 3/3 must-haves, 6/6 CBR tests passing
 
 ### Phase 1 Complete ✓
 - **01-01:** Backend structure and model loading

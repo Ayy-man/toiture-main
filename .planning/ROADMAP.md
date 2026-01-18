@@ -9,7 +9,7 @@
 | # | Phase | Goal | Requirements | Success Criteria |
 |---|-------|------|--------------|------------------|
 | 1 | FastAPI Foundation ✓ | Backend serves ML predictions | API-01, API-02, API-03, API-04 | 4 |
-| 2 | Pinecone CBR | Similar case retrieval works | PIN-01, PIN-02, PIN-03 | 3 |
+| 2 | Pinecone CBR ✓ | Similar case retrieval works | PIN-01, PIN-02, PIN-03 | 3 |
 | 3 | LLM Reasoning | Estimates include explanations | LLM-01, LLM-02, LLM-03 | 3 |
 | 4 | Estimate Form | Users can get estimates | FORM-01 to FORM-05 | 5 |
 | 5 | Feedback System | Laurent can review and provide prices | DB-01 to DB-03, REVIEW-01 to REVIEW-04 | 7 |
@@ -43,22 +43,24 @@ Plans:
 
 ---
 
-## Phase 2: Pinecone CBR
+## Phase 2: Pinecone CBR ✓
 
 **Goal:** Upload embeddings and retrieve similar historical cases
 
 **Requirements:** PIN-01, PIN-02, PIN-03
 
+**Status:** Complete (2026-01-18)
+
 **Plans:** 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Pinecone services and embedding upload script
-- [ ] 02-02-PLAN.md — Endpoint integration with similar cases and tests
+- [x] 02-01-PLAN.md — Pinecone services and embedding upload script
+- [x] 02-02-PLAN.md — Endpoint integration with similar cases and tests
 
 **Success Criteria:**
-1. All 8,132 embeddings uploaded to Pinecone index
-2. Query returns top 5 similar cases with job details
-3. /estimate endpoint includes similar_cases in response
+1. All 8,132 embeddings uploaded to Pinecone index ✓
+2. Query returns top 5 similar cases with job details ✓
+3. /estimate endpoint includes similar_cases in response ✓
 
 **Dependencies:** Phase 1 complete, Pinecone API key, cbr_embeddings.npz
 
