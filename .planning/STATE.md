@@ -7,37 +7,39 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 1 - FastAPI Foundation
+**Current focus:** Phase 2 - Pinecone CBR
 
 ## Progress
 
 | Phase | Status | Plans | Progress |
 |-------|--------|-------|----------|
-| 1 | In Progress | 2/? | ~50% |
-| 2 | Pending | 0/? | 0% |
-| 3 | Pending | 0/? | 0% |
-| 4 | Pending | 0/? | 0% |
-| 5 | Pending | 0/? | 0% |
-| 6 | Pending | 0/? | 0% |
-| 7 | Pending | 0/? | 0% |
-| 8 | Pending | 0/? | 0% |
+| 1 | ✓ Complete | 2/2 | 100% |
+| 2 | ○ Pending | 0/2 | 0% |
+| 3 | ○ Pending | 0/? | 0% |
+| 4 | ○ Pending | 0/? | 0% |
+| 5 | ○ Pending | 0/? | 0% |
+| 6 | ○ Pending | 0/? | 0% |
+| 7 | ○ Pending | 0/? | 0% |
+| 8 | ○ Pending | 0/? | 0% |
 
-**Overall:** 0/8 phases complete (0%)
+**Overall:** 1/8 phases complete (12.5%)
 
 ```
-Progress: [██░░░░░░░░░░░░░░░░░░] ~10%
+Progress: [████░░░░░░░░░░░░░░░░] 12.5%
 ```
 
 ## Current Phase
 
-**Phase 1: FastAPI Foundation**
-- Goal: Backend API serves ML model predictions via HTTP
-- Requirements: API-01, API-02, API-03, API-04
-- Status: In progress - Plan 02 complete
+**Phase 2: Pinecone CBR**
+- Goal: Upload embeddings and retrieve similar historical cases
+- Requirements: PIN-01, PIN-02, PIN-03
+- Status: Not started
+- Dependencies: Pinecone API key
 
-### Plans Completed
-- **01-01:** Backend structure and model loading (completed 2026-01-18)
-- **01-02:** API endpoints with Pydantic validation (completed 2026-01-18)
+### Phase 1 Complete ✓
+- **01-01:** Backend structure and model loading
+- **01-02:** API endpoints with Pydantic validation
+- **Verified:** 7/7 must-haves, 9/9 tests passing
 
 ## Key Decisions
 
@@ -58,6 +60,7 @@ Progress: [██░░░░░░░░░░░░░░░░░░] ~10%
 | 2026-01-18 | Roadmap created | 8 phases, 28 requirements |
 | 2026-01-18 | Plan 01-01 executed | Backend structure with lifespan and CORS |
 | 2026-01-18 | Plan 01-02 executed | API endpoints, schemas, 9 tests passing |
+| 2026-01-18 | Phase 1 verified | All 4 success criteria met, goal achieved |
 
 ## Session Continuity
 

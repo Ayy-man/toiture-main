@@ -7,10 +7,10 @@
 
 ### Backend API
 
-- [ ] **API-01**: FastAPI app with health check endpoint
-- [ ] **API-02**: POST /estimate endpoint accepts 6 inputs (sqft, category, material_lines, labor_lines, has_subs, complexity)
-- [ ] **API-03**: Endpoint returns estimate, range, confidence, similar cases, and LLM reasoning
-- [ ] **API-04**: CORS configured for frontend domain
+- [x] **API-01**: FastAPI app with health check endpoint
+- [x] **API-02**: POST /estimate endpoint accepts 6 inputs (sqft, category, material_lines, labor_lines, has_subs, complexity)
+- [ ] **API-03**: Endpoint returns estimate, range, confidence, similar cases, and LLM reasoning *(partial: similar cases in Phase 2, reasoning in Phase 3)*
+- [x] **API-04**: CORS configured for frontend domain
 
 ### Pinecone Integration
 
@@ -90,10 +90,10 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| API-01 | Phase 1 | Pending |
-| API-02 | Phase 1 | Pending |
-| API-03 | Phase 1 | Pending |
-| API-04 | Phase 1 | Pending |
+| API-01 | Phase 1 | Complete |
+| API-02 | Phase 1 | Complete |
+| API-03 | Phase 1-3 | Partial |
+| API-04 | Phase 1 | Complete |
 | PIN-01 | Phase 2 | Pending |
 | PIN-02 | Phase 2 | Pending |
 | PIN-03 | Phase 2 | Pending |

@@ -8,7 +8,7 @@
 
 | # | Phase | Goal | Requirements | Success Criteria |
 |---|-------|------|--------------|------------------|
-| 1 | FastAPI Foundation | Backend serves ML predictions | API-01, API-02, API-03, API-04 | 4 |
+| 1 | FastAPI Foundation ✓ | Backend serves ML predictions | API-01, API-02, API-03, API-04 | 4 |
 | 2 | Pinecone CBR | Similar case retrieval works | PIN-01, PIN-02, PIN-03 | 3 |
 | 3 | LLM Reasoning | Estimates include explanations | LLM-01, LLM-02, LLM-03 | 3 |
 | 4 | Estimate Form | Users can get estimates | FORM-01 to FORM-05 | 5 |
@@ -19,17 +19,19 @@
 
 ---
 
-## Phase 1: FastAPI Foundation
+## Phase 1: FastAPI Foundation ✓
 
 **Goal:** Backend API serves ML model predictions via HTTP
 
 **Requirements:** API-01, API-02, API-03, API-04
 
+**Status:** Complete (2026-01-18)
+
 **Plans:** 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Backend structure, model loading, CORS configuration
-- [ ] 01-02-PLAN.md — Health and estimate endpoints with validation and tests
+- [x] 01-01-PLAN.md — Backend structure, model loading, CORS configuration
+- [x] 01-02-PLAN.md — Health and estimate endpoints with validation and tests
 
 **Success Criteria:**
 1. `GET /health` returns 200 OK
