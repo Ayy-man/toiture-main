@@ -28,7 +28,7 @@ import {
   type EstimateFormData,
   CATEGORIES,
 } from "@/lib/schemas";
-import { submitEstimate, type EstimateResponse } from "@/lib/api";
+import { submitEstimateStream, type EstimateResponse } from "@/lib/api";
 import { EstimateResult } from "@/components/estimate-result";
 import { SimilarCases } from "@/components/similar-cases";
 import { ReasoningDisplay } from "@/components/reasoning-display";
@@ -40,6 +40,8 @@ import { ReasoningDisplay } from "@/components/reasoning-display";
 export function EstimateForm() {
   const [result, setResult] = useState<EstimateResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isStreamingReasoning, setIsStreamingReasoning] = useState(false);
+  const [streamedReasoning, setStreamedReasoning] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   const form = useForm<EstimateFormData>({
@@ -57,14 +59,40 @@ export function EstimateForm() {
   async function onSubmit(data: EstimateFormData) {
     setIsLoading(true);
     setError(null);
+    setResult(null);
+    setStreamedReasoning("");
+    setIsStreamingReasoning(false);
 
     try {
-      const response = await submitEstimate(data);
-      setResult(response);
+      await submitEstimateStream(data, {
+        onEstimate: (estimateData) => {
+          // Show estimate immediately
+          setResult({
+            ...estimateData,
+            reasoning: null,
+          });
+          setIsLoading(false);
+          setIsStreamingReasoning(true);
+        },
+        onReasoningChunk: (chunk) => {
+          setStreamedReasoning((prev) => prev + chunk);
+        },
+        onDone: (reasoning) => {
+          setIsStreamingReasoning(false);
+          if (reasoning) {
+            setResult((prev) => prev ? { ...prev, reasoning } : null);
+          }
+        },
+        onError: (errorMsg) => {
+          setError(errorMsg);
+          setIsLoading(false);
+          setIsStreamingReasoning(false);
+        },
+      });
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
-    } finally {
       setIsLoading(false);
+      setIsStreamingReasoning(false);
     }
   }
 
@@ -232,7 +260,10 @@ export function EstimateForm() {
         <div className="space-y-6">
           <EstimateResult result={result} />
           <SimilarCases cases={result.similar_cases} />
-          <ReasoningDisplay reasoning={result.reasoning} />
+          <ReasoningDisplay
+            reasoning={streamedReasoning || result.reasoning}
+            isStreaming={isStreamingReasoning}
+          />
         </div>
       )}
     </div>

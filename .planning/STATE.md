@@ -137,8 +137,12 @@ None currently.
 - Backend complete: ML prediction, CBR, LLM reasoning, feedback API
 - Deployment config ready: Dockerfile, railway.json, vercel.json
 - Docker build test skipped (Docker not installed locally) - will validate on Railway
-- Next: Phase 8 Plan 02 (Actual Deployment) or Phase 6 Plan 02 (Dashboard Charts)
+- Next: Phase 9 (Streaming Estimates with Cerebras)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
+
+## Roadmap Evolution
+
+- Phase 9 added: Streaming estimates with Cerebras fast inference
 
 ---
 *State updated: 2026-01-18*

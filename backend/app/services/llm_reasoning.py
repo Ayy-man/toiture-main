@@ -177,3 +177,58 @@ Write a brief, professional explanation referencing the similar jobs. Explain wh
     )
 
     return response.choices[0].message.content.strip()
+
+
+def generate_reasoning_stream(
+    estimate: float,
+    confidence: str,
+    sqft: float,
+    category: str,
+    similar_cases: list[dict[str, Any]],
+    model: Optional[str] = None,
+):
+    """Generate reasoning explanation with streaming.
+
+    Yields chunks of text as they arrive from the LLM.
+    """
+    client = get_client()
+    model = model or settings.openrouter_model
+
+    cases_text = format_similar_cases(similar_cases)
+
+    if confidence == "HIGH":
+        confidence_context = "The model has high confidence in this estimate."
+    elif confidence == "MEDIUM":
+        confidence_context = "The model has moderate confidence. Some variation is expected."
+    else:
+        confidence_context = "The model has low confidence due to limited similar data or high variance."
+
+    prompt = f"""Based on the ML estimate and similar historical roofing jobs, explain this estimate in 2-3 sentences.
+
+Job: {category}, {sqft:,.0f} sq ft
+Estimate: ${estimate:,.2f}
+Confidence: {confidence}
+{confidence_context}
+
+Similar Jobs:
+{cases_text}
+
+Write a brief, professional explanation referencing the similar jobs. Explain why the estimate is reasonable or note any factors affecting confidence."""
+
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a roofing estimation assistant. Be concise, professional, and reference specific data from similar jobs.",
+            },
+            {"role": "user", "content": prompt},
+        ],
+        max_tokens=150,
+        temperature=0.3,
+        stream=True,
+    )
+
+    for chunk in response:
+        if chunk.choices[0].delta.content:
+            yield chunk.choices[0].delta.content

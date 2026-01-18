@@ -1,12 +1,14 @@
 """Estimate endpoint for ML predictions."""
 
+import json
 import logging
 
 from fastapi import APIRouter, HTTPException
+from fastapi.responses import StreamingResponse
 
 from app.schemas.estimate import EstimateRequest, EstimateResponse, SimilarCase
 from app.services.embeddings import build_query_text, generate_query_embedding
-from app.services.llm_reasoning import generate_reasoning
+from app.services.llm_reasoning import generate_reasoning_stream
 from app.services.pinecone_cbr import query_similar_cases
 from app.services.predictor import predict
 from app.services.supabase_client import get_supabase
@@ -94,3 +96,125 @@ def create_estimate(request: EstimateRequest):
     except Exception as e:
         logger.error(f"Estimate error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/estimate/stream")
+def create_estimate_stream(request: EstimateRequest):
+    """Generate price estimate with streaming LLM reasoning.
+
+    Returns SSE stream:
+    1. First event: estimate data (fast)
+    2. Subsequent events: reasoning text chunks (streamed)
+    """
+
+    def generate():
+        try:
+            # Get ML prediction (fast)
+            result = predict(
+                sqft=request.sqft,
+                category=request.category,
+                material_lines=request.material_lines,
+                labor_lines=request.labor_lines,
+                has_subs=request.has_subs,
+                complexity=request.complexity,
+            )
+
+            # Get similar cases from CBR
+            similar_cases = []
+            similar_cases_data = []
+            try:
+                query_text = build_query_text(
+                    sqft=request.sqft,
+                    category=request.category,
+                    complexity=request.complexity,
+                    material_lines=request.material_lines,
+                    labor_lines=request.labor_lines,
+                )
+                query_vector = generate_query_embedding(query_text)
+                similar_cases_data = query_similar_cases(
+                    query_vector=query_vector,
+                    top_k=5,
+                    category_filter=None,
+                )
+                similar_cases = [SimilarCase(**case) for case in similar_cases_data]
+            except Exception as e:
+                logger.warning(f"CBR lookup failed: {e}")
+
+            # Send estimate data immediately
+            estimate_data = {
+                "type": "estimate",
+                "data": {
+                    "estimate": result["estimate"],
+                    "range_low": result["range_low"],
+                    "range_high": result["range_high"],
+                    "confidence": result["confidence"],
+                    "model": result["model"],
+                    "similar_cases": [c.model_dump() for c in similar_cases],
+                },
+            }
+            yield f"data: {json.dumps(estimate_data)}\n\n"
+
+            # Stream LLM reasoning
+            try:
+                reasoning_text = ""
+                for chunk in generate_reasoning_stream(
+                    estimate=result["estimate"],
+                    confidence=result["confidence"],
+                    sqft=request.sqft,
+                    category=request.category,
+                    similar_cases=[
+                        {
+                            "category": c.category,
+                            "sqft": c.sqft,
+                            "total": c.total,
+                            "per_sqft": c.per_sqft,
+                            "similarity": c.similarity,
+                            "year": c.year,
+                        }
+                        for c in similar_cases
+                    ],
+                ):
+                    reasoning_text += chunk
+                    yield f"data: {json.dumps({'type': 'reasoning_chunk', 'data': chunk})}\n\n"
+
+                # Send completion signal
+                yield f"data: {json.dumps({'type': 'done', 'data': {'reasoning': reasoning_text}})}\n\n"
+
+                # Save to Supabase after streaming completes
+                try:
+                    supabase = get_supabase()
+                    if supabase is not None:
+                        supabase.table("estimates").insert({
+                            "sqft": request.sqft,
+                            "category": request.category,
+                            "material_lines": request.material_lines,
+                            "labor_lines": request.labor_lines,
+                            "has_subs": bool(request.has_subs),
+                            "complexity": request.complexity,
+                            "ai_estimate": result["estimate"],
+                            "range_low": result["range_low"],
+                            "range_high": result["range_high"],
+                            "confidence": result["confidence"],
+                            "model": result["model"],
+                            "reasoning": reasoning_text,
+                        }).execute()
+                except Exception as e:
+                    logger.warning(f"Failed to save estimate: {e}")
+
+            except Exception as e:
+                logger.warning(f"LLM reasoning failed: {e}")
+                yield f"data: {json.dumps({'type': 'done', 'data': {'reasoning': None, 'error': str(e)}})}\n\n"
+
+        except Exception as e:
+            logger.error(f"Stream error: {e}")
+            yield f"data: {json.dumps({'type': 'error', 'data': str(e)})}\n\n"
+
+    return StreamingResponse(
+        generate(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",
+        },
+    )

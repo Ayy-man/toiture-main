@@ -1,8 +1,8 @@
 # Roadmap: TOITURELV Cortex
 
 **Created:** 2026-01-18
-**Phases:** 8
-**Requirements:** 28
+**Phases:** 9
+**Requirements:** 30
 
 ## Phase Overview
 
@@ -16,6 +16,7 @@
 | 6 | Analytics Dashboard | Team sees accuracy trends | DASH-01 to DASH-04 | 4 |
 | 7 | Authentication ✓ | Password-protected access | AUTH-01, AUTH-02 | 2 |
 | 8 | Deployment | Live on Railway + Vercel | DEPLOY-01 to DEPLOY-03 | 3 |
+| 9 | Streaming Estimates | Fast estimates + streaming reasoning | PERF-01, PERF-02 | 4 |
 
 ---
 
@@ -204,13 +205,35 @@ Plans:
 
 ---
 
+## Phase 9: Streaming Estimates
+
+**Goal:** Fast estimates with progressive LLM reasoning via streaming
+
+**Requirements:** PERF-01, PERF-02
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 09-01-PLAN.md — Streaming endpoint with Cerebras integration
+
+**Success Criteria:**
+1. Estimate + similar cases return in <2s
+2. LLM reasoning streams in progressively after estimate
+3. Cerebras API integrated for fast inference
+4. Frontend displays streaming reasoning with loading state
+
+**Dependencies:** Phase 8 complete (deployment working)
+
+---
+
 ## Milestone: v1 Complete
 
-After Phase 8:
+After Phase 9:
 - Team can get AI estimates with reasoning
 - Laurent can review and provide actual prices
 - Analytics show model accuracy
 - Feedback stored for future model improvement
+- **Fast streaming responses with Cerebras**
 
 **Next milestone:** Auto-update pipeline (v2)
 
