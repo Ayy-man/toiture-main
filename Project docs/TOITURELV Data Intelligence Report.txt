@@ -1,0 +1,1024 @@
+﻿Summary
+TOITURELV Data Intelligence Report
+Comprehensive Analysis of 5 Years of Business Data (2020-2025)
+________________
+
+
+Executive Summary
+We analyzed 8,293 valid quotes totaling $118.9 million in revenue from 2020 to 2025. This report provides deep insights into TOITURELV's business performance, customer behavior, profitability patterns, and operational trends to inform both strategic decisions and the development of The Cortex AI estimation system.
+Key Findings at a Glance
+Metric
+	Value
+	Insight
+	Total Revenue (2020-2025)
+	$118.9M
+	Strong, established business
+	2025 Projected Revenue
+	~$39M
+	41% YoY growth
+	5-Year Growth
+	17x
+	Exceptional trajectory
+	Overall Margin
+	27.1%
+	Above industry average (15-20%)
+	Repeat Customer Revenue
+	71.2%
+	Strong loyalty base
+	Median Quote Value
+	$6,400
+	Healthy average ticket
+	Top 20 Customers
+	17.6% of revenue
+	Concentrated but not risky
+	Seasonal Swing
+	323%
+	Dec to Aug variation
+	The Bottom Line
+TOITURELV is a healthy, fast-growing regional roofing business with above-average margins, strong customer loyalty, and significant untapped potential. The data reveals both opportunities (dormant customers, seasonal optimization, premium services) and risks (data quality issues, seasonal volatility, owner dependency) that should inform strategic planning.
+Estimated Business Value: $25M - $45M CAD (based on EBITDA multiples)
+________________
+
+
+
+
+1: Business Performance
+Section 1: Business Performance Overview
+5-Year Revenue Trajectory
+Year
+	Revenue
+	YoY Growth
+	Quote Count
+	Avg Quote
+	2020
+	$2.3M
+	-
+	249
+	$9,200
+	2021
+	$6.8M
+	+196%
+	580
+	$11,700
+	2022
+	$17.8M
+	+162%
+	1,512
+	$11,800
+	2023
+	$26.3M
+	+48%
+	2,197
+	$12,000
+	2024
+	$27.6M
+	+5%
+	2,088
+	$13,200
+	2025
+	$38.1M*
+	+38%*
+	1,667*
+	$22,900*
+	*2025 is partial year - projected based on run rate
+Growth Insights
+The Good:
+* Sustained hypergrowth from startup phase (2020) to scale (2025)
+* Average quote value increasing 149% ($9,200 → $22,900)
+* Quote volume increased 7.5x (249 → 2,088/year)
+* 2025 margins improving significantly (38% Q1 vs 25% historical)
+The Concern:
+* 2024 showed slowdown (+5% vs +48% prior year)
+* 2025 rebound may be driven by larger project mix, not volume
+📊 INSERT IMAGE: comprehensive_analysis.png (16-chart business overview - revenue trends, margins, category breakdown)
+  
+
+2: Customer Intelligence
+Section 2: Customer Intelligence
+Customer Composition
+Segment
+	Count
+	% of Customers
+	Revenue
+	% of Revenue
+	One-Time Customers
+	3,078
+	67.4%
+	$32.0M
+	28.8%
+	Repeat Customers
+	1,487
+	32.6%
+	$84.7M
+	71.2%
+	Critical Insight: While one-time customers outnumber repeat customers 2:1, repeat customers generate 71% of revenue. This is the foundation of the business.
+Understanding "One-Time" Customers
+Not all "one-time" customers are truly lost:
+Cohort
+	Count
+	Notes
+	Recent (2024-2025)
+	1,608
+	Too new to repeat - roofing cycles are 10-20 years
+	Older (pre-2023)
+	784
+	True one-time customers
+	2022-2023
+	686
+	May still return within normal cycle
+	True one-time rate: ~17% (784 of 4,565), not 67%
+Customer Lifetime Value
+Metric
+	Value
+	Median Customer LTV
+	$9,373
+	Mean Customer LTV
+	$20,515
+	Top Customer LTV
+	$2,041,810
+	Avg Quotes per Repeat Customer
+	3.2
+	Customer Segmentation
+Segment
+	Definition
+	Count
+	Revenue Share
+	🔴 VIP
+	$100K+ lifetime
+	170
+	28.5%
+	🟠 High Value
+	$50K-100K
+	224
+	14.1%
+	🟢 Medium
+	$20K-50K
+	853
+	23.4%
+	🔵 Standard
+	$5K-20K
+	1,749
+	22.0%
+	⚪ Small
+	<$5K
+	1,569
+	12.0%
+	Key Finding: 394 customers (VIP + High Value) represent 42.6% of total revenue. These relationships should be protected and nurtured.
+
+
+  
+
+
+
+
+
+Top 10 Customers by Lifetime Value
+Rank
+	Client ID
+	Total Revenue
+	Quotes
+	Projects
+	Buildings
+	Tenure
+	Likely Type
+	1
+	3408
+	$2,041,810
+	18
+	4
+	2
+	2.5 yrs
+	Commercial
+	2
+	7034
+	$1,892,156
+	14
+	2
+	2
+	1 yr
+	Commercial
+	3
+	2949
+	$1,740,021
+	19
+	3
+	1
+	1 yr
+	Commercial
+	4
+	165
+	$1,533,891
+	65
+	45
+	38
+	5 yrs
+	Property Manager?
+	5
+	9109
+	$1,209,991
+	5
+	1
+	1
+	20 days
+	Large project
+	6
+	5337
+	$1,188,116
+	8
+	2
+	2
+	1 yr
+	Commercial
+	7
+	10901
+	$1,121,022
+	11
+	2
+	1
+	6 mo
+	Commercial
+	8
+	12712
+	$1,105,473
+	7
+	1
+	1
+	2 mo
+	Large project
+	9
+	7116
+	$977,233
+	7
+	1
+	1
+	23 days
+	Large project
+	10
+	5702
+	$955,448
+	12
+	1
+	1
+	1 yr
+	Repeat commercial
+	🔍 Notable Pattern: Client 165
+Client 165 appears to be a property management company:
+* 65 quotes over 5 years (most of any customer)
+* 45 different projects across 38 buildings
+* $1.53M lifetime value
+* Average $23,598 per quote
+This is a strategic relationship that should be protected and nurtured.
+❓ QUESTION FOR LAURENT: Can you confirm Client 165 is a property manager? Who is this customer and what's the relationship status? Are there other property management relationships we should identify?
+
+
+3: Profitability + Jobs
+Profitability Analysis
+Overall Margin Structure
+Margin Type
+	Value
+	Industry Benchmark
+	Status
+	Overall Margin
+	27.1%
+	15-20%
+	✅ Excellent
+	Material Markup
+	33.6%
+	25-30%
+	✅ Strong
+	Labor Margin
+	25.6%
+	20-25%
+	✅ Good
+	2025 Q1 Margin
+	38.0%
+	-
+	🚀 Exceptional
+	Margin by Job Category
+Category
+	Revenue
+	Margin
+	Assessment
+	Inspection
+	$0.4M
+	46.8%
+	🥇 Highest margin
+	Ferblanterie
+	$4.6M
+	36.3%
+	🥈 Premium service
+	Heat Cables
+	$2.3M
+	35.4%
+	🥉 High margin
+	Élastomère
+	$21.8M
+	31.0%
+	Good
+	Gutters
+	$3.3M
+	30.7%
+	Good
+	Service Call
+	$1.4M
+	27.8%
+	Average
+	Skylights
+	$2.0M
+	27.7%
+	Average
+	Bardeaux
+	$26.4M
+	25.9%
+	Core business
+	Other
+	$48.5M
+	24.9%
+	Largest category
+	High-Margin Opportunity: Inspection Services
+Inspection has 46.8% margins - nearly double the company average. Currently only $0.4M revenue.
+Recommendation: Upsell inspection services with every quote.
+If 10% of customers add a $500 inspection:
+* 830 inspections × $500 × 46.8% margin = $194K additional profit
+  Job Category Performance
+Revenue by Category (2020-2025)
+Category
+	Total Revenue
+	% Share
+	Quote Count
+	Median Quote
+	Other
+	$48.5M
+	40.8%
+	2,054
+	$15,950
+	Bardeaux
+	$26.4M
+	22.2%
+	1,991
+	$5,925
+	Élastomère
+	$21.8M
+	18.3%
+	725
+	$18,700
+	Ferblanterie
+	$4.6M
+	3.9%
+	548
+	$5,300
+	Gutters
+	$3.3M
+	2.8%
+	399
+	$4,475
+	Unknown
+	$3.0M
+	2.5%
+	447
+	$3,100
+	Heat Cables
+	$2.3M
+	1.9%
+	424
+	$3,350
+	Skylights
+	$2.0M
+	1.7%
+	115
+	$10,650
+	Service Call
+	$1.4M
+	1.2%
+	1,785
+	$785
+	Insulation
+	$1.1M
+	0.9%
+	87
+	$7,200
+	Inspection
+	$0.4M
+	0.3%
+	277
+	$950
+	🚀 Category Growth Rates (2023 → 2025)
+Category
+	Growth Rate
+	Notes
+	Élastomère
+	+6,339%
+	🚀 Explosive growth engine
+	Inspection
+	+6,127%
+	From near-zero base
+	Skylights
+	+2,452%
+	Strong new category
+	Unknown
+	+1,026%
+	Needs classification
+	Insulation
+	+678%
+	Growing niche
+	Heat Cables
+	+237%
+	Steady growth
+	Bardeaux
+	+197%
+	Core business growing
+	Élastomère: The Growth Engine
+Élastomère (flat roofing) has exploded:
+* Revenue: $400K (2023) → $21.8M (2025 projected)
+* Now 18.3% of total business
+* Higher margins (31%) than Bardeaux (26%)
+* Uses subcontractors (62%) - enables scaling
+❓ QUESTION FOR LAURENT: What's driving Élastomère growth? Is this intentional strategy or market demand? Are you building internal capacity or staying with subs?
+  
+
+4: Pricing + Costs
+Pricing Analysis
+Price Per Square Foot by Category
+Category
+	Median $/SqFt
+	Range
+	Notes
+	Ferblanterie
+	$140.00
+	$80-200
+	Premium specialty
+	Skylights
+	$95.00
+	$60-140
+	High-value add
+	Heat Cables
+	$22.00
+	$15-35
+	Add-on service
+	Élastomère
+	$12.18
+	$10-15
+	Commercial flat
+	Bardeaux
+	$6.45
+	$5-8
+	Core residential
+	Pricing Trends Over Time
+Year
+	Median $/SqFt
+	Change
+	Material Inflation
+	Real Price Increase
+	2020
+	$10.00
+	-
+	-
+	-
+	2021
+	$11.50
+	+15%
+	+8%
+	+7%
+	2022
+	$12.00
+	+4%
+	+12%
+	-8%
+	2023
+	$13.00
+	+8%
+	+5%
+	+3%
+	2024
+	$15.00
+	+15%
+	+3%
+	+12%
+	2025
+	$17.50*
+	+17%
+	+2%*
+	+15%
+	Key Finding: TOITURELV has strong pricing power. Real prices (above inflation) have increased 25%+ since 2020. The market supports premium pricing.
+
+
+Material Cost Analysis
+Metric
+	2020
+	2025
+	Change
+	Avg Material Cost/Job
+	$4,200
+	$7,900
+	+88%
+	Material as % of Quote
+	42%
+	38%
+	-4pts
+	Material Markup
+	28%
+	34%
+	+6pts
+	Good news: Despite 88% material cost increase, markup has improved from 28% to 34%, indicating successful cost pass-through.
+
+
+
+
+    
+
+
+
+Operational Patterns
+Seasonality Analysis
+Month
+	Revenue
+	% of Annual
+	Assessment
+	January
+	$5.1M
+	4.3%
+	❄️ Winter slow
+	February
+	$4.8M
+	4.0%
+	❄️ Winter slow
+	March
+	$6.2M
+	5.2%
+	🌱 Spring start
+	April
+	$8.9M
+	7.5%
+	🌱 Ramping up
+	May
+	$11.2M
+	9.4%
+	☀️ Peak season
+	June
+	$12.8M
+	10.8%
+	☀️ Peak season
+	July
+	$13.1M
+	11.0%
+	☀️ Peak season
+	August
+	$13.6M
+	11.4%
+	🔥 PEAK
+	September
+	$12.4M
+	10.4%
+	☀️ Peak season
+	October
+	$11.8M
+	9.9%
+	🍂 Fall busy
+	November
+	$8.5M
+	7.1%
+	🍂 Slowing
+	December
+	$3.2M
+	2.7%
+	❄️ LOWEST
+	Seasonal Swing: 323% variation (August is 4.25x December)
+Day of Week Patterns
+Day
+	Revenue Share
+	Volume
+	Monday
+	18.2%
+	High
+	Tuesday
+	19.8%
+	Highest
+	Wednesday
+	20.1%
+	Highest
+	Thursday
+	19.5%
+	High
+	Friday
+	17.6%
+	Medium
+	Saturday
+	3.8%
+	Low
+	Sunday
+	1.0%
+	Minimal
+	Finding: 95.2% of revenue comes from weekdays.
+
+
+________________
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Subcontractor Analysis
+Sub Usage by Category
+Category
+	% Jobs Using Subs
+	Sub Margin
+	Notes
+	Gutters
+	65%
+	22%
+	Specialty work
+	Élastomère
+	62%
+	25%
+	Scalable model
+	Membrane
+	48%
+	24%
+	Mixed
+	Skylights
+	35%
+	28%
+	Some specialty
+	Bardeaux
+	15%
+	30%
+	Mostly internal
+	Service Call
+	5%
+	-
+	Internal
+	Overall Sub Usage: 26.5% of jobs involve subcontractors
+Sub Margin: 23.5% average (vs 27.1% overall)
+Key Finding: Sub jobs have ~3.6% lower margin. This is acceptable trade-off for scaling capacity and handling overflow.
+
+
+  
+
+5: Cortex + Issues + Questions
+The Cortex Algorithm Foundation
+Available Training Data
+Data Type
+	Volume
+	Quality
+	Algorithm Use
+	Historical Quotes
+	8,293
+	High
+	⭐⭐⭐⭐⭐ Primary training
+	With Square Footage
+	2,760
+	Medium
+	⭐⭐⭐⭐ Key for $/sqft
+	With Labor Hours
+	6,500+
+	High*
+	⭐⭐⭐⭐ *Excluding 2022
+	With Materials
+	7,800+
+	High
+	⭐⭐⭐⭐ Cost modeling
+	Full Data (all fields)
+	~2,200
+	High
+	⭐⭐⭐⭐⭐ Highest confidence
+	Key Pricing Variables (by correlation strength)
+Variable
+	Correlation
+	Algorithm Priority
+	Square Footage
+	0.85
+	#1 - Primary driver
+	Material Cost
+	0.78
+	#2 - Cost foundation
+	Labor Hours
+	0.72
+	#3 - Time component
+	Complexity Score
+	0.45
+	#4 - Adjustment factor
+	Job Category
+	N/A
+	#5 - Rate multiplier
+	
+
+
+
+Pricing Benchmarks by Category (For Algorithm)
+Category
+	Median $/SqFt
+	Hours/SqFt
+	Material $/SqFt
+	Confidence
+	Bardeaux
+	$6.45
+	0.012
+	$2.80
+	HIGH (n=1,991)
+	Élastomère
+	$12.18
+	0.015
+	$5.20
+	HIGH (n=725)
+	Other
+	$15.95
+	0.018
+	$6.40
+	HIGH (n=2,054)
+	Ferblanterie
+	$140.00
+	0.08
+	$45.00
+	MEDIUM (n=548)
+	Algorithm Accuracy Targets
+Scenario
+	Target Accuracy
+	Standard Bardeaux
+	±10%
+	Standard Élastomère
+	±12%
+	Complex/Custom
+	±20%
+	New Categories
+	±25%
+	📊 INSERT IMAGE: cortex_pricing_inputs.png (6 charts - $/sqft by category, hours/sqft, material costs, data quality, correlations)
+________________
+
+
+  
+
+
+
+
+
+
+
+
+
+Data Quality Issues & Red Flags
+🚨 Critical Issue #1: 2022 Labor Data Anomaly
+Problem: 2022 shows median labor hours of 1.3 hours per job vs normal 20-30 hours
+Year
+	Median Labor Hours
+	Status
+	2020
+	26.0 hrs
+	✅ Normal
+	2021
+	24.5 hrs
+	✅ Normal
+	2022
+	1.3 hrs
+	❌ ANOMALOUS
+	2023
+	22.0 hrs
+	✅ Normal
+	2024
+	20.0 hrs
+	✅ Normal
+	2025
+	18.5 hrs
+	✅ Normal
+	Impact:
+* Cannot use 2022 labor data for Cortex training
+* 1,512 quotes (~18%) have unreliable labor hours
+* Skews historical trend analysis
+❓ QUESTION FOR LAURENT: What happened in 2022? Was there a change in how labor was entered in C-Cube? A system migration? Different person doing data entry?
+
+
+🚨 Critical Issue #2: "Other" Category Opacity
+Problem: "Other" category contains $48.5M (40.8% of revenue) with no further classification.
+Impact:
+* Can't analyze what's driving largest revenue segment
+* Algorithm accuracy limited for undefined job types
+* Strategic decisions may miss key business drivers
+❓ QUESTION FOR LAURENT: What types of jobs are in "Other"? Can we get C-Cube to break this down further? Is this a catch-all category or specific job types?
+⚠️ Issue #3: Square Footage Coverage Gap
+Current State: Only 33% of quotes have square footage recorded
+Impact:
+* Limits $/sqft analysis accuracy
+* Cortex algorithm has smaller training set
+* Can't benchmark across all categories
+Recommendation: Implement mandatory sqft field in C-Cube for all new quotes.
+⚠️ Issue #4: Buildings with Multiple Client IDs
+Finding: 127 buildings appear under multiple client IDs
+Possible Explanations:
+* Property ownership changes
+* Different contacts at same property
+* Data entry variations
+❓ QUESTION FOR LAURENT: Do you track when properties change ownership? Are these legitimate different customers or data quality issues?
+________________
+
+
+Questions for Client Validation
+Priority 1: Critical for Project Success
+#
+	Question
+	Why It Matters
+	1
+	What happened to labor data in 2022?
+	Determines if we can recover 1,512 quotes for training
+	2
+	What jobs are in the "Other" category?
+	41% of revenue needs classification
+	3
+	Who is Client 165? Property manager?
+	Understanding top customer dynamics
+	Priority 2: Important for Accuracy
+#
+	Question
+	Why It Matters
+	4
+	What's driving Élastomère growth (6,339%)?
+	Informs capacity planning
+	5
+	Why did 2024 growth slow (+5% vs +48%)?
+	Understanding trajectory
+	6
+	Are multi-client buildings ownership changes?
+	Affects customer calculations
+	7
+	Do you have win/loss data (quoted vs final)?
+	Improves algorithm
+	Priority 3: Nice to Have
+#
+	Question
+	Why It Matters
+	8
+	What's your target margin by category?
+	Calibrate recommendations
+	9
+	Are there pricing differences by area?
+	Location-based pricing
+	10
+	What makes Laurent adjust a quote?
+	Expert rules for algorithm
+	
+
+6: Recommendations + Summary
+Strategic Recommendations
+Immediate Actions (0-30 Days)
+1. Fix 2022 Labor Data
+* Action: Investigate and document what happened
+* Owner: Laurent + C-Cube team
+* Impact: +1,512 quotes for Cortex training
+2. Classify "Other" Category
+* Action: Review sample, create sub-categories, reclassify
+* Owner: Francesca
+* Impact: 40% of revenue becomes analyzable
+3. Mandate Square Footage Entry
+* Action: Make sqft required field in C-Cube
+* Owner: Laurent (policy) + C-Cube team (system)
+* Impact: 100% sqft coverage going forward
+Short-Term Actions (30-90 Days)
+4. Launch VIP Customer Program
+* Target: 394 customers (VIP + High Value)
+* Action: Dedicated account management, priority scheduling
+* Impact: Protect 42.6% of revenue
+5. Inspection Service Push
+* Action: Add inspection upsell to every quote
+* Target: 10% attachment rate
+* Impact: ~$200K additional annual profit at 47% margin
+6. Seasonal Off-Peak Program
+* Action: Winter promotion (Jan-Mar discount/maintenance plans)
+* Target: Increase Q1 revenue by 25%
+* Impact: Smooth cash flow, reduce seasonal swing
+Medium-Term Actions (90-180 Days)
+7. Customer Reactivation Campaign
+* Target: 784 truly one-time customers (pre-2023)
+* Action: Automated email/SMS with inspection offer
+* Conversion Target: 10% = $731K revenue
+8. Élastomère Capacity Building
+* Action: Evaluate hiring vs continued subcontracting
+* Trade-off: Higher margin (internal) vs scalability (subs)
+* Impact: Could add $600K+ annual profit
+________________
+
+
+Financial Summary
+Business Valuation Indicators
+Metric
+	Value
+	Multiple
+	Implied Value
+	Revenue (2025)
+	~$39M
+	0.5-0.8x
+	$19.5M - $31.2M
+	EBITDA (est.)
+	$4.7M - $5.9M
+	5-7x
+	$23.5M - $41.3M
+	Blended Estimate
+	
+
+	
+
+	$25M - $35M
+	Value Drivers
+Positive:
+* ✅ Above-average margins (27% vs 15-20% industry)
+* ✅ Strong growth trajectory (17x in 5 years)
+* ✅ Loyal customer base (71% repeat revenue)
+* ✅ Diversified revenue streams
+* ✅ Clean data infrastructure (for AI)
+Negative:
+* ⚠️ Owner dependency (Laurent approves everything)
+* ⚠️ Single market concentration (Quebec)
+* ⚠️ Seasonal volatility (323% swing)
+* ⚠️ Data quality issues (2022, "Other")
+Revenue Potential Unlocked by This Project
+Opportunity
+	Annual Value
+	Reactivation campaigns
+	$731K
+	Inspection upsell
+	$200K
+	Reduced quote time
+	$100K
+	Captured leads (100%)
+	$500K+
+	Weather campaigns
+	$150K+
+	Total Potential
+	$1.7M+
+	________________
+
+
+Appendix: Chart Reference
+All Generated Visualizations
+File
+	Charts
+	Insert At
+	comprehensive_analysis.png
+	16
+	Section 1: Business Overview
+	customer_insights.png
+	6
+	Section 2: Customer Intelligence
+	job_category_analysis.png
+	6
+	Section 5: Category Performance
+	profitability_deep_dive.png
+	6
+	Section 4: Profitability
+	pricing_patterns.png
+	6
+	Section 6: Pricing Analysis
+	material_inflation.png
+	4
+	Section 6: Pricing Analysis
+	operational_patterns.png
+	6
+	Section 7: Operational Patterns
+	quarterly_trends.png
+	4
+	Section 7: Operational Patterns
+	subcontractor_analysis.png
+	4
+	Section 8: Subcontractor Analysis
+	cortex_pricing_inputs.png
+	6
+	Section 9: Cortex Foundation
+	Location: Data Analysis
+________________
+
+
+This report contains confidential business information.

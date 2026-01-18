@@ -1,0 +1,261 @@
+﻿The Cortex: AI-Powered Estimation System for TOITURELV
+Your Brain, Automated
+________________
+
+
+Executive Summary
+Laurent approves 50 quotes per week, consuming 5+ hours of his most valuable time. This is TOITURELV’s biggest bottleneck.
+Generic AI tools suggest $75/hour rates when you charge $120/hour. They don’t know your business, your pricing, or your 11,000 past jobs.
+The Cortex is different. It’s trained exclusively on your data:
+* 11,000 quotes with your actual pricing
+
+* 300 hours of your client calls
+
+* Years of your emails and invoices
+
+* Your decision-making patterns
+
+Unlike other AI agents (slow, inaccurate, generic), The Cortex combines lightning-fast algorithms with intelligent reasoning to replicate how you estimate — but in seconds instead of minutes.
+Expected Outcome: Reduce quote approval time by 80% (from 5 hours to 1 hour weekly), freeing 16 hours monthly = $8,000+ in value.
+________________
+
+
+The Problem: Why Generic AI Failed You
+You’ve tested AI estimation tools before. They were:
+   * ❌ Too slow (10–30 seconds)
+
+   * ❌ Too generic (suggesting $75/hr when you charge $120/hr)
+
+   * ❌ Too basic (can’t handle complex scenarios)
+
+   * ❌ No context (don’t know Montreal vs Laval pricing differences)
+
+The real issue: generic AI doesn’t know your business.
+________________
+
+
+The Solution: The Cortex System
+Priority #1: The Cortex (Internal AI Estimation Assistant)
+A hybrid intelligent system combining algorithmic speed with deep AI reasoning.
+Fast Track (90% of quotes):
+      * Instant pricing using patterns from your 11 000 historical quotes
+
+      * Response time < 1 second
+
+      * Variables: size, material, pitch, location, season, access
+
+      * Knows your actual costs and margins ($120/hr, not $75/hr)
+
+AI Override (Complex cases):
+         * Vector search finds similar past jobs in your database
+
+         * Claude AI analyzes differences and provides reasoning
+
+         * Response time 3–5 seconds
+
+         * Handles unusual configurations, special materials, unique site conditions
+
+Self-Learning Loop:
+            * Tracks when AI overrides algorithm decisions
+
+            * Continuously improves accuracy from real approvals
+
+            * Your team gets smarter quotes every week
+
+How Your Team Uses It:
+               * Slack bot: “Quote 1500 sqft asphalt shingle, 6/12 pitch, Laval”
+
+               * Web dashboard: input specs → instant quote + reasoning
+
+               * Direct C-Cube integration: auto-suggest pricing as quotes are built
+
+Training Data Sources:
+                  * ✅ 11 000 quotes (materials, labor, pricing patterns)
+
+                  * ✅ 300 hours of call recordings
+
+                  * ✅ 3–4 years of emails
+
+                  * ✅ Invoice history (actual vs quoted)
+
+                  * ✅ Laurent’s recorded decision-making process
+
+________________
+
+
+Priority #2: AI Receptionist (Customer-Facing)
+Data Synergy: uses the same knowledge base as The Cortex — no duplicate work.
+24/7 Quebec French Voice Assistant
+                     * Answers calls with Laurent’s expertise
+
+                     * Provides instant ballpark estimates for standard jobs
+
+                     * Detects emergency keywords (“ça coule”, “water damage”)
+
+                     * Books appointments automatically
+
+                     * Routes complex cases to the right team member
+
+                     * Logs all interactions to C-Cube
+
+Competitive Advantage
+                        * Knows your customers, your history, your pricing
+
+                        * Speaks authentic Quebec French (not European)
+
+                        * Responds < 2 seconds — faster than competitors
+
+Integration
+                           * Connects to your existing phone number (port or forward)
+
+                           * Syncs with C-Cube CRM
+
+                           * Creates qualified leads with call transcripts
+
+                           * Zero training required — works day one
+
+________________
+
+
+Priority #3: Satellite View Lead Enrichment
+Automatic Property Intelligence
+ Every new lead automatically receives:
+                              * Aerial satellite view of the property
+
+                              * Street View image of the building
+
+                              * Roof size estimation from imagery
+
+                              * Neighborhood context and access notes
+
+Integration with Third-Party Aerial Services
+                                 * For advanced precision, we’ll integrate optional paid providers such as EagleView or equivalent.
+
+                                 * The client covers usage or subscription fees directly.
+
+                                 * Integration is fully embedded inside The Cortex dashboard so imagery and measurements appear alongside estimate results.
+
+Direct C-Cube Attachment
+                                    * Images auto-upload to project files
+
+                                    * No manual work required
+
+                                    * Ready before first client contact
+
+                                    * Saves 10–15 minutes per lead
+
+Pre-Qualification Benefits
+                                       * Spot complex roofs or tight access points
+
+                                       * Identify upsells (gutters, soffits visible)
+
+                                       * Prepare better questions for calls
+
+                                       * Improve initial quote accuracy
+
+API Integration
+                                          * Google Maps Static API (aerial view)
+
+                                          * Google Street View API
+
+                                          * Automatic geocoding from address
+
+                                          * Optional EagleView premium aerial data
+
+                                          * Fallback for rural areas
+
+________________
+
+
+Implementation Roadmap
+Week
+	Phase
+	Key Deliverables
+	1–2
+	Data Foundation & Algorithm
+	Connect C-Cube API · Extract 11 000 quotes · Build pricing patterns · Validate accuracy
+	2–3
+	Cortex AI Brain
+	Set up vector DB (Pinecone) · Train embeddings · Integrate Claude AI · Build routing logic · Create interfaces
+	3–4
+	AI Receptionist
+	Configure Vapi voice AI · Link Cortex knowledge base · Connect Twilio · Integrate C-Cube lead logging
+	4–5
+	Satellite View Integration
+	Connect Google & EagleView APIs · Attach to C-Cube files · Handle edge cases
+	5–6
+	Testing & Optimization
+	Parallel testing · Fine-tune confidence thresholds · Train team · Docs & handoff
+	6
+	Launch
+	Go-live for team · Activate Receptionist · 30-day optimization support
+	________________
+
+
+Technical Architecture
+User Query → Smart Router
+      ↓
+  ├─→ Algorithm (Instant < 1s)
+  │     Pattern matching from 11 K quotes
+  │     TOITURELV pricing rules
+  │
+  └─→ AI Analysis (3–5 s)
+        Vector search + Claude reasoning
+
+
+Data Pipeline
+C-Cube API → n8n → Processing → Pinecone Vector DB → Knowledge Base
+   ↓
+   ├→ Cortex (Team Interface)
+   └→ AI Receptionist (Customer Interface)
+
+
+________________
+
+
+Integrations
+                                             * C-Cube (ERP) – Full read/write sync
+
+                                             * GoHighLevel – Call/SMS recording only
+
+                                             * Google Cloud & EagleView – Aerial imagery & roof data
+
+                                             * Vapi + Twilio – Voice AI infrastructure
+
+                                             * Pinecone + LLM AI – Knowledge & reasoning layer
+
+________________
+
+
+Investment & Returns
+One-Time Implementation: $3,300
+                                                * Cortex system · AI Receptionist · Satellite integration
+
+                                                * Full training & setup · 30-day optimization
+
+                                                * 40% upon signing · 30% mid-phase · 30% on delivery
+
+Monthly Operating Costs: ≈ $987–1,267
+(including Pinecone, Claude, Google APIs, Vapi, Twilio, n8n, GoHighLevel)
+ROI Summary:
+                                                   * Saves 16 hours/month ≈ $8 000 value
+
+                                                   * Annual benefit ≈ $48 000
+
+                                                   * First-year investment ≈ $18 500
+
+                                                   * Net benefit: $29 500 · ROI 159% · Payback ≈ 4.6 weeks
+
+________________
+
+
+Next Steps
+                                                      1. Approve proposal and sign agreement
+
+                                                      2. Provide C-Cube API credentials and sample data
+
+                                                      3. Confirm GoHighLevel access and Google API keys
+
+                                                      4. Kick-off meeting within 48 hours of signature
+
+                                                      5. Launch Cortex system in 6 weeks
