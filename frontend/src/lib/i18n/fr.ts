@@ -13,6 +13,12 @@ export const fr = {
     categorie: "Categorie",
     obtenirEstimation: "Obtenir l'estimation",
     enChargement: "Chargement...",
+    titreMateriaux: "Prediction de materiaux",
+    titreComplet: "Soumission complete",
+    descriptionMateriaux: "Obtenez une liste de materiaux recommandes pour votre projet",
+    descriptionComplet: "Generez une soumission complete avec prix et materiaux",
+    bientotDisponible: "Bientot disponible",
+    fonctionnalitePhase10: "Cette fonctionnalite sera disponible apres la Phase 10",
   },
   historique: {
     titre: "Historique des soumissions",
