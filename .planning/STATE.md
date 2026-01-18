@@ -23,19 +23,19 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 8 | In Progress | 1/2 | 50% |
 | 9 | Complete | 1/1 | 100% |
 | 10 | Complete | 2/2 | 100% |
-| 11 | Complete | 4/4 | 100% |
+| 11 | Complete | 6/6 | 100% |
 
-**Overall:** 20/23 plans complete (87%)
+**Overall:** 21/24 plans complete (88%)
 
 ```
-Progress: [█████████████████░░░] 87%
+Progress: [██████████████████░░] 88%
 ```
 
 ## Current Phase
 
 **Phase 11: Cortex Admin Dashboard** (Complete)
 - Goal: 4-tab professional admin interface (Estimateur, Historique, Apercu, Clients)
-- Status: All 4 plans complete
+- Status: All 6 plans complete
 
 ### Phase 11 Complete
 - **11-01:** Admin dashboard layout with shadcn/ui Sidebar (Complete)
@@ -62,6 +62,11 @@ Progress: [█████████████████░░░] 87%
   - Revenue by category pie chart
   - Monthly trend line chart
   - Top 10 clients ranked list
+- **11-06:** Estimateur sub-views (Complete)
+  - Tab navigation: Prix, Materiaux, Soumission Complete
+  - Prix shows existing streaming estimate form
+  - Materiaux and Complet show Phase 10 placeholders
+  - Consistent amber styling for coming soon callouts
 
 ### Phase 10 Complete
 - **10-01:** Material ID prediction model training
@@ -161,6 +166,8 @@ Progress: [█████████████████░░░] 87%
 | keepPreviousData for pagination | 11-03 | Prevents table flicker on page changes |
 | Server-side pagination with manualPagination | 11-03 | Backend handles paging for 8k+ quotes |
 | useDeferredValue over custom debounce | 11-04 | Native React concurrent feature |
+| Exact match for /estimateur route | 11-06 | Prevents sub-routes from highlighting root tab |
+| Amber placeholder styling | 11-06 | Light amber for "coming soon" visibility |
 
 ## Session History
 
@@ -185,11 +192,12 @@ Progress: [█████████████████░░░] 87%
 | 2026-01-18 | Plan 11-05 executed | Apercu dashboard with KPIs and charts |
 | 2026-01-18 | Plan 11-03 executed | Historique quote browser with pagination |
 | 2026-01-19 | Plan 11-04 executed | Clients customer search with segment badges |
+| 2026-01-19 | Plan 11-06 executed | Estimateur sub-views with tab navigation |
 
 ## Session Continuity
 
 Last session: 2026-01-19
-Stopped at: Completed 11-04-PLAN.md
+Stopped at: Completed 11-06-PLAN.md (Phase 11 complete)
 Resume file: None
 
 ## Blockers
@@ -216,4 +224,4 @@ None currently.
 - Phase 11 added: Cortex Admin Dashboard (4-tab professional interface) - moved after material prediction
 
 ---
-*State updated: 2026-01-19 (Phase 11 Plan 04 complete - Phase 11 now complete)*
+*State updated: 2026-01-19 (Phase 11 Plan 06 complete - Phase 11 complete with all 6 plans)*
