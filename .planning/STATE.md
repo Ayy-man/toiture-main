@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 10 complete - ready for Phase 11 (Cortex Admin Dashboard)
+**Current focus:** Phase 11 - Cortex Admin Dashboard (Plan 01 complete)
 
 ## Progress
 
@@ -23,22 +23,29 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 8 | In Progress | 1/2 | 50% |
 | 9 | Complete | 1/1 | 100% |
 | 10 | Complete | 2/2 | 100% |
+| 11 | In Progress | 1/4 | 25% |
 
-**Overall:** 16/19 plans complete (84%)
+**Overall:** 17/23 plans complete (74%)
 
 ```
-Progress: [████████████████░░░░] 84%
+Progress: [██████████████░░░░░░] 74%
 ```
 
 ## Current Phase
 
-**Phase 10: Material ID Prediction Model Training** (Complete ✓)
-- Goal: Train multi-label classifier for material ID selection
-- Requirements: F1-micro >= 70%, MAPE <= 30% (for predictable materials)
-- Status: **Verified Complete** - F1-micro 70.3%, 122 quantity regressors
-- Verification: 10/10 must-haves passed
+**Phase 11: Cortex Admin Dashboard** (In Progress)
+- Goal: 4-tab professional admin interface (Estimateur, Historique, Apercu, Clients)
+- Status: Plan 01 complete - sidebar layout and navigation
 
-**Next Phase:** Phase 11 - Cortex Admin Dashboard
+### Phase 11 In Progress
+- **11-01:** Admin dashboard layout with shadcn/ui Sidebar (Complete)
+  - Dark sidebar (#1A1A1A) with brick red (#8B2323) Cortex branding
+  - French navigation: Estimateur, Historique, Apercu, Clients
+  - Mobile responsive with collapsible sidebar
+  - Root redirects to /estimateur
+- **11-02:** Historique quote browser (Pending)
+- **11-03:** Apercu dashboard metrics (Pending)
+- **11-04:** Clients customer search (Pending)
 
 ### Phase 10 Complete
 - **10-01:** Material ID prediction model training
@@ -130,6 +137,8 @@ Progress: [████████████████░░░░] 84%
 | Feature trigger ratio threshold (2x) | 10-01 | Captures meaningful correlations |
 | Lazy loading for material models | 10-02 | Same pattern as predictor.py |
 | Extract material_id from trigger objects | 10-02 | Feature triggers are objects, not raw IDs |
+| Custom sidebar over shadcn CLI | 11-01 | CLI was hanging, manual implementation works |
+| Route group (admin) for layout isolation | 11-01 | Separates admin layout from login/other pages |
 
 ## Session History
 
@@ -150,11 +159,12 @@ Progress: [████████████████░░░░] 84%
 | 2026-01-18 | Plan 08-01 executed | Deployment config: Dockerfile, railway.json, vercel.json |
 | 2026-01-18 | Plan 10-01 executed | Material ID prediction models trained |
 | 2026-01-18 | Plan 10-02 executed | Material prediction API endpoints |
+| 2026-01-18 | Plan 11-01 executed | Admin dashboard layout with sidebar |
 
 ## Session Continuity
 
-Last session: 2026-01-19
-Stopped at: Phase 10 verified complete
+Last session: 2026-01-18
+Stopped at: Completed 11-01-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -170,7 +180,7 @@ None currently.
 - Docker build test skipped (Docker not installed locally) - will validate on Railway
 - Material prediction models: F1-micro 70.3%, 122 quantity regressors, 506 rules, 21 feature triggers
 - Material endpoints: POST /estimate/materials, POST /estimate/full (lazy loading)
-- Next: Phase 11 (Cortex Admin Dashboard) or Phase 6-02/8-02 completion
+- Next: Phase 11-02 (Historique quote browser) or Phase 6-02/8-02 completion
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
@@ -180,4 +190,4 @@ None currently.
 - Phase 11 added: Cortex Admin Dashboard (4-tab professional interface) - moved after material prediction
 
 ---
-*State updated: 2026-01-19 (Phase 10 verified complete)*
+*State updated: 2026-01-18 (Phase 11 Plan 01 complete)*
