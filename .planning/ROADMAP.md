@@ -150,6 +150,11 @@ Plans:
 
 **Requirements:** AUTH-01, AUTH-02
 
+**Plans:** 1 plan
+
+Plans:
+- [ ] 07-01-PLAN.md — Password gate with iron-session, login page, middleware protection
+
 **Success Criteria:**
 1. Unauthenticated users see password prompt
 2. Correct password grants access to all features
