@@ -70,6 +70,12 @@ Plans:
 
 **Requirements:** LLM-01, LLM-02, LLM-03
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — LLM service and OpenRouter configuration
+- [ ] 03-02-PLAN.md — Endpoint integration and reasoning tests
+
 **Success Criteria:**
 1. OpenRouter client configured with model selection
 2. /estimate response includes reasoning field
