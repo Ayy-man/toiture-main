@@ -26,18 +26,18 @@
 
 ### Frontend - Estimate Form
 
-- [ ] **FORM-01**: Input form with 6 fields (sqft, category dropdown, material_lines, labor_lines, has_subs toggle, complexity slider)
-- [ ] **FORM-02**: Submit calls backend /estimate endpoint
-- [ ] **FORM-03**: Display estimate with range and confidence
-- [ ] **FORM-04**: Display similar cases used for estimate
-- [ ] **FORM-05**: Display LLM reasoning
+- [x] **FORM-01**: Input form with 6 fields (sqft, category dropdown, material_lines, labor_lines, has_subs toggle, complexity slider)
+- [x] **FORM-02**: Submit calls backend /estimate endpoint
+- [x] **FORM-03**: Display estimate with range and confidence
+- [x] **FORM-04**: Display similar cases used for estimate
+- [x] **FORM-05**: Display LLM reasoning
 
 ### Frontend - Review Queue
 
-- [ ] **REVIEW-01**: List pending estimates awaiting Laurent's review
-- [ ] **REVIEW-02**: Show AI estimate alongside input details
-- [ ] **REVIEW-03**: Laurent can enter his actual/expected price
-- [ ] **REVIEW-04**: Mark estimate as reviewed (thumbs up/down implicit from price difference)
+- [x] **REVIEW-01**: List pending estimates awaiting Laurent's review
+- [x] **REVIEW-02**: Show AI estimate alongside input details
+- [x] **REVIEW-03**: Laurent can enter his actual/expected price
+- [x] **REVIEW-04**: Mark estimate as reviewed (thumbs up/down implicit from price difference)
 
 ### Frontend - Analytics Dashboard
 
@@ -48,9 +48,9 @@
 
 ### Data Storage
 
-- [ ] **DB-01**: Supabase tables for estimates and feedback
-- [ ] **DB-02**: Store: inputs, AI estimate, Laurent's price, timestamp, category
-- [ ] **DB-03**: Query feedback for analytics calculations
+- [x] **DB-01**: Supabase tables for estimates and feedback
+- [x] **DB-02**: Store: inputs, AI estimate, Laurent's price, timestamp, category
+- [x] **DB-03**: Query feedback for analytics calculations
 
 ### Authentication
 
@@ -100,18 +100,18 @@
 | LLM-01 | Phase 3 | Complete |
 | LLM-02 | Phase 3 | Complete |
 | LLM-03 | Phase 3 | Complete |
-| FORM-01 | Phase 4 | Pending |
-| FORM-02 | Phase 4 | Pending |
-| FORM-03 | Phase 4 | Pending |
-| FORM-04 | Phase 4 | Pending |
-| FORM-05 | Phase 4 | Pending |
-| DB-01 | Phase 5 | Pending |
-| DB-02 | Phase 5 | Pending |
-| DB-03 | Phase 5 | Pending |
-| REVIEW-01 | Phase 5 | Pending |
-| REVIEW-02 | Phase 5 | Pending |
-| REVIEW-03 | Phase 5 | Pending |
-| REVIEW-04 | Phase 5 | Pending |
+| FORM-01 | Phase 4 | Complete |
+| FORM-02 | Phase 4 | Complete |
+| FORM-03 | Phase 4 | Complete |
+| FORM-04 | Phase 4 | Complete |
+| FORM-05 | Phase 4 | Complete |
+| DB-01 | Phase 5 | Complete |
+| DB-02 | Phase 5 | Complete |
+| DB-03 | Phase 5 | Complete |
+| REVIEW-01 | Phase 5 | Complete |
+| REVIEW-02 | Phase 5 | Complete |
+| REVIEW-03 | Phase 5 | Complete |
+| REVIEW-04 | Phase 5 | Complete |
 | DASH-01 | Phase 6 | Pending |
 | DASH-02 | Phase 6 | Pending |
 | DASH-03 | Phase 6 | Pending |
