@@ -1,8 +1,11 @@
-"""Query embedding generation using sentence-transformers."""
+"""Query embedding generation using sentence-transformers.
 
-from typing import List, Optional
-import logging
+Uses lazy loading to reduce memory footprint at startup.
+"""
+
 import gc
+import logging
+from typing import List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -11,7 +14,6 @@ _model = None
 
 def load_embedding_model():
     """Lazy load - model loaded on first use to reduce startup memory."""
-    # Don't load at startup - load lazily on first embed call
     logger.info("Embedding model will load on first use (lazy loading)")
 
 
@@ -19,11 +21,19 @@ def _get_model():
     """Get or load the embedding model (lazy singleton)."""
     global _model
     if _model is None:
+        # Delay torch import to startup
+        import torch
+        torch.set_grad_enabled(False)
+
         from sentence_transformers import SentenceTransformer
         logger.info("Loading sentence-transformers model (first use)...")
-        # Use smaller model: L6 instead of L12 (half the memory)
-        _model = SentenceTransformer('all-MiniLM-L6-v2')
-        gc.collect()  # Force garbage collection
+
+        # Use multilingual model for French content
+        # Same model used to generate cbr_embeddings.npz
+        _model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+        _model.eval()
+
+        gc.collect()
         logger.info("Embedding model loaded")
     return _model
 
@@ -32,12 +42,16 @@ def unload_embedding_model():
     """Cleanup on shutdown."""
     global _model
     _model = None
+    gc.collect()
 
 
 def generate_query_embedding(text: str) -> List[float]:
     """Generate 384-dim embedding for query text."""
+    import torch
+
     model = _get_model()
-    embedding = model.encode(text, convert_to_numpy=True)
+    with torch.inference_mode():
+        embedding = model.encode(text, convert_to_numpy=True)
     return embedding.tolist()
 
 

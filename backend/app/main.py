@@ -18,14 +18,15 @@ from app.services.supabase_client import close_supabase, init_supabase
 async def lifespan(app: FastAPI):
     """Manage application lifecycle.
 
-    Load ML models and CBR services at startup, clean up at shutdown.
+    ML models use lazy loading (load on first request) to reduce startup memory.
+    Only lightweight API clients are initialized at startup.
     """
-    # Startup
-    load_models()           # ML prediction models
-    load_embedding_model()  # sentence-transformers model
-    init_pinecone()         # Pinecone connection
-    init_llm_client()       # OpenRouter LLM client
-    init_supabase()         # Supabase connection (feedback system)
+    # Startup - ML models load lazily on first request to reduce memory
+    load_models()           # No-op: models load on first predict()
+    load_embedding_model()  # No-op: model loads on first embed()
+    init_pinecone()         # Pinecone connection (lightweight client)
+    init_llm_client()       # OpenRouter LLM client (lightweight)
+    init_supabase()         # Supabase connection (lightweight)
     yield
     # Shutdown
     close_supabase()

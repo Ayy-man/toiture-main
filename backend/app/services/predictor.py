@@ -1,37 +1,60 @@
 """ML model loading and prediction service.
 
 Adapted from cortex-data/predict_final.py for FastAPI serving.
+Uses lazy loading to reduce memory footprint at startup.
 """
 
+import gc
 import json
+import logging
 from pathlib import Path
 
-import joblib
 import numpy as np
+
+logger = logging.getLogger(__name__)
 
 # Module-level storage (shared across requests)
 _models: dict = {}
 _config: dict = {}
+_loaded: bool = False
 
 MODEL_DIR = Path(__file__).parent.parent / "models"
 
 
-def load_models() -> None:
-    """Load ML models at startup.
+def _ensure_models_loaded() -> None:
+    """Lazy-load ML models on first use."""
+    global _loaded
+    if _loaded:
+        return
 
-    Called once via lifespan context manager.
-    """
+    import joblib
+
+    logger.info("Lazy-loading ML models (first use)...")
+
     _models["global"] = joblib.load(MODEL_DIR / "cortex_model_global.pkl")
     _models["bardeaux"] = joblib.load(MODEL_DIR / "cortex_model_Bardeaux.pkl")
     _models["encoder"] = joblib.load(MODEL_DIR / "category_encoder_v3.pkl")
+
     with open(MODEL_DIR / "cortex_config_v3.json") as f:
         _config.update(json.load(f))
+
+    gc.collect()
+    _loaded = True
+    logger.info("ML models loaded successfully")
+
+
+def load_models() -> None:
+    """No-op for backward compatibility. Models load lazily on first use."""
+    logger.info("ML models will load on first prediction request (lazy loading)")
 
 
 def unload_models() -> None:
     """Clean up models at shutdown."""
+    global _loaded
     _models.clear()
     _config.clear()
+    _loaded = False
+    gc.collect()
 
 
 def predict(
@@ -55,6 +78,8 @@ def predict(
     Returns:
         dict with estimate, range_low, range_high, model, confidence
     """
+    _ensure_models_loaded()
+
     # Per-category features (no cat_enc)
     X_cat = np.array([[sqft, material_lines, labor_lines, has_subs, complexity]])
 
