@@ -188,6 +188,12 @@ Plans:
 
 **Requirements:** DEPLOY-01, DEPLOY-02, DEPLOY-03
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 08-01-PLAN.md — Deployment configuration (Dockerfile, railway.json, vercel.json, import fixes)
+- [ ] 08-02-PLAN.md — Deploy to platforms (Railway backend, Vercel frontend, env vars, verification)
+
 **Success Criteria:**
 1. FastAPI running on Railway with health check passing
 2. Next.js running on Vercel, connected to backend
