@@ -1,8 +1,8 @@
 import { fr } from "@/lib/i18n/fr";
-import { EstimateForm } from "@/components/estimate-form";
 import { EstimateurTabs } from "@/components/estimateur/nav-tabs";
+import { MaterialsForm } from "@/components/estimateur/materials-form";
 
-export default function EstimateurPage() {
+export default function MateriauxPage() {
   return (
     <div className="max-w-2xl">
       <h1 className="text-3xl font-bold tracking-tight mb-6">
@@ -10,7 +10,7 @@ export default function EstimateurPage() {
       </h1>
       <EstimateurTabs />
       <div className="mt-6">
-        <EstimateForm />
+        <MaterialsForm />
       </div>
     </div>
   );
