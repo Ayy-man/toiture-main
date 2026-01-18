@@ -13,7 +13,7 @@
 | 3 | LLM Reasoning ✓ | Estimates include explanations | LLM-01, LLM-02, LLM-03 | 3 |
 | 4 | Estimate Form ✓ | Users can get estimates | FORM-01 to FORM-05 | 5 |
 | 5 | Feedback System ✓ | Laurent can review and provide prices | DB-01 to DB-03, REVIEW-01 to REVIEW-04 | 7 |
-| 6 | Analytics Dashboard | Team sees accuracy trends | DASH-01 to DASH-04 | 4 |
+| 6 | Analytics Dashboard ✓ | Team sees accuracy trends | DASH-01 to DASH-04 | 4 |
 | 7 | Authentication ✓ | Password-protected access | AUTH-01, AUTH-02 | 2 |
 | 8 | Deployment | Live on Railway + Vercel | DEPLOY-01 to DEPLOY-03 | 3 |
 | 9 | Streaming Estimates | Fast estimates + streaming reasoning | PERF-01, PERF-02 | 4 |
@@ -141,23 +141,25 @@ Plans:
 
 ---
 
-## Phase 6: Analytics Dashboard
+## Phase 6: Analytics Dashboard ✓
 
 **Goal:** Team can see how accurate the AI is becoming
 
 **Requirements:** DASH-01, DASH-02, DASH-03, DASH-04
 
+**Status:** Complete (2026-01-19)
+
 **Plans:** 2 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — Analytics infrastructure (dependencies, Supabase client, React Query, hooks)
-- [ ] 06-02-PLAN.md — Dashboard UI (charts, stats cards, time filter, /dashboard page)
+- [x] 06-01-PLAN.md — Analytics infrastructure (dependencies, Supabase client, React Query, hooks)
+- [x] 06-02-PLAN.md — Dashboard UI (charts, stats cards, time filter, /dashboard page)
 
 **Success Criteria:**
-1. Accuracy chart shows % within 10%/20% of Laurent's prices
-2. Confidence correlation visible (high confidence = more accurate?)
-3. Category breakdown shows estimate distribution
-4. Time filter works (last 7d, 30d, all time)
+1. Accuracy chart shows % within 10%/20% of Laurent's prices ✓
+2. Confidence correlation visible (high confidence = more accurate?) ✓
+3. Category breakdown shows estimate distribution ✓
+4. Time filter works (last 7d, 30d, all time) ✓
 
 **Dependencies:** Phase 5 complete (feedback data exists)
 

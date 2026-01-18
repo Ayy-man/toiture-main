@@ -41,10 +41,10 @@
 
 ### Frontend - Analytics Dashboard
 
-- [ ] **DASH-01**: Estimate accuracy chart (% within 10%, 20% of Laurent's price)
-- [ ] **DASH-02**: Confidence trends (when AI says high confidence, is it accurate?)
-- [ ] **DASH-03**: Material mix breakdown (pie/bar by category)
-- [ ] **DASH-04**: Basic stats (total estimates, avg accuracy, time period filter)
+- [x] **DASH-01**: Estimate accuracy chart (% within 10%, 20% of Laurent's price)
+- [x] **DASH-02**: Confidence trends (when AI says high confidence, is it accurate?)
+- [x] **DASH-03**: Material mix breakdown (pie/bar by category)
+- [x] **DASH-04**: Basic stats (total estimates, avg accuracy, time period filter)
 
 ### Data Storage
 
@@ -123,10 +123,10 @@
 | REVIEW-02 | Phase 5 | Complete |
 | REVIEW-03 | Phase 5 | Complete |
 | REVIEW-04 | Phase 5 | Complete |
-| DASH-01 | Phase 6 | Pending |
-| DASH-02 | Phase 6 | Pending |
-| DASH-03 | Phase 6 | Pending |
-| DASH-04 | Phase 6 | Pending |
+| DASH-01 | Phase 6 | Complete |
+| DASH-02 | Phase 6 | Complete |
+| DASH-03 | Phase 6 | Complete |
+| DASH-04 | Phase 6 | Complete |
 | AUTH-01 | Phase 7 | Complete |
 | AUTH-02 | Phase 7 | Complete |
 | DEPLOY-01 | Phase 8 | Pending |
