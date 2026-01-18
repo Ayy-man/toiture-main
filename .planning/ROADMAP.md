@@ -11,7 +11,7 @@
 | 1 | FastAPI Foundation ✓ | Backend serves ML predictions | API-01, API-02, API-03, API-04 | 4 |
 | 2 | Pinecone CBR ✓ | Similar case retrieval works | PIN-01, PIN-02, PIN-03 | 3 |
 | 3 | LLM Reasoning ✓ | Estimates include explanations | LLM-01, LLM-02, LLM-03 | 3 |
-| 4 | Estimate Form | Users can get estimates | FORM-01 to FORM-05 | 5 |
+| 4 | Estimate Form ✓ | Users can get estimates | FORM-01 to FORM-05 | 5 |
 | 5 | Feedback System | Laurent can review and provide prices | DB-01 to DB-03, REVIEW-01 to REVIEW-04 | 7 |
 | 6 | Analytics Dashboard | Team sees accuracy trends | DASH-01 to DASH-04 | 4 |
 | 7 | Authentication ✓ | Password-protected access | AUTH-01, AUTH-02 | 2 |
@@ -89,17 +89,19 @@ Plans:
 
 ---
 
-## Phase 4: Estimate Form
+## Phase 4: Estimate Form ✓
 
 **Goal:** Next.js frontend where users input job details and see estimates
 
 **Requirements:** FORM-01, FORM-02, FORM-03, FORM-04, FORM-05
 
+**Status:** Complete (2026-01-18) — API integration testing deferred to Phase 8
+
 **Plans:** 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — Next.js setup with shadcn/ui, Zod schemas, API client
-- [ ] 04-02-PLAN.md — Estimate form component with result display
+- [x] 04-01-PLAN.md — Next.js setup with shadcn/ui, Zod schemas, API client
+- [x] 04-02-PLAN.md — Estimate form component with result display
 
 **Success Criteria:**
 1. Form with all 6 inputs renders correctly
