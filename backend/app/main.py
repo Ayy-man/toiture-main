@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import estimate, feedback, health
+from app.routers import customers, dashboard, estimate, feedback, health, quotes
 from app.services.embeddings import load_embedding_model, unload_embedding_model
 from app.services.llm_reasoning import close_llm_client, init_llm_client
 from app.services.pinecone_cbr import close_pinecone, init_pinecone
@@ -56,3 +56,6 @@ app.add_middleware(
 app.include_router(health.router)
 app.include_router(estimate.router)
 app.include_router(feedback.router)
+app.include_router(quotes.router)
+app.include_router(customers.router)
+app.include_router(dashboard.router)
