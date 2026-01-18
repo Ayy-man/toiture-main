@@ -9,7 +9,7 @@
 
 - [x] **API-01**: FastAPI app with health check endpoint
 - [x] **API-02**: POST /estimate endpoint accepts 6 inputs (sqft, category, material_lines, labor_lines, has_subs, complexity)
-- [ ] **API-03**: Endpoint returns estimate, range, confidence, similar cases, and LLM reasoning *(partial: similar cases in Phase 2, reasoning in Phase 3)*
+- [x] **API-03**: Endpoint returns estimate, range, confidence, similar cases, and LLM reasoning
 - [x] **API-04**: CORS configured for frontend domain
 
 ### Pinecone Integration
@@ -20,9 +20,9 @@
 
 ### LLM Integration
 
-- [ ] **LLM-01**: OpenRouter client with configurable model
-- [ ] **LLM-02**: Generate reasoning from estimate + similar cases
-- [ ] **LLM-03**: Include confidence assessment in reasoning
+- [x] **LLM-01**: OpenRouter client with configurable model
+- [x] **LLM-02**: Generate reasoning from estimate + similar cases
+- [x] **LLM-03**: Include confidence assessment in reasoning
 
 ### Frontend - Estimate Form
 
@@ -92,14 +92,14 @@
 |-------------|-------|--------|
 | API-01 | Phase 1 | Complete |
 | API-02 | Phase 1 | Complete |
-| API-03 | Phase 1-3 | Partial |
+| API-03 | Phase 1-3 | Complete |
 | API-04 | Phase 1 | Complete |
 | PIN-01 | Phase 2 | Complete |
 | PIN-02 | Phase 2 | Complete |
 | PIN-03 | Phase 2 | Complete |
-| LLM-01 | Phase 3 | Pending |
-| LLM-02 | Phase 3 | Pending |
-| LLM-03 | Phase 3 | Pending |
+| LLM-01 | Phase 3 | Complete |
+| LLM-02 | Phase 3 | Complete |
+| LLM-03 | Phase 3 | Complete |
 | FORM-01 | Phase 4 | Pending |
 | FORM-02 | Phase 4 | Pending |
 | FORM-03 | Phase 4 | Pending |
