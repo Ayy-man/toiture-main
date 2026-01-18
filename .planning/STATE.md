@@ -22,12 +22,12 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 7 | Complete | 1/1 | 100% |
 | 8 | In Progress | 1/2 | 50% |
 | 9 | Complete | 1/1 | 100% |
-| 10 | Complete | 1/1 | 100% |
+| 10 | Complete | 2/2 | 100% |
 
-**Overall:** 15/18 plans complete (83%)
+**Overall:** 16/19 plans complete (84%)
 
 ```
-Progress: [████████████████░░░░] 83%
+Progress: [████████████████░░░░] 84%
 ```
 
 ## Current Phase
@@ -45,6 +45,11 @@ Progress: [████████████████░░░░] 83%
   - 21 feature triggers (20 chimney, 1 skylight)
   - 824 material median prices
   - Model artifacts copied to backend/app/models/
+- **10-02:** Material prediction API endpoints
+  - POST /estimate/materials returns predicted material IDs with quantities
+  - POST /estimate/full combines price estimate + materials
+  - MaterialPredictor service with lazy loading pattern
+  - Response times: materials < 2s, full < 5s
 
 ### Phase 9 Complete
 - **09-01:** Streaming estimates with Cerebras fast inference
@@ -120,6 +125,8 @@ Progress: [████████████████░░░░] 83%
 | GradientBoosting over RandomForest for material classifier | 10-01 | 20x smaller model (11MB vs 200MB+) |
 | Threshold 0.35 for multi-label classification | 10-01 | Better F1 on imbalanced data |
 | Feature trigger ratio threshold (2x) | 10-01 | Captures meaningful correlations |
+| Lazy loading for material models | 10-02 | Same pattern as predictor.py |
+| Extract material_id from trigger objects | 10-02 | Feature triggers are objects, not raw IDs |
 
 ## Session History
 
@@ -139,11 +146,12 @@ Progress: [████████████████░░░░] 83%
 | 2026-01-18 | Plan 06-01 executed | Analytics data layer with React Query hooks |
 | 2026-01-18 | Plan 08-01 executed | Deployment config: Dockerfile, railway.json, vercel.json |
 | 2026-01-18 | Plan 10-01 executed | Material ID prediction models trained |
+| 2026-01-18 | Plan 10-02 executed | Material prediction API endpoints |
 
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 10-01-PLAN.md
+Stopped at: Completed 10-02-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -154,7 +162,7 @@ None currently.
 
 - Tech stack: FastAPI (Railway) + Next.js (Vercel) + Pinecone + Supabase + OpenRouter
 - Frontend complete: estimate form, review queue, password gate, analytics hooks
-- Backend complete: ML prediction, CBR, LLM reasoning, feedback API, material prediction models
+- Backend complete: ML prediction, CBR, LLM reasoning, feedback API, material prediction models + endpoints
 - Deployment config ready: Dockerfile, railway.json, vercel.json
 - Docker build test skipped (Docker not installed locally) - will validate on Railway
 - Material prediction models: F1-micro 70.3%, 122 quantity regressors, 506 rules
@@ -168,4 +176,4 @@ None currently.
 - Phase 11 added: Cortex Admin Dashboard (4-tab professional interface) - moved after material prediction
 
 ---
-*State updated: 2026-01-18*
+*State updated: 2026-01-18 (10-02 complete)*
