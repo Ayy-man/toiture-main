@@ -18,7 +18,7 @@
 | 8 | Deployment | Live on Railway + Vercel | DEPLOY-01 to DEPLOY-03 | 3 |
 | 9 | Streaming Estimates | Fast estimates + streaming reasoning | PERF-01, PERF-02 | 4 |
 | 10 | Material ID Prediction ✓ | Predict materials and quantities | MAT-01, MAT-02 | 2 |
-| 11 | Cortex Admin Dashboard | Professional 4-tab admin interface | ADMIN-01 to ADMIN-04 | 4 |
+| 11 | Cortex Admin Dashboard ✓ | Professional 4-tab admin interface | DASH-05 to DASH-12 | 8 |
 
 ---
 
@@ -253,24 +253,35 @@ Plans:
 
 ---
 
-## Phase 11: Cortex Admin Dashboard
+## Phase 11: Cortex Admin Dashboard ✓
 
-**Goal:** Professional 4-tab admin interface for estimates, review, analytics, and settings
+**Goal:** Build professional 4-tab admin dashboard replacing simple form
 
-**Requirements:** ADMIN-01, ADMIN-02, ADMIN-03, ADMIN-04
+**Requirements:** DASH-05, DASH-06, DASH-07, DASH-08, DASH-09, DASH-10, DASH-11, DASH-12
 
-**Plans:** TBD
+**Status:** Complete (2026-01-19)
+
+**Plans:** 6 plans
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 11 to break down)
+- [x] 11-01-PLAN.md — Sidebar layout, navigation, French i18n, CSS variables
+- [x] 11-02-PLAN.md — Backend endpoints for quotes, customers, dashboard metrics
+- [x] 11-03-PLAN.md — Historique tab with paginated quote browser and CSV export
+- [x] 11-04-PLAN.md — Clients tab with customer search and detail view
+- [x] 11-05-PLAN.md — Aperçu tab with KPI cards and charts
+- [x] 11-06-PLAN.md — Estimateur tab with 3 sub-views (Prix, Matériaux, Complet)
 
 **Success Criteria:**
-1. Estimates tab with new estimate form
-2. Review queue for Laurent's feedback
-3. Analytics dashboard with accuracy charts
-4. Settings tab for configuration
+1. 4 tabs functional: Estimateur, Historique, Aperçu, Clients ✓
+2. Estimateur returns results in <3 seconds with streaming ✓
+3. Quote browser handles 8,293 records with pagination ✓
+4. Customer search returns results in <1 second ✓
+5. Dashboard charts render with real data ✓
+6. French labels throughout (Quebec French) ✓
+7. Dark sidebar with brick red accents (#8B2323) ✓
+8. Mobile-responsive sidebar collapses ✓
 
-**Dependencies:** Phase 10 complete
+**Dependencies:** Phase 10 complete (material prediction model ready)
 
 ---
 

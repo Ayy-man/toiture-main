@@ -63,6 +63,17 @@
 - [ ] **DEPLOY-02**: Next.js deployed to Vercel
 - [ ] **DEPLOY-03**: Environment variables configured (Pinecone, OpenRouter, Supabase keys)
 
+### Admin Dashboard
+
+- [x] **DASH-05**: 4 tabs functional (Estimateur, Historique, Aperçu, Clients)
+- [x] **DASH-06**: Estimateur returns results in <3 seconds with streaming
+- [x] **DASH-07**: Quote browser handles 8,293 records with pagination
+- [x] **DASH-08**: Customer search returns results in <1 second
+- [x] **DASH-09**: Dashboard charts render with real data
+- [x] **DASH-10**: French labels throughout (Quebec French)
+- [x] **DASH-11**: Dark sidebar with brick red accents (#8B2323)
+- [x] **DASH-12**: Mobile-responsive sidebar collapses
+
 ## v2 Requirements
 
 ### Auto-Update Pipeline
@@ -121,10 +132,18 @@
 | DEPLOY-01 | Phase 8 | Pending |
 | DEPLOY-02 | Phase 8 | Pending |
 | DEPLOY-03 | Phase 8 | Pending |
+| DASH-05 | Phase 11 | Complete |
+| DASH-06 | Phase 11 | Complete |
+| DASH-07 | Phase 11 | Complete |
+| DASH-08 | Phase 11 | Complete |
+| DASH-09 | Phase 11 | Complete |
+| DASH-10 | Phase 11 | Complete |
+| DASH-11 | Phase 11 | Complete |
+| DASH-12 | Phase 11 | Complete |
 
 **Coverage:**
-- v1 requirements: 28 total
-- Mapped to phases: 28
+- v1 requirements: 36 total
+- Mapped to phases: 36
 - Unmapped: 0 ✓
 
 ---
