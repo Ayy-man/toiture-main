@@ -10,3 +10,7 @@ pinecone[grpc]>=5.0.0,<8.0.0
 sentence-transformers>=3.0.0
 torch>=2.0.0
 tqdm>=4.66.0
+
+# LLM Reasoning (OpenRouter)
+openai>=1.0.0
+tenacity>=8.2.0

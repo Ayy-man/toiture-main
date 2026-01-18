@@ -13,6 +13,12 @@ class Settings(BaseSettings):
     pinecone_api_key: str = ""
     pinecone_index_host: str = ""
 
+    # OpenRouter settings (LLM reasoning)
+    openrouter_api_key: str = ""
+    openrouter_model: str = "openai/gpt-4o-mini"
+    openrouter_base_url: str = "https://openrouter.ai/api/v1"
+    app_url: str = "https://toiturelv-cortex.railway.app"
+
     model_config = {"env_file": "backend/.env", "extra": "ignore"}
 
 
