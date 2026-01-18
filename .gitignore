@@ -1,0 +1,47 @@
+# Environment variables (contains API keys)
+.env
+backend/.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+ENV/
+
+# ML model files (large binaries)
+*.pkl
+*.joblib
+*.npz
+
+# Data files (too large for git)
+cortex-data/
+*.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (for frontend later)
+node_modules/
+.next/
+out/
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
