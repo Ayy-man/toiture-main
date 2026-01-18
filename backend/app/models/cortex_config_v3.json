@@ -1,0 +1,60 @@
+{
+  "features": [
+    "sqft_final",
+    "material_line_count",
+    "labor_line_count",
+    "has_subs",
+    "complexity_score"
+  ],
+  "global_features": [
+    "sqft_final",
+    "material_line_count",
+    "labor_line_count",
+    "has_subs",
+    "complexity_score",
+    "cat_enc"
+  ],
+  "category_mapping": {
+    "Bardeaux": 0,
+    "Gutters": 1,
+    "Heat Cables": 2,
+    "Insulation": 3,
+    "Other": 4,
+    "Service Call": 5,
+    "Skylights": 6,
+    "Unknown": 7,
+    "Ventilation": 8,
+    "\u00c9lastom\u00e8re": 9
+  },
+  "per_category_models": {
+    "Bardeaux": {
+      "r2": 0.648143348264702,
+      "mae": 3485.8789772293608,
+      "pct20": 50.697674418604656
+    },
+    "\u00c9lastom\u00e8re": {
+      "r2": 0.3091351363211168,
+      "mae": 13810.989156555976,
+      "pct20": 25.806451612903224
+    },
+    "Other": {
+      "r2": 0.7200566837055293,
+      "mae": 7098.42811874539,
+      "pct20": 56.69642857142857
+    }
+  },
+  "global_model": {
+    "r2": 0.5944557382063904,
+    "mae": 6366.692262416445,
+    "pct20": 47.674418604651166
+  },
+  "use_per_category": false,
+  "inflation_factors": {
+    "2020": 1.97,
+    "2021": 1.52,
+    "2022": 1.36,
+    "2023": 1.06,
+    "2024": 1.06,
+    "2025": 1.0
+  }
+}
