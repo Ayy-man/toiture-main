@@ -21,7 +21,7 @@
 | 10 | Material ID Prediction ✓ | Predict materials and quantities | MAT-01, MAT-02 | 2 |
 | 11 | Cortex Admin Dashboard ✓ | Professional 4-tab admin interface | DASH-05 to DASH-12 | 8 |
 | 12 | Laurent Feedback Fixes | Address data quality & UX improvements | LF-01 to LF-05 | 5 |
-| 13 | Hybrid Quote Generation | Full quote with CBR + ML + LLM merger | HQG-01 to HQG-05 | 7 |
+| 13 | Hybrid Quote Generation ✓ | Full quote with CBR + ML + LLM merger | HQG-01 to HQG-05 | 7 |
 
 ---
 
@@ -326,15 +326,15 @@ Plans:
 
 **Requirements:** HQG-01, HQG-02, HQG-03, HQG-04, HQG-05
 
-**Status:** Planned (2026-02-01)
+**Status:** Complete (2026-02-01)
 
 **Plans:** 4 plans
 
 Plans:
-- [ ] 13-01-PLAN.md — Pydantic schemas for hybrid quote request, response, and LLM structured outputs
-- [ ] 13-02-PLAN.md — Confidence scorer service (CBR similarity + ML-CBR agreement + data completeness)
-- [ ] 13-03-PLAN.md — Hybrid quote orchestrator (parallel CBR+ML, Anthropic LLM merger)
-- [ ] 13-04-PLAN.md — POST /estimate/hybrid endpoint with service call detection
+- [x] 13-01-PLAN.md — Pydantic schemas for hybrid quote request, response, and LLM structured outputs
+- [x] 13-02-PLAN.md — Confidence scorer service (CBR similarity + ML-CBR agreement + data completeness)
+- [x] 13-03-PLAN.md — Hybrid quote orchestrator (parallel CBR+ML, OpenRouter LLM merger)
+- [x] 13-04-PLAN.md — POST /estimate/hybrid endpoint with service call detection
 
 **Success Criteria:**
 1. CBR retrieves similar jobs with full line-item breakdown
