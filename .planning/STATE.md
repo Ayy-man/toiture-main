@@ -1,13 +1,13 @@
 # Project State: TOITURELV Cortex
 
-**Last Updated:** 2026-01-19
+**Last Updated:** 2026-01-31
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 8 - Deployment (In Progress)
+**Current focus:** Phase 13 - Hybrid Quote Generation (In Progress)
 
 ## Progress
 
@@ -24,18 +24,30 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 9 | Complete | 1/1 | 100% |
 | 10 | Complete | 2/2 | 100% |
 | 11 | Complete | 6/6 | 100% |
+| 13 | In Progress | 1/4 | 25% |
 
-**Overall:** 22/24 plans complete (92%)
+**Overall:** 23/28 plans complete (82%)
 
 ```
-Progress: [██████████████████░░] 92%
+Progress: [████████████████░░░░] 82%
 ```
 
 ## Current Phase
 
-**Phase 8: Deployment** (In Progress)
-- Goal: Deploy backend to Railway, frontend to Vercel
-- Status: Config files ready, deployment execution pending
+**Phase 13: Hybrid Quote Generation** (In Progress)
+- Goal: ML + CBR hybrid quote generation with LLM merger
+- Status: Pydantic schemas complete, API endpoint next
+
+### Phase 13 In Progress
+- **13-01:** Pydantic schemas for hybrid quote (Complete)
+  - HybridQuoteRequest with 6 complexity factors validation
+  - HybridQuoteOutput for LLM tool calling (model_json_schema() ready)
+  - HybridQuoteResponse with metadata and review flags
+  - WorkItem, MaterialLineItem, PricingTier supporting models
+  - Three-tier pricing enforcement (Basic/Standard/Premium)
+- **13-02:** Hybrid quote API endpoint (Pending)
+- **13-03:** LLM merger service (Pending)
+- **13-04:** Full quote UI (Pending)
 
 ### Phase 8 In Progress
 - **08-01:** Deployment configuration files (Complete)
@@ -178,6 +190,10 @@ Progress: [██████████████████░░] 92%
 | Amber placeholder styling | 11-06 | Light amber for "coming soon" visibility |
 | Client wrapper for dashboard hooks | 06-02 | dashboard-content.tsx owns all hook calls |
 | Empty state messages in charts | 06-02 | Friendly UX when no data available |
+| model_validator for complexity_aggregate | 13-01 | Runs after all fields populated for cross-field validation |
+| 5% tolerance for complexity sum | 13-01 | Handles frontend rounding differences |
+| Three-tier pricing at model level | 13-01 | Enforces Basic/Standard/Premium in schema |
+| Source tracking Literal types | 13-01 | Transparency for CBR/ML/MERGED origin |
 
 ## Session History
 
@@ -204,11 +220,12 @@ Progress: [██████████████████░░] 92%
 | 2026-01-19 | Plan 11-04 executed | Clients customer search with segment badges |
 | 2026-01-19 | Plan 11-06 executed | Estimateur sub-views with tab navigation |
 | 2026-01-19 | Plan 06-02 executed | Analytics dashboard charts (Phase 6 complete) |
+| 2026-01-31 | Plan 13-01 executed | Hybrid quote Pydantic schemas |
 
 ## Session Continuity
 
-Last session: 2026-01-19
-Stopped at: Completed 06-02-PLAN.md (Phase 6 complete)
+Last session: 2026-01-31
+Stopped at: Completed 13-01-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -226,7 +243,8 @@ None currently.
 - Material endpoints: POST /estimate/materials, POST /estimate/full (lazy loading)
 - Phase 11 Admin Dashboard complete: all 4 tabs (Estimateur, Historique, Apercu, Clients)
 - Phase 6 Analytics Dashboard complete: /dashboard route with charts
-- Next: Phase 8-02 (deployment execution)
+- Phase 13 schemas complete: HybridQuoteRequest, HybridQuoteOutput, HybridQuoteResponse, WorkItem, MaterialLineItem, PricingTier
+- Next: Phase 13-02 (Hybrid quote API endpoint)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
@@ -234,6 +252,7 @@ None currently.
 - Phase 9 added: Streaming estimates with Cerebras fast inference
 - Phase 10 added: Material ID Prediction Model Training (7,433 samples, multi-label classifier)
 - Phase 11 added: Cortex Admin Dashboard (4-tab professional interface) - moved after material prediction
+- Phase 13 added: Hybrid Quote Generation (ML + CBR + LLM merger for full quote generation)
 
 ---
-*State updated: 2026-01-19 (Phase 6 Plan 02 complete - Phase 6 complete with all 2 plans)*
+*State updated: 2026-01-31 (Phase 13 Plan 01 complete)*
