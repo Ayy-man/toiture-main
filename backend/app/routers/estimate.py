@@ -7,6 +7,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 
 from app.schemas.estimate import EstimateRequest, EstimateResponse, SimilarCase
+from app.schemas.hybrid_quote import HybridQuoteRequest, HybridQuoteResponse, PricingTier
 from app.schemas.materials import (
     MaterialEstimateRequest,
     MaterialEstimateResponse,
@@ -14,6 +15,7 @@ from app.schemas.materials import (
     FullEstimateResponse,
 )
 from app.services.embeddings import build_query_text, generate_query_embedding
+from app.services.hybrid_quote import generate_hybrid_quote
 from app.services.llm_reasoning import generate_reasoning_stream
 from app.services.material_predictor import predict_materials
 from app.services.pinecone_cbr import query_similar_cases
@@ -302,4 +304,91 @@ def create_full_estimate(request: MaterialEstimateRequest):
         )
     except Exception as e:
         logger.error(f"Full estimate error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/estimate/hybrid", response_model=HybridQuoteResponse)
+async def create_hybrid_estimate(request: HybridQuoteRequest):
+    """Generate full hybrid quote using CBR + ML + LLM merger.
+
+    This endpoint:
+    1. Runs CBR (similar case retrieval) and ML (material prediction) in parallel
+    2. Merges results using LLM with structured outputs
+    3. Generates three-tier pricing (Basic/Standard/Premium)
+    4. Returns confidence score and review flag
+
+    Service calls (labor-only jobs) are detected and handled separately.
+
+    Response time target: <5 seconds
+    """
+    # Service call detection: skip materials pipeline for labor-only jobs
+    is_service_call = (
+        request.material_lines == 0 or
+        request.sqft < 100
+    )
+
+    if is_service_call:
+        logger.info(f"Service call detected (sqft={request.sqft}, material_lines={request.material_lines})")
+        # For service calls, use simple price prediction only
+        try:
+            price_result = predict(
+                sqft=request.sqft,
+                category=request.category,
+                material_lines=request.material_lines,
+                labor_lines=request.labor_lines,
+                has_subs=1 if request.has_subs else 0,
+                complexity=request.complexity_aggregate,
+            )
+
+            # Service call response: labor only, no materials
+            return HybridQuoteResponse(
+                work_items=[],
+                materials=[],
+                total_labor_hours=request.labor_lines * 2.0,  # Rough estimate
+                total_materials_cost=0,
+                total_price=price_result["estimate"],
+                overall_confidence=0.6,  # Service calls are straightforward
+                reasoning="Service call detected. Labor-only estimate based on ML prediction.",
+                pricing_tiers=[
+                    PricingTier(
+                        tier="Basic",
+                        total_price=round(price_result["estimate"] * 0.9, 2),
+                        materials_cost=0,
+                        labor_cost=round(price_result["estimate"] * 0.9, 2),
+                        description="Standard service call"
+                    ),
+                    PricingTier(
+                        tier="Standard",
+                        total_price=round(price_result["estimate"], 2),
+                        materials_cost=0,
+                        labor_cost=round(price_result["estimate"], 2),
+                        description="Service call with inspection"
+                    ),
+                    PricingTier(
+                        tier="Premium",
+                        total_price=round(price_result["estimate"] * 1.2, 2),
+                        materials_cost=0,
+                        labor_cost=round(price_result["estimate"] * 1.2, 2),
+                        description="Emergency/rush service call"
+                    ),
+                ],
+                needs_review=False,  # Service calls are low complexity
+                cbr_cases_used=0,
+                ml_confidence=price_result["confidence"],
+                processing_time_ms=50,  # Fast path
+            )
+        except Exception as e:
+            logger.error(f"Service call estimate error: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    # Normal path: full hybrid quote generation
+    try:
+        response = await generate_hybrid_quote(request)
+        return response
+    except RuntimeError as e:
+        # Both CBR and ML failed
+        logger.error(f"Hybrid quote failed: {e}")
+        raise HTTPException(status_code=503, detail=str(e))
+    except Exception as e:
+        logger.error(f"Hybrid quote error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
