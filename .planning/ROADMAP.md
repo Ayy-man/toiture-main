@@ -1,7 +1,7 @@
 # Roadmap: TOITURELV Cortex
 
 **Created:** 2026-01-18
-**Updated:** 2026-01-29
+**Updated:** 2026-02-01
 **Phases:** 13
 **Requirements:** 37
 
@@ -326,9 +326,15 @@ Plans:
 
 **Requirements:** HQG-01, HQG-02, HQG-03, HQG-04, HQG-05
 
-**Status:** Planning
+**Status:** Planned (2026-02-01)
 
-**Plans:** TBD
+**Plans:** 4 plans
+
+Plans:
+- [ ] 13-01-PLAN.md — Pydantic schemas for hybrid quote request, response, and LLM structured outputs
+- [ ] 13-02-PLAN.md — Confidence scorer service (CBR similarity + ML-CBR agreement + data completeness)
+- [ ] 13-03-PLAN.md — Hybrid quote orchestrator (parallel CBR+ML, Anthropic LLM merger)
+- [ ] 13-04-PLAN.md — POST /estimate/hybrid endpoint with service call detection
 
 **Success Criteria:**
 1. CBR retrieves similar jobs with full line-item breakdown
