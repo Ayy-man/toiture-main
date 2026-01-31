@@ -1,8 +1,9 @@
 # Roadmap: TOITURELV Cortex
 
 **Created:** 2026-01-18
-**Phases:** 11
-**Requirements:** 32
+**Updated:** 2026-01-29
+**Phases:** 13
+**Requirements:** 37
 
 ## Phase Overview
 
@@ -19,6 +20,8 @@
 | 9 | Streaming Estimates | Fast estimates + streaming reasoning | PERF-01, PERF-02 | 4 |
 | 10 | Material ID Prediction ✓ | Predict materials and quantities | MAT-01, MAT-02 | 2 |
 | 11 | Cortex Admin Dashboard ✓ | Professional 4-tab admin interface | DASH-05 to DASH-12 | 8 |
+| 12 | Laurent Feedback Fixes | Address data quality & UX improvements | LF-01 to LF-05 | 5 |
+| 13 | Hybrid Quote Generation | Full quote with CBR + ML + LLM merger | HQG-01 to HQG-05 | 7 |
 
 ---
 
@@ -284,6 +287,59 @@ Plans:
 8. Mobile-responsive sidebar collapses ✓
 
 **Dependencies:** Phase 10 complete (material prediction model ready)
+
+---
+
+## Phase 12: Laurent Feedback Fixes
+
+**Goal:** Address data quality issues and UX improvements from Laurent's January 21, 2026 review
+
+**Requirements:** LF-01, LF-02, LF-03, LF-04, LF-05
+
+**Status:** Planned (2026-01-29)
+
+**Plans:** 5 plans
+
+Plans:
+- [ ] 12-01-PLAN.md — Data quality flags + 2022 labor data filtering
+- [ ] 12-02-PLAN.md — Revenue → Total Quote Value renaming (32+ occurrences)
+- [ ] 12-03-PLAN.md — Square footage compliance dashboard with alerts
+- [ ] 12-04-PLAN.md — 6-factor complexity system (0-56 points)
+- [ ] 12-05-PLAN.md — Three quote options (Basic/Standard/Premium tiers)
+
+**Success Criteria:**
+1. 2022 corrupted labor data flagged and filterable ✓
+2. All "Revenue" labels changed to "Total Quote Value" ✓
+3. Compliance dashboard tracks sqft data entry by estimator ✓
+4. Complexity uses 6 concrete factors instead of vague slider ✓
+5. Estimates return 3 tier options with different price points ✓
+
+**Dependencies:** Phase 11 complete (admin dashboard)
+
+**Source:** Laurent meeting feedback (January 21, 2026)
+
+---
+
+## Phase 13: Hybrid Quote Generation
+
+**Goal:** Full quote generation using CBR + ML + LLM merger architecture
+
+**Requirements:** HQG-01, HQG-02, HQG-03, HQG-04, HQG-05
+
+**Status:** Planning
+
+**Plans:** TBD
+
+**Success Criteria:**
+1. CBR retrieves similar jobs with full line-item breakdown
+2. ML predicts material IDs, quantities, work items, and labor
+3. LLM merges CBR + ML outputs, resolving conflicts
+4. Output includes work items, material IDs, quantities, labor hours, total price
+5. Confidence scoring reflects CBR/ML agreement
+6. Three-tier pricing (Basic/Standard/Premium) generated
+7. Response time <5 seconds for full quote
+
+**Dependencies:** Phase 10 complete (material prediction), Phase 2 (CBR), Phase 3 (LLM)
 
 ---
 
