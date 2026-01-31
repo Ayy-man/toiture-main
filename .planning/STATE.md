@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 13 - Hybrid Quote Generation (In Progress)
+**Current focus:** Phase 13 - Hybrid Quote Generation (Complete)
 
 ## Progress
 
@@ -24,21 +24,21 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 9 | Complete | 1/1 | 100% |
 | 10 | Complete | 2/2 | 100% |
 | 11 | Complete | 6/6 | 100% |
-| 13 | In Progress | 3/4 | 75% |
+| 13 | Complete | 4/4 | 100% |
 
-**Overall:** 25/28 plans complete (89%)
+**Overall:** 26/28 plans complete (93%)
 
 ```
-Progress: [██████████████████░░] 89%
+Progress: [██████████████████░░] 93%
 ```
 
 ## Current Phase
 
-**Phase 13: Hybrid Quote Generation** (In Progress)
+**Phase 13: Hybrid Quote Generation** (Complete)
 - Goal: ML + CBR hybrid quote generation with LLM merger
-- Status: Orchestrator service complete, full quote UI next
+- Status: All plans complete - endpoint ready for frontend integration
 
-### Phase 13 In Progress
+### Phase 13 Complete
 - **13-01:** Pydantic schemas for hybrid quote (Complete)
   - HybridQuoteRequest with 6 complexity factors validation
   - HybridQuoteOutput for LLM tool calling (model_json_schema() ready)
@@ -58,7 +58,12 @@ Progress: [██████████████████░░] 89%
   - JSON parsing with regex fallback + Pydantic validation
   - Graceful fallback: CBR-only, ML-only, LLM failure cases
   - Processing time tracking for <5s SLA monitoring
-- **13-04:** Full quote UI (Pending)
+- **13-04:** Hybrid quote endpoint (Complete)
+  - POST /estimate/hybrid endpoint accepting HybridQuoteRequest
+  - Service call detection routing (material_lines=0 or sqft<100)
+  - Three-tier pricing for service calls
+  - Full hybrid pipeline for normal jobs
+  - Error handling: 503 for total failure, 500 for other errors
 
 ### Phase 8 In Progress
 - **08-01:** Deployment configuration files (Complete)
@@ -212,6 +217,9 @@ Progress: [██████████████████░░] 89%
 | JSON-in-prompt with regex extraction | 13-03 | More robust than tool calling for LLM merger |
 | asyncio.gather with return_exceptions | 13-03 | Graceful parallel execution with failure handling |
 | Fallback tier percentages (-15%/base/+18%) | 13-03 | Industry standard pricing spread |
+| Service call detection: material_lines=0 OR sqft<100 | 13-04 | Routes labor-only jobs to fast path |
+| Service call tier multipliers (0.9x/1.0x/1.2x) | 13-04 | Industry service call pricing pattern |
+| 503 for CBR+ML total failure | 13-04 | Service unavailable semantics |
 
 ## Session History
 
@@ -241,11 +249,12 @@ Progress: [██████████████████░░] 89%
 | 2026-01-31 | Plan 13-01 executed | Hybrid quote Pydantic schemas |
 | 2026-01-31 | Plan 13-02 executed | Confidence scorer service with weighted formula |
 | 2026-01-31 | Plan 13-03 executed | Hybrid quote orchestrator with async CBR+ML+LLM |
+| 2026-01-31 | Plan 13-04 executed | Hybrid quote endpoint with service call detection |
 
 ## Session Continuity
 
 Last session: 2026-01-31
-Stopped at: Completed 13-03-PLAN.md
+Stopped at: Completed 13-04-PLAN.md (Phase 13 Complete)
 Resume file: None
 
 ## Blockers
@@ -256,17 +265,15 @@ None currently.
 
 - Tech stack: FastAPI (Railway) + Next.js (Vercel) + Pinecone + Supabase + OpenRouter
 - Frontend complete: estimate form, review queue, password gate, analytics dashboard, admin dashboard (all 4 tabs)
-- Backend complete: ML prediction, CBR, LLM reasoning, feedback API, material prediction, dashboard API, hybrid quote orchestrator
+- Backend complete: ML prediction, CBR, LLM reasoning, feedback API, material prediction, dashboard API, hybrid quote endpoint
 - Deployment config ready: Dockerfile, railway.json, vercel.json
 - Docker build test skipped (Docker not installed locally) - will validate on Railway
 - Material prediction models: F1-micro 70.3%, 122 quantity regressors, 506 rules, 21 feature triggers
 - Material endpoints: POST /estimate/materials, POST /estimate/full (lazy loading)
 - Phase 11 Admin Dashboard complete: all 4 tabs (Estimateur, Historique, Apercu, Clients)
 - Phase 6 Analytics Dashboard complete: /dashboard route with charts
-- Phase 13 schemas complete: HybridQuoteRequest, HybridQuoteOutput, HybridQuoteResponse, WorkItem, MaterialLineItem, PricingTier
-- Phase 13-02 confidence scorer complete: calculate_confidence, calculate_data_completeness, calculate_material_agreement
-- Phase 13-03 orchestrator complete: generate_hybrid_quote async with parallel CBR+ML and LLM merger
-- Next: Phase 13-04 (Full quote UI)
+- Phase 13 Hybrid Quote complete: POST /estimate/hybrid with service call detection and LLM merger
+- Next: Phase 8-02 (Deployment execution) or Full Quote UI integration
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
@@ -277,4 +284,4 @@ None currently.
 - Phase 13 added: Hybrid Quote Generation (ML + CBR + LLM merger for full quote generation)
 
 ---
-*State updated: 2026-01-31 (Phase 13 Plan 03 complete)*
+*State updated: 2026-01-31 (Phase 13 Complete)*
