@@ -24,19 +24,19 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 9 | Complete | 1/1 | 100% |
 | 10 | Complete | 2/2 | 100% |
 | 11 | Complete | 6/6 | 100% |
-| 13 | In Progress | 1/4 | 25% |
+| 13 | In Progress | 2/4 | 50% |
 
-**Overall:** 23/28 plans complete (82%)
+**Overall:** 24/28 plans complete (86%)
 
 ```
-Progress: [████████████████░░░░] 82%
+Progress: [█████████████████░░░] 86%
 ```
 
 ## Current Phase
 
 **Phase 13: Hybrid Quote Generation** (In Progress)
 - Goal: ML + CBR hybrid quote generation with LLM merger
-- Status: Pydantic schemas complete, API endpoint next
+- Status: Pydantic schemas and confidence scorer complete, LLM merger next
 
 ### Phase 13 In Progress
 - **13-01:** Pydantic schemas for hybrid quote (Complete)
@@ -45,7 +45,12 @@ Progress: [████████████████░░░░] 82%
   - HybridQuoteResponse with metadata and review flags
   - WorkItem, MaterialLineItem, PricingTier supporting models
   - Three-tier pricing enforcement (Basic/Standard/Premium)
-- **13-02:** Hybrid quote API endpoint (Pending)
+- **13-02:** Confidence scorer service (Complete)
+  - calculate_confidence() with weighted formula (30% CBR, 40% agreement, 30% completeness)
+  - calculate_data_completeness() for input field presence scoring
+  - calculate_material_agreement() using Jaccard similarity
+  - ML-only fallback always flags for review
+  - Confidence < 0.5 triggers needs_review flag
 - **13-03:** LLM merger service (Pending)
 - **13-04:** Full quote UI (Pending)
 
@@ -194,6 +199,9 @@ Progress: [████████████████░░░░] 82%
 | 5% tolerance for complexity sum | 13-01 | Handles frontend rounding differences |
 | Three-tier pricing at model level | 13-01 | Enforces Basic/Standard/Premium in schema |
 | Source tracking Literal types | 13-01 | Transparency for CBR/ML/MERGED origin |
+| 30/40/30 confidence weights | 13-02 | CBR similarity, ML-CBR agreement, data completeness |
+| Review threshold at 0.5 | 13-02 | Flags low confidence for Laurent's manual review |
+| ML-only always needs review | 13-02 | No CBR validation available |
 
 ## Session History
 
@@ -221,11 +229,12 @@ Progress: [████████████████░░░░] 82%
 | 2026-01-19 | Plan 11-06 executed | Estimateur sub-views with tab navigation |
 | 2026-01-19 | Plan 06-02 executed | Analytics dashboard charts (Phase 6 complete) |
 | 2026-01-31 | Plan 13-01 executed | Hybrid quote Pydantic schemas |
+| 2026-01-31 | Plan 13-02 executed | Confidence scorer service with weighted formula |
 
 ## Session Continuity
 
 Last session: 2026-01-31
-Stopped at: Completed 13-01-PLAN.md
+Stopped at: Completed 13-02-PLAN.md
 Resume file: None
 
 ## Blockers
@@ -244,7 +253,8 @@ None currently.
 - Phase 11 Admin Dashboard complete: all 4 tabs (Estimateur, Historique, Apercu, Clients)
 - Phase 6 Analytics Dashboard complete: /dashboard route with charts
 - Phase 13 schemas complete: HybridQuoteRequest, HybridQuoteOutput, HybridQuoteResponse, WorkItem, MaterialLineItem, PricingTier
-- Next: Phase 13-02 (Hybrid quote API endpoint)
+- Phase 13-02 confidence scorer complete: calculate_confidence, calculate_data_completeness, calculate_material_agreement
+- Next: Phase 13-03 (LLM merger service)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
@@ -255,4 +265,4 @@ None currently.
 - Phase 13 added: Hybrid Quote Generation (ML + CBR + LLM merger for full quote generation)
 
 ---
-*State updated: 2026-01-31 (Phase 13 Plan 01 complete)*
+*State updated: 2026-01-31 (Phase 13 Plan 02 complete)*
