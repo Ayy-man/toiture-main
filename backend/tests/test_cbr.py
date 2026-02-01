@@ -33,7 +33,7 @@ def test_similar_case_structure(client):
     ]
 
     # Patch where the function is imported (in the router module)
-    with patch("backend.app.routers.estimate.query_similar_cases", return_value=mock_cases):
+    with patch("app.routers.estimate.query_similar_cases", return_value=mock_cases):
         response = client.post(
             "/estimate",
             json={"sqft": 1500, "category": "Bardeaux"}
@@ -53,7 +53,7 @@ def test_similar_case_structure(client):
 def test_estimate_works_without_pinecone(client):
     """Estimate still works when Pinecone is not configured."""
     # query_similar_cases returns empty list when not initialized
-    with patch("backend.app.routers.estimate.query_similar_cases", return_value=[]):
+    with patch("app.routers.estimate.query_similar_cases", return_value=[]):
         response = client.post(
             "/estimate",
             json={"sqft": 2000, "category": "Bardeaux"}
@@ -66,7 +66,7 @@ def test_estimate_works_without_pinecone(client):
 
 def test_build_query_text():
     """Query text built correctly from inputs."""
-    from backend.app.services.embeddings import build_query_text
+    from app.services.embeddings import build_query_text
 
     text = build_query_text(
         sqft=1500,
@@ -84,7 +84,7 @@ def test_build_query_text():
 
 def test_build_query_text_minimal():
     """Query text handles minimal inputs."""
-    from backend.app.services.embeddings import build_query_text
+    from app.services.embeddings import build_query_text
 
     text = build_query_text(
         sqft=1000,
@@ -100,7 +100,7 @@ def test_build_query_text_minimal():
 
 def test_embedding_model_generates_correct_dimensions(client):
     """Embedding model outputs 384-dim vectors."""
-    from backend.app.services.embeddings import generate_query_embedding
+    from app.services.embeddings import generate_query_embedding
 
     # Model should be loaded by app lifespan
     try:
