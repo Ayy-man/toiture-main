@@ -157,7 +157,7 @@ export function FullQuoteForm() {
                         />
                       </FormControl>
                       <FormDescription className="text-xs text-muted-foreground">
-                        Superficie totale du toit en pi²
+                        {t.fullQuote.superficieDescription}
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -177,7 +177,7 @@ export function FullQuoteForm() {
                       >
                         <FormControl>
                           <SelectTrigger className="h-11">
-                            <SelectValue placeholder="Sélectionnez une catégorie" />
+                            <SelectValue placeholder={t.fullQuote.categoriePlaceholder} />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -189,7 +189,7 @@ export function FullQuoteForm() {
                         </SelectContent>
                       </Select>
                       <FormDescription className="text-xs text-muted-foreground">
-                        Type de travaux de toiture
+                        {t.fullQuote.categorieDescription}
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -256,9 +256,9 @@ export function FullQuoteForm() {
                   <Layers className="size-4" />
                 </div>
                 <div>
-                  <CardTitle className="text-lg">Complexité du projet</CardTitle>
+                  <CardTitle className="text-lg">{t.fullQuote.complexiteProjet}</CardTitle>
                   <CardDescription className="text-sm">
-                    Sélectionnez un niveau ou personnalisez les facteurs
+                    {t.fullQuote.complexiteDescription}
                   </CardDescription>
                 </div>
               </div>
@@ -312,9 +312,9 @@ export function FullQuoteForm() {
                   <Wrench className="size-4" />
                 </div>
                 <div>
-                  <CardTitle className="text-lg">Caractéristiques</CardTitle>
+                  <CardTitle className="text-lg">{t.fullQuote.caracteristiques}</CardTitle>
                   <CardDescription className="text-sm">
-                    Éléments additionnels du projet
+                    {t.fullQuote.caracteristiquesDescription}
                   </CardDescription>
                 </div>
               </div>
@@ -331,7 +331,7 @@ export function FullQuoteForm() {
                         {t.fullQuote.aCheminee}
                       </FormLabel>
                       <FormDescription className="text-xs text-muted-foreground">
-                        Travaux autour d&apos;une cheminée
+                        {t.fullQuote.chemineeDescription}
                       </FormDescription>
                     </div>
                     <FormControl>
@@ -355,7 +355,7 @@ export function FullQuoteForm() {
                         {t.fullQuote.aLucarnes}
                       </FormLabel>
                       <FormDescription className="text-xs text-muted-foreground">
-                        Puits de lumière ou lucarnes
+                        {t.fullQuote.lucarnesDescription}
                       </FormDescription>
                     </div>
                     <FormControl>
@@ -379,7 +379,7 @@ export function FullQuoteForm() {
                         {t.fullQuote.aSousTraitants}
                       </FormLabel>
                       <FormDescription className="text-xs text-muted-foreground">
-                        Implique des sous-traitants
+                        {t.fullQuote.sousTraitantsDescription}
                       </FormDescription>
                     </div>
                     <FormControl>

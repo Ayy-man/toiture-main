@@ -5,6 +5,7 @@ import { ChevronDown, Settings2 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/lib/i18n";
 
 /**
  * Preset values for complexity factors.
@@ -40,53 +41,17 @@ const PRESETS = {
 type PresetType = keyof typeof PRESETS;
 
 /**
- * Complexity factor configuration.
- * French labels with min/max values from backend schema.
+ * Complexity factor keys with min/max values from backend schema.
+ * Labels come from translations.
  */
-const FACTORS = [
-  {
-    key: "access_difficulty" as const,
-    label: "Difficulté d'accès",
-    description: "Facilité d'accès au toit",
-    min: 0,
-    max: 10,
-  },
-  {
-    key: "roof_pitch" as const,
-    label: "Pente du toit",
-    description: "Inclinaison de la toiture",
-    min: 0,
-    max: 8,
-  },
-  {
-    key: "penetrations" as const,
-    label: "Pénétrations",
-    description: "Nombre d'ouvertures et obstacles",
-    min: 0,
-    max: 10,
-  },
-  {
-    key: "material_removal" as const,
-    label: "Retrait de matériaux",
-    description: "Complexité du démontage",
-    min: 0,
-    max: 8,
-  },
-  {
-    key: "safety_concerns" as const,
-    label: "Sécurité",
-    description: "Niveau de risque du chantier",
-    min: 0,
-    max: 10,
-  },
-  {
-    key: "timeline_constraints" as const,
-    label: "Contraintes de délai",
-    description: "Urgence des travaux",
-    min: 0,
-    max: 10,
-  },
-];
+const FACTOR_CONFIG = [
+  { key: "access_difficulty" as const, labelKey: "difficultAcces", descKey: "difficultAccesDesc", min: 0, max: 10 },
+  { key: "roof_pitch" as const, labelKey: "penteToit", descKey: "penteToitDesc", min: 0, max: 8 },
+  { key: "penetrations" as const, labelKey: "penetrationsLabel", descKey: "penetrationsDesc", min: 0, max: 10 },
+  { key: "material_removal" as const, labelKey: "retraitMateriauxLabel", descKey: "retraitMateriauxDesc", min: 0, max: 8 },
+  { key: "safety_concerns" as const, labelKey: "securiteLabel", descKey: "securiteDesc", min: 0, max: 10 },
+  { key: "timeline_constraints" as const, labelKey: "contraintesDelaiLabel", descKey: "contraintesDelaiDesc", min: 0, max: 10 },
+] as const;
 
 export interface ComplexityPresetsProps {
   value: {
@@ -111,6 +76,7 @@ export interface ComplexityPresetsProps {
  * - Preset clears when any slider is manually adjusted
  */
 export function ComplexityPresets({ value, onChange }: ComplexityPresetsProps) {
+  const { t } = useLanguage();
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Calculate aggregate as sum of all factors
@@ -166,11 +132,16 @@ export function ComplexityPresets({ value, onChange }: ComplexityPresetsProps) {
       {/* Preset Selection - Pill Style */}
       <div className="space-y-3">
         <label className="text-sm font-medium text-foreground">
-          Niveau de complexité
+          {t.fullQuote.niveauComplexite}
         </label>
         <div className="flex gap-2">
           {(Object.keys(PRESETS) as PresetType[]).map((preset) => {
             const isActive = currentPreset === preset;
+            const presetLabels: Record<PresetType, string> = {
+              Simple: t.fullQuote.presetSimple,
+              Modere: t.fullQuote.presetModere,
+              Complexe: t.fullQuote.presetComplexe,
+            };
             return (
               <button
                 key={preset}
@@ -183,7 +154,7 @@ export function ComplexityPresets({ value, onChange }: ComplexityPresetsProps) {
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 )}
               >
-                {preset}
+                {presetLabels[preset]}
               </button>
             );
           })}
@@ -193,7 +164,7 @@ export function ComplexityPresets({ value, onChange }: ComplexityPresetsProps) {
       {/* Computed Aggregate - Progress Bar Style */}
       <div className="space-y-2">
         <div className="flex justify-between text-sm">
-          <span className="text-muted-foreground">Score de complexité</span>
+          <span className="text-muted-foreground">{t.fullQuote.scoreComplexite}</span>
           <span className="font-semibold text-foreground">{aggregate}/56</span>
         </div>
         <div className="h-2 bg-muted rounded-full overflow-hidden">
@@ -217,7 +188,7 @@ export function ComplexityPresets({ value, onChange }: ComplexityPresetsProps) {
         >
           <span className="flex items-center gap-2">
             <Settings2 className="size-4 text-muted-foreground" />
-            Personnaliser les facteurs
+            {t.fullQuote.personnaliserFacteurs}
           </span>
           <ChevronDown
             className={cn(
@@ -229,9 +200,10 @@ export function ComplexityPresets({ value, onChange }: ComplexityPresetsProps) {
 
         {isExpanded && (
           <div className="space-y-4 pt-2 pl-1">
-            {FACTORS.map((factor) => {
+            {FACTOR_CONFIG.map((factor) => {
               const currentValue = value[factor.key];
-              const percentage = (currentValue / factor.max) * 100;
+              const label = t.fullQuote[factor.labelKey as keyof typeof t.fullQuote] as string;
+              const description = t.fullQuote[factor.descKey as keyof typeof t.fullQuote] as string;
               return (
                 <div key={factor.key} className="space-y-2">
                   <div className="flex justify-between items-baseline">
@@ -240,10 +212,10 @@ export function ComplexityPresets({ value, onChange }: ComplexityPresetsProps) {
                         htmlFor={`factor-${factor.key}`}
                         className="text-sm font-medium"
                       >
-                        {factor.label}
+                        {label}
                       </label>
                       <p className="text-xs text-muted-foreground">
-                        {factor.description}
+                        {description}
                       </p>
                     </div>
                     <span className="text-sm font-semibold text-primary tabular-nums">
@@ -259,7 +231,7 @@ export function ComplexityPresets({ value, onChange }: ComplexityPresetsProps) {
                     onValueChange={(newValue) =>
                       handleFactorChange(factor.key, newValue)
                     }
-                    aria-label={factor.label}
+                    aria-label={label}
                     className="py-1"
                   />
                 </div>
