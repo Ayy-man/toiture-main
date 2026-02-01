@@ -11,6 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import type { HybridQuoteResponse } from "@/types/hybrid-quote";
+import { QuoteActions } from "./quote-actions";
 
 export interface QuoteResultProps {
   quote: HybridQuoteResponse;
@@ -157,8 +158,8 @@ export function QuoteResult({ quote, category, sqft }: QuoteResultProps) {
           </CollapsibleContent>
         </Collapsible>
 
-        {/* QuoteActions slot - will be added by Plan 14-03 */}
-        {/* <QuoteActions quote={quote} category={category} sqft={sqft} /> */}
+        {/* QuoteActions - PDF export and future actions */}
+        <QuoteActions quote={quote} category={category} sqft={sqft} />
       </CardContent>
     </Card>
   );
