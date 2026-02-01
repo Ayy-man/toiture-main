@@ -13,22 +13,19 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { fr } from "@/lib/i18n/fr";
+import { LanguageProvider, useLanguage } from "@/lib/i18n";
 
-const routeLabels: Record<string, string> = {
-  estimateur: fr.nav.estimateur,
-  historique: fr.nav.historique,
-  apercu: fr.nav.apercu,
-  clients: fr.nav.clients,
-};
-
-export default function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const { t } = useLanguage();
   const segments = pathname.split("/").filter(Boolean);
+
+  const routeLabels: Record<string, string> = {
+    estimateur: t.nav.estimateur,
+    historique: t.nav.historique,
+    apercu: t.nav.apercu,
+    clients: t.nav.clients,
+  };
 
   return (
     <SidebarProvider defaultOpen>
@@ -62,5 +59,17 @@ export default function AdminLayout({
         </main>
       </SidebarInset>
     </SidebarProvider>
+  );
+}
+
+export default function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <LanguageProvider>
+      <AdminLayoutInner>{children}</AdminLayoutInner>
+    </LanguageProvider>
   );
 }

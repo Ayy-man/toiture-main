@@ -16,14 +16,18 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Calculator, History, LayoutDashboard, Users, Home } from "lucide-react";
-import { fr } from "@/lib/i18n/fr";
+import { useLanguage, type Locale } from "@/lib/i18n";
+import { Button } from "@/components/ui/button";
 
-const navItems = [
-  { title: fr.nav.estimateur, href: "/estimateur", icon: Calculator },
-  { title: fr.nav.historique, href: "/historique", icon: History },
-  { title: fr.nav.apercu, href: "/apercu", icon: LayoutDashboard },
-  { title: fr.nav.clients, href: "/clients", icon: Users },
-];
+function useNavItems() {
+  const { t } = useLanguage();
+  return [
+    { title: t.nav.estimateur, href: "/estimateur", icon: Calculator },
+    { title: t.nav.historique, href: "/historique", icon: History },
+    { title: t.nav.apercu, href: "/apercu", icon: LayoutDashboard },
+    { title: t.nav.clients, href: "/clients", icon: Users },
+  ];
+}
 
 function SidebarBranding() {
   const { state } = useSidebar();
@@ -46,7 +50,9 @@ function SidebarBranding() {
   );
 }
 
-function NavItem({ item, isActive }: { item: typeof navItems[0]; isActive: boolean }) {
+type NavItemType = { title: string; href: string; icon: React.ComponentType<{ className?: string }> };
+
+function NavItem({ item, isActive }: { item: NavItemType; isActive: boolean }) {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
 
@@ -61,6 +67,48 @@ function NavItem({ item, isActive }: { item: typeof navItems[0]; isActive: boole
         {!isCollapsed && <span>{item.title}</span>}
       </Link>
     </SidebarMenuButton>
+  );
+}
+
+function LanguageToggle() {
+  const { locale, setLocale } = useLanguage();
+  const { state } = useSidebar();
+  const isCollapsed = state === "collapsed";
+
+  const handleToggle = (newLocale: Locale) => {
+    setLocale(newLocale);
+  };
+
+  if (isCollapsed) {
+    return (
+      <SidebarMenuButton
+        tooltip={locale === "fr" ? "Langue" : "Language"}
+        onClick={() => handleToggle(locale === "fr" ? "en" : "fr")}
+      >
+        <span className="text-xs font-bold">{locale.toUpperCase()}</span>
+      </SidebarMenuButton>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-1 px-2 py-1">
+      <Button
+        variant={locale === "en" ? "default" : "ghost"}
+        size="sm"
+        className="h-7 px-2 text-xs"
+        onClick={() => handleToggle("en")}
+      >
+        EN
+      </Button>
+      <Button
+        variant={locale === "fr" ? "default" : "ghost"}
+        size="sm"
+        className="h-7 px-2 text-xs"
+        onClick={() => handleToggle("fr")}
+      >
+        FR
+      </Button>
+    </div>
   );
 }
 
@@ -85,6 +133,7 @@ function SidebarUserInfo() {
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const navItems = useNavItems();
 
   return (
     <Sidebar collapsible="icon">
@@ -112,6 +161,9 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter className="border-t border-sidebar-border">
         <SidebarMenu>
+          <SidebarMenuItem>
+            <LanguageToggle />
+          </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarUserInfo />
           </SidebarMenuItem>
