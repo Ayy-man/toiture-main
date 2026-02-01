@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/sidebar";
 import { Calculator, History, LayoutDashboard, Users, Home } from "lucide-react";
 import { useLanguage, type Locale } from "@/lib/i18n";
-import { Button } from "@/components/ui/button";
 
 function useNavItems() {
   const { t } = useLanguage();
@@ -91,23 +90,29 @@ function LanguageToggle() {
   }
 
   return (
-    <div className="flex items-center gap-1 px-2 py-2 rounded-md bg-sidebar-accent/50">
-      <Button
-        variant={locale === "en" ? "default" : "outline"}
-        size="sm"
-        className="h-8 px-3 text-xs font-semibold flex-1"
+    <div className="flex items-center gap-1 p-1 rounded-lg bg-sidebar-accent">
+      <button
+        type="button"
+        className={`h-8 px-3 text-xs font-semibold flex-1 rounded-md transition-colors ${
+          locale === "en"
+            ? "bg-sidebar-primary text-sidebar-primary-foreground"
+            : "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent"
+        }`}
         onClick={() => handleToggle("en")}
       >
         EN
-      </Button>
-      <Button
-        variant={locale === "fr" ? "default" : "outline"}
-        size="sm"
-        className="h-8 px-3 text-xs font-semibold flex-1"
+      </button>
+      <button
+        type="button"
+        className={`h-8 px-3 text-xs font-semibold flex-1 rounded-md transition-colors ${
+          locale === "fr"
+            ? "bg-sidebar-primary text-sidebar-primary-foreground"
+            : "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent"
+        }`}
         onClick={() => handleToggle("fr")}
       >
         FR
-      </Button>
+      </button>
     </div>
   );
 }
