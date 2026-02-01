@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 14 - Full Quote Frontend (Complete)
+**Current focus:** Phase 15 - Frontend Design Overhaul (Complete)
 
 ## Progress
 
@@ -26,8 +26,9 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 11 | Complete | 6/6 | 100% |
 | 13 | Complete | 4/4 | 100% |
 | 14 | Complete | 3/3 | 100% |
+| 15 | Complete | 1/1 | 100% |
 
-**Overall:** 29/31 plans complete (94%)
+**Overall:** 30/32 plans complete (94%)
 
 ```
 Progress: [██████████████████░░] 94%
@@ -35,9 +36,18 @@ Progress: [██████████████████░░] 94%
 
 ## Current Phase
 
-**Phase 14: Full Quote Frontend** (Complete)
-- Goal: Frontend integration with complexity presets, invoice display, PDF export
+**Phase 15: Frontend Design Overhaul** (Complete)
+- Goal: Modern UI with shadcn Lyra preset, sidebar fix, form redesign
 - Status: All plans complete - verified
+
+### Phase 15 Complete
+- **15-01:** Frontend design overhaul with Lyra preset (Complete)
+  - Lyra theme CSS variables with zinc palette and large radius
+  - JetBrains Mono font added
+  - Sidebar rewritten with explicit width control (16rem → 4rem)
+  - Full quote form redesigned with 3 card sections
+  - Complexity presets with pill-style buttons and progress bar
+  - Button and slider components polished
 
 ### Phase 14 Complete
 - **14-01:** TypeScript types, API client, complexity presets (Complete)
@@ -285,11 +295,12 @@ Progress: [██████████████████░░] 94%
 | 2026-02-01 | Plan 14-01 executed | TypeScript types, API client, complexity presets |
 | 2026-02-01 | Plan 14-02 executed | Invoice-style quote display and full form integration |
 | 2026-02-01 | Plan 14-03 executed | PDF export with client-facing template |
+| 2026-02-01 | Plan 15-01 executed | Frontend design overhaul with Lyra preset |
 
 ## Session Continuity
 
 Last session: 2026-02-01
-Stopped at: Phase 14 Complete (All 3 plans verified)
+Stopped at: Phase 15 Complete (All plans verified)
 Resume file: None
 
 ## Blockers
@@ -318,6 +329,7 @@ None currently.
 - Phase 10 added: Material ID Prediction Model Training (7,433 samples, multi-label classifier)
 - Phase 11 added: Cortex Admin Dashboard (4-tab professional interface) - moved after material prediction
 - Phase 13 added: Hybrid Quote Generation (ML + CBR + LLM merger for full quote generation)
+- Phase 15 added: Frontend Design Overhaul (shadcn Lyra preset, fix broken UI/UX)
 
 ---
 *State updated: 2026-02-01 (Phase 14 Complete)*

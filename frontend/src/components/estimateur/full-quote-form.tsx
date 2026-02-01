@@ -10,6 +10,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
@@ -38,6 +39,7 @@ import { submitHybridQuote } from "@/lib/api/hybrid-quote";
 import type { HybridQuoteResponse, HybridQuoteRequest } from "@/types/hybrid-quote";
 import { CATEGORIES } from "@/lib/schemas";
 import { fr } from "@/lib/i18n/fr";
+import { Loader2, Calculator, Layers, Wrench, AlertCircle } from "lucide-react";
 
 /**
  * Full quote form with complexity presets and invoice-style result display.
@@ -116,66 +118,151 @@ export function FullQuoteForm() {
   }
 
   return (
-    <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>{fr.fullQuote.titre}</CardTitle>
-          <CardDescription>{fr.fullQuote.description}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              {/* Square Footage */}
-              <FormField
-                control={form.control}
-                name="sqft"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{fr.estimateur.superficie}</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="number"
-                        placeholder="1500"
-                        {...field}
-                        onChange={(e) =>
-                          field.onChange(e.target.valueAsNumber || "")
-                        }
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Category */}
-              <FormField
-                control={form.control}
-                name="category"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{fr.estimateur.categorie}</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
+    <div className="space-y-6 max-w-3xl">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          {/* Project Details Section */}
+          <Card className="card-hover">
+            <CardHeader className="pb-4">
+              <div className="flex items-center gap-2">
+                <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Calculator className="size-4" />
+                </div>
+                <div>
+                  <CardTitle className="text-lg">{fr.fullQuote.titre}</CardTitle>
+                  <CardDescription className="text-sm">{fr.fullQuote.description}</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Primary inputs - side by side on larger screens */}
+              <div className="grid gap-4 sm:grid-cols-2">
+                {/* Square Footage */}
+                <FormField
+                  control={form.control}
+                  name="sqft"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-medium">{fr.estimateur.superficie}</FormLabel>
                       <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Selectionnez une categorie" />
-                        </SelectTrigger>
+                        <Input
+                          type="number"
+                          placeholder="1500"
+                          className="h-11"
+                          {...field}
+                          onChange={(e) =>
+                            field.onChange(e.target.valueAsNumber || "")
+                          }
+                        />
                       </FormControl>
-                      <SelectContent>
-                        {CATEGORIES.map((cat) => (
-                          <SelectItem key={cat} value={cat}>
-                            {cat}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                      <FormDescription className="text-xs text-muted-foreground">
+                        Superficie totale du toit en pi²
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
+                {/* Category */}
+                <FormField
+                  control={form.control}
+                  name="category"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-medium">{fr.estimateur.categorie}</FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger className="h-11">
+                            <SelectValue placeholder="Sélectionnez une catégorie" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {CATEGORIES.map((cat) => (
+                            <SelectItem key={cat} value={cat}>
+                              {cat}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormDescription className="text-xs text-muted-foreground">
+                        Type de travaux de toiture
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              {/* Secondary inputs - material and labor lines */}
+              <div className="grid gap-4 sm:grid-cols-2">
+                {/* Material Lines */}
+                <FormField
+                  control={form.control}
+                  name="material_lines"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-medium">{fr.fullQuote.lignesMateriaux}</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="5"
+                          className="h-11"
+                          {...field}
+                          onChange={(e) =>
+                            field.onChange(e.target.valueAsNumber || "")
+                          }
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Labor Lines */}
+                <FormField
+                  control={form.control}
+                  name="labor_lines"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-medium">{fr.fullQuote.lignesMainOeuvre}</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="2"
+                          className="h-11"
+                          {...field}
+                          onChange={(e) =>
+                            field.onChange(e.target.valueAsNumber || "")
+                          }
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Complexity Section */}
+          <Card className="card-hover">
+            <CardHeader className="pb-4">
+              <div className="flex items-center gap-2">
+                <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Layers className="size-4" />
+                </div>
+                <div>
+                  <CardTitle className="text-lg">Complexité du projet</CardTitle>
+                  <CardDescription className="text-sm">
+                    Sélectionnez un niveau ou personnalisez les facteurs
+                  </CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
               {/* Complexity Presets with Controller */}
               <Controller
                 control={form.control}
@@ -213,61 +300,38 @@ export function FullQuoteForm() {
                   />
                 )}
               />
+            </CardContent>
+          </Card>
 
-              {/* Material Lines */}
-              <FormField
-                control={form.control}
-                name="material_lines"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{fr.fullQuote.lignesMateriaux}</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="number"
-                        placeholder="5"
-                        {...field}
-                        onChange={(e) =>
-                          field.onChange(e.target.valueAsNumber || "")
-                        }
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Labor Lines */}
-              <FormField
-                control={form.control}
-                name="labor_lines"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{fr.fullQuote.lignesMainOeuvre}</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="number"
-                        placeholder="2"
-                        {...field}
-                        onChange={(e) =>
-                          field.onChange(e.target.valueAsNumber || "")
-                        }
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
+          {/* Features Section */}
+          <Card className="card-hover">
+            <CardHeader className="pb-4">
+              <div className="flex items-center gap-2">
+                <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Wrench className="size-4" />
+                </div>
+                <div>
+                  <CardTitle className="text-lg">Caractéristiques</CardTitle>
+                  <CardDescription className="text-sm">
+                    Éléments additionnels du projet
+                  </CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-3">
               {/* Has Chimney */}
               <FormField
                 control={form.control}
                 name="has_chimney"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                  <FormItem className="flex items-center justify-between rounded-lg border border-border/50 bg-muted/30 p-4 transition-colors hover:bg-muted/50">
                     <div className="space-y-0.5">
-                      <FormLabel className="text-base">
+                      <FormLabel className="text-sm font-medium cursor-pointer">
                         {fr.fullQuote.aCheminee}
                       </FormLabel>
+                      <FormDescription className="text-xs text-muted-foreground">
+                        Travaux autour d&apos;une cheminée
+                      </FormDescription>
                     </div>
                     <FormControl>
                       <Switch
@@ -284,11 +348,14 @@ export function FullQuoteForm() {
                 control={form.control}
                 name="has_skylights"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                  <FormItem className="flex items-center justify-between rounded-lg border border-border/50 bg-muted/30 p-4 transition-colors hover:bg-muted/50">
                     <div className="space-y-0.5">
-                      <FormLabel className="text-base">
+                      <FormLabel className="text-sm font-medium cursor-pointer">
                         {fr.fullQuote.aLucarnes}
                       </FormLabel>
+                      <FormDescription className="text-xs text-muted-foreground">
+                        Puits de lumière ou lucarnes
+                      </FormDescription>
                     </div>
                     <FormControl>
                       <Switch
@@ -305,11 +372,14 @@ export function FullQuoteForm() {
                 control={form.control}
                 name="has_subs"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                  <FormItem className="flex items-center justify-between rounded-lg border border-border/50 bg-muted/30 p-4 transition-colors hover:bg-muted/50">
                     <div className="space-y-0.5">
-                      <FormLabel className="text-base">
+                      <FormLabel className="text-sm font-medium cursor-pointer">
                         {fr.fullQuote.aSousTraitants}
                       </FormLabel>
+                      <FormDescription className="text-xs text-muted-foreground">
+                        Implique des sous-traitants
+                      </FormDescription>
                     </div>
                     <FormControl>
                       <Switch
@@ -320,20 +390,38 @@ export function FullQuoteForm() {
                   </FormItem>
                 )}
               />
+            </CardContent>
+          </Card>
 
-              {/* Error Display */}
-              {error && (
-                <p className="text-sm font-medium text-destructive">{error}</p>
-              )}
+          {/* Error Display */}
+          {error && (
+            <div className="flex items-center gap-2 rounded-lg border border-destructive/50 bg-destructive/10 p-4 text-destructive">
+              <AlertCircle className="size-5 shrink-0" />
+              <p className="text-sm font-medium">{error}</p>
+            </div>
+          )}
 
-              {/* Submit Button */}
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? fr.fullQuote.enChargement : fr.fullQuote.generer}
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
+          {/* Submit Button */}
+          <Button
+            type="submit"
+            size="lg"
+            className="w-full h-12 text-base font-semibold"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 size-5 animate-spin" />
+                {fr.fullQuote.enChargement}
+              </>
+            ) : (
+              <>
+                <Calculator className="mr-2 size-5" />
+                {fr.fullQuote.generer}
+              </>
+            )}
+          </Button>
+        </form>
+      </Form>
 
       {/* Quote Result Display */}
       {result && (

@@ -2,8 +2,8 @@
 
 **Created:** 2026-01-18
 **Updated:** 2026-02-01
-**Phases:** 14
-**Requirements:** 42
+**Phases:** 15
+**Requirements:** 47
 
 ## Phase Overview
 
@@ -23,6 +23,7 @@
 | 12 | Laurent Feedback Fixes | Address data quality & UX improvements | LF-01 to LF-05 | 5 |
 | 13 | Hybrid Quote Generation ✓ | Full quote with CBR + ML + LLM merger | HQG-01 to HQG-05 | 7 |
 | 14 | Full Quote Frontend ✓ | Frontend with presets, invoice display, PDF | FQ-01 to FQ-05 | 6 |
+| 15 | Frontend Design Overhaul | Modern UI with shadcn Lyra preset | UI-01 to UI-05 | 5 |
 
 ---
 
@@ -376,6 +377,32 @@ Plans:
 **Dependencies:** Phase 13 complete (hybrid quote endpoint)
 
 **Design Doc:** docs/plans/2026-02-01-full-quote-frontend-design.md
+
+---
+
+## Phase 15: Frontend Design Overhaul ✓
+
+**Goal:** Modern, polished UI using shadcn Lyra preset with fixed layout issues
+
+**Requirements:** UI-01, UI-02, UI-03, UI-04, UI-05
+
+**Status:** Complete (2026-02-01)
+
+**Plans:** 1 plan
+
+Plans:
+- [x] 15-01-PLAN.md — Lyra theme, sidebar fix, form redesign, component polish
+
+**Success Criteria:**
+1. shadcn Lyra preset applied with JetBrains Mono font and large radius
+2. Sidebar layout fixed - no overlapping text, proper spacing
+3. Form inputs have proper visual hierarchy and polish
+4. Complexity control redesigned (not broken slider)
+5. Consistent dark theme with proper contrast
+
+**Dependencies:** Phase 14 complete
+
+**Preset Config:** `pnpm dlx shadcn@latest create --preset "https://ui.shadcn.com/init?base=base&style=lyra&baseColor=zinc&theme=zinc&iconLibrary=hugeicons&font=jetbrains-mono&menuAccent=bold&menuColor=default&radius=large&template=next&rtl=false" --template next`
 
 ---
 

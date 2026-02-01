@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDownIcon } from "lucide-react";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { ChevronDown, Settings2 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -47,37 +46,43 @@ type PresetType = keyof typeof PRESETS;
 const FACTORS = [
   {
     key: "access_difficulty" as const,
-    label: "Difficulte d'acces",
+    label: "Difficulté d'accès",
+    description: "Facilité d'accès au toit",
     min: 0,
     max: 10,
   },
   {
     key: "roof_pitch" as const,
     label: "Pente du toit",
+    description: "Inclinaison de la toiture",
     min: 0,
     max: 8,
   },
   {
     key: "penetrations" as const,
-    label: "Penetrations",
+    label: "Pénétrations",
+    description: "Nombre d'ouvertures et obstacles",
     min: 0,
     max: 10,
   },
   {
     key: "material_removal" as const,
-    label: "Retrait de materiaux",
+    label: "Retrait de matériaux",
+    description: "Complexité du démontage",
     min: 0,
     max: 8,
   },
   {
     key: "safety_concerns" as const,
-    label: "Preoccupations de securite",
+    label: "Sécurité",
+    description: "Niveau de risque du chantier",
     min: 0,
     max: 10,
   },
   {
     key: "timeline_constraints" as const,
-    label: "Contraintes de delai",
+    label: "Contraintes de délai",
+    description: "Urgence des travaux",
     min: 0,
     max: 10,
   },
@@ -117,19 +122,27 @@ export function ComplexityPresets({ value, onChange }: ComplexityPresetsProps) {
     value.safety_concerns +
     value.timeline_constraints;
 
+  // Determine current preset based on values
+  const currentPreset = (Object.keys(PRESETS) as PresetType[]).find((preset) => {
+    const presetValues = PRESETS[preset];
+    return (
+      value.access_difficulty === presetValues.access_difficulty &&
+      value.roof_pitch === presetValues.roof_pitch &&
+      value.penetrations === presetValues.penetrations &&
+      value.material_removal === presetValues.material_removal &&
+      value.safety_concerns === presetValues.safety_concerns &&
+      value.timeline_constraints === presetValues.timeline_constraints
+    );
+  });
+
   /**
    * Handle preset selection.
    * Updates all 6 factors to preset values.
    */
-  const handlePresetChange = (preset: string) => {
-    if (!preset || !(preset in PRESETS)) {
-      return;
-    }
-
-    const presetKey = preset as PresetType;
+  const handlePresetChange = (preset: PresetType) => {
     onChange({
-      preset: presetKey,
-      ...PRESETS[presetKey],
+      preset,
+      ...PRESETS[preset],
     });
   };
 
@@ -149,65 +162,92 @@ export function ComplexityPresets({ value, onChange }: ComplexityPresetsProps) {
   };
 
   return (
-    <div className="space-y-4">
-      {/* Preset Selection */}
-      <div className="space-y-2">
-        <label className="text-sm font-medium">Complexite du travail</label>
-        <ToggleGroup
-          type="single"
-          value={value.preset || ""}
-          onValueChange={handlePresetChange}
-          className="justify-start"
-        >
-          <ToggleGroupItem value="Simple" aria-label="Preset Simple">
-            Simple
-          </ToggleGroupItem>
-          <ToggleGroupItem value="Modere" aria-label="Preset Modere">
-            Modere
-          </ToggleGroupItem>
-          <ToggleGroupItem value="Complexe" aria-label="Preset Complexe">
-            Complexe
-          </ToggleGroupItem>
-        </ToggleGroup>
+    <div className="space-y-5">
+      {/* Preset Selection - Pill Style */}
+      <div className="space-y-3">
+        <label className="text-sm font-medium text-foreground">
+          Niveau de complexité
+        </label>
+        <div className="flex gap-2">
+          {(Object.keys(PRESETS) as PresetType[]).map((preset) => {
+            const isActive = currentPreset === preset;
+            return (
+              <button
+                key={preset}
+                type="button"
+                onClick={() => handlePresetChange(preset)}
+                className={cn(
+                  "flex-1 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200",
+                  isActive
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                )}
+              >
+                {preset}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Computed Aggregate */}
-      <div className="text-sm text-muted-foreground">
-        Total: <span className="font-semibold text-foreground">{aggregate}</span>/56
+      {/* Computed Aggregate - Progress Bar Style */}
+      <div className="space-y-2">
+        <div className="flex justify-between text-sm">
+          <span className="text-muted-foreground">Score de complexité</span>
+          <span className="font-semibold text-foreground">{aggregate}/56</span>
+        </div>
+        <div className="h-2 bg-muted rounded-full overflow-hidden">
+          <div
+            className="h-full bg-primary transition-all duration-300 rounded-full"
+            style={{ width: `${(aggregate / 56) * 100}%` }}
+          />
+        </div>
       </div>
 
       {/* Collapsible Custom Factors */}
-      <div className="space-y-3">
+      <div className="space-y-2">
         <Button
           type="button"
           variant="ghost"
           size="sm"
           onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full justify-between p-0 h-auto font-medium text-sm"
+          className="w-full justify-between px-0 h-10 font-medium text-sm hover:bg-transparent"
           aria-expanded={isExpanded}
           aria-label="Toggle custom factors"
         >
-          <span>Personnaliser les facteurs</span>
-          <ChevronDownIcon
+          <span className="flex items-center gap-2">
+            <Settings2 className="size-4 text-muted-foreground" />
+            Personnaliser les facteurs
+          </span>
+          <ChevronDown
             className={cn(
-              "size-4 transition-transform",
+              "size-4 text-muted-foreground transition-transform duration-200",
               isExpanded && "rotate-180"
             )}
           />
         </Button>
 
         {isExpanded && (
-          <div className="space-y-4 pt-2">
+          <div className="space-y-4 pt-2 pl-1">
             {FACTORS.map((factor) => {
               const currentValue = value[factor.key];
+              const percentage = (currentValue / factor.max) * 100;
               return (
                 <div key={factor.key} className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <label htmlFor={`factor-${factor.key}`}>
-                      {factor.label}
-                    </label>
-                    <span className="text-muted-foreground">
-                      {currentValue}/{factor.max}
+                  <div className="flex justify-between items-baseline">
+                    <div className="space-y-0.5">
+                      <label
+                        htmlFor={`factor-${factor.key}`}
+                        className="text-sm font-medium"
+                      >
+                        {factor.label}
+                      </label>
+                      <p className="text-xs text-muted-foreground">
+                        {factor.description}
+                      </p>
+                    </div>
+                    <span className="text-sm font-semibold text-primary tabular-nums">
+                      {currentValue}
                     </span>
                   </div>
                   <Slider
@@ -220,6 +260,7 @@ export function ComplexityPresets({ value, onChange }: ComplexityPresetsProps) {
                       handleFactorChange(factor.key, newValue)
                     }
                     aria-label={factor.label}
+                    className="py-1"
                   />
                 </div>
               );
