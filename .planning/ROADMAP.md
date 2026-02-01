@@ -2,8 +2,8 @@
 
 **Created:** 2026-01-18
 **Updated:** 2026-02-01
-**Phases:** 13
-**Requirements:** 37
+**Phases:** 14
+**Requirements:** 42
 
 ## Phase Overview
 
@@ -22,6 +22,7 @@
 | 11 | Cortex Admin Dashboard ✓ | Professional 4-tab admin interface | DASH-05 to DASH-12 | 8 |
 | 12 | Laurent Feedback Fixes | Address data quality & UX improvements | LF-01 to LF-05 | 5 |
 | 13 | Hybrid Quote Generation ✓ | Full quote with CBR + ML + LLM merger | HQG-01 to HQG-05 | 7 |
+| 14 | Full Quote Frontend | Frontend with presets, invoice display, PDF | FQ-01 to FQ-05 | 6 |
 
 ---
 
@@ -346,6 +347,35 @@ Plans:
 7. Response time <5 seconds for full quote
 
 **Dependencies:** Phase 10 complete (material prediction), Phase 2 (CBR), Phase 3 (LLM)
+
+---
+
+## Phase 14: Full Quote Frontend Integration
+
+**Goal:** Wire /estimate/hybrid endpoint to frontend with complexity presets, invoice-style output, and PDF export
+
+**Requirements:** FQ-01, FQ-02, FQ-03, FQ-04, FQ-05
+
+**Status:** Planned (2026-02-01)
+
+**Plans:** 3 plans
+
+Plans:
+- [ ] 14-01-PLAN.md — TypeScript types, API client, and complexity presets component
+- [ ] 14-02-PLAN.md — Invoice-style quote result display and form integration
+- [ ] 14-03-PLAN.md — PDF export with client-facing template
+
+**Success Criteria:**
+1. Form with complexity presets (Simple/Modere/Complexe) works
+2. 6-factor override sliders function correctly
+3. Invoice-style result displays work items and totals
+4. Confidence warning shows when < 50%
+5. PDF export generates client-facing document (no hours)
+6. French labels throughout (Quebec French)
+
+**Dependencies:** Phase 13 complete (hybrid quote endpoint)
+
+**Design Doc:** docs/plans/2026-02-01-full-quote-frontend-design.md
 
 ---
 
