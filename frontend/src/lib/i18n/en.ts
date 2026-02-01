@@ -109,18 +109,12 @@ export const en = {
     presetSimple: "Simple",
     presetModere: "Moderate",
     presetComplexe: "Complex",
-    // Factor labels
-    difficultAcces: "Access Difficulty",
-    difficultAccesDesc: "Ease of roof access",
-    penteToit: "Roof Pitch",
+    // Factor descriptions (labels use existing keys above)
+    accessDifficulteDesc: "Ease of roof access",
     penteToitDesc: "Roof slope angle",
-    penetrationsLabel: "Penetrations",
     penetrationsDesc: "Number of openings and obstacles",
-    retraitMateriauxLabel: "Material Removal",
     retraitMateriauxDesc: "Dismantling complexity",
-    securiteLabel: "Safety",
     securiteDesc: "Site risk level",
-    contraintesDelaiLabel: "Time Constraints",
-    contraintesDelaiDesc: "Work urgency",
+    delaiDesc: "Work urgency",
   },
 } as const;

@@ -109,18 +109,12 @@ export const fr = {
     presetSimple: "Simple",
     presetModere: "Modéré",
     presetComplexe: "Complexe",
-    // Factor labels
-    difficultAcces: "Difficulté d'accès",
-    difficultAccesDesc: "Facilité d'accès au toit",
-    penteToit: "Pente du toit",
+    // Factor descriptions (labels use existing keys above)
+    accessDifficulteDesc: "Facilité d'accès au toit",
     penteToitDesc: "Inclinaison de la toiture",
-    penetrationsLabel: "Pénétrations",
     penetrationsDesc: "Nombre d'ouvertures et obstacles",
-    retraitMateriauxLabel: "Retrait de matériaux",
     retraitMateriauxDesc: "Complexité du démontage",
-    securiteLabel: "Sécurité",
     securiteDesc: "Niveau de risque du chantier",
-    contraintesDelaiLabel: "Contraintes de délai",
-    contraintesDelaiDesc: "Urgence des travaux",
+    delaiDesc: "Urgence des travaux",
   },
 } as const;

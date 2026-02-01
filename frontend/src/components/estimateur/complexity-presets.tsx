@@ -45,12 +45,12 @@ type PresetType = keyof typeof PRESETS;
  * Labels come from translations.
  */
 const FACTOR_CONFIG = [
-  { key: "access_difficulty" as const, labelKey: "difficultAcces", descKey: "difficultAccesDesc", min: 0, max: 10 },
+  { key: "access_difficulty" as const, labelKey: "accessDifficulte", descKey: "accessDifficulteDesc", min: 0, max: 10 },
   { key: "roof_pitch" as const, labelKey: "penteToit", descKey: "penteToitDesc", min: 0, max: 8 },
-  { key: "penetrations" as const, labelKey: "penetrationsLabel", descKey: "penetrationsDesc", min: 0, max: 10 },
-  { key: "material_removal" as const, labelKey: "retraitMateriauxLabel", descKey: "retraitMateriauxDesc", min: 0, max: 8 },
-  { key: "safety_concerns" as const, labelKey: "securiteLabel", descKey: "securiteDesc", min: 0, max: 10 },
-  { key: "timeline_constraints" as const, labelKey: "contraintesDelaiLabel", descKey: "contraintesDelaiDesc", min: 0, max: 10 },
+  { key: "penetrations" as const, labelKey: "penetrations", descKey: "penetrationsDesc", min: 0, max: 10 },
+  { key: "material_removal" as const, labelKey: "retraitMateriaux", descKey: "retraitMateriauxDesc", min: 0, max: 8 },
+  { key: "safety_concerns" as const, labelKey: "securite", descKey: "securiteDesc", min: 0, max: 10 },
+  { key: "timeline_constraints" as const, labelKey: "delai", descKey: "delaiDesc", min: 0, max: 10 },
 ] as const;
 
 export interface ComplexityPresetsProps {
