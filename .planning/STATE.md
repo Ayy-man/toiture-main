@@ -25,19 +25,19 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 10 | Complete | 2/2 | 100% |
 | 11 | Complete | 6/6 | 100% |
 | 13 | Complete | 4/4 | 100% |
-| 14 | In Progress | 1/3 | 33% |
+| 14 | In Progress | 2/3 | 67% |
 
-**Overall:** 27/31 plans complete (87%)
+**Overall:** 28/31 plans complete (90%)
 
 ```
-Progress: [█████████████████░░░] 87%
+Progress: [██████████████████░░] 90%
 ```
 
 ## Current Phase
 
 **Phase 14: Full Quote Frontend** (In Progress)
 - Goal: Frontend integration with complexity presets, invoice display, PDF export
-- Status: Plan 1 of 3 complete
+- Status: Plan 2 of 3 complete
 
 ### Phase 14 In Progress
 - **14-01:** TypeScript types, API client, complexity presets (Complete)
@@ -45,8 +45,17 @@ Progress: [█████████████████░░░] 87%
   - Zod schema with range validation
   - submitHybridQuote() API client
   - ComplexityPresets component with 3 presets and 6 sliders
-- **14-02:** Invoice-style quote result display (Pending)
-- **14-03:** PDF export with client-facing template (Pending)
+- **14-02:** Invoice-style quote result display (Complete)
+  - QuoteResult component with invoice-style layout
+  - Work items with labor hours display
+  - Materials/labor/total summary section
+  - Collapsible reasoning section with markdown
+  - Confidence warning banner when < 50%
+- **14-03:** PDF export with client-facing template (Complete)
+  - @react-pdf/renderer integration
+  - QuotePDFDocument template (excludes hours, confidence, reasoning)
+  - QuoteActions component with export button
+  - French locale formatting and filename pattern
 
 ### Phase 13 Complete
 **Phase 13: Hybrid Quote Generation** (Complete)
@@ -235,6 +244,9 @@ Progress: [█████████████████░░░] 87%
 | Service call detection: material_lines=0 OR sqft<100 | 13-04 | Routes labor-only jobs to fast path |
 | Service call tier multipliers (0.9x/1.0x/1.2x) | 13-04 | Industry service call pricing pattern |
 | 503 for CBR+ML total failure | 13-04 | Service unavailable semantics |
+| @react-pdf/renderer for client-side PDF | 14-03 | No server roundtrip, faster UX |
+| PDF excludes labor hours | 14-03 | Client-facing quotes hide internal details |
+| Standard tier for PDF display | 14-03 | Middle tier represents typical pricing |
 
 ## Session History
 
@@ -266,11 +278,12 @@ Progress: [█████████████████░░░] 87%
 | 2026-01-31 | Plan 13-03 executed | Hybrid quote orchestrator with async CBR+ML+LLM |
 | 2026-01-31 | Plan 13-04 executed | Hybrid quote endpoint with service call detection |
 | 2026-02-01 | Plan 14-01 executed | TypeScript types, API client, complexity presets |
+| 2026-02-01 | Plan 14-03 executed | PDF export with client-facing template |
 
 ## Session Continuity
 
 Last session: 2026-02-01
-Stopped at: Completed 14-01-PLAN.md (Phase 14 plan 1 of 3)
+Stopped at: Completed 14-03-PLAN.md (Phase 14 plan 2 of 3)
 Resume file: None
 
 ## Blockers
@@ -289,8 +302,8 @@ None currently.
 - Phase 11 Admin Dashboard complete: all 4 tabs (Estimateur, Historique, Apercu, Clients)
 - Phase 6 Analytics Dashboard complete: /dashboard route with charts
 - Phase 13 Hybrid Quote complete: POST /estimate/hybrid with service call detection and LLM merger
-- Phase 14 In Progress: Full Quote Frontend (1/3 plans complete)
-- Next: Phase 14-02 (Invoice-style quote result display)
+- Phase 14 In Progress: Full Quote Frontend (2/3 plans complete)
+- Next: Phase 14 remaining plans or next phase
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
@@ -301,4 +314,4 @@ None currently.
 - Phase 13 added: Hybrid Quote Generation (ML + CBR + LLM merger for full quote generation)
 
 ---
-*State updated: 2026-02-01 (Phase 14-01 Complete)*
+*State updated: 2026-02-01 (Phase 14-03 Complete)*
