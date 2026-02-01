@@ -33,7 +33,7 @@ from app.services.confidence_scorer import (
 from app.services.embeddings import build_query_text, generate_query_embedding
 from app.services.llm_reasoning import get_client  # Reuse existing OpenRouter client
 from app.services.material_predictor import predict_materials
-from app.services.pinecone_cbr import query_similar_cases
+from app.services.pinecone_cbr import is_pinecone_available, query_similar_cases
 from app.services.predictor import predict
 
 logger = logging.getLogger(__name__)
@@ -43,7 +43,13 @@ async def _run_cbr_query(request: HybridQuoteRequest) -> List[Dict[str, Any]]:
     """Run CBR query in async context.
 
     Wraps synchronous Pinecone query in run_in_executor for async compatibility.
+    Skips embedding generation if Pinecone not configured (saves ~500MB RAM).
     """
+    # Early return if Pinecone not configured - avoids loading 500MB embedding model
+    if not is_pinecone_available():
+        logger.info("Pinecone not configured, skipping CBR query")
+        return []
+
     loop = asyncio.get_event_loop()
 
     def sync_cbr():

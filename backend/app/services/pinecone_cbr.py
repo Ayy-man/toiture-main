@@ -35,6 +35,11 @@ def close_pinecone():
     _index = None
 
 
+def is_pinecone_available() -> bool:
+    """Check if Pinecone is configured and ready for queries."""
+    return _index is not None
+
+
 def query_similar_cases(
     query_vector: List[float],
     top_k: int = 5,

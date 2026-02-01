@@ -18,7 +18,7 @@ from app.services.embeddings import build_query_text, generate_query_embedding
 from app.services.hybrid_quote import generate_hybrid_quote
 from app.services.llm_reasoning import generate_reasoning_stream
 from app.services.material_predictor import predict_materials
-from app.services.pinecone_cbr import query_similar_cases
+from app.services.pinecone_cbr import is_pinecone_available, query_similar_cases
 from app.services.predictor import predict
 from app.services.supabase_client import get_supabase
 
@@ -45,25 +45,26 @@ def create_estimate(request: EstimateRequest):
             complexity=request.complexity,
         )
 
-        # Get similar cases from CBR
-        try:
-            query_text = build_query_text(
-                sqft=request.sqft,
-                category=request.category,
-                complexity=request.complexity,
-                material_lines=request.material_lines,
-                labor_lines=request.labor_lines,
-            )
-            query_vector = generate_query_embedding(query_text)
-            similar_cases_data = query_similar_cases(
-                query_vector=query_vector,
-                top_k=5,
-                category_filter=None,  # Let similarity decide, don't filter by category
-            )
-            similar_cases = [SimilarCase(**case) for case in similar_cases_data]
-        except Exception as e:
-            logger.warning(f"CBR lookup failed: {e}")
-            similar_cases = []
+        # Get similar cases from CBR (skip if Pinecone not configured to avoid loading 500MB model)
+        similar_cases = []
+        if is_pinecone_available():
+            try:
+                query_text = build_query_text(
+                    sqft=request.sqft,
+                    category=request.category,
+                    complexity=request.complexity,
+                    material_lines=request.material_lines,
+                    labor_lines=request.labor_lines,
+                )
+                query_vector = generate_query_embedding(query_text)
+                similar_cases_data = query_similar_cases(
+                    query_vector=query_vector,
+                    top_k=5,
+                    category_filter=None,  # Let similarity decide, don't filter by category
+                )
+                similar_cases = [SimilarCase(**case) for case in similar_cases_data]
+            except Exception as e:
+                logger.warning(f"CBR lookup failed: {e}")
 
         # LLM reasoning disabled for speed (was taking 15-30s)
         # TODO: Re-enable with faster model or async loading
@@ -128,26 +129,26 @@ def create_estimate_stream(request: EstimateRequest):
                 complexity=request.complexity,
             )
 
-            # Get similar cases from CBR
+            # Get similar cases from CBR (skip if Pinecone not configured to avoid loading 500MB model)
             similar_cases = []
-            similar_cases_data = []
-            try:
-                query_text = build_query_text(
-                    sqft=request.sqft,
-                    category=request.category,
-                    complexity=request.complexity,
-                    material_lines=request.material_lines,
-                    labor_lines=request.labor_lines,
-                )
-                query_vector = generate_query_embedding(query_text)
-                similar_cases_data = query_similar_cases(
-                    query_vector=query_vector,
-                    top_k=5,
-                    category_filter=None,
-                )
-                similar_cases = [SimilarCase(**case) for case in similar_cases_data]
-            except Exception as e:
-                logger.warning(f"CBR lookup failed: {e}")
+            if is_pinecone_available():
+                try:
+                    query_text = build_query_text(
+                        sqft=request.sqft,
+                        category=request.category,
+                        complexity=request.complexity,
+                        material_lines=request.material_lines,
+                        labor_lines=request.labor_lines,
+                    )
+                    query_vector = generate_query_embedding(query_text)
+                    similar_cases_data = query_similar_cases(
+                        query_vector=query_vector,
+                        top_k=5,
+                        category_filter=None,
+                    )
+                    similar_cases = [SimilarCase(**case) for case in similar_cases_data]
+                except Exception as e:
+                    logger.warning(f"CBR lookup failed: {e}")
 
             # Send estimate data immediately
             estimate_data = {
