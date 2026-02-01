@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { fr } from "@/lib/i18n/fr";
+import { useLanguage } from "@/lib/i18n";
 import { useDashboardMetrics, useDashboardCharts } from "@/lib/hooks/use-dashboard";
 import { MetricsCards } from "@/components/apercu/metrics-cards";
 import { RevenueChart } from "@/components/apercu/revenue-chart";
@@ -10,13 +10,14 @@ import { TrendChart } from "@/components/apercu/trend-chart";
 import { TopClients } from "@/components/apercu/top-clients";
 
 export default function ApercuPage() {
+  const { t } = useLanguage();
   const { data: metrics, isLoading: metricsLoading } = useDashboardMetrics();
   const { data: charts, isLoading: chartsLoading } = useDashboardCharts();
 
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold tracking-tight">
-        {fr.apercu.titre}
+        {t.apercu.titre}
       </h1>
 
       {/* KPI Cards */}

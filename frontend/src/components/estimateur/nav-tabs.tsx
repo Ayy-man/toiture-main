@@ -2,17 +2,18 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { fr } from "@/lib/i18n/fr";
+import { useLanguage } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-
-const tabs = [
-  { href: "/estimateur", label: fr.estimateur.prix },
-  { href: "/estimateur/materiaux", label: fr.estimateur.materiaux },
-  { href: "/estimateur/complet", label: fr.estimateur.soumissionComplete },
-];
 
 export function EstimateurTabs() {
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const tabs = [
+    { href: "/estimateur", label: t.estimateur.prix },
+    { href: "/estimateur/materiaux", label: t.estimateur.materiaux },
+    { href: "/estimateur/complet", label: t.estimateur.soumissionComplete },
+  ];
 
   return (
     <nav className="border-b">
