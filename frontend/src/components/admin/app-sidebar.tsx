@@ -91,19 +91,19 @@ function LanguageToggle() {
   }
 
   return (
-    <div className="flex items-center gap-1 px-2 py-1">
+    <div className="flex items-center gap-1 px-2 py-2 rounded-md bg-sidebar-accent/50">
       <Button
-        variant={locale === "en" ? "default" : "ghost"}
+        variant={locale === "en" ? "default" : "outline"}
         size="sm"
-        className="h-7 px-2 text-xs"
+        className="h-8 px-3 text-xs font-semibold flex-1"
         onClick={() => handleToggle("en")}
       >
         EN
       </Button>
       <Button
-        variant={locale === "fr" ? "default" : "ghost"}
+        variant={locale === "fr" ? "default" : "outline"}
         size="sm"
-        className="h-7 px-2 text-xs"
+        className="h-8 px-3 text-xs font-semibold flex-1"
         onClick={() => handleToggle("fr")}
       >
         FR
