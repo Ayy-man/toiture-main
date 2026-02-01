@@ -6,15 +6,15 @@ import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
+  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarFooter,
-  SidebarTrigger,
-  useSidebar,
+  SidebarRail,
 } from "@/components/ui/sidebar";
-import { Calculator, History, LayoutDashboard, Users, PanelLeftClose, PanelLeft } from "lucide-react";
+import { Calculator, History, LayoutDashboard, Users, Home } from "lucide-react";
 import { fr } from "@/lib/i18n/fr";
 
 const navItems = [
@@ -24,58 +24,42 @@ const navItems = [
   { title: fr.nav.clients, href: "/clients", icon: Users },
 ];
 
-function SidebarToggleButton() {
-  const { state, toggleSidebar } = useSidebar();
-  return (
-    <button
-      onClick={toggleSidebar}
-      className="flex items-center justify-center w-full p-2 rounded-md hover:bg-white/10 transition-colors text-gray-400 hover:text-white"
-    >
-      {state === "expanded" ? (
-        <PanelLeftClose className="h-5 w-5" />
-      ) : (
-        <PanelLeft className="h-5 w-5" />
-      )}
-    </button>
-  );
-}
-
 export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar
-      variant="sidebar"
-      collapsible="offcanvas"
-      className="bg-[#1A1A1A] text-white border-r border-[#2A2A2A]"
-    >
-      <SidebarHeader className="p-4 border-b border-[#2A2A2A]">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#8B2323] flex items-center justify-center">
-            <span className="text-white font-bold text-sm">T</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-lg font-bold text-white">Cortex</span>
-            <span className="text-xs text-gray-500">Toiture LV</span>
-          </div>
-        </div>
+    <Sidebar collapsible="icon">
+      <SidebarHeader className="border-b border-sidebar-border">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild>
+              <Link href="/estimateur">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                  <Home className="size-4" />
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-semibold">Cortex</span>
+                  <span className="truncate text-xs text-muted-foreground">Toiture LV</span>
+                </div>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent className="px-2 py-4">
+      <SidebarContent>
         <SidebarGroup>
-          <p className="px-3 mb-2 text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Navigation
-          </p>
+          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
           <SidebarMenu>
             {navItems.map((item) => (
               <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
                   asChild
                   isActive={pathname.startsWith(item.href)}
-                  className="h-10 px-3 data-[active=true]:bg-[#8B2323] data-[active=true]:text-white hover:bg-white/10 text-gray-300 hover:text-white"
+                  tooltip={item.title}
                 >
                   <Link href={item.href}>
-                    <item.icon className="h-5 w-5" />
-                    <span className="font-medium">{item.title}</span>
+                    <item.icon />
+                    <span>{item.title}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -83,9 +67,22 @@ export function AppSidebar() {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="border-t border-[#2A2A2A] p-2">
-        <SidebarToggleButton />
+      <SidebarFooter className="border-t border-sidebar-border">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg">
+              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-muted">
+                <span className="text-xs font-medium">LV</span>
+              </div>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-medium">Toiture LV</span>
+                <span className="truncate text-xs text-muted-foreground">Admin</span>
+              </div>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarFooter>
+      <SidebarRail />
     </Sidebar>
   );
 }
