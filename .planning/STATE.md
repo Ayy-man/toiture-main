@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 14 - Full Quote Frontend (In Progress)
+**Current focus:** Phase 14 - Full Quote Frontend (Complete)
 
 ## Progress
 
@@ -25,21 +25,21 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 10 | Complete | 2/2 | 100% |
 | 11 | Complete | 6/6 | 100% |
 | 13 | Complete | 4/4 | 100% |
-| 14 | In Progress | 2/3 | 67% |
+| 14 | Complete | 3/3 | 100% |
 
-**Overall:** 28/31 plans complete (90%)
+**Overall:** 29/31 plans complete (94%)
 
 ```
-Progress: [██████████████████░░] 90%
+Progress: [██████████████████░░] 94%
 ```
 
 ## Current Phase
 
-**Phase 14: Full Quote Frontend** (In Progress)
+**Phase 14: Full Quote Frontend** (Complete)
 - Goal: Frontend integration with complexity presets, invoice display, PDF export
-- Status: Plan 2 of 3 complete
+- Status: All plans complete - verified
 
-### Phase 14 In Progress
+### Phase 14 Complete
 - **14-01:** TypeScript types, API client, complexity presets (Complete)
   - HybridQuoteRequest/Response types matching backend
   - Zod schema with range validation
@@ -289,7 +289,7 @@ Progress: [██████████████████░░] 90%
 ## Session Continuity
 
 Last session: 2026-02-01
-Stopped at: Completed 14-03-PLAN.md (Phase 14 plan 2 of 3)
+Stopped at: Phase 14 Complete (All 3 plans verified)
 Resume file: None
 
 ## Blockers
@@ -308,8 +308,8 @@ None currently.
 - Phase 11 Admin Dashboard complete: all 4 tabs (Estimateur, Historique, Apercu, Clients)
 - Phase 6 Analytics Dashboard complete: /dashboard route with charts
 - Phase 13 Hybrid Quote complete: POST /estimate/hybrid with service call detection and LLM merger
-- Phase 14 In Progress: Full Quote Frontend (2/3 plans complete)
-- Next: Phase 14 remaining plans or next phase
+- Phase 14 Full Quote Frontend complete: ComplexityPresets, QuoteResult, PDF export
+- Next: Phase 8-02 (Deployment execution) or Phase 12 (Laurent Feedback Fixes)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
@@ -320,4 +320,4 @@ None currently.
 - Phase 13 added: Hybrid Quote Generation (ML + CBR + LLM merger for full quote generation)
 
 ---
-*State updated: 2026-02-01 (Phase 14-03 Complete)*
+*State updated: 2026-02-01 (Phase 14 Complete)*

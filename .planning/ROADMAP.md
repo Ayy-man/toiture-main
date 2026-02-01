@@ -22,7 +22,7 @@
 | 11 | Cortex Admin Dashboard ✓ | Professional 4-tab admin interface | DASH-05 to DASH-12 | 8 |
 | 12 | Laurent Feedback Fixes | Address data quality & UX improvements | LF-01 to LF-05 | 5 |
 | 13 | Hybrid Quote Generation ✓ | Full quote with CBR + ML + LLM merger | HQG-01 to HQG-05 | 7 |
-| 14 | Full Quote Frontend | Frontend with presets, invoice display, PDF | FQ-01 to FQ-05 | 6 |
+| 14 | Full Quote Frontend ✓ | Frontend with presets, invoice display, PDF | FQ-01 to FQ-05 | 6 |
 
 ---
 
@@ -350,20 +350,20 @@ Plans:
 
 ---
 
-## Phase 14: Full Quote Frontend Integration
+## Phase 14: Full Quote Frontend Integration ✓
 
 **Goal:** Wire /estimate/hybrid endpoint to frontend with complexity presets, invoice-style output, and PDF export
 
 **Requirements:** FQ-01, FQ-02, FQ-03, FQ-04, FQ-05
 
-**Status:** Planned (2026-02-01)
+**Status:** Complete (2026-02-01)
 
 **Plans:** 3 plans
 
 Plans:
-- [ ] 14-01-PLAN.md — TypeScript types, API client, and complexity presets component
-- [ ] 14-02-PLAN.md — Invoice-style quote result display and form integration
-- [ ] 14-03-PLAN.md — PDF export with client-facing template
+- [x] 14-01-PLAN.md — TypeScript types, API client, and complexity presets component
+- [x] 14-02-PLAN.md — Invoice-style quote result display and form integration
+- [x] 14-03-PLAN.md — PDF export with client-facing template
 
 **Success Criteria:**
 1. Form with complexity presets (Simple/Modere/Complexe) works
