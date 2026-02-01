@@ -2,7 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { fr } from "@/lib/i18n/fr";
+import { useLanguage } from "@/lib/i18n";
 import { SegmentBadge } from "./segment-badge";
 import type { CustomerResult } from "@/types/customer";
 
@@ -26,6 +26,7 @@ export function CustomerSearch({
   isSearching,
   onSelectCustomer,
 }: CustomerSearchProps) {
+  const { t } = useLanguage();
   const showDropdown = searchTerm.length >= 2;
   const showNoResults = showDropdown && !isSearching && results.length === 0;
 
@@ -33,7 +34,7 @@ export function CustomerSearch({
     <div className="relative w-full max-w-md">
       <Input
         type="text"
-        placeholder={fr.clients.rechercher}
+        placeholder={t.clients.rechercher}
         value={searchTerm}
         onChange={(e) => onSearchChange(e.target.value)}
         className="w-full"
@@ -43,7 +44,7 @@ export function CustomerSearch({
         <Card className="absolute top-full left-0 right-0 mt-1 z-50 max-h-80 overflow-y-auto py-2">
           {isSearching && (
             <div className="px-4 py-2 text-sm text-muted-foreground">
-              {fr.common.chargement}
+              {t.common.chargement}
             </div>
           )}
 

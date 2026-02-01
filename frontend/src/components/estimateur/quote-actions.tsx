@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { FileDown, Loader2 } from "lucide-react";
 import { QuotePDFDocument } from "@/lib/pdf/quote-template";
 import type { HybridQuoteResponse } from "@/types/hybrid-quote";
-import { fr } from "@/lib/i18n/fr";
+import { useLanguage } from "@/lib/i18n";
 
 interface QuoteActionsProps {
   quote: HybridQuoteResponse;
@@ -15,6 +15,7 @@ interface QuoteActionsProps {
 }
 
 export function QuoteActions({ quote, category, sqft }: QuoteActionsProps) {
+  const { t } = useLanguage();
   const [isExporting, setIsExporting] = useState(false);
 
   async function handleExportPDF() {
@@ -61,12 +62,12 @@ export function QuoteActions({ quote, category, sqft }: QuoteActionsProps) {
         {isExporting ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            {fr.common.chargement}
+            {t.common.chargement}
           </>
         ) : (
           <>
             <FileDown className="mr-2 h-4 w-4" />
-            {fr.fullQuote.exporterPDF}
+            {t.fullQuote.exporterPDF}
           </>
         )}
       </Button>
@@ -75,11 +76,11 @@ export function QuoteActions({ quote, category, sqft }: QuoteActionsProps) {
       {/*
       <Button variant="outline" disabled>
         <Mail className="mr-2 h-4 w-4" />
-        {fr.fullQuote.envoyer}
+        {t.fullQuote.envoyer}
       </Button>
       <Button variant="outline" disabled>
         <Save className="mr-2 h-4 w-4" />
-        {fr.fullQuote.sauvegarder}
+        {t.fullQuote.sauvegarder}
       </Button>
       */}
     </div>

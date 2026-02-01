@@ -1,6 +1,6 @@
 "use client";
 
-import { fr } from "@/lib/i18n/fr";
+import { useLanguage } from "@/lib/i18n";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -31,6 +31,7 @@ export function QuoteFiltersComponent({
   onExport,
   isExporting,
 }: QuoteFiltersProps) {
+  const { t } = useLanguage();
   const updateFilter = <K extends keyof QuoteFilters>(
     key: K,
     value: QuoteFilters[K]
@@ -45,13 +46,13 @@ export function QuoteFiltersComponent({
   return (
     <div className="space-y-4 mb-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-medium">{fr.historique.filtres}</h2>
+        <h2 className="text-lg font-medium">{t.historique.filtres}</h2>
         <div className="flex gap-2">
           <Button variant="outline" onClick={clearFilters}>
             Effacer les filtres
           </Button>
           <Button onClick={onExport} disabled={isExporting}>
-            {isExporting ? fr.common.chargement : fr.historique.exporter}
+            {isExporting ? t.common.chargement : t.historique.exporter}
           </Button>
         </div>
       </div>
@@ -59,7 +60,7 @@ export function QuoteFiltersComponent({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Category */}
         <div className="space-y-2">
-          <Label htmlFor="category">{fr.historique.categorie}</Label>
+          <Label htmlFor="category">{t.historique.categorie}</Label>
           <Select
             value={filters.category || "__all__"}
             onValueChange={(value) =>
@@ -82,7 +83,7 @@ export function QuoteFiltersComponent({
 
         {/* City */}
         <div className="space-y-2">
-          <Label htmlFor="city">{fr.historique.ville}</Label>
+          <Label htmlFor="city">{t.historique.ville}</Label>
           <Input
             id="city"
             placeholder="Rechercher une ville..."
@@ -161,7 +162,7 @@ export function QuoteFiltersComponent({
 
         {/* Date Start */}
         <div className="space-y-2">
-          <Label htmlFor="start_date">{fr.historique.dateDebut}</Label>
+          <Label htmlFor="start_date">{t.historique.dateDebut}</Label>
           <Input
             id="start_date"
             type="date"
@@ -174,7 +175,7 @@ export function QuoteFiltersComponent({
 
         {/* Date End */}
         <div className="space-y-2">
-          <Label htmlFor="end_date">{fr.historique.dateFin}</Label>
+          <Label htmlFor="end_date">{t.historique.dateFin}</Label>
           <Input
             id="end_date"
             type="date"

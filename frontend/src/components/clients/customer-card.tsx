@@ -1,10 +1,12 @@
+"use client";
+
 import {
   Card,
   CardHeader,
   CardTitle,
   CardContent,
 } from "@/components/ui/card";
-import { fr } from "@/lib/i18n/fr";
+import { useLanguage } from "@/lib/i18n";
 import { SegmentBadge } from "./segment-badge";
 import type { CustomerDetail } from "@/types/customer";
 
@@ -18,6 +20,7 @@ const currencyFormatter = new Intl.NumberFormat("fr-CA", {
 });
 
 export function CustomerCard({ customer }: CustomerCardProps) {
+  const { t } = useLanguage();
   return (
     <Card>
       <CardHeader>
@@ -51,14 +54,14 @@ export function CustomerCard({ customer }: CustomerCardProps) {
 
           <div>
             <div className="text-sm text-muted-foreground">
-              {fr.clients.historique}
+              {t.clients.historique}
             </div>
             <div className="font-medium">{customer.total_quotes}</div>
           </div>
 
           <div>
             <div className="text-sm text-muted-foreground">
-              {fr.clients.valeurVie}
+              {t.clients.valeurVie}
             </div>
             <div className="font-medium">
               {currencyFormatter.format(customer.lifetime_value)}

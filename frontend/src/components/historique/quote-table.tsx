@@ -14,7 +14,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { fr } from "@/lib/i18n/fr";
+import { useLanguage } from "@/lib/i18n";
 import { columns } from "./quote-columns";
 import type { Quote } from "@/types/quote";
 import type { PaginationState } from "@/lib/hooks/use-quotes";
@@ -38,6 +38,7 @@ export function QuoteTable({
   pageCount,
   isFetching,
 }: QuoteTableProps) {
+  const { t } = useLanguage();
   const table = useReactTable({
     data,
     columns,
@@ -59,7 +60,7 @@ export function QuoteTable({
         {isFetching && (
           <div className="absolute inset-0 bg-background/50 flex items-center justify-center z-10">
             <span className="text-muted-foreground">
-              {fr.common.chargement}
+              {t.common.chargement}
             </span>
           </div>
         )}
@@ -101,7 +102,7 @@ export function QuoteTable({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  {fr.historique.aucunResultat}
+                  {t.historique.aucunResultat}
                 </TableCell>
               </TableRow>
             )}
@@ -112,7 +113,7 @@ export function QuoteTable({
       {/* Pagination controls */}
       <div className="flex items-center justify-between">
         <div className="text-sm text-muted-foreground">
-          {fr.common.page} {pagination.pageIndex + 1} {fr.common.sur}{" "}
+          {t.common.page} {pagination.pageIndex + 1} {t.common.sur}{" "}
           {pageCount || 1}
         </div>
         <div className="flex gap-2">
@@ -127,7 +128,7 @@ export function QuoteTable({
             }
             disabled={pagination.pageIndex === 0}
           >
-            {fr.common.precedent}
+            {t.common.precedent}
           </Button>
           <Button
             variant="outline"
@@ -140,7 +141,7 @@ export function QuoteTable({
             }
             disabled={pagination.pageIndex >= pageCount - 1}
           >
-            {fr.common.suivant}
+            {t.common.suivant}
           </Button>
         </div>
       </div>

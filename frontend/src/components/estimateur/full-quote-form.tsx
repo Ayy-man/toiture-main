@@ -38,7 +38,7 @@ import {
 import { submitHybridQuote } from "@/lib/api/hybrid-quote";
 import type { HybridQuoteResponse, HybridQuoteRequest } from "@/types/hybrid-quote";
 import { CATEGORIES } from "@/lib/schemas";
-import { fr } from "@/lib/i18n/fr";
+import { useLanguage } from "@/lib/i18n";
 import { Loader2, Calculator, Layers, Wrench, AlertCircle } from "lucide-react";
 
 /**
@@ -46,6 +46,7 @@ import { Loader2, Calculator, Layers, Wrench, AlertCircle } from "lucide-react";
  * Submits to /estimate/hybrid endpoint with 6 complexity factors.
  */
 export function FullQuoteForm() {
+  const { t } = useLanguage();
   const [result, setResult] = useState<HybridQuoteResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -110,7 +111,7 @@ export function FullQuoteForm() {
       setResult(response);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : fr.fullQuote.erreur
+        err instanceof Error ? err.message : t.fullQuote.erreur
       );
     } finally {
       setIsLoading(false);
@@ -129,8 +130,8 @@ export function FullQuoteForm() {
                   <Calculator className="size-4" />
                 </div>
                 <div>
-                  <CardTitle className="text-lg">{fr.fullQuote.titre}</CardTitle>
-                  <CardDescription className="text-sm">{fr.fullQuote.description}</CardDescription>
+                  <CardTitle className="text-lg">{t.fullQuote.titre}</CardTitle>
+                  <CardDescription className="text-sm">{t.fullQuote.description}</CardDescription>
                 </div>
               </div>
             </CardHeader>
@@ -143,7 +144,7 @@ export function FullQuoteForm() {
                   name="sqft"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium">{fr.estimateur.superficie}</FormLabel>
+                      <FormLabel className="text-sm font-medium">{t.estimateur.superficie}</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -169,7 +170,7 @@ export function FullQuoteForm() {
                   name="category"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium">{fr.estimateur.categorie}</FormLabel>
+                      <FormLabel className="text-sm font-medium">{t.estimateur.categorie}</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
@@ -204,7 +205,7 @@ export function FullQuoteForm() {
                   name="material_lines"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium">{fr.fullQuote.lignesMateriaux}</FormLabel>
+                      <FormLabel className="text-sm font-medium">{t.fullQuote.lignesMateriaux}</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -227,7 +228,7 @@ export function FullQuoteForm() {
                   name="labor_lines"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium">{fr.fullQuote.lignesMainOeuvre}</FormLabel>
+                      <FormLabel className="text-sm font-medium">{t.fullQuote.lignesMainOeuvre}</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -327,7 +328,7 @@ export function FullQuoteForm() {
                   <FormItem className="flex items-center justify-between rounded-lg border border-border/50 bg-muted/30 p-4 transition-colors hover:bg-muted/50">
                     <div className="space-y-0.5">
                       <FormLabel className="text-sm font-medium cursor-pointer">
-                        {fr.fullQuote.aCheminee}
+                        {t.fullQuote.aCheminee}
                       </FormLabel>
                       <FormDescription className="text-xs text-muted-foreground">
                         Travaux autour d&apos;une cheminée
@@ -351,7 +352,7 @@ export function FullQuoteForm() {
                   <FormItem className="flex items-center justify-between rounded-lg border border-border/50 bg-muted/30 p-4 transition-colors hover:bg-muted/50">
                     <div className="space-y-0.5">
                       <FormLabel className="text-sm font-medium cursor-pointer">
-                        {fr.fullQuote.aLucarnes}
+                        {t.fullQuote.aLucarnes}
                       </FormLabel>
                       <FormDescription className="text-xs text-muted-foreground">
                         Puits de lumière ou lucarnes
@@ -375,7 +376,7 @@ export function FullQuoteForm() {
                   <FormItem className="flex items-center justify-between rounded-lg border border-border/50 bg-muted/30 p-4 transition-colors hover:bg-muted/50">
                     <div className="space-y-0.5">
                       <FormLabel className="text-sm font-medium cursor-pointer">
-                        {fr.fullQuote.aSousTraitants}
+                        {t.fullQuote.aSousTraitants}
                       </FormLabel>
                       <FormDescription className="text-xs text-muted-foreground">
                         Implique des sous-traitants
@@ -411,12 +412,12 @@ export function FullQuoteForm() {
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 size-5 animate-spin" />
-                {fr.fullQuote.enChargement}
+                {t.fullQuote.enChargement}
               </>
             ) : (
               <>
                 <Calculator className="mr-2 size-5" />
-                {fr.fullQuote.generer}
+                {t.fullQuote.generer}
               </>
             )}
           </Button>

@@ -2,7 +2,7 @@
 
 import { DollarSign, FileText, Percent, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { fr } from "@/lib/i18n/fr";
+import { useLanguage } from "@/lib/i18n";
 import type { DashboardMetrics } from "@/types/dashboard";
 
 interface MetricsCardsProps {
@@ -43,24 +43,25 @@ function MetricSkeleton() {
 }
 
 export function MetricsCards({ metrics, isLoading }: MetricsCardsProps) {
+  const { t } = useLanguage();
   const cards = [
     {
-      title: fr.apercu.revenuTotal,
+      title: t.apercu.revenuTotal,
       icon: DollarSign,
       value: metrics ? formatCurrency(metrics.total_revenue) : null,
     },
     {
-      title: fr.apercu.nombreSoumissions,
+      title: t.apercu.nombreSoumissions,
       icon: FileText,
       value: metrics ? metrics.total_quotes.toLocaleString("fr-CA") : null,
     },
     {
-      title: fr.apercu.margeMovenne,
+      title: t.apercu.margeMovenne,
       icon: Percent,
       value: metrics ? formatPercent(metrics.average_margin) : null,
     },
     {
-      title: fr.apercu.clientsActifs,
+      title: t.apercu.clientsActifs,
       icon: Users,
       value: metrics ? metrics.active_clients.toLocaleString("fr-CA") : null,
     },
