@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 13 - Hybrid Quote Generation (Complete)
+**Current focus:** Phase 14 - Full Quote Frontend (In Progress)
 
 ## Progress
 
@@ -25,15 +25,30 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 10 | Complete | 2/2 | 100% |
 | 11 | Complete | 6/6 | 100% |
 | 13 | Complete | 4/4 | 100% |
+| 14 | In Progress | 1/3 | 33% |
 
-**Overall:** 26/28 plans complete (93%)
+**Overall:** 27/31 plans complete (87%)
 
 ```
-Progress: [██████████████████░░] 93%
+Progress: [█████████████████░░░] 87%
 ```
 
 ## Current Phase
 
+**Phase 14: Full Quote Frontend** (In Progress)
+- Goal: Frontend integration with complexity presets, invoice display, PDF export
+- Status: Plan 1 of 3 complete
+
+### Phase 14 In Progress
+- **14-01:** TypeScript types, API client, complexity presets (Complete)
+  - HybridQuoteRequest/Response types matching backend
+  - Zod schema with range validation
+  - submitHybridQuote() API client
+  - ComplexityPresets component with 3 presets and 6 sliders
+- **14-02:** Invoice-style quote result display (Pending)
+- **14-03:** PDF export with client-facing template (Pending)
+
+### Phase 13 Complete
 **Phase 13: Hybrid Quote Generation** (Complete)
 - Goal: ML + CBR hybrid quote generation with LLM merger
 - Status: All plans complete - endpoint ready for frontend integration
@@ -250,11 +265,12 @@ Progress: [██████████████████░░] 93%
 | 2026-01-31 | Plan 13-02 executed | Confidence scorer service with weighted formula |
 | 2026-01-31 | Plan 13-03 executed | Hybrid quote orchestrator with async CBR+ML+LLM |
 | 2026-01-31 | Plan 13-04 executed | Hybrid quote endpoint with service call detection |
+| 2026-02-01 | Plan 14-01 executed | TypeScript types, API client, complexity presets |
 
 ## Session Continuity
 
-Last session: 2026-01-31
-Stopped at: Completed 13-04-PLAN.md (Phase 13 Complete)
+Last session: 2026-02-01
+Stopped at: Completed 14-01-PLAN.md (Phase 14 plan 1 of 3)
 Resume file: None
 
 ## Blockers
@@ -273,7 +289,8 @@ None currently.
 - Phase 11 Admin Dashboard complete: all 4 tabs (Estimateur, Historique, Apercu, Clients)
 - Phase 6 Analytics Dashboard complete: /dashboard route with charts
 - Phase 13 Hybrid Quote complete: POST /estimate/hybrid with service call detection and LLM merger
-- Next: Phase 8-02 (Deployment execution) or Full Quote UI integration
+- Phase 14 In Progress: Full Quote Frontend (1/3 plans complete)
+- Next: Phase 14-02 (Invoice-style quote result display)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
@@ -284,4 +301,4 @@ None currently.
 - Phase 13 added: Hybrid Quote Generation (ML + CBR + LLM merger for full quote generation)
 
 ---
-*State updated: 2026-01-31 (Phase 13 Complete)*
+*State updated: 2026-02-01 (Phase 14-01 Complete)*
