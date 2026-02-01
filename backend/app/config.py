@@ -6,7 +6,10 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
-    cors_origins: list[str] = ["http://localhost:3000"]
+    cors_origins: list[str] = [
+        "http://localhost:3000",
+        "https://toiture-main.vercel.app",
+    ]
     model_dir: str = "app/models"
 
     # Pinecone settings (optional - CBR disabled if not set)
