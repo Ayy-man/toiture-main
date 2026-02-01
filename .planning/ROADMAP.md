@@ -407,18 +407,18 @@ Plans:
 
 ---
 
-## Phase 16: I18n Language Toggle
+## Phase 16: I18n Language Toggle ✓
 
 **Goal:** Site-wide English/French language toggle with persistent preference
 
 **Requirements:** I18N-01, I18N-02, I18N-03, I18N-04
 
-**Status:** Planned
+**Status:** Complete (2026-02-01)
 
-**Plans:** 0 plans
+**Plans:** 1 plan
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 16 to break down)
+- [x] 16-01-PLAN.md — I18n infrastructure, language toggle, component updates
 
 **Success Criteria:**
 1. Language toggle visible in header/sidebar

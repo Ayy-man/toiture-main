@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 15 - Frontend Design Overhaul (Complete)
+**Current focus:** Phase 16 - I18n Language Toggle (Complete)
 
 ## Progress
 
@@ -27,8 +27,9 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 13 | Complete | 4/4 | 100% |
 | 14 | Complete | 3/3 | 100% |
 | 15 | Complete | 1/1 | 100% |
+| 16 | Complete | 1/1 | 100% |
 
-**Overall:** 30/32 plans complete (94%)
+**Overall:** 31/33 plans complete (94%)
 
 ```
 Progress: [██████████████████░░] 94%
@@ -36,9 +37,20 @@ Progress: [██████████████████░░] 94%
 
 ## Current Phase
 
-**Phase 15: Frontend Design Overhaul** (Complete)
-- Goal: Modern UI with shadcn Lyra preset, sidebar fix, form redesign
+**Phase 16: I18n Language Toggle** (Complete)
+- Goal: Site-wide EN/FR toggle with localStorage persistence
 - Status: All plans complete - verified
+
+### Phase 16 Complete
+- **16-01:** I18n language toggle implementation (Complete)
+  - English translations (en.ts) matching fr.ts structure
+  - LanguageContext with LanguageProvider and useLanguage hook
+  - Barrel export in index.ts for clean imports
+  - LanguageProvider wrapping admin layout
+  - EN/FR toggle in sidebar footer
+  - All 15 components updated to use useLanguage hook
+  - localStorage persistence with "cortex-locale" key
+  - Default language is French (Quebec market)
 
 ### Phase 15 Complete
 - **15-01:** Frontend design overhaul with Lyra preset (Complete)
@@ -296,11 +308,12 @@ Progress: [██████████████████░░] 94%
 | 2026-02-01 | Plan 14-02 executed | Invoice-style quote display and full form integration |
 | 2026-02-01 | Plan 14-03 executed | PDF export with client-facing template |
 | 2026-02-01 | Plan 15-01 executed | Frontend design overhaul with Lyra preset |
+| 2026-02-01 | Plan 16-01 executed | I18n language toggle with EN/FR persistence |
 
 ## Session Continuity
 
 Last session: 2026-02-01
-Stopped at: Phase 15 Complete (All plans verified)
+Stopped at: Phase 16 Complete (All plans verified)
 Resume file: None
 
 ## Blockers
@@ -320,6 +333,7 @@ None currently.
 - Phase 6 Analytics Dashboard complete: /dashboard route with charts
 - Phase 13 Hybrid Quote complete: POST /estimate/hybrid with service call detection and LLM merger
 - Phase 14 Full Quote Frontend complete: ComplexityPresets, QuoteResult, PDF export
+- Phase 16 I18n complete: EN/FR toggle with localStorage persistence
 - Next: Phase 8-02 (Deployment execution) or Phase 12 (Laurent Feedback Fixes)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
@@ -333,4 +347,4 @@ None currently.
 - Phase 16 added: I18n Language Toggle (site-wide EN/FR toggle with persistence)
 
 ---
-*State updated: 2026-02-01 (Phase 14 Complete)*
+*State updated: 2026-02-01 (Phase 16 Complete)*
