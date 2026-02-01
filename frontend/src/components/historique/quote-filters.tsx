@@ -61,16 +61,16 @@ export function QuoteFiltersComponent({
         <div className="space-y-2">
           <Label htmlFor="category">{fr.historique.categorie}</Label>
           <Select
-            value={filters.category || ""}
+            value={filters.category || "__all__"}
             onValueChange={(value) =>
-              updateFilter("category", value || undefined)
+              updateFilter("category", value === "__all__" ? undefined : value)
             }
           >
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="Toutes les categories" />
+              <SelectValue placeholder="Toutes les catégories" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">Toutes les categories</SelectItem>
+              <SelectItem value="__all__">Toutes les catégories</SelectItem>
               {CATEGORIES.map((cat) => (
                 <SelectItem key={cat} value={cat}>
                   {cat}
