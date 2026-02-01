@@ -224,7 +224,7 @@ const Sidebar = React.forwardRef<
         data-state={state}
         data-collapsible={collapsible}
         className={cn(
-          "hidden md:flex flex-col h-svh bg-sidebar text-sidebar-foreground border-r border-sidebar-border transition-all duration-300 ease-in-out shrink-0",
+          "hidden md:flex flex-col h-svh bg-sidebar text-sidebar-foreground border-r border-sidebar-border transition-all duration-300 ease-in-out shrink-0 sticky top-0",
           className
         )}
         style={{ width: sidebarWidth }}

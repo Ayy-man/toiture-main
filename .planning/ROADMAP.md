@@ -2,8 +2,8 @@
 
 **Created:** 2026-01-18
 **Updated:** 2026-02-01
-**Phases:** 15
-**Requirements:** 47
+**Phases:** 16
+**Requirements:** 51
 
 ## Phase Overview
 
@@ -24,6 +24,7 @@
 | 13 | Hybrid Quote Generation ✓ | Full quote with CBR + ML + LLM merger | HQG-01 to HQG-05 | 7 |
 | 14 | Full Quote Frontend ✓ | Frontend with presets, invoice display, PDF | FQ-01 to FQ-05 | 6 |
 | 15 | Frontend Design Overhaul | Modern UI with shadcn Lyra preset | UI-01 to UI-05 | 5 |
+| 16 | I18n Language Toggle | Site-wide EN/FR toggle with persistence | I18N-01 to I18N-04 | 4 |
 
 ---
 
@@ -403,6 +404,30 @@ Plans:
 **Dependencies:** Phase 14 complete
 
 **Preset Config:** `pnpm dlx shadcn@latest create --preset "https://ui.shadcn.com/init?base=base&style=lyra&baseColor=zinc&theme=zinc&iconLibrary=hugeicons&font=jetbrains-mono&menuAccent=bold&menuColor=default&radius=large&template=next&rtl=false" --template next`
+
+---
+
+## Phase 16: I18n Language Toggle
+
+**Goal:** Site-wide English/French language toggle with persistent preference
+
+**Requirements:** I18N-01, I18N-02, I18N-03, I18N-04
+
+**Status:** Planned
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 16 to break down)
+
+**Success Criteria:**
+1. Language toggle visible in header/sidebar
+2. All UI labels switch between English and French
+3. Language preference persists across sessions (localStorage/cookie)
+4. Default language is French (Quebec market)
+5. All existing fr.ts translations used, en.ts translations added
+
+**Dependencies:** Phase 15 complete (frontend design)
 
 ---
 

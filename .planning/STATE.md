@@ -330,6 +330,7 @@ None currently.
 - Phase 11 added: Cortex Admin Dashboard (4-tab professional interface) - moved after material prediction
 - Phase 13 added: Hybrid Quote Generation (ML + CBR + LLM merger for full quote generation)
 - Phase 15 added: Frontend Design Overhaul (shadcn Lyra preset, fix broken UI/UX)
+- Phase 16 added: I18n Language Toggle (site-wide EN/FR toggle with persistence)
 
 ---
 *State updated: 2026-02-01 (Phase 14 Complete)*
