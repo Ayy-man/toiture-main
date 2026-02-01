@@ -244,6 +244,11 @@ Progress: [██████████████████░░] 90%
 | Service call detection: material_lines=0 OR sqft<100 | 13-04 | Routes labor-only jobs to fast path |
 | Service call tier multipliers (0.9x/1.0x/1.2x) | 13-04 | Industry service call pricing pattern |
 | 503 for CBR+ML total failure | 13-04 | Service unavailable semantics |
+| Standard tier for default invoice display | 14-02 | Middle tier suitable for internal quote view |
+| fr-CA locale for CAD formatting | 14-02 | Quebec client base expects space thousands separator |
+| Collapsible reasoning (default collapsed) | 14-02 | LLM reasoning valuable but secondary to invoice |
+| Controller wrapper for ComplexityPresets | 14-02 | Clean integration with react-hook-form for 6 factors |
+| Confidence warning threshold < 50% | 14-02 | Matches backend needs_review flag |
 | @react-pdf/renderer for client-side PDF | 14-03 | No server roundtrip, faster UX |
 | PDF excludes labor hours | 14-03 | Client-facing quotes hide internal details |
 | Standard tier for PDF display | 14-03 | Middle tier represents typical pricing |
@@ -278,6 +283,7 @@ Progress: [██████████████████░░] 90%
 | 2026-01-31 | Plan 13-03 executed | Hybrid quote orchestrator with async CBR+ML+LLM |
 | 2026-01-31 | Plan 13-04 executed | Hybrid quote endpoint with service call detection |
 | 2026-02-01 | Plan 14-01 executed | TypeScript types, API client, complexity presets |
+| 2026-02-01 | Plan 14-02 executed | Invoice-style quote display and full form integration |
 | 2026-02-01 | Plan 14-03 executed | PDF export with client-facing template |
 
 ## Session Continuity
