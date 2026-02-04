@@ -47,6 +47,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins,
+    allow_origin_regex=r"https://toiture-main.*\.vercel\.app",  # Allow Vercel previews
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods including OPTIONS for preflight
     allow_headers=["*"],
