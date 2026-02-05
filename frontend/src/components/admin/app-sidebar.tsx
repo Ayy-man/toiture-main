@@ -15,7 +15,7 @@ import {
   SidebarRail,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Calculator, History, LayoutDashboard, Users, Home } from "lucide-react";
+import { Calculator, History, LayoutDashboard, Users, Home, MessageSquare } from "lucide-react";
 import { useLanguage, type Locale } from "@/lib/i18n";
 
 function useNavItems() {
@@ -25,6 +25,7 @@ function useNavItems() {
     { title: t.nav.historique, href: "/historique", icon: History },
     { title: t.nav.apercu, href: "/apercu", icon: LayoutDashboard },
     { title: t.nav.clients, href: "/clients", icon: Users },
+    { title: t.nav.retours, href: "/retours", icon: MessageSquare },
   ];
 }
 

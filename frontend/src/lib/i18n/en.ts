@@ -4,6 +4,7 @@ export const en = {
     historique: "History",
     apercu: "Overview",
     clients: "Clients",
+    retours: "Feedback",
   },
   estimateur: {
     prix: "Price",
@@ -189,5 +190,55 @@ export const en = {
     retraitMateriauxDesc: "Dismantling complexity",
     securiteDesc: "Site risk level",
     delaiDesc: "Work urgency",
+  },
+  // Retours (Feedback Review) page
+  retours: {
+    titre: "Feedback",
+    description: "Review feedback on estimates",
+    // Summary cards
+    totalRetours: "Total Feedback",
+    tauxApprobation: "Approval Rate",
+    ecartMoyen: "Average Gap",
+    retoursSemaine: "Feedback This Week",
+    // Filters
+    filtres: "Filters",
+    typeFeedback: "Feedback Type",
+    tous: "All",
+    positif: "Positive",
+    negatif: "Negative",
+    categorie: "Category",
+    toutesCategories: "All Categories",
+    periode: "Time Period",
+    derniers7Jours: "Last 7 days",
+    derniers30Jours: "Last 30 days",
+    toutTemps: "All time",
+    trier: "Sort by",
+    dateRecente: "Date (recent)",
+    ecartPlusGrand: "Gap (largest)",
+    // Table headers
+    date: "Date",
+    superficie: "Area",
+    prixEstime: "Estimated Price",
+    vraiPrix: "Actual Price",
+    ecart: "Gap",
+    verdict: "Verdict",
+    raison: "Reason",
+    // Table content
+    aucunRetour: "No feedback yet",
+    aucunRetourDesc: "Feedback will appear here after using the estimator.",
+    voirPlus: "Show more",
+    voirMoins: "Show less",
+    // Expanded row
+    parametresEntree: "Input Parameters",
+    listeMateriaux: "Materials List",
+    casSimilaires: "Similar Cases",
+    raisonComplete: "Full Reason",
+    voirEstimation: "View Original Estimate",
+    // Insights
+    insights: "Insights",
+    categoriesSousEstimees: "Most Under-Estimated Categories",
+    categoriesSurestimees: "Most Over-Estimated Categories",
+    materiauxManquants: "Frequently Missing Materials",
+    aucunesDonnees: "Not enough data",
   },
 } as const;

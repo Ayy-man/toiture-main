@@ -130,9 +130,9 @@ export function MaterialsForm() {
       LOW: "bg-red-100 text-red-800",
     };
     const labels = {
-      HIGH: "Élevée",
-      MEDIUM: "Moyenne",
-      LOW: "Faible",
+      HIGH: t.materiaux.confianceElevee,
+      MEDIUM: t.materiaux.confianceMoyenne,
+      LOW: t.materiaux.confianceFaible,
     };
     return (
       <span
@@ -274,12 +274,12 @@ export function MaterialsForm() {
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Calcul en cours...
+                  {t.materiaux.calculEnCours}
                 </>
               ) : (
                 <>
                   <Calculator className="mr-2 h-4 w-4" />
-                  Calculer les matériaux
+                  {t.materiaux.calculer}
                 </>
               )}
             </Button>
@@ -291,18 +291,18 @@ export function MaterialsForm() {
       {result && (
         <Card>
           <CardHeader>
-            <CardTitle>Matériaux prédits</CardTitle>
+            <CardTitle>{t.materiaux.resultats}</CardTitle>
             <CardDescription>{result.model_info}</CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>ID Matériau</TableHead>
-                  <TableHead className="text-right">Quantité</TableHead>
-                  <TableHead className="text-right">Prix unitaire</TableHead>
-                  <TableHead className="text-right">Total</TableHead>
-                  <TableHead className="text-center">Confiance</TableHead>
+                  <TableHead>{t.materiaux.idMateriau}</TableHead>
+                  <TableHead className="text-right">{t.materiaux.quantite}</TableHead>
+                  <TableHead className="text-right">{t.materiaux.prixUnitaire}</TableHead>
+                  <TableHead className="text-right">{t.materiaux.total}</TableHead>
+                  <TableHead className="text-center">{t.materiaux.confianceCol}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -326,7 +326,7 @@ export function MaterialsForm() {
                   </TableRow>
                 ))}
                 <TableRow className="bg-muted/50 font-bold">
-                  <TableCell colSpan={3}>Coût total des matériaux</TableCell>
+                  <TableCell colSpan={3}>{t.materiaux.coutTotal}</TableCell>
                   <TableCell className="text-right tabular-nums">
                     {formatCurrency(result.total_materials_cost)}
                   </TableCell>
@@ -338,7 +338,7 @@ export function MaterialsForm() {
             {result.applied_rules.length > 0 && (
               <div className="mt-4 p-3 bg-blue-50 rounded-lg">
                 <p className="text-sm font-medium text-blue-800 mb-2">
-                  Règles appliquées:
+                  {t.materiaux.reglesAppliquees}
                 </p>
                 <ul className="text-sm text-blue-700 list-disc list-inside">
                   {result.applied_rules.map((rule, i) => (

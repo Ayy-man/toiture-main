@@ -1,8 +1,8 @@
 # Roadmap: TOITURELV Cortex
 
 **Created:** 2026-01-18
-**Updated:** 2026-02-01
-**Phases:** 16
+**Updated:** 2026-02-05
+**Phases:** 18
 **Requirements:** 51
 
 ## Phase Overview
@@ -25,6 +25,8 @@
 | 14 | Full Quote Frontend ✓ | Frontend with presets, invoice display, PDF | FQ-01 to FQ-05 | 6 |
 | 15 | Frontend Design Overhaul | Modern UI with shadcn Lyra preset | UI-01 to UI-05 | 5 |
 | 16 | I18n Language Toggle | Site-wide EN/FR toggle with persistence | I18N-01 to I18N-04 | 4 |
+| 17 | Production Fixes | Fix production issues after deploy | PROD-01 to PROD-07 | 7 |
+| 18 | Feedback Review Page | Retours page with insights and analytics | FB-01 to FB-04 | 4 |
 
 ---
 
@@ -428,6 +430,70 @@ Plans:
 5. All existing fr.ts translations used, en.ts translations added
 
 **Dependencies:** Phase 15 complete (frontend design)
+
+---
+
+## Phase 17: Production Fixes
+
+**Goal:** Fix production issues discovered after deployment
+
+**Requirements:** PROD-01, PROD-02, PROD-03, PROD-04, PROD-05, PROD-06, PROD-07
+
+**Status:** In Progress (2026-02-05)
+
+**Plans:** 7 plans
+
+Plans:
+- [x] 17-01-PLAN.md — Mixed content fix (HTTPS API URL)
+- [x] 17-02-PLAN.md — Dashboard 500 errors (column fixes)
+- [ ] 17-03-PLAN.md — Verify Historique/Clients after deploy
+- [x] 17-04-PLAN.md — Matériaux tab real prediction form
+- [x] 17-05-PLAN.md — Similar cases sqft range filter
+- [x] 17-06-PLAN.md — Feedback system quick endpoint
+- [ ] 17-07-PLAN.md — French translations completion
+
+**Success Criteria:**
+1. No mixed content errors in production
+2. Dashboard endpoints return valid data
+3. Historique and Clients pages work
+4. Matériaux tab shows real predictions
+5. All UI text in French when FR selected
+
+**Dependencies:** Phase 16 complete, deployment active
+
+---
+
+## Phase 18: Feedback Review Page
+
+**Goal:** Dedicated page for reviewing and analyzing feedback ("Retours")
+
+**Requirements:** FB-01, FB-02, FB-03, FB-04
+
+**Status:** Planned (2026-02-05)
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 18 to break down)
+
+**Success Criteria:**
+1. "Retours" nav item in sidebar between Clients and bottom
+2. Summary cards: total, approval rate, avg gap, weekly count
+3. Filterable table with feedback entries
+4. Expandable rows showing full estimate details
+5. Insights section with category analysis
+6. Backend endpoints: GET /feedback, GET /feedback/summary
+7. Empty state when no feedback exists
+8. All labels in French
+
+**Dependencies:** Phase 17 complete (feedback system working)
+
+**Details:**
+- Summary cards: Total retours, Taux d'approbation, Écart moyen, Retours cette semaine
+- Filters: type (Tous/Positif/Négatif), category, date range, sort
+- Table columns: Date, Catégorie, Superficie, Prix estimé, Vrai prix, Écart, Verdict, Raison
+- Expandable row: input params, materials, similar cases, full reason, reconstruct button
+- Insights: sous-estimées categories, surestimées categories, missing materials
 
 ---
 

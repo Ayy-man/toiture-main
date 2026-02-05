@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useLanguage } from "@/lib/i18n";
 
 interface ReasoningDisplayProps {
   reasoning: string | null;
@@ -17,6 +18,8 @@ interface ReasoningDisplayProps {
  * Display LLM reasoning in markdown format with streaming support
  */
 export function ReasoningDisplay({ reasoning, isStreaming = false }: ReasoningDisplayProps) {
+  const { t } = useLanguage();
+
   // Show card if streaming (even with empty reasoning) or if we have reasoning
   if (!reasoning && !isStreaming) {
     return null;
@@ -26,11 +29,11 @@ export function ReasoningDisplay({ reasoning, isStreaming = false }: ReasoningDi
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          AI Reasoning
+          {t.raisonnement.titre}
           {isStreaming && (
             <span className="inline-flex items-center gap-1 text-sm font-normal text-muted-foreground">
               <span className="animate-pulse">●</span>
-              Generating...
+              {t.raisonnement.enCours}
             </span>
           )}
         </CardTitle>
@@ -41,7 +44,7 @@ export function ReasoningDisplay({ reasoning, isStreaming = false }: ReasoningDi
             <Markdown>{reasoning}</Markdown>
           ) : (
             <p className="text-muted-foreground animate-pulse">
-              Analyzing estimate...
+              {t.raisonnement.analyse}
             </p>
           )}
         </div>

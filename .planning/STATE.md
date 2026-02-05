@@ -345,6 +345,8 @@ None currently.
 - Phase 13 added: Hybrid Quote Generation (ML + CBR + LLM merger for full quote generation)
 - Phase 15 added: Frontend Design Overhaul (shadcn Lyra preset, fix broken UI/UX)
 - Phase 16 added: I18n Language Toggle (site-wide EN/FR toggle with persistence)
+- Phase 17 added: Production Fixes (fix issues after deploy)
+- Phase 18 added: Feedback Review Page (Retours nav item with insights and analytics)
 
 ---
 *State updated: 2026-02-01 (Phase 16 Complete)*

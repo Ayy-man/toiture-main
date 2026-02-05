@@ -33,12 +33,14 @@ import { EstimateResult } from "@/components/estimate-result";
 import { SimilarCases } from "@/components/similar-cases";
 import { ReasoningDisplay } from "@/components/reasoning-display";
 import { FeedbackPanel } from "@/components/estimateur/feedback-panel";
+import { useLanguage } from "@/lib/i18n";
 
 /**
  * Main estimate form component with all 6 input fields
  * Handles form validation, API submission, and result display
  */
 export function EstimateForm() {
+  const { t } = useLanguage();
   const [result, setResult] = useState<EstimateResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isStreamingReasoning, setIsStreamingReasoning] = useState(false);
@@ -95,7 +97,7 @@ export function EstimateForm() {
         },
       });
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+      setError(err instanceof Error ? err.message : t.estimateur.erreurGenerique);
       setIsLoading(false);
       setIsStreamingReasoning(false);
     }
@@ -111,7 +113,7 @@ export function EstimateForm() {
             name="sqft"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Square Footage</FormLabel>
+                <FormLabel>{t.estimateur.superficieTotale}</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
@@ -121,7 +123,7 @@ export function EstimateForm() {
                   />
                 </FormControl>
                 <FormDescription>
-                  Total roof area in square feet
+                  {t.estimateur.superficieDescription}
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -134,14 +136,14 @@ export function EstimateForm() {
             name="category"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Category</FormLabel>
+                <FormLabel>{t.estimateur.categorie}</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a category" />
+                      <SelectValue placeholder={t.estimateur.selectCategorie} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -152,7 +154,7 @@ export function EstimateForm() {
                     ))}
                   </SelectContent>
                 </Select>
-                <FormDescription>Type of roofing job</FormDescription>
+                <FormDescription>{t.estimateur.typeToiture}</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -164,7 +166,7 @@ export function EstimateForm() {
             name="material_lines"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Material Lines</FormLabel>
+                <FormLabel>{t.estimateur.lignesMateriaux}</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
@@ -174,7 +176,7 @@ export function EstimateForm() {
                   />
                 </FormControl>
                 <FormDescription>
-                  Number of material line items
+                  {t.estimateur.nbLignesMateriaux}
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -187,7 +189,7 @@ export function EstimateForm() {
             name="labor_lines"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Labor Lines</FormLabel>
+                <FormLabel>{t.estimateur.lignesMainOeuvre}</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
@@ -196,7 +198,7 @@ export function EstimateForm() {
                     onChange={(e) => field.onChange(e.target.valueAsNumber || "")}
                   />
                 </FormControl>
-                <FormDescription>Number of labor line items</FormDescription>
+                <FormDescription>{t.estimateur.nbLignesMainOeuvre}</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -209,9 +211,9 @@ export function EstimateForm() {
             render={({ field }) => (
               <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                 <div className="space-y-0.5">
-                  <FormLabel className="text-base">Subcontractors</FormLabel>
+                  <FormLabel className="text-base">{t.estimateur.sousTraitants}</FormLabel>
                   <FormDescription>
-                    Will this job involve subcontractors?
+                    {t.estimateur.sousTraitantsQuestion}
                   </FormDescription>
                 </div>
                 <FormControl>
@@ -230,7 +232,7 @@ export function EstimateForm() {
             name="complexity"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Complexity: {field.value}</FormLabel>
+                <FormLabel>{t.estimateur.complexiteLabel}: {field.value}</FormLabel>
                 <FormControl>
                   <Slider
                     min={1}
@@ -241,7 +243,7 @@ export function EstimateForm() {
                   />
                 </FormControl>
                 <FormDescription>
-                  Job complexity (1 = simple, 100 = very complex)
+                  {t.estimateur.complexiteDescription}
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -255,7 +257,7 @@ export function EstimateForm() {
 
           {/* Submit Button */}
           <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Getting Estimate..." : "Get Estimate"}
+            {isLoading ? t.estimateur.obtenirEnCours : t.estimateur.obtenirEstimation}
           </Button>
         </form>
       </Form>

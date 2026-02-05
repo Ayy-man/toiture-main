@@ -4,6 +4,7 @@ export const fr = {
     historique: "Historique",
     apercu: "Apercu",
     clients: "Clients",
+    retours: "Retours",
   },
   estimateur: {
     prix: "Prix",
@@ -189,5 +190,55 @@ export const fr = {
     retraitMateriauxDesc: "Complexité du démontage",
     securiteDesc: "Niveau de risque du chantier",
     delaiDesc: "Urgence des travaux",
+  },
+  // Retours (Feedback Review) page
+  retours: {
+    titre: "Retours",
+    description: "Consultez les retours sur les estimations",
+    // Summary cards
+    totalRetours: "Total retours",
+    tauxApprobation: "Taux d'approbation",
+    ecartMoyen: "Écart moyen",
+    retoursSemaine: "Retours cette semaine",
+    // Filters
+    filtres: "Filtres",
+    typeFeedback: "Type de retour",
+    tous: "Tous",
+    positif: "Positif",
+    negatif: "Négatif",
+    categorie: "Catégorie",
+    toutesCategories: "Toutes les catégories",
+    periode: "Période",
+    derniers7Jours: "7 derniers jours",
+    derniers30Jours: "30 derniers jours",
+    toutTemps: "Tout temps",
+    trier: "Trier par",
+    dateRecente: "Date (récent)",
+    ecartPlusGrand: "Écart (plus grand)",
+    // Table headers
+    date: "Date",
+    superficie: "Superficie",
+    prixEstime: "Prix estimé",
+    vraiPrix: "Vrai prix",
+    ecart: "Écart",
+    verdict: "Verdict",
+    raison: "Raison",
+    // Table content
+    aucunRetour: "Aucun retour pour le moment",
+    aucunRetourDesc: "Les retours apparaîtront ici après utilisation de l'estimateur.",
+    voirPlus: "Voir plus",
+    voirMoins: "Voir moins",
+    // Expanded row
+    parametresEntree: "Paramètres d'entrée",
+    listeMateriaux: "Liste des matériaux",
+    casSimilaires: "Cas similaires",
+    raisonComplete: "Raison complète",
+    voirEstimation: "Voir l'estimation originale",
+    // Insights
+    insights: "Aperçus",
+    categoriesSousEstimees: "Catégories les plus sous-estimées",
+    categoriesSurestimees: "Catégories les plus surestimées",
+    materiauxManquants: "Matériaux manquants fréquents",
+    aucunesDonnees: "Pas assez de données",
   },
 } as const;
