@@ -53,6 +53,7 @@ async def _run_cbr_query(request: HybridQuoteRequest) -> List[Dict[str, Any]]:
     loop = asyncio.get_event_loop()
 
     def sync_cbr():
+        t0 = time.time()
         query_text = build_query_text(
             sqft=request.sqft,
             category=request.category,
@@ -60,13 +61,18 @@ async def _run_cbr_query(request: HybridQuoteRequest) -> List[Dict[str, Any]]:
             material_lines=request.material_lines,
             labor_lines=request.labor_lines,
         )
+        t1 = time.time()
         query_vector = generate_query_embedding(query_text)
-        return query_similar_cases(
+        t2 = time.time()
+        results = query_similar_cases(
             query_vector=query_vector,
             top_k=5,
             category_filter=None,  # Let similarity decide
             sqft_filter=request.sqft,  # Filter to 0.5x-2x sqft range
         )
+        t3 = time.time()
+        logger.info(f"CBR timing: build_query={t1-t0:.3f}s, embedding={t2-t1:.3f}s, pinecone={t3-t2:.3f}s")
+        return results
 
     return await loop.run_in_executor(None, sync_cbr)
 
@@ -341,6 +347,7 @@ async def generate_hybrid_quote(
     )
 
     # Step 1: Run CBR + ML in parallel
+    parallel_start = time.time()
     cbr_task = _run_cbr_query(request)
     ml_task = _run_ml_prediction(request)
 
@@ -349,6 +356,7 @@ async def generate_hybrid_quote(
         ml_task,
         return_exceptions=True,
     )
+    parallel_time = time.time() - parallel_start
 
     cbr_result = results[0] if not isinstance(results[0], Exception) else []
     ml_result = results[1] if not isinstance(results[1], Exception) else None
@@ -357,6 +365,8 @@ async def generate_hybrid_quote(
         logger.warning(f"CBR query failed: {results[0]}")
     if isinstance(results[1], Exception):
         logger.error(f"ML prediction failed: {results[1]}")
+
+    logger.info(f"Parallel step (CBR+ML) took {parallel_time:.3f}s")
 
     # Step 2: Handle partial failures
     if ml_result is None and not cbr_result:
@@ -391,8 +401,10 @@ async def generate_hybrid_quote(
         )
 
     # Step 4: Merge with LLM (or fallback)
+    llm_start = time.time()
     try:
         merged = await _merge_with_llm(request, ml_result or {}, cbr_result)
+        logger.info(f"LLM merge took {time.time() - llm_start:.3f}s")
     except Exception as e:
         logger.error(f"LLM merger failed: {e}")
         # Fallback: use ML price with generated tiers
