@@ -119,9 +119,11 @@ export function FullQuoteForm() {
   }
 
   return (
-    <div className="space-y-6 max-w-3xl">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+    <div className="flex flex-col lg:flex-row lg:gap-8 lg:items-start">
+      {/* Left Column - Form */}
+      <div className="flex-1 max-w-2xl space-y-6">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           {/* Project Details Section */}
           <Card className="card-hover">
             <CardHeader className="pb-4">
@@ -423,16 +425,26 @@ export function FullQuoteForm() {
           </Button>
         </form>
       </Form>
+      </div>
 
-      {/* Quote Result Display */}
-      {result && (
-        <QuoteResult
-          quote={result}
-          category={category}
-          sqft={sqft}
-          inputParams={form.getValues()}
-        />
-      )}
+      {/* Right Column - Result (sticky on desktop) */}
+      <div className="lg:w-[420px] lg:sticky lg:top-4 mt-6 lg:mt-0">
+        {result ? (
+          <QuoteResult
+            quote={result}
+            category={category}
+            sqft={sqft}
+            inputParams={form.getValues()}
+          />
+        ) : (
+          <div className="hidden lg:flex flex-col items-center justify-center rounded-xl border border-dashed border-border/50 bg-muted/20 p-8 text-center min-h-[400px]">
+            <Calculator className="size-12 text-muted-foreground/40 mb-4" />
+            <p className="text-muted-foreground text-sm">
+              {t.fullQuote.resultPlaceholder || "Your quote will appear here"}
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,8 +1,14 @@
 # TOITURELV Cortex
 
+## Status: ✅ LIVE (2026-02-05)
+
+**Production URLs:**
+- Frontend: `frontend-aymans-projects-eef8e702.vercel.app`
+- Backend: `toiture-main-production-d6a5.up.railway.app`
+
 ## What This Is
 
-A web application for TOITURELV's team to test and validate their roofing price estimation ML model. Users input job details, get AI-powered estimates with reasoning from similar historical cases, and provide feedback to improve the model over time. Laurent reviews estimates and enters his actual prices, building a dataset for continuous model improvement.
+A web application for TOITURELV's team to test and validate their roofing price estimation ML model. Users input job details, get AI-powered estimates with reasoning from similar historical cases, and provide feedback to improve the model over time.
 
 ## Core Value
 
@@ -10,23 +16,25 @@ A web application for TOITURELV's team to test and validate their roofing price 
 
 ## Requirements
 
-### Validated
+### Completed ✅
 
-- ✓ Data pipeline transforms C-Cube exports into ML-ready datasets — existing
-- ✓ ML models trained (GradientBoosting, v4) with ~59% R², 56% within ±20% — existing
-- ✓ CBR embeddings generated (8,132 cases, 384-dim) — existing
-- ✓ CLI prediction interface works — existing
+- ✓ Data pipeline transforms C-Cube exports into ML-ready datasets
+- ✓ ML models trained (GradientBoosting, v4) with ~59% R², 56% within ±20%
+- ✓ CBR embeddings generated (8,132 cases, 384-dim)
+- ✓ FastAPI backend serves ML model predictions
+- ✓ Pinecone stores and queries CBR embeddings
+- ✓ OpenRouter LLM adds reasoning to estimates (hybrid CBR/ML/LLM merger)
+- ✓ Next.js admin app with Full Quote form (sqft, type, 6 complexity factors, features)
+- ✓ Analytics dashboard (Overview page)
+- ✓ Supabase stores feedback for batch review
+- ✓ Simple password authentication
+- ✓ Feedback system (Accurate/Inaccurate buttons)
+- ✓ French/English i18n
 
-### Active
+### Future Enhancements
 
-- [ ] FastAPI backend serves ML model predictions
-- [ ] Pinecone stores and queries CBR embeddings
-- [ ] OpenRouter LLM adds reasoning to estimates
-- [ ] Next.js admin app with estimate form (6 inputs)
 - [ ] Review queue for Laurent to enter actual prices
-- [ ] Analytics dashboard (accuracy, confidence trends, material mix)
-- [ ] Supabase stores feedback for batch review
-- [ ] Simple password authentication
+- [ ] Auto-updating model from feedback
 
 ### Out of Scope
 
@@ -66,4 +74,4 @@ A web application for TOITURELV's team to test and validate their roofing price 
 | OpenRouter for LLM | Easy to swap models | — Pending |
 
 ---
-*Last updated: 2026-01-18 after initialization*
+*Last updated: 2026-02-05 — Cortex MVP live in production*
