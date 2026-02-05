@@ -7,12 +7,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { ThumbsUp, ThumbsDown, Send, Loader2, CheckCircle } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
+import type { MaterialLineItem } from "@/types/hybrid-quote";
 
 interface FeedbackPanelProps {
   estimateId: string;
   inputParams: Record<string, unknown>;
   predictedPrice: number;
-  predictedMaterials?: Array<Record<string, unknown>> | null;
+  predictedMaterials?: MaterialLineItem[] | null;
 }
 
 export function FeedbackPanel({
@@ -36,7 +37,7 @@ export function FeedbackPanel({
 
     // Validate required fields for negative feedback
     if (selectedFeedback === "negative" && (!actualPrice || !reason)) {
-      setError("Veuillez remplir tous les champs obligatoires");
+      setError(t.feedback.obligatoire);
       return;
     }
 
@@ -68,7 +69,7 @@ export function FeedbackPanel({
       setSubmitted(true);
     } catch (err) {
       console.error("Feedback error:", err);
-      setError("Erreur lors de l'envoi du feedback");
+      setError(t.feedback.erreurEnvoi);
     } finally {
       setLoading(false);
     }
@@ -78,7 +79,7 @@ export function FeedbackPanel({
     return (
       <div className="flex items-center justify-center gap-2 py-4 text-green-600 font-medium">
         <CheckCircle className="h-5 w-5" />
-        <span>Merci pour votre retour!</span>
+        <span>{t.feedback.merci}</span>
       </div>
     );
   }
@@ -86,7 +87,7 @@ export function FeedbackPanel({
   return (
     <div className="border-t pt-4 mt-4">
       <p className="text-sm text-muted-foreground mb-3">
-        Cette estimation était-elle utile?
+        {t.feedback.question}
       </p>
 
       <div className="flex gap-3 mb-4">
@@ -98,7 +99,7 @@ export function FeedbackPanel({
           className="flex-1"
         >
           <ThumbsUp className="mr-2 h-5 w-5" />
-          Précise
+          {t.feedback.precise}
         </Button>
         <Button
           type="button"
@@ -108,7 +109,7 @@ export function FeedbackPanel({
           className="flex-1"
         >
           <ThumbsDown className="mr-2 h-5 w-5" />
-          Imprécise
+          {t.feedback.imprecise}
         </Button>
       </div>
 
@@ -116,7 +117,7 @@ export function FeedbackPanel({
         <div className="space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="space-y-2">
             <Label htmlFor="actual_price">
-              Quel était le vrai prix?
+              {t.feedback.prixReel}
               {selectedFeedback === "negative" && (
                 <span className="text-red-500 ml-1">*</span>
               )}
@@ -134,12 +135,12 @@ export function FeedbackPanel({
           {selectedFeedback === "negative" && (
             <div className="space-y-2">
               <Label htmlFor="reason">
-                Pourquoi?
+                {t.feedback.pourquoi}
                 <span className="text-red-500 ml-1">*</span>
               </Label>
               <Textarea
                 id="reason"
-                placeholder="Expliquez pourquoi l'estimation était imprécise..."
+                placeholder={t.feedback.placeholder}
                 value={reason}
                 onChange={(e) => setReason(e.target.value)}
                 rows={3}
@@ -164,12 +165,12 @@ export function FeedbackPanel({
             {loading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Envoi...
+                {t.feedback.envoi}
               </>
             ) : (
               <>
                 <Send className="mr-2 h-4 w-4" />
-                Soumettre
+                {t.feedback.soumettre}
               </>
             )}
           </Button>
