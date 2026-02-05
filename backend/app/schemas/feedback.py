@@ -65,6 +65,11 @@ class QuickFeedbackRequest(BaseModel):
     reason: Optional[str] = Field(
         default=None, description="Reason for negative feedback"
     )
+    # Structured feedback fields for model tuning
+    issues: Optional[list[str]] = Field(
+        default=None,
+        description="List of issue categories: missing_materials, wrong_quantities, labor_too_low, labor_too_high, complexity_mismatch, cbr_irrelevant"
+    )
 
 
 class QuickFeedbackResponse(BaseModel):
@@ -89,6 +94,7 @@ class FeedbackEntry(BaseModel):
     feedback: Literal["positive", "negative"]
     actual_price: Optional[float] = None
     reason: Optional[str] = None
+    issues: Optional[list[str]] = None  # Structured issue categories
     # Computed fields
     category: Optional[str] = None
     sqft: Optional[float] = None

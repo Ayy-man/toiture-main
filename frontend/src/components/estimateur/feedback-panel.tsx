@@ -5,9 +5,21 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { ThumbsUp, ThumbsDown, Send, Loader2, CheckCircle } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import type { MaterialLineItem } from "@/types/hybrid-quote";
+
+const ISSUE_CATEGORIES = [
+  "missing_materials",
+  "wrong_quantities",
+  "labor_too_low",
+  "labor_too_high",
+  "complexity_mismatch",
+  "cbr_irrelevant",
+] as const;
+
+type IssueCategory = (typeof ISSUE_CATEGORIES)[number];
 
 interface FeedbackPanelProps {
   estimateId: string;
@@ -28,9 +40,27 @@ export function FeedbackPanel({
   >(null);
   const [actualPrice, setActualPrice] = useState("");
   const [reason, setReason] = useState("");
+  const [selectedIssues, setSelectedIssues] = useState<IssueCategory[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const issueLabels: Record<IssueCategory, string> = {
+    missing_materials: t.feedback.missingMaterials,
+    wrong_quantities: t.feedback.wrongQuantities,
+    labor_too_low: t.feedback.laborTooLow,
+    labor_too_high: t.feedback.laborTooHigh,
+    complexity_mismatch: t.feedback.complexityMismatch,
+    cbr_irrelevant: t.feedback.cbrIrrelevant,
+  };
+
+  const toggleIssue = (issue: IssueCategory) => {
+    setSelectedIssues((prev) =>
+      prev.includes(issue)
+        ? prev.filter((i) => i !== issue)
+        : [...prev, issue]
+    );
+  };
 
   const handleSubmit = async () => {
     if (!selectedFeedback) return;
@@ -58,6 +88,7 @@ export function FeedbackPanel({
             feedback: selectedFeedback,
             actual_price: actualPrice ? parseFloat(actualPrice) : null,
             reason: reason || null,
+            issues: selectedIssues.length > 0 ? selectedIssues : null,
           }),
         }
       );
@@ -133,20 +164,43 @@ export function FeedbackPanel({
           </div>
 
           {selectedFeedback === "negative" && (
-            <div className="space-y-2">
-              <Label htmlFor="reason">
-                {t.feedback.pourquoi}
-                <span className="text-red-500 ml-1">*</span>
-              </Label>
-              <Textarea
-                id="reason"
-                placeholder={t.feedback.placeholder}
-                value={reason}
-                onChange={(e) => setReason(e.target.value)}
-                rows={3}
-                required
-              />
-            </div>
+            <>
+              <div className="space-y-3">
+                <Label>{t.feedback.whatWasWrong}</Label>
+                <div className="grid grid-cols-2 gap-2">
+                  {ISSUE_CATEGORIES.map((issue) => (
+                    <div key={issue} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={issue}
+                        checked={selectedIssues.includes(issue)}
+                        onCheckedChange={() => toggleIssue(issue)}
+                      />
+                      <label
+                        htmlFor={issue}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+                      >
+                        {issueLabels[issue]}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="reason">
+                  {t.feedback.pourquoi}
+                  <span className="text-red-500 ml-1">*</span>
+                </Label>
+                <Textarea
+                  id="reason"
+                  placeholder={t.feedback.placeholder}
+                  value={reason}
+                  onChange={(e) => setReason(e.target.value)}
+                  rows={3}
+                  required
+                />
+              </div>
+            </>
           )}
 
           {error && (

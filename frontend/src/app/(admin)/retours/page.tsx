@@ -55,11 +55,22 @@ interface FeedbackEntry {
   feedback: "positive" | "negative";
   actual_price: number | null;
   reason: string | null;
+  issues: string[] | null;
   category: string | null;
   sqft: number | null;
   price_gap: number | null;
   price_gap_percent: number | null;
 }
+
+// Issue labels for display
+const ISSUE_LABELS: Record<string, { en: string; fr: string }> = {
+  missing_materials: { en: "Missing materials", fr: "Matériaux manquants" },
+  wrong_quantities: { en: "Wrong quantities", fr: "Quantités incorrectes" },
+  labor_too_low: { en: "Labor hours too low", fr: "Heures trop basses" },
+  labor_too_high: { en: "Labor hours too high", fr: "Heures trop élevées" },
+  complexity_mismatch: { en: "Complexity misjudged", fr: "Complexité mal évaluée" },
+  cbr_irrelevant: { en: "Similar cases not relevant", fr: "Cas non pertinents" },
+};
 
 interface FeedbackSummary {
   total_count: number;
@@ -82,7 +93,7 @@ interface FeedbackListResponse {
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function RetoursPage() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
 
   // State
   const [summary, setSummary] = useState<FeedbackSummary | null>(null);
@@ -448,7 +459,7 @@ export default function RetoursPage() {
                       <CollapsibleContent asChild>
                         <TableRow className="bg-muted/30">
                           <TableCell colSpan={9} className="p-4">
-                            <ExpandedDetails entry={entry} t={t} />
+                            <ExpandedDetails entry={entry} t={t} locale={locale} />
                           </TableCell>
                         </TableRow>
                       </CollapsibleContent>
@@ -512,13 +523,13 @@ export default function RetoursPage() {
                 <InsightsList feedback={feedback} type="over" t={t} />
               </div>
 
-              {/* Missing materials */}
+              {/* Frequently reported issues */}
               <div>
                 <h4 className="text-sm font-medium flex items-center gap-2 mb-3">
-                  <Package className="h-4 w-4 text-amber-600" />
-                  {t.retours.materiauxManquants}
+                  <AlertCircle className="h-4 w-4 text-amber-600" />
+                  {t.retours.frequentIssues}
                 </h4>
-                <MissingMaterialsList feedback={feedback} t={t} />
+                <IssueFrequencyList feedback={feedback} t={t} locale={locale} />
               </div>
             </div>
           </CardContent>
@@ -532,9 +543,11 @@ export default function RetoursPage() {
 function ExpandedDetails({
   entry,
   t,
+  locale,
 }: {
   entry: FeedbackEntry;
   t: ReturnType<typeof useLanguage>["t"];
+  locale: "en" | "fr";
 }) {
   return (
     <div className="grid gap-4 md:grid-cols-2">
@@ -563,6 +576,23 @@ function ExpandedDetails({
                   {String(mat.quantity || "-")} × {String(mat.unit_price || "-")}
                 </span>
               </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Reported Issues */}
+      {entry.issues && entry.issues.length > 0 && (
+        <div>
+          <h4 className="text-sm font-medium mb-2">{t.retours.problemesSignales}</h4>
+          <div className="flex flex-wrap gap-2">
+            {entry.issues.map((issue) => (
+              <span
+                key={issue}
+                className="inline-flex items-center rounded-full bg-destructive/10 px-2.5 py-0.5 text-xs font-medium text-destructive"
+              >
+                {ISSUE_LABELS[issue]?.[locale] || issue}
+              </span>
             ))}
           </div>
         </div>
@@ -630,56 +660,42 @@ function InsightsList({
   );
 }
 
-// Missing materials list component
-function MissingMaterialsList({
+// Issue frequency list component
+function IssueFrequencyList({
   feedback,
   t,
+  locale,
 }: {
   feedback: FeedbackEntry[];
   t: ReturnType<typeof useLanguage>["t"];
+  locale: "en" | "fr";
 }) {
-  // Parse reasons for material mentions
-  const materialMentions: Record<string, number> = {};
-  const materialKeywords = [
-    "bardeau",
-    "membrane",
-    "clou",
-    "solin",
-    "ventilation",
-    "faîtière",
-    "noue",
-    "larmier",
-    "sous-couche",
-    "scellant",
-  ];
+  // Count issue occurrences
+  const issueCounts: Record<string, number> = {};
 
   feedback.forEach((entry) => {
-    if (!entry.reason) return;
-    const reasonLower = entry.reason.toLowerCase();
-
-    materialKeywords.forEach((keyword) => {
-      if (reasonLower.includes(keyword)) {
-        materialMentions[keyword] = (materialMentions[keyword] || 0) + 1;
-      }
+    if (!entry.issues) return;
+    entry.issues.forEach((issue) => {
+      issueCounts[issue] = (issueCounts[issue] || 0) + 1;
     });
   });
 
-  const sortedMaterials = Object.entries(materialMentions)
+  const sortedIssues = Object.entries(issueCounts)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5);
 
-  if (sortedMaterials.length === 0) {
+  if (sortedIssues.length === 0) {
     return <p className="text-sm text-muted-foreground">{t.retours.aucunesDonnees}</p>;
   }
 
   return (
     <ul className="space-y-2">
-      {sortedMaterials.map(([material, count]) => (
+      {sortedIssues.map(([issue, count]) => (
         <li
-          key={material}
+          key={issue}
           className="flex justify-between items-center text-sm p-2 rounded bg-muted/50"
         >
-          <span className="capitalize">{material}</span>
+          <span>{ISSUE_LABELS[issue]?.[locale] || issue}</span>
           <span className="text-muted-foreground">{count}x</span>
         </li>
       ))}

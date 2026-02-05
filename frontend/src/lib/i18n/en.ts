@@ -77,6 +77,14 @@ export const en = {
     envoi: "Sending...",
     soumettre: "Submit",
     merci: "Thank you for your feedback!",
+    // Structured issue categories
+    whatWasWrong: "What was wrong?",
+    missingMaterials: "Missing materials",
+    wrongQuantities: "Wrong quantities",
+    laborTooLow: "Labor hours too low",
+    laborTooHigh: "Labor hours too high",
+    complexityMismatch: "Complexity misjudged",
+    cbrIrrelevant: "Similar cases not relevant",
   },
   // Materials form
   materiaux: {
@@ -144,6 +152,7 @@ export const en = {
     confiance: "Confidence",
     verificationRecommandee: "Verification recommended",
     erreur: "Error generating quote",
+    resultPlaceholder: "Your quote will appear here",
     // Complexity labels
     complexite: "Work Complexity",
     simple: "Simple",
@@ -240,5 +249,8 @@ export const en = {
     categoriesSurestimees: "Most Over-Estimated Categories",
     materiauxManquants: "Frequently Missing Materials",
     aucunesDonnees: "Not enough data",
+    // Issues section
+    problemesSignales: "Reported Issues",
+    frequentIssues: "Most Frequent Issues",
   },
 } as const;

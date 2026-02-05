@@ -155,6 +155,7 @@ def submit_quick_feedback(request: QuickFeedbackRequest):
             "feedback": request.feedback,
             "actual_price": request.actual_price,
             "reason": request.reason,
+            "issues": json.dumps(request.issues) if request.issues else None,
             "created_at": datetime.utcnow().isoformat(),
         }
 
@@ -259,6 +260,14 @@ def get_feedback_list(
                 except:
                     predicted_materials = None
 
+            # Parse issues
+            issues = row.get("issues")
+            if isinstance(issues, str):
+                try:
+                    issues = json.loads(issues)
+                except:
+                    issues = None
+
             entry = FeedbackEntry(
                 id=row.get("id", ""),
                 estimate_id=row.get("estimate_id", ""),
@@ -269,6 +278,7 @@ def get_feedback_list(
                 feedback=row.get("feedback", "positive"),
                 actual_price=actual,
                 reason=row.get("reason"),
+                issues=issues,
                 category=row_category,
                 sqft=row_sqft,
                 price_gap=price_gap,
