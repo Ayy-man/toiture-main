@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { ChevronDown, AlertTriangle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -12,11 +12,13 @@ import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import type { HybridQuoteResponse } from "@/types/hybrid-quote";
 import { QuoteActions } from "./quote-actions";
+import { FeedbackPanel } from "./feedback-panel";
 
 export interface QuoteResultProps {
   quote: HybridQuoteResponse;
   category: string;
   sqft: number;
+  inputParams?: Record<string, unknown>;
 }
 
 /**
@@ -24,8 +26,11 @@ export interface QuoteResultProps {
  * Displays work items, materials total, labor total, and grand total with confidence warning.
  * Collapsible reasoning section with markdown rendering.
  */
-export function QuoteResult({ quote, category, sqft }: QuoteResultProps) {
+export function QuoteResult({ quote, category, sqft, inputParams }: QuoteResultProps) {
   const [isReasoningOpen, setIsReasoningOpen] = useState(false);
+
+  // Generate a stable estimate ID for feedback tracking
+  const estimateId = useMemo(() => crypto.randomUUID(), []);
 
   // Format currency in CAD with fr-CA locale
   const formatCurrency = (amount: number) => {
@@ -160,6 +165,14 @@ export function QuoteResult({ quote, category, sqft }: QuoteResultProps) {
 
         {/* QuoteActions - PDF export and future actions */}
         <QuoteActions quote={quote} category={category} sqft={sqft} />
+
+        {/* Feedback Panel */}
+        <FeedbackPanel
+          estimateId={estimateId}
+          inputParams={inputParams || { category, sqft }}
+          predictedPrice={standardTier.total_price}
+          predictedMaterials={quote.materials}
+        />
       </CardContent>
     </Card>
   );

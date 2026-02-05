@@ -9,6 +9,8 @@ from app.schemas.feedback import (
     EstimateDetail,
     EstimateListItem,
     FeedbackResponse,
+    QuickFeedbackRequest,
+    QuickFeedbackResponse,
     SubmitFeedbackRequest,
 )
 from app.services.supabase_client import get_supabase
@@ -118,4 +120,43 @@ def submit_feedback(request: SubmitFeedbackRequest):
         raise
     except Exception as e:
         logger.error(f"Failed to submit feedback for {request.estimate_id}: {e}")
+        raise HTTPException(status_code=500, detail="Failed to submit feedback")
+
+
+@router.post("/quick", response_model=QuickFeedbackResponse)
+def submit_quick_feedback(request: QuickFeedbackRequest):
+    """Submit quick feedback (thumbs up/down) on an estimate.
+
+    This is for collecting user feedback directly from the estimate result,
+    without requiring the full review workflow.
+    """
+    supabase = get_supabase()
+    if supabase is None:
+        raise HTTPException(
+            status_code=503, detail="Supabase not configured. Feedback system unavailable."
+        )
+
+    try:
+        import json
+        from datetime import datetime
+
+        # Insert into cortex_feedback table
+        feedback_data = {
+            "estimate_id": request.estimate_id,
+            "input_params": json.dumps(request.input_params),
+            "predicted_price": request.predicted_price,
+            "predicted_materials": json.dumps(request.predicted_materials) if request.predicted_materials else None,
+            "feedback": request.feedback,
+            "actual_price": request.actual_price,
+            "reason": request.reason,
+            "created_at": datetime.utcnow().isoformat(),
+        }
+
+        supabase.table("cortex_feedback").insert(feedback_data).execute()
+        logger.info(f"Quick feedback recorded for estimate {request.estimate_id}: {request.feedback}")
+
+        return QuickFeedbackResponse(success=True, message="Merci pour votre retour!")
+
+    except Exception as e:
+        logger.error(f"Failed to submit quick feedback: {e}")
         raise HTTPException(status_code=500, detail="Failed to submit feedback")

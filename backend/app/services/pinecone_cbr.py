@@ -44,16 +44,42 @@ def query_similar_cases(
     query_vector: List[float],
     top_k: int = 5,
     category_filter: Optional[str] = None,
+    sqft_filter: Optional[float] = None,
     namespace: str = "cbr"
 ) -> List[Dict[str, Any]]:
-    """Query Pinecone for similar historical cases."""
+    """Query Pinecone for similar historical cases.
+
+    Args:
+        query_vector: Embedding vector for similarity search
+        top_k: Number of results to return
+        category_filter: Optional category to filter by
+        sqft_filter: If provided, filters to cases within 0.5x-2x this sqft value
+        namespace: Pinecone namespace
+    """
     if _index is None:
         logger.warning("Pinecone not initialized, returning empty results")
         return []
 
-    filter_dict = None
+    # Build filter conditions
+    filter_conditions = []
+
     if category_filter:
-        filter_dict = {"category": {"$eq": category_filter}}
+        filter_conditions.append({"category": {"$eq": category_filter}})
+
+    # Add sqft range filter: 0.5x to 2x the input sqft
+    # This ensures similar cases are actually comparable in size
+    if sqft_filter and sqft_filter > 0:
+        sqft_min = sqft_filter * 0.5
+        sqft_max = sqft_filter * 2.0
+        filter_conditions.append({"sqft": {"$gte": sqft_min}})
+        filter_conditions.append({"sqft": {"$lte": sqft_max}})
+
+    # Combine filters with $and if multiple conditions
+    filter_dict = None
+    if len(filter_conditions) == 1:
+        filter_dict = filter_conditions[0]
+    elif len(filter_conditions) > 1:
+        filter_dict = {"$and": filter_conditions}
 
     results = _index.query(
         vector=query_vector,

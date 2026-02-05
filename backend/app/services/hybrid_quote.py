@@ -65,6 +65,7 @@ async def _run_cbr_query(request: HybridQuoteRequest) -> List[Dict[str, Any]]:
             query_vector=query_vector,
             top_k=5,
             category_filter=None,  # Let similarity decide
+            sqft_filter=request.sqft,  # Filter to 0.5x-2x sqft range
         )
 
     return await loop.run_in_executor(None, sync_cbr)
@@ -179,13 +180,14 @@ Total Materials Cost: ${ml_result.get('materials', {}).get('total_materials_cost
 4. Generate 3 pricing tiers: Basic (-15%), Standard (base), Premium (+18%)
 
 **OUTPUT: Return ONLY valid JSON matching this structure:**
+IMPORTANT: All confidence values MUST be decimals between 0.0 and 1.0 (e.g., 0.85 for 85% confidence). Do NOT use percentages.
 {{
   "work_items": [{{"name": "string", "labor_hours": number, "source": "CBR|ML|MERGED"}}],
-  "materials": [{{"material_id": number, "quantity": number, "unit_price": number, "total": number, "source": "CBR|ML|MERGED", "confidence": number}}],
+  "materials": [{{"material_id": number, "quantity": number, "unit_price": number, "total": number, "source": "CBR|ML|MERGED", "confidence": 0.85}}],
   "total_labor_hours": number,
   "total_materials_cost": number,
   "total_price": number,
-  "overall_confidence": number,
+  "overall_confidence": 0.75,
   "reasoning": "string explaining key decisions",
   "pricing_tiers": [
     {{"tier": "Basic", "total_price": number, "materials_cost": number, "labor_cost": number, "description": "string"}},
@@ -218,6 +220,25 @@ def _extract_json(text: str) -> dict:
         return json.loads(json_match.group(0))
 
     raise ValueError(f"No valid JSON found in response: {text[:200]}")
+
+
+def _normalize_confidence_values(data: dict) -> dict:
+    """Normalize confidence values from 0-100 to 0-1 if needed.
+
+    LLMs sometimes return percentages (81) instead of decimals (0.81).
+    This function detects and fixes that issue.
+    """
+    # Normalize overall_confidence
+    if "overall_confidence" in data and data["overall_confidence"] > 1:
+        data["overall_confidence"] = data["overall_confidence"] / 100.0
+
+    # Normalize material confidence values
+    if "materials" in data:
+        for material in data["materials"]:
+            if "confidence" in material and material["confidence"] > 1:
+                material["confidence"] = material["confidence"] / 100.0
+
+    return data
 
 
 async def _merge_with_llm(
@@ -253,6 +274,8 @@ async def _merge_with_llm(
     # Parse JSON and validate with Pydantic
     try:
         data = _extract_json(response_text)
+        # Normalize confidence values (LLM sometimes returns 0-100 instead of 0-1)
+        data = _normalize_confidence_values(data)
         return HybridQuoteOutput.model_validate(data)
     except (json.JSONDecodeError, ValueError) as e:
         logger.error(f"Failed to parse LLM response: {e}")

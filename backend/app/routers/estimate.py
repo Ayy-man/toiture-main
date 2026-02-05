@@ -61,6 +61,7 @@ def create_estimate(request: EstimateRequest):
                     query_vector=query_vector,
                     top_k=5,
                     category_filter=None,  # Let similarity decide, don't filter by category
+                    sqft_filter=request.sqft,  # Filter to 0.5x-2x sqft range
                 )
                 similar_cases = [SimilarCase(**case) for case in similar_cases_data]
             except Exception as e:
@@ -145,6 +146,7 @@ def create_estimate_stream(request: EstimateRequest):
                         query_vector=query_vector,
                         top_k=5,
                         category_filter=None,
+                        sqft_filter=request.sqft,  # Filter to 0.5x-2x sqft range
                     )
                     similar_cases = [SimilarCase(**case) for case in similar_cases_data]
                 except Exception as e:

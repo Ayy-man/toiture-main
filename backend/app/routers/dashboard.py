@@ -39,8 +39,9 @@ def get_dashboard_metrics(
 
     try:
         # Build query with date filters
+        # Note: Only select columns that exist in the estimates table
         query = supabase.table("estimates").select(
-            "ai_estimate, margin_percent, client_name"
+            "ai_estimate, category, created_at"
         )
 
         if start_date:
@@ -53,32 +54,27 @@ def get_dashboard_metrics(
         # Calculate aggregates
         total_revenue = 0.0
         total_quotes = 0
-        margin_sum = 0.0
-        margin_count = 0
-        active_clients = set()
+        categories_seen = set()
 
         for row in result.data:
             total_quotes += 1
             total_revenue += row.get("ai_estimate") or 0
 
-            # Track margin if available
-            margin = row.get("margin_percent")
-            if margin is not None:
-                margin_sum += margin
-                margin_count += 1
+            # Track unique categories as proxy for activity
+            category = row.get("category")
+            if category:
+                categories_seen.add(category)
 
-            # Track unique clients
-            client = row.get("client_name")
-            if client:
-                active_clients.add(client)
-
-        average_margin = margin_sum / margin_count if margin_count > 0 else 0.0
+        # Note: margin_percent and client_name columns don't exist in current schema
+        # Setting defaults until those features are added
+        average_margin = 0.0
+        active_clients = len(categories_seen)  # Use categories as proxy
 
         return DashboardMetrics(
             total_revenue=total_revenue,
             total_quotes=total_quotes,
             average_margin=average_margin,
-            active_clients=len(active_clients),
+            active_clients=active_clients,
             period_start=start_date,
             period_end=end_date,
         )
@@ -108,8 +104,9 @@ def get_dashboard_charts(
 
     try:
         # Build query with date filters
+        # Note: Only select columns that exist in the estimates table
         query = supabase.table("estimates").select(
-            "created_at, category, ai_estimate, client_name"
+            "created_at, category, ai_estimate"
         )
 
         if start_date:
@@ -123,7 +120,6 @@ def get_dashboard_charts(
         revenue_by_year = defaultdict(lambda: {"revenue": 0.0, "quote_count": 0})
         revenue_by_category = defaultdict(lambda: {"revenue": 0.0, "quote_count": 0})
         monthly_trend = defaultdict(lambda: {"revenue": 0.0, "quote_count": 0})
-        client_totals = defaultdict(lambda: {"total_spent": 0.0, "quote_count": 0})
         total_revenue = 0.0
 
         for row in result.data:
@@ -151,12 +147,6 @@ def get_dashboard_charts(
             revenue_by_category[category]["revenue"] += price
             revenue_by_category[category]["quote_count"] += 1
 
-            # Client aggregation
-            client = row.get("client_name")
-            if client:
-                client_totals[client]["total_spent"] += price
-                client_totals[client]["quote_count"] += 1
-
         # Build response objects
         revenue_by_year_list = [
             RevenueByYear(year=year, revenue=data["revenue"], quote_count=data["quote_count"])
@@ -180,13 +170,9 @@ def get_dashboard_charts(
             for month, data in sorted(monthly_trend.items())
         ]
 
-        # Top 10 clients by spending
-        top_clients_list = [
-            TopClient(name=name, total_spent=data["total_spent"], quote_count=data["quote_count"])
-            for name, data in sorted(
-                client_totals.items(), key=lambda x: x[1]["total_spent"], reverse=True
-            )[:10]
-        ]
+        # Note: client_name column doesn't exist in current schema
+        # Top clients feature disabled until that column is added
+        top_clients_list = []
 
         return DashboardCharts(
             revenue_by_year=revenue_by_year_list,

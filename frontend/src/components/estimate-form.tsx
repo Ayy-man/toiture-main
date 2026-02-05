@@ -32,6 +32,7 @@ import { submitEstimateStream, type EstimateResponse } from "@/lib/api";
 import { EstimateResult } from "@/components/estimate-result";
 import { SimilarCases } from "@/components/similar-cases";
 import { ReasoningDisplay } from "@/components/reasoning-display";
+import { FeedbackPanel } from "@/components/estimateur/feedback-panel";
 
 /**
  * Main estimate form component with all 6 input fields
@@ -43,6 +44,8 @@ export function EstimateForm() {
   const [isStreamingReasoning, setIsStreamingReasoning] = useState(false);
   const [streamedReasoning, setStreamedReasoning] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [estimateId, setEstimateId] = useState<string>("");
+  const [submittedParams, setSubmittedParams] = useState<EstimateFormData | null>(null);
 
   const form = useForm<EstimateFormData>({
     resolver: zodResolver(estimateFormSchema),
@@ -62,6 +65,8 @@ export function EstimateForm() {
     setResult(null);
     setStreamedReasoning("");
     setIsStreamingReasoning(false);
+    setEstimateId(crypto.randomUUID());
+    setSubmittedParams(data);
 
     try {
       await submitEstimateStream(data, {
@@ -263,6 +268,13 @@ export function EstimateForm() {
           <ReasoningDisplay
             reasoning={streamedReasoning || result.reasoning}
             isStreaming={isStreamingReasoning}
+          />
+          {/* Feedback Panel */}
+          <FeedbackPanel
+            estimateId={estimateId}
+            inputParams={submittedParams || {}}
+            predictedPrice={result.estimate}
+            predictedMaterials={null}
           />
         </div>
       )}

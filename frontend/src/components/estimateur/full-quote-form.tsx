@@ -426,7 +426,12 @@ export function FullQuoteForm() {
 
       {/* Quote Result Display */}
       {result && (
-        <QuoteResult quote={result} category={category} sqft={sqft} />
+        <QuoteResult
+          quote={result}
+          category={category}
+          sqft={sqft}
+          inputParams={form.getValues()}
+        />
       )}
     </div>
   );

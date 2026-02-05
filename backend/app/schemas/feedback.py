@@ -45,3 +45,30 @@ class FeedbackResponse(BaseModel):
 
     status: Literal["success"]
     estimate_id: str
+
+
+class QuickFeedbackRequest(BaseModel):
+    """Request body for submitting quick feedback (thumbs up/down) on an estimate."""
+
+    estimate_id: str = Field(..., description="UUID of the estimate")
+    input_params: dict = Field(..., description="Original input parameters")
+    predicted_price: float = Field(..., description="AI predicted price")
+    predicted_materials: Optional[list] = Field(
+        default=None, description="Predicted materials if full quote"
+    )
+    feedback: Literal["positive", "negative"] = Field(
+        ..., description="Was the estimate helpful?"
+    )
+    actual_price: Optional[float] = Field(
+        default=None, description="User's actual/expected price"
+    )
+    reason: Optional[str] = Field(
+        default=None, description="Reason for negative feedback"
+    )
+
+
+class QuickFeedbackResponse(BaseModel):
+    """Response after submitting quick feedback."""
+
+    success: bool
+    message: str
