@@ -1,6 +1,6 @@
 """Query embedding generation using sentence-transformers.
 
-Uses lazy loading to reduce memory footprint at startup.
+Pre-loads model at startup when Pinecone is configured to avoid request timeouts.
 """
 
 import gc
@@ -10,11 +10,23 @@ from typing import List, Optional
 logger = logging.getLogger(__name__)
 
 _model = None
+_should_load = False
 
 
-def load_embedding_model():
-    """Lazy load - model loaded on first use to reduce startup memory."""
-    logger.info("Embedding model will load on first use (lazy loading)")
+def load_embedding_model(eager: bool = False):
+    """Load embedding model.
+
+    Args:
+        eager: If True, load model immediately (called when Pinecone is configured)
+    """
+    global _should_load
+    _should_load = eager
+
+    if eager:
+        logger.info("Pre-loading embedding model at startup (Pinecone configured)...")
+        _get_model()  # Force immediate load
+    else:
+        logger.info("Embedding model disabled (Pinecone not configured)")
 
 
 def _get_model():

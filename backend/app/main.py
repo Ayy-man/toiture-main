@@ -9,7 +9,7 @@ from app.config import settings
 from app.routers import customers, dashboard, estimate, feedback, health, quotes
 from app.services.embeddings import load_embedding_model, unload_embedding_model
 from app.services.llm_reasoning import close_llm_client, init_llm_client
-from app.services.pinecone_cbr import close_pinecone, init_pinecone
+from app.services.pinecone_cbr import close_pinecone, init_pinecone, is_pinecone_available
 from app.services.predictor import load_models, unload_models
 from app.services.supabase_client import close_supabase, init_supabase
 
@@ -18,13 +18,14 @@ from app.services.supabase_client import close_supabase, init_supabase
 async def lifespan(app: FastAPI):
     """Manage application lifecycle.
 
-    ML models use lazy loading (load on first request) to reduce startup memory.
-    Only lightweight API clients are initialized at startup.
+    Pre-loads embedding model at startup when Pinecone is configured to avoid
+    request timeouts. ML price/material models still use lazy loading.
     """
-    # Startup - ML models load lazily on first request to reduce memory
+    # Startup
     load_models()           # No-op: models load on first predict()
-    load_embedding_model()  # No-op: model loads on first embed()
     init_pinecone()         # Pinecone connection (lightweight client)
+    # Pre-load embedding model if Pinecone is configured (avoids request timeout)
+    load_embedding_model(eager=is_pinecone_available())
     init_llm_client()       # OpenRouter LLM client (lightweight)
     init_supabase()         # Supabase connection (lightweight)
     yield
