@@ -529,14 +529,16 @@ Plans:
 
 **Status:** Planned (2026-02-09)
 
-**Plans:** 0 plans
+**Plans:** 3 plans
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 20 to break down)
+- [ ] 20-01-PLAN.md — Supabase materials table DDL + CSV import script + deduplication report
+- [ ] 20-02-PLAN.md — Materials search API endpoints (GET /materials/search, GET /materials/categories)
+- [ ] 20-03-PLAN.md — Frontend material selector UI (searchable multi-select, custom material entry, auto line-count)
 
 **Success Criteria:**
 1. Materials table created in Supabase with fields: code, name, unit_price, unit_of_measure, category
-2. All 672 items from Laurent's XLS parsed and imported (~600 clean, ~72 flagged for review)
+2. All 1,152 items from Laurent's CSV parsed and imported (~813 clean, ~259 flagged for review)
 3. Materials mapped to existing CCube extraction data by material code
 4. Deduplication check run, similar items flagged for Amin/Laurent review
 5. Material selector UI: searchable dropdown, user picks materials, system auto-counts lines
