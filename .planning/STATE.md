@@ -343,6 +343,8 @@ Sprint Progress: [██████████████████░░] 
 | Native HTML date/time pickers for send dialog | 24-03 | Simpler than library date picker, no new dependency, sufficient for MVP scheduling |
 | RedFlagBanner uses Tailwind classes directly | 24-03 | Alert component doesn't exist in ui/ directory, Tailwind provides full control |
 | Dismissible flags tracked in local state | 24-03 | Immediate UI feedback, batch dismiss call on send to reduce API calls |
+| Direct import of translation objects in PDF template | 25-02 | @react-pdf/renderer cannot use React hooks, direct import required for bilingual support |
+| Replace all locale ternaries with translation keys | 25-02 | Centralized translations enable consistency and easy maintenance across tier/factor/equipment/PDF labels |
 
 ## Session History
 
@@ -394,12 +396,13 @@ Sprint Progress: [██████████████████░░] 
 | 2026-02-09 | Plan 24-01 executed | DOCX export template with docx package (PREVIOUS SESSION) |
 | 2026-02-09 | Plan 24-02 executed | Red flag evaluator, email service, send/red-flag/dismiss endpoints (PREVIOUS SESSION) |
 | 2026-02-10 | Plan 24-01 re-executed | DOCX export with bilingual QuoteActions button |
-| 2026-02-10 | Plan 24-03 executed | Send dialog UI with red flag banner, API client extensions, bilingual i18n (CURRENT SESSION) |
+| 2026-02-10 | Plan 24-03 executed | Send dialog UI with red flag banner, API client extensions, bilingual i18n |
+| 2026-02-10 | Plan 25-02 executed | i18n cleanup for tier/factor/PDF labels - moved 30+ locale ternaries to translation files (CURRENT SESSION) |
 
 ## Session Continuity
 
 Last session: 2026-02-10
-Stopped at: Completed 24-03-PLAN.md (Send Dialog UI) — Phase 24 complete, next is Phase 25 (UI Polish & Dark Mode)
+Stopped at: Completed 25-02-PLAN.md (i18n cleanup) — Phase 25 in progress (1/3 plans complete)
 Resume file: None
 
 ## Blockers
