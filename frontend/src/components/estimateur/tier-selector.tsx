@@ -44,8 +44,8 @@ export function TierSelector({ value, onChange, tiers }: TierSelectorProps) {
         {t.fullQuote.niveauComplexite}
       </label>
 
-      {/* Tier Cards Grid - 2 cols mobile, 3 cols sm+ */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      {/* Tier Cards Grid - 3 cols always, compact cards */}
+      <div className="grid grid-cols-3 gap-2">
         {tiers.map((tier) => {
           const isSelected = value === tier.tier;
 
@@ -54,7 +54,7 @@ export function TierSelector({ value, onChange, tiers }: TierSelectorProps) {
               key={tier.tier}
               onClick={() => onChange(tier.tier)}
               className={cn(
-                "rounded-xl border p-4 cursor-pointer transition-all duration-200",
+                "rounded-xl border px-3 py-3 cursor-pointer transition-all duration-200 text-center",
                 isSelected
                   ? "border-primary bg-primary/5 shadow-md ring-1 ring-primary/20"
                   : "border-border/50 hover:border-border hover:bg-muted/30"
@@ -72,7 +72,7 @@ export function TierSelector({ value, onChange, tiers }: TierSelectorProps) {
               {/* Tier Number Badge */}
               <div
                 className={cn(
-                  "size-6 rounded-full flex items-center justify-center text-xs font-semibold",
+                  "size-6 rounded-full flex items-center justify-center text-xs font-semibold mx-auto",
                   isSelected
                     ? "bg-primary text-primary-foreground"
                     : "bg-muted text-muted-foreground"
@@ -82,18 +82,18 @@ export function TierSelector({ value, onChange, tiers }: TierSelectorProps) {
               </div>
 
               {/* Tier Name */}
-              <h3 className="text-sm font-semibold mt-2 text-foreground">
+              <h3 className="text-xs font-semibold mt-1.5 text-foreground leading-tight">
                 {tier.name}
               </h3>
 
               {/* Score Range */}
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-[10px] text-muted-foreground mt-0.5">
                 {tier.scoreRange} pts
               </p>
 
               {/* Hours Added (only show if > 0) */}
               {tier.hoursAdded > 0 && (
-                <p className="text-xs font-medium text-primary mt-1">
+                <p className="text-[10px] font-medium text-primary mt-0.5">
                   +{tier.hoursAdded}h
                 </p>
               )}
