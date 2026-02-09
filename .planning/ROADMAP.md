@@ -599,19 +599,20 @@ Plans:
 
 **Status:** Planned (2026-02-09)
 
-**Plans:** 0 plans
+**Plans:** 2 plans
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 22 to break down)
+- [ ] 22-01-PLAN.md — Backend Pydantic schema extension, equipment config JSON, frontend Zod/types, i18n keys, RadioGroup install
+- [ ] 22-02-PLAN.md — Frontend form UI: 3 new Card sections (Crew & Duration, Location & Client, Equipment & Supply Chain)
 
 **Success Criteria:**
 1. **Employee count**: 3 number inputs (compagnons/apprentis/manoeuvres) with total crew display
-2. **Duration**: Radio buttons — half-day (≤5h) / full-day (≤10h) / multi-day (N days picker)
+2. **Duration**: Radio buttons — half-day (<=5h) / full-day (<=10h) / multi-day (N days picker)
 3. **Geographic zone**: 5 zones (core/secondary/north premium/extended/red flag) with auto-suggest price adjustment
 4. **Premium client level**: 4 options — Standard / Premium 1 (daily cleanup) / Premium 2 (lawn protection) / Premium 3 (VIP white-glove)
-5. **Access difficulty**: Checklist — crane access, driveway width, street blocking, elevation, terrain, material drop zone
+5. **Access difficulty**: Already done in Phase 21 — NO WORK NEEDED
 6. **Tools/equipment**: Checklist of common tools with pre-populated symbolic $25/day prices
-7. **Supply chain risk**: Radio — standard (≤1 week) / extended (2-4 weeks) / import (6-8 weeks) with warning
+7. **Supply chain risk**: Radio — standard (<=1 week) / extended (2-4 weeks) / import (6-8 weeks) with warning
 8. All new fields included in HybridQuoteRequest schema (backend) and full-quote form (frontend)
 9. All fields bilingual (FR/EN)
 
