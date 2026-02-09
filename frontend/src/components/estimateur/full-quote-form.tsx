@@ -40,7 +40,9 @@ import { submitHybridQuote } from "@/lib/api/hybrid-quote";
 import type { HybridQuoteResponse, HybridQuoteRequest } from "@/types/hybrid-quote";
 import { CATEGORIES } from "@/lib/schemas";
 import { useLanguage } from "@/lib/i18n";
-import { Loader2, Calculator, Layers, Wrench, AlertCircle } from "lucide-react";
+import { Loader2, Calculator, Layers, Wrench, AlertCircle, Users, MapPin, Package } from "lucide-react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
 
 /**
  * Build tier data from config (hardcoded for now, could be loaded from API later).
@@ -177,12 +179,21 @@ function useTierData(): { tiers: TierData[]; factorConfig: FactorConfig } {
  * Submits to /estimate/hybrid endpoint with tier-based complexity.
  */
 export function FullQuoteForm() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [result, setResult] = useState<HybridQuoteResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const { tiers, factorConfig } = useTierData();
+
+  // Equipment items from equipment_config.json (hardcoded to avoid async load)
+  const equipmentOptions = [
+    { id: "crane", label: locale === 'fr' ? "Grue" : "Crane", dailyCost: 25 },
+    { id: "scaffolding", label: locale === 'fr' ? "Echafaudage" : "Scaffolding", dailyCost: 25 },
+    { id: "dumpster", label: locale === 'fr' ? "Conteneur a dechets" : "Dumpster", dailyCost: 25 },
+    { id: "generator", label: locale === 'fr' ? "Generatrice" : "Generator", dailyCost: 25 },
+    { id: "compressor", label: locale === 'fr' ? "Compresseur" : "Compressor", dailyCost: 25 },
+  ];
 
   // Form setup with Tier 2 (Moderate) defaults
   const form = useForm<HybridQuoteFormData>({
@@ -206,12 +217,29 @@ export function FullQuoteForm() {
       has_skylights: false,
       has_subs: false,
       created_by: undefined,
+      employee_compagnons: 0,
+      employee_apprentis: 0,
+      employee_manoeuvres: 0,
+      duration_type: 'full_day' as const,
+      duration_days: undefined,
+      geographic_zone: undefined,
+      premium_client_level: 'standard' as const,
+      equipment_items: [] as string[],
+      supply_chain_risk: 'standard' as const,
     },
   });
 
   // Watch sqft and category for QuoteResult props
   const sqft = form.watch("sqft");
   const category = form.watch("category");
+
+  // Watch values for crew total and conditional rendering
+  const compagnons = form.watch("employee_compagnons") || 0;
+  const apprentis = form.watch("employee_apprentis") || 0;
+  const manoeuvres = form.watch("employee_manoeuvres") || 0;
+  const totalCrew = compagnons + apprentis + manoeuvres;
+  const durationType = form.watch("duration_type");
+  const supplyRisk = form.watch("supply_chain_risk");
 
   // Calculate total factor hours for display (mirrors backend calculation)
   const calculatedFactorHours = useMemo(() => {
@@ -312,6 +340,16 @@ export function FullQuoteForm() {
         labor_lines: data.labor_lines,
         has_subs: data.has_subs,
         quoted_total: data.quoted_total,
+        // Phase 22 new fields
+        employee_compagnons: data.employee_compagnons > 0 ? data.employee_compagnons : undefined,
+        employee_apprentis: data.employee_apprentis > 0 ? data.employee_apprentis : undefined,
+        employee_manoeuvres: data.employee_manoeuvres > 0 ? data.employee_manoeuvres : undefined,
+        duration_type: data.duration_type,
+        duration_days: data.duration_type === 'multi_day' ? data.duration_days : undefined,
+        geographic_zone: data.geographic_zone || undefined,
+        premium_client_level: data.premium_client_level !== 'standard' ? data.premium_client_level : undefined,
+        equipment_items: data.equipment_items.length > 0 ? data.equipment_items : undefined,
+        supply_chain_risk: data.supply_chain_risk !== 'standard' ? data.supply_chain_risk : undefined,
       };
 
       // Submit to API
@@ -551,6 +589,346 @@ export function FullQuoteForm() {
                   </FormItem>
                 )}
               />
+            </CardContent>
+          </Card>
+
+          {/* Crew & Duration Section */}
+          <Card className="card-hover">
+            <CardHeader className="pb-4">
+              <div className="flex items-center gap-2">
+                <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Users className="size-4" />
+                </div>
+                <div>
+                  <CardTitle className="text-lg">{t.fullQuote.crewDuration}</CardTitle>
+                  <CardDescription className="text-sm">{t.fullQuote.crewDurationDescription}</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Employee Count - 3 columns */}
+              <div>
+                <label className="text-sm font-medium mb-3 block">{t.fullQuote.totalCrew}</label>
+                <div className="grid grid-cols-3 gap-3">
+                  <FormField
+                    control={form.control}
+                    name="employee_compagnons"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-xs font-medium">{t.fullQuote.compagnons}</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            min={0}
+                            max={20}
+                            className="h-11"
+                            {...field}
+                            onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="employee_apprentis"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-xs font-medium">{t.fullQuote.apprentis}</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            min={0}
+                            max={20}
+                            className="h-11"
+                            {...field}
+                            onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="employee_manoeuvres"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-xs font-medium">{t.fullQuote.manoeuvres}</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            min={0}
+                            max={20}
+                            className="h-11"
+                            {...field}
+                            onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                {/* Total Crew Display */}
+                <div className="flex justify-between items-center pt-3 mt-3 border-t border-border/50">
+                  <span className="text-sm font-medium">{t.fullQuote.totalCrew}</span>
+                  <span className="text-sm font-semibold text-primary">
+                    {totalCrew} {t.fullQuote.workers}
+                  </span>
+                </div>
+              </div>
+
+              {/* Duration Radio */}
+              <FormField
+                control={form.control}
+                name="duration_type"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium">{t.fullQuote.projectDuration}</FormLabel>
+                    <FormControl>
+                      <RadioGroup
+                        onValueChange={field.onChange}
+                        value={field.value}
+                        className="space-y-2"
+                      >
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="half_day" id="half_day" />
+                          <label htmlFor="half_day" className="text-sm cursor-pointer">
+                            {t.fullQuote.halfDay}
+                          </label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="full_day" id="full_day" />
+                          <label htmlFor="full_day" className="text-sm cursor-pointer">
+                            {t.fullQuote.fullDay}
+                          </label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="multi_day" id="multi_day" />
+                          <label htmlFor="multi_day" className="text-sm cursor-pointer">
+                            {t.fullQuote.multiDay}
+                          </label>
+                        </div>
+                      </RadioGroup>
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+
+              {/* Conditional Day Picker (only when multi_day selected) */}
+              {durationType === 'multi_day' && (
+                <FormField
+                  control={form.control}
+                  name="duration_days"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-medium">{t.fullQuote.numberOfDays}</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          min={2}
+                          max={30}
+                          placeholder="3"
+                          className="h-11 max-w-32"
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={(e) => field.onChange(e.target.valueAsNumber || undefined)}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Location & Client Section */}
+          <Card className="card-hover">
+            <CardHeader className="pb-4">
+              <div className="flex items-center gap-2">
+                <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <MapPin className="size-4" />
+                </div>
+                <div>
+                  <CardTitle className="text-lg">{t.fullQuote.locationClient}</CardTitle>
+                  <CardDescription className="text-sm">{t.fullQuote.locationClientDescription}</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Geographic Zone Dropdown */}
+              <FormField
+                control={form.control}
+                name="geographic_zone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium">{t.fullQuote.geographicZone}</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="h-11">
+                          <SelectValue placeholder={t.fullQuote.selectZone} />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="core">{t.fullQuote.zoneCore}</SelectItem>
+                        <SelectItem value="secondary">{t.fullQuote.zoneSecondary}</SelectItem>
+                        <SelectItem value="north_premium">{t.fullQuote.zoneNorthPremium}</SelectItem>
+                        <SelectItem value="extended">{t.fullQuote.zoneExtended}</SelectItem>
+                        <SelectItem value="red_flag">{t.fullQuote.zoneRedFlag}</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Premium Client Level Dropdown */}
+              <FormField
+                control={form.control}
+                name="premium_client_level"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium">{t.fullQuote.premiumClientLevel}</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="h-11">
+                          <SelectValue />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="standard">
+                          {t.fullQuote.premiumStandard} — {t.fullQuote.premiumStandardDesc}
+                        </SelectItem>
+                        <SelectItem value="premium_1">
+                          {t.fullQuote.premium1} — {t.fullQuote.premium1Desc} ({t.fullQuote.surchargeTBD})
+                        </SelectItem>
+                        <SelectItem value="premium_2">
+                          {t.fullQuote.premium2} — {t.fullQuote.premium2Desc} ({t.fullQuote.surchargeTBD})
+                        </SelectItem>
+                        <SelectItem value="premium_3">
+                          {t.fullQuote.premium3} — {t.fullQuote.premium3Desc} ({t.fullQuote.surchargeTBD})
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormDescription className="text-xs text-muted-foreground">
+                      {t.fullQuote.placeholderPricing}
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </CardContent>
+          </Card>
+
+          {/* Equipment & Supply Chain Section */}
+          <Card className="card-hover">
+            <CardHeader className="pb-4">
+              <div className="flex items-center gap-2">
+                <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Package className="size-4" />
+                </div>
+                <div>
+                  <CardTitle className="text-lg">{t.fullQuote.equipmentSupplyChain}</CardTitle>
+                  <CardDescription className="text-sm">{t.fullQuote.equipmentSupplyChainDescription}</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Equipment Checklist */}
+              <div>
+                <label className="text-sm font-medium mb-3 block">{t.fullQuote.toolsEquipment}</label>
+                <div className="space-y-2">
+                  {equipmentOptions.map((item) => {
+                    const currentItems = form.watch("equipment_items") || [];
+                    const isChecked = currentItems.includes(item.id);
+                    return (
+                      <div
+                        key={item.id}
+                        className="flex items-center justify-between rounded-lg border border-border/50 bg-muted/30 px-4 py-3 transition-colors hover:bg-muted/50"
+                      >
+                        <div className="flex items-center gap-3">
+                          <Checkbox
+                            id={`equipment-${item.id}`}
+                            checked={isChecked}
+                            onCheckedChange={(checked) => {
+                              const current = form.getValues("equipment_items") || [];
+                              if (checked) {
+                                form.setValue("equipment_items", [...current, item.id]);
+                              } else {
+                                form.setValue("equipment_items", current.filter((x: string) => x !== item.id));
+                              }
+                            }}
+                          />
+                          <label
+                            htmlFor={`equipment-${item.id}`}
+                            className="text-sm cursor-pointer"
+                          >
+                            {item.label}
+                          </label>
+                        </div>
+                        <span className="text-xs font-medium text-primary">
+                          ${item.dailyCost}{t.fullQuote.dailyCost}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+                <p className="text-xs text-muted-foreground mt-2">
+                  {t.fullQuote.placeholderPricing}
+                </p>
+              </div>
+
+              {/* Supply Chain Risk Radio */}
+              <FormField
+                control={form.control}
+                name="supply_chain_risk"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium">{t.fullQuote.supplyChainRisk}</FormLabel>
+                    <FormControl>
+                      <RadioGroup
+                        onValueChange={field.onChange}
+                        value={field.value}
+                        className="space-y-2"
+                      >
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="standard" id="supply_standard" />
+                          <label htmlFor="supply_standard" className="text-sm cursor-pointer">
+                            {t.fullQuote.supplyStandard} ({t.fullQuote.supplyStandardDesc})
+                          </label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="extended" id="supply_extended" />
+                          <label htmlFor="supply_extended" className="text-sm cursor-pointer">
+                            {t.fullQuote.supplyExtended} ({t.fullQuote.supplyExtendedDesc})
+                          </label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="import" id="supply_import" />
+                          <label htmlFor="supply_import" className="text-sm cursor-pointer">
+                            {t.fullQuote.supplyImport} ({t.fullQuote.supplyImportDesc})
+                          </label>
+                        </div>
+                      </RadioGroup>
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+
+              {/* Supply Chain Warning */}
+              {(supplyRisk === 'extended' || supplyRisk === 'import') && (
+                <div className="flex items-center gap-2 rounded-lg border border-yellow-500/50 bg-yellow-500/10 p-3">
+                  <AlertCircle className="size-5 shrink-0 text-yellow-600" />
+                  <p className="text-sm text-yellow-700 dark:text-yellow-400">
+                    {t.fullQuote.supplyWarning}
+                  </p>
+                </div>
+              )}
             </CardContent>
           </Card>
 
