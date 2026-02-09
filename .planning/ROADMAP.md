@@ -1,8 +1,8 @@
 # Roadmap: TOITURELV Cortex
 
 **Created:** 2026-01-18
-**Updated:** 2026-02-05
-**Phases:** 18
+**Updated:** 2026-02-09
+**Phases:** 25
 **Requirements:** 51
 
 ## Phase Overview
@@ -20,13 +20,20 @@
 | 9 | Streaming Estimates | Fast estimates + streaming reasoning | PERF-01, PERF-02 | 4 |
 | 10 | Material ID Prediction ✓ | Predict materials and quantities | MAT-01, MAT-02 | 2 |
 | 11 | Cortex Admin Dashboard ✓ | Professional 4-tab admin interface | DASH-05 to DASH-12 | 8 |
-| 12 | Laurent Feedback Fixes | Address data quality & UX improvements | LF-01 to LF-05 | 5 |
+| 12 | ~~Laurent Feedback Fixes~~ | SUPERSEDED → Phase 19 + 21 | — | — |
 | 13 | Hybrid Quote Generation ✓ | Full quote with CBR + ML + LLM merger | HQG-01 to HQG-05 | 7 |
 | 14 | Full Quote Frontend ✓ | Frontend with presets, invoice display, PDF | FQ-01 to FQ-05 | 6 |
 | 15 | Frontend Design Overhaul | Modern UI with shadcn Lyra preset | UI-01 to UI-05 | 5 |
 | 16 | I18n Language Toggle | Site-wide EN/FR toggle with persistence | I18N-01 to I18N-04 | 4 |
 | 17 | Production Fixes | Fix production issues after deploy | PROD-01 to PROD-07 | 7 |
 | 18 | Feedback Review Page | Retours page with insights and analytics | FB-01 to FB-04 | 4 |
+| 19 | Data Quality & Labeling Fixes | Fix revenue labels, flag 2022 data, sqft mandatory | DQ-01 to DQ-03 | 5 |
+| 20 | Materials Database & Import | Import 672-item XLS, build searchable selector | MAT-03 to MAT-06 | 7 |
+| 21 | Complexity System Rebuild | 6-tier (0-100) time-based system for roofers | CX-01 to CX-04 | 8 |
+| 22 | New Estimation Input Fields | Crew, duration, zone, premium, access, tools, supply chain | FIELD-01 to FIELD-07 | 9 |
+| 23 | Submission Workflow & Editing | Editable quotes, approval workflow, notes, upsells | SUB-01 to SUB-05 | 10 |
+| 24 | Export, Send & Red Flags | DOCX export, send options, warning system | EXP-01 to EXP-04 | 5 |
+| 25 | UI Polish & Dark Mode | Dark mode toggle, FR/EN fixes, LV branding | UI-06 to UI-08 | 7 |
 
 ---
 
@@ -295,33 +302,16 @@ Plans:
 
 ---
 
-## Phase 12: Laurent Feedback Fixes
+## Phase 12: Laurent Feedback Fixes — SUPERSEDED
 
-**Goal:** Address data quality issues and UX improvements from Laurent's January 21, 2026 review
+**Status:** Superseded (2026-02-09)
 
-**Requirements:** LF-01, LF-02, LF-03, LF-04, LF-05
-
-**Status:** Planned (2026-01-29)
-
-**Plans:** 5 plans
-
-Plans:
-- [ ] 12-01-PLAN.md — Data quality flags + 2022 labor data filtering
-- [ ] 12-02-PLAN.md — Revenue → Total Quote Value renaming (32+ occurrences)
-- [ ] 12-03-PLAN.md — Square footage compliance dashboard with alerts
-- [ ] 12-04-PLAN.md — 6-factor complexity system (0-56 points)
-- [ ] 12-05-PLAN.md — Three quote options (Basic/Standard/Premium tiers)
-
-**Success Criteria:**
-1. 2022 corrupted labor data flagged and filterable ✓
-2. All "Revenue" labels changed to "Total Quote Value" ✓
-3. Compliance dashboard tracks sqft data entry by estimator ✓
-4. Complexity uses 6 concrete factors instead of vague slider ✓
-5. Estimates return 3 tier options with different price points ✓
-
-**Dependencies:** Phase 11 complete (admin dashboard)
-
-**Source:** Laurent meeting feedback (January 21, 2026)
+**Disposition:**
+- 12-01 (2022 data flags) → **Merged into Phase 19**
+- 12-02 (Revenue relabeling) → **Merged into Phase 19**
+- 12-03 (Sqft compliance) → **Merged into Phase 19**
+- 12-04 (Complexity 0-56) → **Superseded by Phase 21** (tier-based 0-100)
+- 12-05 (3 pricing tiers) → **Already complete** (Phase 13/14)
 
 ---
 
@@ -497,16 +487,261 @@ Plans:
 
 ---
 
-## Milestone: v1 Complete
+## Phase 19: Data Quality & Labeling Fixes
 
-After Phase 9:
-- Team can get AI estimates with reasoning
-- Laurent can review and provide actual prices
-- Analytics show model accuracy
-- Feedback stored for future model improvement
-- **Fast streaming responses with Cerebras**
+**Goal:** Fix critical data quality issues and misleading labels identified by Laurent (consolidates former Phase 12)
 
-**Next milestone:** Auto-update pipeline (v2)
+**Sprint Deadline:** Feb 11, 2026
+
+**Requirements:** DQ-01, DQ-02, DQ-03, DQ-04, DQ-05 (formerly LF-01 to LF-03)
+
+**Status:** Planned (2026-02-09)
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 19 to break down)
+
+**Success Criteria:**
+1. ALL instances of "Revenue"/"Revenu" changed to "Total Quote Value"/"Valeur totale des soumissions" across frontend + backend
+2. Disclaimer added to financial charts: "These are quoted amounts, not invoiced revenue"
+3. 2022 corrupted labor quotes (1,512 records) flagged with data_quality_flag in database
+4. Flagged 2022 data excluded from labor cost training
+5. Square footage field is required on estimate forms (exception for service calls)
+6. Compliance dashboard tracks sqft data entry by estimator
+7. Alert triggers if sqft compliance drops below 80%
+
+**Dependencies:** None — can start immediately
+
+**Source:** Laurent meeting January 21, 2026 + Sprint plan February 9, 2026 (consolidates Phase 12)
+
+---
+
+## Phase 20: Materials Database & Import
+
+**Goal:** Import Laurent's 672-item materials XLS into platform and build searchable material selector UI
+
+**Sprint Deadline:** Feb 10-12, 2026
+
+**Requirements:** MAT-03, MAT-04, MAT-05, MAT-06
+
+**Status:** Planned (2026-02-09)
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 20 to break down)
+
+**Success Criteria:**
+1. Materials table created in Supabase with fields: code, name, unit_price, unit_of_measure, category
+2. All 672 items from Laurent's XLS parsed and imported (~600 clean, ~72 flagged for review)
+3. Materials mapped to existing CCube extraction data by material code
+4. Deduplication check run, similar items flagged for Amin/Laurent review
+5. Material selector UI: searchable dropdown, user picks materials, system auto-counts lines
+6. "Add custom material" option for items not in database
+7. Manual "number of material lines" input replaced with selector
+
+**Dependencies:** Laurent's materials file — available at `cortex-data/LV Material List.csv`
+
+**Source:** Sprint plan February 9, 2026 — Section 3.4
+
+---
+
+## Phase 21: Complexity System Rebuild
+
+**Goal:** Replace current 6-factor slider (0-56) with tier-based system (0-100) that maps to real-world scenarios roofers understand
+
+**Sprint Deadline:** Feb 11, 2026
+
+**Requirements:** CX-01, CX-02, CX-03, CX-04
+
+**Status:** Planned (2026-02-09)
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 21 to break down)
+
+**Success Criteria:**
+1. 6 named tiers (0-100) with descriptions: site, roof, access for each tier
+2. Tier selector (dropdown or visual) replaces current presets + sliders
+3. Each tier auto-populates a time multiplier (business logic from Laurent needed)
+4. Factor checklist available: roof pitch, access difficulty, demolition, penetrations, security, material removal, roof sections, previous layers
+5. Each factor adds estimated hours to base_time (time-based, not percentage-based)
+6. Conservative crew default: system assumes average skill workers, never best
+7. Manual override allowed upward only (can add time, system never suggests less)
+8. Formula: total_labor_hours = base_time + complexity_extra_hours; labor_cost = total_labor_hours × crew_cost_per_hour
+
+**Dependencies:** Phase 19 (data quality fixes), Laurent provides time multipliers per tier
+
+**Source:** Sprint plan February 9, 2026 — Section 3.1 + Laurent Feb 5 meeting
+
+**Business Logic Gap:** Laurent needs to provide:
+- Base time values per job type (e.g., "1500 sqft flat roof = X base hours")
+- Time multipliers per tier
+- Hours added per factor (e.g., "no crane = +Y hours")
+
+---
+
+## Phase 22: New Estimation Input Fields
+
+**Goal:** Add all missing form fields that estimators need to generate accurate quotes
+
+**Sprint Deadline:** Feb 12, 2026
+
+**Requirements:** FIELD-01 to FIELD-07
+
+**Status:** Planned (2026-02-09)
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 22 to break down)
+
+**Success Criteria:**
+1. **Employee count**: 3 number inputs (compagnons/apprentis/manoeuvres) with total crew display
+2. **Duration**: Radio buttons — half-day (≤5h) / full-day (≤10h) / multi-day (N days picker)
+3. **Geographic zone**: 5 zones (core/secondary/north premium/extended/red flag) with auto-suggest price adjustment
+4. **Premium client level**: 4 options — Standard / Premium 1 (daily cleanup) / Premium 2 (lawn protection) / Premium 3 (VIP white-glove)
+5. **Access difficulty**: Checklist — crane access, driveway width, street blocking, elevation, terrain, material drop zone
+6. **Tools/equipment**: Checklist of common tools with pre-populated symbolic $25/day prices
+7. **Supply chain risk**: Radio — standard (≤1 week) / extended (2-4 weeks) / import (6-8 weeks) with warning
+8. All new fields included in HybridQuoteRequest schema (backend) and full-quote form (frontend)
+9. All fields bilingual (FR/EN)
+
+**Dependencies:** Phase 21 (complexity rebuild — access difficulty integrates with tiers)
+
+**Source:** Sprint plan February 9, 2026 — Section 3.2
+
+**Business Logic Gap:**
+- Employee count suggestions: Laurent needs to define rules (job type × complexity → crew composition)
+- Geographic zones: Requires Google Maps Distance Matrix API or manual zone selection — confirm API budget with Amin
+- Premium level surcharges: Laurent needs to define daily surcharge amounts per level
+- Duration pricing impact: Rules for half-day transport cost absorption, multi-day discount per day
+
+---
+
+## Phase 23: Submission Workflow & Editing
+
+**Goal:** Make AI-generated quotes editable with approval workflow, notes, and upsell suggestions
+
+**Sprint Deadline:** Feb 13, 2026
+
+**Requirements:** SUB-01 to SUB-05
+
+**Status:** Planned (2026-02-09)
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 23 to break down)
+
+**Success Criteria:**
+1. **Editable submissions**: After AI generates quote, each line item can be modified (quantity, price), removed, or reordered
+2. New items can be added from materials database (Phase 20)
+3. "Finalize" button locks the submission
+4. **Quote status workflow**: draft → pending approval → approved (new status column in DB)
+5. **Notes field**: Timestamped, attributed to user who wrote them
+6. **Approval flow**: Only admin (Laurent) can approve — estimators can create and suggest changes
+7. Approval log maintained for audit trail
+8. **Upsell system**: After main submission, auto-suggest related services by job type
+9. Upsell rules: Bardeau → heating cables, gutters, ventilation; Élastomère → drain, insulation, maintenance; Metal → gutters, snow guards, warranty; Any → inspection plan, maintenance contract
+10. Each upsell generates as a SEPARATE submission document linked to parent
+
+**Dependencies:** Phase 20 (materials DB for adding items), Phase 22 (new fields in submissions)
+
+**Source:** Sprint plan February 9, 2026 — Section 3.3
+
+---
+
+## Phase 24: Export, Send & Red Flags
+
+**Goal:** DOCX export, send options, and automated warning system
+
+**Sprint Deadline:** Feb 13-14, 2026
+
+**Requirements:** EXP-01 to EXP-04
+
+**Status:** Planned (2026-02-09)
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 24 to break down)
+
+**Success Criteria:**
+1. **DOCX export**: Generates Word document alongside existing PDF
+2. Both formats include: LV logo, job details, itemized materials, labor breakdown, total with taxes, terms & conditions, signature line
+3. **Send options**: Send now (email) / Schedule send (date+time picker) / Save as draft
+4. **Red flag system**: Auto-flag submissions matching warning patterns:
+   - Budget mismatch (client expects below-standard work)
+   - Geographic (distance > 60km from LV HQ)
+   - Material risk (imported materials with 6+ week lead time)
+   - Crew availability (multi-day during peak season June-Sept)
+   - Low margin (calculated margin < 15%)
+5. Red flags displayed as dismissible warnings before sending
+6. All export templates bilingual
+
+**Dependencies:** Phase 23 (submission workflow for send/draft states)
+
+**Source:** Sprint plan February 9, 2026 — Sections 3.3.4, 3.3.5, 3.3.6
+
+---
+
+## Phase 25: UI Polish & Dark Mode
+
+**Goal:** Dark mode toggle, FR/EN language bug fixes, LV branding verification
+
+**Sprint Deadline:** Feb 13, 2026
+
+**Requirements:** UI-06, UI-07, UI-08
+
+**Status:** Planned (2026-02-09)
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 25 to break down)
+
+**Success Criteria:**
+1. **Dark mode toggle**: Sun/moon button in top-right corner
+2. Light theme = current LV colors; Dark theme = dark background, light text, same LV accents
+3. Theme preference saved per user (localStorage)
+4. **FR/EN bug fix**: All content respects language toggle — test by switching mid-session
+5. AI-generated text and submission templates also respect language setting
+6. **LV branding**: Verify brand colors applied to header, buttons, accents, PDF/DOCX templates
+7. Keep 3 separate sections (price calculator, materials, full submission) — do NOT merge
+
+**Dependencies:** None — can run in parallel with other phases
+
+**Source:** Sprint plan February 9, 2026 — Section 3.5
+
+---
+
+## Milestone: v2 Sprint Delivery
+
+**Deadline:** February 16, 2026
+
+After Phases 19-25:
+- Data quality issues fixed (revenue labeling, 2022 flags)
+- 672 materials searchable in platform
+- Tier-based complexity system roofers understand
+- All estimation fields Laurent requested (crew, duration, zone, premium, tools, access, supply chain)
+- Editable submissions with approval workflow
+- Upsell suggestions as separate submissions
+- DOCX + PDF export with LV branding
+- Send options (immediate/scheduled/draft)
+- Red flag warnings
+- Dark mode + language fixes
+
+**Out of scope for this milestone (separate projects):**
+- AI Agent (inbound call handling)
+- Solar calculation tool
+- GoHighLevel integration
+- CCube ↔ QuickBooks invoice flow
+
+**Next milestone:** Integrations (GHL, QuickBooks, AI Agent)
 
 ---
 *Roadmap created: 2026-01-18*
+*Sprint phases 19-25 added: 2026-02-09*

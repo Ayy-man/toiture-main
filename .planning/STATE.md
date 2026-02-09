@@ -1,13 +1,13 @@
 # Project State: TOITURELV Cortex
 
-**Last Updated:** 2026-02-01
+**Last Updated:** 2026-02-09
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-01-18)
 
 **Core value:** Accurate price estimates with explainable reasoning
-**Current focus:** Phase 16 - I18n Language Toggle (Complete)
+**Current focus:** Sprint Phases 19-25 — Laurent Sprint Delivery (Deadline: Feb 16, 2026)
 
 ## Progress
 
@@ -29,17 +29,37 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 15 | Complete | 1/1 | 100% |
 | 16 | Complete | 1/1 | 100% |
 
-**Overall:** 31/33 plans complete (94%)
+**Overall:** 31/33 plans complete for v1 (94%) | Sprint phases 19-25: 0% (not started)
 
 ```
-Progress: [██████████████████░░] 94%
+v1 Progress:     [██████████████████░░] 94%
+Sprint Progress: [░░░░░░░░░░░░░░░░░░░░] 0%
 ```
 
-## Current Phase
+## Current Sprint — Deadline: February 16, 2026
 
-**Phase 16: I18n Language Toggle** (Complete)
-- Goal: Site-wide EN/FR toggle with localStorage persistence
-- Status: All plans complete - verified
+| Phase | Name | Sprint Deadline | Status |
+|-------|------|-----------------|--------|
+| 19 | Data Quality & Labeling Fixes | Feb 11 | Planned |
+| 20 | Materials Database & Import | Feb 10-12 | Planned |
+| 21 | Complexity System Rebuild | Feb 11 | Planned |
+| 22 | New Estimation Input Fields | Feb 12 | Planned |
+| 23 | Submission Workflow & Editing | Feb 13 | Planned |
+| 24 | Export, Send & Red Flags | Feb 13-14 | Planned |
+| 25 | UI Polish & Dark Mode | Feb 13 | Planned |
+
+**Business logic gaps (need Laurent/Amin input):**
+- Complexity: base time values per job type, time multipliers per tier
+- Employee count: suggestion rules (job type × complexity → crew)
+- Geographic zones: Google Maps API budget approval needed
+- Premium client: daily surcharge amounts per level
+- Duration: half-day transport cost rules, multi-day discount
+
+**Out of scope for this codebase (separate projects):**
+- AI Agent (inbound call handling)
+- Solar calculation tool
+- GoHighLevel integration
+- CCube ↔ QuickBooks invoice flow
 
 ### Phase 16 Complete
 - **16-01:** I18n language toggle implementation (Complete)
@@ -312,13 +332,15 @@ Progress: [██████████████████░░] 94%
 
 ## Session Continuity
 
-Last session: 2026-02-01
-Stopped at: Phase 16 Complete (All plans verified)
+Last session: 2026-02-09
+Stopped at: Sprint phases 19-25 added to roadmap, ready for planning/execution
 Resume file: None
 
 ## Blockers
 
-None currently.
+1. ~~**Materials XLS file**~~: ✅ Available at `cortex-data/LV Material List.csv`
+2. **Business logic rules**: Complexity time multipliers, crew suggestion rules, premium surcharges — need from Laurent
+3. **Google Maps API budget**: Geographic zone auto-calculation requires API approval from Amin
 
 ## Notes
 
@@ -347,6 +369,13 @@ None currently.
 - Phase 16 added: I18n Language Toggle (site-wide EN/FR toggle with persistence)
 - Phase 17 added: Production Fixes (fix issues after deploy)
 - Phase 18 added: Feedback Review Page (Retours nav item with insights and analytics)
+- **Phase 19 added:** Data Quality & Labeling Fixes (revenue relabeling, 2022 flags, sqft mandatory)
+- **Phase 20 added:** Materials Database & Import (672-item XLS, searchable selector)
+- **Phase 21 added:** Complexity System Rebuild (6-tier 0-100, time-based)
+- **Phase 22 added:** New Estimation Input Fields (crew, duration, zone, premium, access, tools, supply chain)
+- **Phase 23 added:** Submission Workflow & Editing (editable quotes, approval, notes, upsells)
+- **Phase 24 added:** Export, Send & Red Flags (DOCX, send options, warning system)
+- **Phase 25 added:** UI Polish & Dark Mode (dark toggle, FR/EN fixes, branding)
 
 ---
-*State updated: 2026-02-01 (Phase 16 Complete)*
+*State updated: 2026-02-09 (Sprint phases 19-25 added — Deadline Feb 16)*
