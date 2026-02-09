@@ -1,0 +1,89 @@
+{
+  "rules": {
+    "Bardeaux": [
+      {
+        "type": "heating_cables",
+        "name_fr": "Cables chauffants",
+        "name_en": "Heating Cables",
+        "description_fr": "Prevention des barrages de glace en hiver",
+        "description_en": "Ice dam prevention in winter"
+      },
+      {
+        "type": "gutters",
+        "name_fr": "Gouttieres",
+        "name_en": "Gutter System",
+        "description_fr": "Installation complete de gouttieres",
+        "description_en": "Complete gutter installation"
+      },
+      {
+        "type": "ventilation",
+        "name_fr": "Ventilation",
+        "name_en": "Ventilation Upgrade",
+        "description_fr": "Amelioration de la ventilation du grenier",
+        "description_en": "Attic ventilation improvement"
+      }
+    ],
+    "Elastomere": [
+      {
+        "type": "drain_system",
+        "name_fr": "Systeme de drain",
+        "name_en": "Drain System",
+        "description_fr": "Installation de drains de toit plat",
+        "description_en": "Flat roof drain installation"
+      },
+      {
+        "type": "insulation",
+        "name_fr": "Isolation",
+        "name_en": "Insulation",
+        "description_fr": "Isolation thermique du toit",
+        "description_en": "Roof thermal insulation"
+      },
+      {
+        "type": "maintenance_contract",
+        "name_fr": "Contrat d'entretien",
+        "name_en": "Maintenance Contract",
+        "description_fr": "Plan d'entretien preventif 2 ans",
+        "description_en": "2-year preventive maintenance plan"
+      }
+    ],
+    "Metal": [
+      {
+        "type": "gutters",
+        "name_fr": "Gouttieres",
+        "name_en": "Gutter System",
+        "description_fr": "Installation complete de gouttieres",
+        "description_en": "Complete gutter installation"
+      },
+      {
+        "type": "snow_guards",
+        "name_fr": "Arrets de neige",
+        "name_en": "Snow Guards",
+        "description_fr": "Protection contre les avalanches de neige",
+        "description_en": "Snow avalanche protection"
+      },
+      {
+        "type": "warranty_extension",
+        "name_fr": "Extension de garantie",
+        "name_en": "Warranty Extension",
+        "description_fr": "Garantie prolongee sur les materiaux",
+        "description_en": "Extended material warranty"
+      }
+    ]
+  },
+  "universal": [
+    {
+      "type": "inspection_plan",
+      "name_fr": "Plan d'inspection annuel",
+      "name_en": "Annual Inspection Plan",
+      "description_fr": "Inspection annuelle professionnelle de la toiture",
+      "description_en": "Annual professional roof inspection"
+    },
+    {
+      "type": "maintenance_contract",
+      "name_fr": "Contrat d'entretien",
+      "name_en": "Maintenance Contract",
+      "description_fr": "Plan d'entretien preventif 2 ans",
+      "description_en": "2-year preventive maintenance plan"
+    }
+  ]
+}
