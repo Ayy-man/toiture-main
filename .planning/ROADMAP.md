@@ -1,7 +1,7 @@
 # Roadmap: TOITURELV Cortex
 
 **Created:** 2026-01-18
-**Updated:** 2026-02-09 (Phases 19-21 complete)
+**Updated:** 2026-02-09 (Phases 19-22 complete)
 **Phases:** 25
 **Requirements:** 51
 
@@ -30,7 +30,7 @@
 | 19 | Data Quality & Labeling Fixes ✓ | Fix revenue labels, flag 2022 data, sqft mandatory | DQ-01 to DQ-03 | 5 |
 | 20 | Materials Database & Import ✓ | Import 672-item XLS, build searchable selector | MAT-03 to MAT-06 | 7 |
 | 21 | Complexity System Rebuild ✓ | 6-tier (0-100) time-based system for roofers | CX-01 to CX-04 | 8 |
-| 22 | New Estimation Input Fields | Crew, duration, zone, premium, access, tools, supply chain | FIELD-01 to FIELD-07 | 9 |
+| 22 | New Estimation Input Fields ✓ | Crew, duration, zone, premium, access, tools, supply chain | FIELD-01 to FIELD-07 | 9 |
 | 23 | Submission Workflow & Editing | Editable quotes, approval workflow, notes, upsells | SUB-01 to SUB-05 | 10 |
 | 24 | Export, Send & Red Flags | DOCX export, send options, warning system | EXP-01 to EXP-04 | 5 |
 | 25 | UI Polish & Dark Mode | Dark mode toggle, FR/EN fixes, LV branding | UI-06 to UI-08 | 7 |
@@ -597,13 +597,13 @@ Plans:
 
 **Requirements:** FIELD-01 to FIELD-07
 
-**Status:** Planned (2026-02-09)
+**Status:** Complete (2026-02-09)
 
 **Plans:** 2 plans
 
 Plans:
-- [ ] 22-01-PLAN.md — Backend Pydantic schema extension, equipment config JSON, frontend Zod/types, i18n keys, RadioGroup install
-- [ ] 22-02-PLAN.md — Frontend form UI: 3 new Card sections (Crew & Duration, Location & Client, Equipment & Supply Chain)
+- [x] 22-01-PLAN.md — Backend Pydantic schema extension, equipment config JSON, frontend Zod/types, i18n keys, RadioGroup install
+- [x] 22-02-PLAN.md — Frontend form UI: 3 new Card sections (Crew & Duration, Location & Client, Equipment & Supply Chain)
 
 **Success Criteria:**
 1. **Employee count**: 3 number inputs (compagnons/apprentis/manoeuvres) with total crew display
