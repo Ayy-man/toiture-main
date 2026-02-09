@@ -33,13 +33,13 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 21 | Complete | 3/3 | 100% |
 | 22 | Complete | 2/2 | 100% |
 | 23 | Complete | 3/3 | 100% |
-| 24 | In Progress | 2/3 | 67% |
+| 24 | Complete | 3/3 | 100% |
 
-**Overall:** 47/51 plans complete for v1 + sprint (92%)
+**Overall:** 48/51 plans complete for v1 + sprint (94%)
 
 ```
-v1 Progress:     [██████████████████░░] 92%
-Sprint Progress: [█████████████████░░░] 85% (19-24)
+v1 Progress:     [██████████████████░░] 94%
+Sprint Progress: [██████████████████░░] 90% (19-24)
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
@@ -51,7 +51,7 @@ Sprint Progress: [█████████████████░░░] 
 | 21 | Complexity System Rebuild | Feb 11 | Complete (3/3) |
 | 22 | New Estimation Input Fields | Feb 12 | Complete (2/2) |
 | 23 | Submission Workflow & Editing | Feb 13 | Complete (3/3) |
-| 24 | Export, Send & Red Flags | Feb 13-14 | In Progress (2/3) |
+| 24 | Export, Send & Red Flags | Feb 13-14 | Complete (3/3) |
 | 25 | UI Polish & Dark Mode | Feb 13 | Planned |
 
 **Business logic gaps (need Laurent/Amin input):**
@@ -340,6 +340,9 @@ Sprint Progress: [█████████████████░░░] 
 | docx npm package for Word document generation | 24-01 | Industry-standard library with clean API for programmatic DOCX creation |
 | Mirror PDF template structure for DOCX export | 24-01 | Consistent content between PDF and DOCX formats for client flexibility |
 | TextRun children for styling in docx package | 24-01 | docx API requires style properties (bold, color, size) on TextRun, not Paragraph |
+| Native HTML date/time pickers for send dialog | 24-03 | Simpler than library date picker, no new dependency, sufficient for MVP scheduling |
+| RedFlagBanner uses Tailwind classes directly | 24-03 | Alert component doesn't exist in ui/ directory, Tailwind provides full control |
+| Dismissible flags tracked in local state | 24-03 | Immediate UI feedback, batch dismiss call on send to reduce API calls |
 
 ## Session History
 
@@ -390,12 +393,13 @@ Sprint Progress: [█████████████████░░░] 
 | 2026-02-09 | Plan 23-02 executed | Submission frontend infrastructure (types, API client, schemas, auth extension, i18n, badge) |
 | 2026-02-09 | Plan 24-01 executed | DOCX export template with docx package (PREVIOUS SESSION) |
 | 2026-02-09 | Plan 24-02 executed | Red flag evaluator, email service, send/red-flag/dismiss endpoints (PREVIOUS SESSION) |
-| 2026-02-10 | Plan 24-01 re-executed | DOCX export with bilingual QuoteActions button (CURRENT SESSION) |
+| 2026-02-10 | Plan 24-01 re-executed | DOCX export with bilingual QuoteActions button |
+| 2026-02-10 | Plan 24-03 executed | Send dialog UI with red flag banner, API client extensions, bilingual i18n (CURRENT SESSION) |
 
 ## Session Continuity
 
 Last session: 2026-02-10
-Stopped at: Completed 24-01-PLAN.md (DOCX export) — next is Plan 24-03 (Send Dialog UI)
+Stopped at: Completed 24-03-PLAN.md (Send Dialog UI) — Phase 24 complete, next is Phase 25 (UI Polish & Dark Mode)
 Resume file: None
 
 ## Blockers
@@ -443,7 +447,9 @@ Resume file: None
 - Phase 23 complete (3/3 plans) - Submission workflow fully implemented
 - Phase 24-01 complete - DOCX export template with docx package for client-facing quotes
 - Phase 24-02 complete - Red flag evaluator (5 categories: budget/geographic/material/crew/margin), email service (Resend SDK), 3 new endpoints (GET red-flags, POST send, POST dismiss-flags)
-- Next: Phase 24-03 (Send Dialog UI), then Phase 25 (UI Polish & Dark Mode)
+- Phase 24-03 complete - Send dialog with 3 send options (now/schedule/draft), red flag banner component, API client extensions (getRedFlags/sendSubmission/dismissFlags), bilingual i18n (18 keys FR/EN)
+- Phase 24 complete (3/3 plans) - Export, send, and red flag warning system fully implemented
+- Next: Phase 25 (UI Polish & Dark Mode)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
