@@ -638,10 +638,12 @@ Plans:
 
 **Status:** Planned (2026-02-09)
 
-**Plans:** 0 plans
+**Plans:** 3 plans
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 23 to break down)
+- [ ] 23-01-PLAN.md — Complete backend: SQL DDL, Pydantic schemas, service layer, FastAPI router, upsell rules
+- [ ] 23-02-PLAN.md — Frontend editor: TypeScript types, API client, drag-drop line items, notes panel, status badge, i18n
+- [ ] 23-03-PLAN.md — Integration: auth RBAC extension, Create Submission from quote, submission list tab, upsell dialog
 
 **Success Criteria:**
 1. **Editable submissions**: After AI generates quote, each line item can be modified (quantity, price), removed, or reordered
