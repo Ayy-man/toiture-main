@@ -14,6 +14,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { LanguageProvider, useLanguage } from "@/lib/i18n";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -53,6 +54,9 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
               )}
             </BreadcrumbList>
           </Breadcrumb>
+          <div className="ml-auto">
+            <ThemeToggle />
+          </div>
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4 pt-0">
           {children}
