@@ -1,6 +1,6 @@
 # Project State: TOITURELV Cortex
 
-**Last Updated:** 2026-02-09
+**Last Updated:** 2026-02-10
 
 ## Project Reference
 
@@ -337,6 +337,9 @@ Sprint Progress: [█████████████████░░░] 
 | Lazy-init Resend client pattern | 24-02 | Graceful degradation when RESEND_API_KEY not configured |
 | Bilingual red flag messages (fr/en) | 24-02 | i18n support for Quebec French primary with English translation |
 | Audit trail for dismissed red flags | 24-02 | Risk acknowledgment tracked in JSONB audit_log with timestamp |
+| docx npm package for Word document generation | 24-01 | Industry-standard library with clean API for programmatic DOCX creation |
+| Mirror PDF template structure for DOCX export | 24-01 | Consistent content between PDF and DOCX formats for client flexibility |
+| TextRun children for styling in docx package | 24-01 | docx API requires style properties (bold, color, size) on TextRun, not Paragraph |
 
 ## Session History
 
@@ -385,13 +388,14 @@ Sprint Progress: [█████████████████░░░] 
 | 2026-02-09 | Plan 22-02 executed | 3 new Card sections in full-quote form (Crew & Duration, Location & Client, Equipment & Supply Chain) |
 | 2026-02-09 | Plan 23-01 executed | Submission workflow backend (SQL DDL, schemas, service, router, upsell rules) |
 | 2026-02-09 | Plan 23-02 executed | Submission frontend infrastructure (types, API client, schemas, auth extension, i18n, badge) |
-| 2026-02-09 | Plan 24-01 executed | DOCX export template with docx package |
-| 2026-02-09 | Plan 24-02 executed | Red flag evaluator, email service, send/red-flag/dismiss endpoints |
+| 2026-02-09 | Plan 24-01 executed | DOCX export template with docx package (PREVIOUS SESSION) |
+| 2026-02-09 | Plan 24-02 executed | Red flag evaluator, email service, send/red-flag/dismiss endpoints (PREVIOUS SESSION) |
+| 2026-02-10 | Plan 24-01 re-executed | DOCX export with bilingual QuoteActions button (CURRENT SESSION) |
 
 ## Session Continuity
 
-Last session: 2026-02-09
-Stopped at: Phase 24 in progress (2/3 plans) — next is Plan 24-03 (Send Dialog UI)
+Last session: 2026-02-10
+Stopped at: Completed 24-01-PLAN.md (DOCX export) — next is Plan 24-03 (Send Dialog UI)
 Resume file: None
 
 ## Blockers
