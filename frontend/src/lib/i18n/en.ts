@@ -206,6 +206,7 @@ export const en = {
     aSousTraitants: "Subcontractors",
     exporterPDF: "Export PDF",
     exportDOCX: "Export DOCX",
+    exporterDOCX: "Export DOCX",
     // Section headers and descriptions
     complexiteProjet: "Project Complexity",
     complexiteDescription: "Select a level or customize factors",

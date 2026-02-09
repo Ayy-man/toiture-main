@@ -51,7 +51,7 @@ import { Checkbox } from "@/components/ui/checkbox";
  * Build tier data from config (hardcoded for now, could be loaded from API later).
  */
 function useTierData(): { tiers: TierData[]; factorConfig: FactorConfig } {
-  const { locale } = useLanguage();
+  const { locale, t } = useLanguage();
 
   // Tier data matching complexity_tiers_config.json
   const tiers: TierData[] = [
@@ -187,7 +187,7 @@ export function FullQuoteForm() {
 
   // Form setup with Tier 2 (Moderate) defaults
   const form = useForm<HybridQuoteFormData>({
-    resolver: zodResolver(hybridQuoteFormSchema),
+    resolver: zodResolver(hybridQuoteFormSchema) as any,
     defaultValues: {
       sqft: 1500,
       category: "Bardeaux",
@@ -1050,7 +1050,7 @@ export function FullQuoteForm() {
             <QuoteResult
               quote={result}
               category={category}
-              sqft={sqft}
+              sqft={sqft || 0}
               inputParams={form.getValues()}
             />
             <Button
@@ -1062,7 +1062,7 @@ export function FullQuoteForm() {
                   ? (standardTier?.labor_cost || 0) / result.total_labor_hours
                   : 0;
 
-                const lineItems: SubmissionLineItem[] = [
+                const lineItems: Omit<SubmissionLineItem, 'id'>[] = [
                   ...result.work_items.map((wi, i) => ({
                     type: 'labor' as const,
                     name: wi.name,

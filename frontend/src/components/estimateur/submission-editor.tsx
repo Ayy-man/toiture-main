@@ -17,7 +17,7 @@ import {
   createUpsell,
   getUpsellSuggestions,
 } from "@/lib/api/submissions";
-import type { Submission, LineItem, UpsellSuggestion } from "@/types/submission";
+import type { Submission, LineItem, UpsellSuggestion, SubmissionListItem } from "@/types/submission";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { DndContext, closestCenter, type DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
@@ -326,9 +326,19 @@ export function SubmissionEditor({
     try {
       const upsell = await createUpsell(submission.id, type, userName);
       // Refresh submission to get updated children list
-      const updated = { ...submission, children: [...(submission.children || []), upsell] };
-      setSubmission(updated);
-      onUpdate(updated);
+      const upsellListItem: SubmissionListItem = {
+        id: upsell.id,
+        status: upsell.status,
+        category: upsell.category,
+        client_name: upsell.client_name,
+        total_price: upsell.total_price,
+        created_at: upsell.created_at,
+        upsell_type: upsell.upsell_type,
+        has_children: false,
+      };
+      const updated = { ...submission, children: [...(submission.children || []), upsellListItem] };
+      setSubmission(updated as Submission);
+      onUpdate(updated as Submission);
       toast({
         title: t.submission.upsellCreated,
         description: type,

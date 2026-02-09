@@ -14,12 +14,12 @@ export const hybridQuoteFormSchema = z.object({
   complexity_tier: z.number().int().min(1).max(6),
 
   // NEW: Factor checklist values
-  factor_roof_pitch: z.string().nullable().default(null),
+  factor_roof_pitch: z.string().nullish().default(null),
   factor_access_difficulty: z.array(z.string()).default([]),
-  factor_demolition: z.string().nullable().default(null),
+  factor_demolition: z.string().nullish().default(null),
   factor_penetrations_count: z.number().int().min(0).default(0),
   factor_security: z.array(z.string()).default([]),
-  factor_material_removal: z.string().nullable().default(null),
+  factor_material_removal: z.string().nullish().default(null),
   factor_roof_sections_count: z.number().int().min(1).default(2),
   factor_previous_layers_count: z.number().int().min(0).default(0),
   manual_extra_hours: z.number().min(0).default(0),
