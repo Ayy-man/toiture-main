@@ -708,14 +708,14 @@ Plans:
 
 **Requirements:** UI-06, UI-07, UI-08
 
-**Status:** Planned (2026-02-09)
+**Status:** Complete (2026-02-10)
 
 **Plans:** 3 plans
 
 Plans:
-- [ ] 25-01-PLAN.md — Dark mode toggle with next-themes (ThemeProvider, ThemeToggle, admin header placement)
-- [ ] 25-02-PLAN.md — FR/EN bug audit: move tier/factor/equipment strings to i18n files, make PDF bilingual
-- [ ] 25-03-PLAN.md — Recharts dark mode fixes, LV branding verification, visual checkpoint
+- [x] 25-01-PLAN.md — Dark mode toggle with next-themes (ThemeProvider, ThemeToggle, admin header placement)
+- [x] 25-02-PLAN.md — FR/EN bug audit: move tier/factor/equipment strings to i18n files, make PDF bilingual
+- [x] 25-03-PLAN.md — Recharts dark mode fixes, LV branding verification, visual checkpoint
 
 **Success Criteria:**
 1. **Dark mode toggle**: Sun/moon button in top-right corner

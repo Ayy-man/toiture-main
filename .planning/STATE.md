@@ -34,13 +34,13 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 22 | Complete | 2/2 | 100% |
 | 23 | Complete | 3/3 | 100% |
 | 24 | Complete | 3/3 | 100% |
-| 25 | In Progress | 2/3 | 67% |
+| 25 | Complete | 3/3 | 100% |
 
-**Overall:** 50/54 plans complete for v1 + sprint (93%)
+**Overall:** 51/51 plans complete for v1 + sprint (100%)
 
 ```
-v1 Progress:     [██████████████████░░] 93%
-Sprint Progress: [██████████████████░░] 89% (19-25)
+v1 Progress:     [████████████████████] 100%
+Sprint Progress: [████████████████████] 100% (19-25)
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
@@ -53,7 +53,7 @@ Sprint Progress: [██████████████████░░] 
 | 22 | New Estimation Input Fields | Feb 12 | Complete (2/2) |
 | 23 | Submission Workflow & Editing | Feb 13 | Complete (3/3) |
 | 24 | Export, Send & Red Flags | Feb 13-14 | Complete (3/3) |
-| 25 | UI Polish & Dark Mode | Feb 13 | In Progress (2/3) |
+| 25 | UI Polish & Dark Mode | Feb 13 | Complete (3/3) |
 
 **Business logic gaps (need Laurent/Amin input):**
 - Complexity: base time values per job type, time multipliers per tier
