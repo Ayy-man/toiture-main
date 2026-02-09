@@ -53,3 +53,42 @@ class FullEstimateResponse(BaseModel):
     materials: List[MaterialPrediction]
     total_materials_cost: float
     applied_rules: List[str] = []
+
+
+# --- Database models (Phase 20) ---
+
+
+class MaterialItem(BaseModel):
+    """Material item from database."""
+
+    id: int
+    code: Optional[str] = None
+    name: str
+    cost: Optional[float] = None
+    sell_price: Optional[float] = None
+    unit: str
+    category: Optional[str] = None
+    supplier: Optional[str] = None
+    note: Optional[str] = None
+    area_sqft: float = 0
+    length_ft: float = 0
+    width_ft: float = 0
+    thickness_ft: float = 0
+    item_type: str = "material"
+    ml_material_id: Optional[int] = None
+    review_status: str = "approved"
+
+
+class MaterialSearchResponse(BaseModel):
+    """Response for GET /materials/search endpoint."""
+
+    materials: List[MaterialItem]
+    count: int
+    total_available: int
+
+
+class MaterialCategoryResponse(BaseModel):
+    """Response for GET /materials/categories endpoint."""
+
+    categories: List[str]
+    count: int

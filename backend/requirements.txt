@@ -17,3 +17,7 @@ tenacity>=8.2.0
 
 # Supabase (Feedback System)
 supabase>=2.27.0
+
+# Data import and deduplication
+pandas>=2.0.0
+rapidfuzz>=3.0.0
