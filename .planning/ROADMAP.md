@@ -527,14 +527,14 @@ Plans:
 
 **Requirements:** MAT-03, MAT-04, MAT-05, MAT-06
 
-**Status:** Planned (2026-02-09)
+**Status:** Complete (2026-02-09) — Human verification pending for DB import execution
 
 **Plans:** 3 plans
 
 Plans:
-- [ ] 20-01-PLAN.md — Supabase materials table DDL + CSV import script + deduplication report
-- [ ] 20-02-PLAN.md — Materials search API endpoints (GET /materials/search, GET /materials/categories)
-- [ ] 20-03-PLAN.md — Frontend material selector UI (searchable multi-select, custom material entry, auto line-count)
+- [x] 20-01-PLAN.md — Supabase materials table DDL + CSV import script + deduplication report
+- [x] 20-02-PLAN.md — Materials search API endpoints (GET /materials/search, GET /materials/categories)
+- [x] 20-03-PLAN.md — Frontend material selector UI (searchable multi-select, custom material entry, auto line-count)
 
 **Success Criteria:**
 1. Materials table created in Supabase with fields: code, name, unit_price, unit_of_measure, category
