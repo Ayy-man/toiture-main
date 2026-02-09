@@ -462,4 +462,102 @@ export const en = {
     ignorer: "Dismiss",
     toutIgnorer: "Dismiss All",
   },
+  complexity: {
+    tiers: {
+      tier1: {
+        name: "Simple / Standard",
+        description: "Single-story home, flat or low-slope roof (0-4/12), easy entry access, no crane, 1-2 sections, standard materials",
+      },
+      tier2: {
+        name: "Moderate",
+        description: "2-story home, pitch 4/12 to 6/12, good street access, some penetrations, 2-3 sections, standard tear-off",
+      },
+      tier3: {
+        name: "Complex",
+        description: "2-story with steep pitch (6/12-8/12), limited access, multiple penetrations, 3-4 sections, multi-layer tear-off",
+      },
+      tier4: {
+        name: "High Complexity",
+        description: "3-story or pitch 8/12+, difficult access (crane recommended), numerous penetrations, 4+ sections, safety equipment required",
+      },
+      tier5: {
+        name: "Very High Complexity",
+        description: "3-story, pitch 10/12+, crane required, extreme access (downtown), extensive penetrations, 5+ sections, multiple layers",
+      },
+      tier6: {
+        name: "Extreme",
+        description: "Commercial/high elevation, extreme pitch, crane mandatory, dangerous access (scaffolding + harness), structural work, winter conditions",
+      },
+    },
+    factors: {
+      roofPitch: {
+        label: "Roof Pitch",
+        flat: "Flat (0-2/12)",
+        low: "Low (3/12-4/12)",
+        medium: "Medium (5/12-6/12)",
+        steep: "Steep (7/12-8/12)",
+        verySteep: "Very Steep (9/12+)",
+      },
+      accessDifficulty: {
+        label: "Access Difficulty",
+        noCrane: "No crane access",
+        narrowDriveway: "Narrow driveway",
+        streetBlocking: "Street blocking required",
+        highElevation: "High elevation (3+ stories)",
+        difficultTerrain: "Difficult terrain",
+        noMaterialDrop: "No material drop zone",
+      },
+      demolition: {
+        label: "Demolition",
+        none: "None",
+        singleLayer: "Single layer",
+        multiLayer: "Multi-layer",
+        structural: "Structural",
+      },
+      penetrations: {
+        label: "Number of penetrations (vents, pipes, skylights)",
+      },
+      security: {
+        label: "Security",
+        harness: "Safety harness",
+        scaffolding: "Scaffolding",
+        guardrails: "Guardrails",
+        winterSafety: "Winter safety",
+      },
+      materialRemoval: {
+        label: "Material Removal",
+        none: "None",
+        standard: "Standard",
+        heavy: "Heavy",
+        hazardous: "Hazardous (asbestos)",
+      },
+      roofSections: {
+        label: "Number of roof sections",
+      },
+      previousLayers: {
+        label: "Number of previous layers",
+      },
+    },
+    equipment: {
+      crane: "Crane",
+      scaffolding: "Scaffolding",
+      dumpster: "Dumpster",
+      generator: "Generator",
+      compressor: "Compressor",
+    },
+  },
+  pdf: {
+    title: "QUOTE",
+    company: "Toiture LV",
+    dateLabel: "Date:",
+    categoryLabel: "Category:",
+    areaLabel: "Area:",
+    areaUnit: "sq ft",
+    workItemsTitle: "Work Items",
+    summaryTitle: "Summary",
+    materials: "Materials",
+    labor: "Labor",
+    total: "TOTAL",
+    footer: "This quote is valid for 30 days from the date of issue.",
+  },
 } as const;

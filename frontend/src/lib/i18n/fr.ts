@@ -462,4 +462,102 @@ export const fr = {
     ignorer: "Ignorer",
     toutIgnorer: "Tout ignorer",
   },
+  complexity: {
+    tiers: {
+      tier1: {
+        name: "Simple / Standard",
+        description: "Maison plain-pied, toit plat a faible pente (0-4/12), acces facile par entree, pas de grue, 1-2 sections, materiaux standards",
+      },
+      tier2: {
+        name: "Modere",
+        description: "Maison 2 etages, pente 4/12 a 6/12, bon acces rue, quelques penetrations, 2-3 sections, arrachage standard",
+      },
+      tier3: {
+        name: "Complexe",
+        description: "2 etages avec forte pente (6/12-8/12), acces limite, penetrations multiples, 3-4 sections, arrachage multi-couches",
+      },
+      tier4: {
+        name: "Haute complexite",
+        description: "3 etages ou pente 8/12+, acces difficile (grue recommandee), penetrations nombreuses, 4+ sections, equipement securite requis",
+      },
+      tier5: {
+        name: "Tres haute complexite",
+        description: "3 etages, pente 10/12+, grue requise, acces extreme (centre-ville), penetrations etendues, 5+ sections, couches multiples",
+      },
+      tier6: {
+        name: "Extreme",
+        description: "Commercial/haute elevation, pente extreme, grue obligatoire, acces dangereux (echafaudage + harnais), travaux structuraux, conditions hivernales",
+      },
+    },
+    factors: {
+      roofPitch: {
+        label: "Pente du toit",
+        flat: "Plat (0-2/12)",
+        low: "Faible (3/12-4/12)",
+        medium: "Moyen (5/12-6/12)",
+        steep: "Forte (7/12-8/12)",
+        verySteep: "Tres forte (9/12+)",
+      },
+      accessDifficulty: {
+        label: "Difficulte d'acces",
+        noCrane: "Pas d'acces pour grue",
+        narrowDriveway: "Entree etroite",
+        streetBlocking: "Blocage de rue requis",
+        highElevation: "Haute elevation (3+ etages)",
+        difficultTerrain: "Terrain difficile",
+        noMaterialDrop: "Pas de zone de depot",
+      },
+      demolition: {
+        label: "Demolition",
+        none: "Aucun",
+        singleLayer: "Une couche",
+        multiLayer: "Multi-couches",
+        structural: "Structural",
+      },
+      penetrations: {
+        label: "Nombre de penetrations (events, tuyaux, puits de lumiere)",
+      },
+      security: {
+        label: "Securite",
+        harness: "Harnais de securite",
+        scaffolding: "Echafaudage",
+        guardrails: "Garde-corps",
+        winterSafety: "Securite hivernale",
+      },
+      materialRemoval: {
+        label: "Retrait de materiaux",
+        none: "Aucun",
+        standard: "Standard",
+        heavy: "Lourd",
+        hazardous: "Dangereux (amiante)",
+      },
+      roofSections: {
+        label: "Nombre de sections de toit",
+      },
+      previousLayers: {
+        label: "Nombre de couches precedentes",
+      },
+    },
+    equipment: {
+      crane: "Grue",
+      scaffolding: "Echafaudage",
+      dumpster: "Conteneur a dechets",
+      generator: "Generatrice",
+      compressor: "Compresseur",
+    },
+  },
+  pdf: {
+    title: "SOUMISSION",
+    company: "Toiture LV",
+    dateLabel: "Date:",
+    categoryLabel: "Categorie:",
+    areaLabel: "Superficie:",
+    areaUnit: "pi2",
+    workItemsTitle: "Travaux",
+    summaryTitle: "Sommaire",
+    materials: "Materiaux",
+    labor: "Main-d'oeuvre",
+    total: "TOTAL",
+    footer: "Cette soumission est valide pour 30 jours a compter de la date d'emission.",
+  },
 } as const;
