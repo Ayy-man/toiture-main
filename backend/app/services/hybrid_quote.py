@@ -39,6 +39,25 @@ from app.services.predictor import predict
 logger = logging.getLogger(__name__)
 
 
+def _get_complexity_for_ml(request: HybridQuoteRequest) -> int:
+    """Get complexity score for ML models (0-100 scale or legacy 0-56).
+
+    If request uses new tier system, compute score from tier.
+    If request uses old slider system, use complexity_aggregate.
+    Default to 28 (moderate) if neither is set.
+    """
+    if request.complexity_tier is not None:
+        # New tier system: compute score from tier (use midpoint of tier range)
+        from app.services.complexity_calculator import get_tier_config
+        config = get_tier_config()
+        tier_cfg = config["tiers"][request.complexity_tier - 1]
+        return tier_cfg["score_min"] + (tier_cfg["score_max"] - tier_cfg["score_min"]) // 2
+    elif request.complexity_aggregate is not None:
+        return request.complexity_aggregate
+    else:
+        return 28  # Default moderate
+
+
 async def _run_cbr_query(request: HybridQuoteRequest) -> List[Dict[str, Any]]:
     """Run CBR query in async context.
 
@@ -54,10 +73,12 @@ async def _run_cbr_query(request: HybridQuoteRequest) -> List[Dict[str, Any]]:
 
     def sync_cbr():
         t0 = time.time()
+        # Get complexity score for CBR query
+        complexity_score = _get_complexity_for_ml(request)
         query_text = build_query_text(
             sqft=request.sqft,
             category=request.category,
-            complexity=request.complexity_aggregate,
+            complexity=complexity_score,
             material_lines=request.material_lines,
             labor_lines=request.labor_lines,
         )
@@ -86,6 +107,9 @@ async def _run_ml_prediction(request: HybridQuoteRequest) -> Dict[str, Any]:
     loop = asyncio.get_event_loop()
 
     def sync_ml():
+        # Get complexity score for ML models
+        complexity_score = _get_complexity_for_ml(request)
+
         # Get price prediction
         price_result = predict(
             sqft=request.sqft,
@@ -93,14 +117,14 @@ async def _run_ml_prediction(request: HybridQuoteRequest) -> Dict[str, Any]:
             material_lines=request.material_lines,
             labor_lines=request.labor_lines,
             has_subs=1 if request.has_subs else 0,
-            complexity=request.complexity_aggregate,
+            complexity=complexity_score,
         )
 
         # Get material prediction
         material_result = predict_materials(
             sqft=request.sqft,
             category=request.category,
-            complexity=request.complexity_aggregate,
+            complexity=complexity_score,
             has_chimney=request.has_chimney,
             has_skylights=request.has_skylights,
             material_lines=request.material_lines,
@@ -149,20 +173,36 @@ def _format_merger_prompt(
 
     ml_price = ml_result.get("price", {})
 
+    # Format complexity section based on request type (tier-based vs legacy)
+    if request.complexity_tier:
+        complexity_section = f"""Complexity Tier: {request.complexity_tier}/6
+Complexity Score: {_get_complexity_for_ml(request)}/100
+Factor Adjustments:
+- Roof Pitch: {request.factor_roof_pitch or 'N/A'}
+- Access Difficulty: {', '.join(request.factor_access_difficulty or []) or 'None'}
+- Demolition: {request.factor_demolition or 'N/A'}
+- Penetrations: {request.factor_penetrations_count or 0}
+- Security: {', '.join(request.factor_security or []) or 'None'}
+- Material Removal: {request.factor_material_removal or 'N/A'}
+- Roof Sections: {request.factor_roof_sections_count or 'N/A'}
+- Previous Layers: {request.factor_previous_layers_count or 0}
+- Manual Extra Hours: {request.manual_extra_hours or 0}"""
+    else:
+        complexity_section = f"""Complexity Score: {request.complexity_aggregate or 0}/56
+6-Factor Breakdown:
+- Access Difficulty: {request.access_difficulty or 0}/10
+- Roof Pitch: {request.roof_pitch or 0}/8
+- Penetrations: {request.penetrations or 0}/10
+- Material Removal: {request.material_removal or 0}/8
+- Safety Concerns: {request.safety_concerns or 0}/10
+- Timeline Constraints: {request.timeline_constraints or 0}/10"""
+
     prompt = f"""You are merging CBR (case-based) and ML (model-based) predictions into a final roofing quote.
 
 **JOB DETAILS:**
 Category: {request.category}
 Square Footage: {request.sqft:,.0f}
-Complexity Score: {request.complexity_aggregate}/56
-
-6-Factor Breakdown:
-- Access Difficulty: {request.access_difficulty}/10
-- Roof Pitch: {request.roof_pitch}/8
-- Penetrations: {request.penetrations}/10
-- Material Removal: {request.material_removal}/8
-- Safety Concerns: {request.safety_concerns}/10
-- Timeline Constraints: {request.timeline_constraints}/10
+{complexity_section}
 
 Has Chimney: {request.has_chimney}
 Has Skylights: {request.has_skylights}
@@ -399,6 +439,31 @@ async def generate_hybrid_quote(
             ml_material_ids=ml_material_ids,
             data_completeness=data_completeness,
         )
+
+    # If request uses new tier system, calculate complexity hours breakdown
+    complexity_breakdown = None
+    if request.complexity_tier is not None:
+        from app.services.complexity_calculator import calculate_complexity_hours
+        try:
+            complexity_breakdown = calculate_complexity_hours(
+                category=request.category,
+                sqft=request.sqft,
+                tier=request.complexity_tier,
+                factors={
+                    "roof_pitch": request.factor_roof_pitch,
+                    "access_difficulty": request.factor_access_difficulty or [],
+                    "demolition": request.factor_demolition,
+                    "penetrations_count": request.factor_penetrations_count or 0,
+                    "security": request.factor_security or [],
+                    "material_removal": request.factor_material_removal,
+                    "roof_sections_count": request.factor_roof_sections_count or 2,
+                    "previous_layers_count": request.factor_previous_layers_count or 0,
+                },
+                manual_extra_hours=request.manual_extra_hours or 0,
+            )
+            logger.info(f"Complexity breakdown: {complexity_breakdown}")
+        except Exception as e:
+            logger.warning(f"Failed to calculate complexity breakdown: {e}")
 
     # Step 4: Merge with LLM (or fallback)
     llm_start = time.time()
