@@ -34,7 +34,14 @@ function CustomTooltip({ active, payload, label }: {
   }
 
   return (
-    <div className="rounded-lg border bg-background p-2 shadow-sm">
+    <div
+      style={{
+        backgroundColor: "hsl(var(--popover))",
+        borderColor: "hsl(var(--border))",
+        color: "hsl(var(--popover-foreground))",
+      }}
+      className="rounded-lg border p-2 shadow-sm"
+    >
       <div className="font-medium">{label}</div>
       <div className="text-sm text-muted-foreground">
         {formatCompactCurrency(payload[0].value)}
@@ -86,7 +93,7 @@ export function RevenueChart({ data, isLoading }: RevenueChartProps) {
         <Tooltip content={<CustomTooltip />} />
         <Bar
           dataKey="revenue"
-          fill="#8B2323"
+          fill="hsl(var(--chart-1))"
           radius={[4, 4, 0, 0]}
         />
       </BarChart>

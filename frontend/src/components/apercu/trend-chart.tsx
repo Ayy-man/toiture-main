@@ -36,7 +36,14 @@ function CustomTooltip({ active, payload, label }: {
   const data = payload[0].payload;
 
   return (
-    <div className="rounded-lg border bg-background p-2 shadow-sm">
+    <div
+      style={{
+        backgroundColor: "hsl(var(--popover))",
+        borderColor: "hsl(var(--border))",
+        color: "hsl(var(--popover-foreground))",
+      }}
+      className="rounded-lg border p-2 shadow-sm"
+    >
       <div className="font-medium">{label}</div>
       <div className="text-sm text-muted-foreground">
         {formatCompactCurrency(data.revenue)}
@@ -92,10 +99,10 @@ export function TrendChart({ data, isLoading }: TrendChartProps) {
         <Line
           type="monotone"
           dataKey="revenue"
-          stroke="#8B2323"
+          stroke="hsl(var(--chart-1))"
           strokeWidth={2}
-          dot={{ fill: "#8B2323", strokeWidth: 0, r: 4 }}
-          activeDot={{ fill: "#8B2323", strokeWidth: 0, r: 6 }}
+          dot={{ fill: "hsl(var(--chart-1))", strokeWidth: 0, r: 4 }}
+          activeDot={{ fill: "hsl(var(--chart-1))", strokeWidth: 0, r: 6 }}
         />
       </LineChart>
     </ResponsiveContainer>

@@ -8,8 +8,14 @@ interface CategoryChartProps {
   isLoading: boolean;
 }
 
-// Color palette with brick red as primary
-const COLORS = ["#8B2323", "#D4534B", "#4A6FA5", "#5E9B8A", "#E8A838", "#7B6B9E"];
+// Color palette using CSS variables for dark mode compatibility
+const COLORS = [
+  "hsl(var(--chart-1))", // brick red primary
+  "hsl(var(--chart-2))", // teal
+  "hsl(var(--chart-3))", // blue
+  "hsl(var(--chart-4))", // yellow
+  "hsl(var(--chart-5))", // orange
+];
 
 /**
  * Format value as CAD currency.
@@ -37,7 +43,14 @@ function CustomTooltip({ active, payload }: {
   const data = payload[0].payload;
 
   return (
-    <div className="rounded-lg border bg-background p-2 shadow-sm">
+    <div
+      style={{
+        backgroundColor: "hsl(var(--popover))",
+        borderColor: "hsl(var(--border))",
+        color: "hsl(var(--popover-foreground))",
+      }}
+      className="rounded-lg border p-2 shadow-sm"
+    >
       <div className="font-medium">{data.category}</div>
       <div className="text-sm text-muted-foreground">
         {formatCurrency(data.revenue)} ({data.percentage.toFixed(1)}%)
