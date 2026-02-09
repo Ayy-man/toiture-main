@@ -36,38 +36,106 @@ class HybridQuoteRequest(BaseModel):
         description="Job category (e.g., Bardeaux, Elastomere)"
     )
 
-    # Complexity factors (6 factors that sum to complexity_aggregate)
-    complexity_aggregate: int = Field(
+    # NEW: Tier-based complexity (Phase 21)
+    complexity_tier: Optional[int] = Field(
+        default=None,
+        ge=1,
+        le=6,
+        description="Complexity tier (1-6). When provided, uses new tier-based system."
+    )
+    complexity_score: Optional[int] = Field(
+        default=None,
+        ge=0,
+        le=100,
+        description="Tier-based complexity score (0-100). Auto-calculated from tier if not provided."
+    )
+
+    # NEW: Factor checklist (Phase 21) - 8 factors replacing old 6 slider values
+    factor_roof_pitch: Optional[str] = Field(
+        default=None,
+        description="Roof pitch category: flat|low|medium|steep|very_steep"
+    )
+    factor_access_difficulty: Optional[List[str]] = Field(
+        default=None,
+        description="Access difficulty checklist items (e.g., no_crane, narrow_driveway)"
+    )
+    factor_demolition: Optional[str] = Field(
+        default=None,
+        description="Demolition type: none|single_layer|multi_layer|structural"
+    )
+    factor_penetrations_count: Optional[int] = Field(
+        default=None,
+        ge=0,
+        le=100,
+        description="Number of roof penetrations (vents, pipes, skylights)"
+    )
+    factor_security: Optional[List[str]] = Field(
+        default=None,
+        description="Security requirements checklist (e.g., harness, scaffolding)"
+    )
+    factor_material_removal: Optional[str] = Field(
+        default=None,
+        description="Material removal type: none|standard|heavy|hazardous"
+    )
+    factor_roof_sections_count: Optional[int] = Field(
+        default=None,
+        ge=1,
+        le=20,
+        description="Number of distinct roof sections"
+    )
+    factor_previous_layers_count: Optional[int] = Field(
+        default=None,
+        ge=0,
+        le=10,
+        description="Number of existing layers to remove"
+    )
+
+    # NEW: Manual hour override (upward only)
+    manual_extra_hours: Optional[float] = Field(
+        default=None,
+        ge=0,
+        description="Manual extra hours added by estimator (upward override only)"
+    )
+
+    # OLD: Legacy complexity factors (kept for backward compatibility)
+    complexity_aggregate: Optional[int] = Field(
+        default=None,
         ge=0,
         le=56,
-        description="Sum of 6 complexity factors (0-56)"
+        description="LEGACY: Sum of 6 complexity factors (0-56). Use complexity_tier for new quotes."
     )
-    access_difficulty: int = Field(
+    access_difficulty: Optional[int] = Field(
+        default=None,
         ge=0,
         le=10,
         description="Difficulty accessing the roof (0=easy, 10=very difficult)"
     )
-    roof_pitch: int = Field(
+    roof_pitch: Optional[int] = Field(
+        default=None,
         ge=0,
         le=8,
         description="Steepness of roof pitch (0=flat, 8=very steep)"
     )
-    penetrations: int = Field(
+    penetrations: Optional[int] = Field(
+        default=None,
         ge=0,
         le=10,
         description="Number/complexity of roof penetrations (vents, pipes, etc.)"
     )
-    material_removal: int = Field(
+    material_removal: Optional[int] = Field(
+        default=None,
         ge=0,
         le=8,
         description="Difficulty of existing material removal (0=none, 8=extensive)"
     )
-    safety_concerns: int = Field(
+    safety_concerns: Optional[int] = Field(
+        default=None,
         ge=0,
         le=10,
         description="Safety requirements (0=standard, 10=high-risk)"
     )
-    timeline_constraints: int = Field(
+    timeline_constraints: Optional[int] = Field(
+        default=None,
         ge=0,
         le=10,
         description="Urgency/timeline pressure (0=flexible, 10=urgent)"
@@ -129,32 +197,33 @@ class HybridQuoteRequest(BaseModel):
         return v
 
     @model_validator(mode="after")
-    def validate_complexity_sum(self) -> "HybridQuoteRequest":
-        """Validate that complexity_aggregate matches sum of 6 factors (with 5% tolerance)."""
-        calculated_sum = (
-            self.access_difficulty
-            + self.roof_pitch
-            + self.penetrations
-            + self.material_removal
-            + self.safety_concerns
-            + self.timeline_constraints
-        )
+    def validate_complexity(self) -> "HybridQuoteRequest":
+        """Validate complexity - either old slider system or new tier system."""
+        # New tier system: skip old sum validation
+        if self.complexity_tier is not None:
+            return self
 
-        # Allow 5% tolerance for rounding
-        tolerance = max(1, int(calculated_sum * 0.05))
-
-        if abs(self.complexity_aggregate - calculated_sum) > tolerance:
-            raise ValueError(
-                f"complexity_aggregate ({self.complexity_aggregate}) must equal sum of 6 factors "
-                f"({calculated_sum}) within 5% tolerance"
-            )
-
+        # Old system: validate sum if aggregate and factors are provided
+        if self.complexity_aggregate is not None:
+            old_fields = [
+                self.access_difficulty, self.roof_pitch, self.penetrations,
+                self.material_removal, self.safety_concerns, self.timeline_constraints
+            ]
+            if all(f is not None for f in old_fields):
+                calculated_sum = sum(old_fields)
+                tolerance = max(1, int(calculated_sum * 0.05))
+                if abs(self.complexity_aggregate - calculated_sum) > tolerance:
+                    raise ValueError(
+                        f"complexity_aggregate ({self.complexity_aggregate}) must equal sum of 6 factors "
+                        f"({calculated_sum}) within 5% tolerance"
+                    )
         return self
 
     model_config = {
         "json_schema_extra": {
             "examples": [
                 {
+                    "description": "OLD format (legacy 6 sliders)",
                     "sqft": 2500,
                     "category": "Bardeaux",
                     "complexity_aggregate": 25,
@@ -164,6 +233,28 @@ class HybridQuoteRequest(BaseModel):
                     "material_removal": 5,
                     "safety_concerns": 4,
                     "timeline_constraints": 4,
+                    "has_chimney": True,
+                    "has_skylights": False,
+                    "material_lines": 8,
+                    "labor_lines": 3,
+                    "has_subs": False,
+                    "quoted_total": None,
+                },
+                {
+                    "description": "NEW format (tier-based with factor checklist)",
+                    "sqft": 2500,
+                    "category": "Bardeaux",
+                    "complexity_tier": 3,
+                    "complexity_score": 42,
+                    "factor_roof_pitch": "steep",
+                    "factor_access_difficulty": ["no_crane", "narrow_driveway"],
+                    "factor_demolition": "multi_layer",
+                    "factor_penetrations_count": 4,
+                    "factor_security": ["harness"],
+                    "factor_material_removal": "standard",
+                    "factor_roof_sections_count": 4,
+                    "factor_previous_layers_count": 2,
+                    "manual_extra_hours": 5.0,
                     "has_chimney": True,
                     "has_skylights": False,
                     "material_lines": 8,
