@@ -102,6 +102,62 @@ class HybridQuoteRequest(BaseModel):
         description="Manual extra hours added by estimator (upward override only)"
     )
 
+    # NEW: Employee count (Phase 22)
+    employee_compagnons: Optional[int] = Field(
+        default=None,
+        ge=0,
+        le=20,
+        description="Number of journeyman roofers (compagnons)"
+    )
+    employee_apprentis: Optional[int] = Field(
+        default=None,
+        ge=0,
+        le=20,
+        description="Number of apprentice roofers (apprentis)"
+    )
+    employee_manoeuvres: Optional[int] = Field(
+        default=None,
+        ge=0,
+        le=20,
+        description="Number of laborers (manoeuvres)"
+    )
+
+    # NEW: Duration (Phase 22)
+    duration_type: Optional[str] = Field(
+        default=None,
+        description="Project duration type: half_day | full_day | multi_day"
+    )
+    duration_days: Optional[int] = Field(
+        default=None,
+        ge=1,
+        le=30,
+        description="Number of days for multi-day projects"
+    )
+
+    # NEW: Geographic zone (Phase 22)
+    geographic_zone: Optional[str] = Field(
+        default=None,
+        description="Geographic zone: core | secondary | north_premium | extended | red_flag"
+    )
+
+    # NEW: Premium client level (Phase 22)
+    premium_client_level: Optional[str] = Field(
+        default=None,
+        description="Premium client level: standard | premium_1 | premium_2 | premium_3"
+    )
+
+    # NEW: Equipment items (Phase 22)
+    equipment_items: Optional[List[str]] = Field(
+        default=None,
+        description="List of equipment item IDs from equipment_config.json"
+    )
+
+    # NEW: Supply chain risk (Phase 22)
+    supply_chain_risk: Optional[str] = Field(
+        default=None,
+        description="Supply chain risk level: standard | extended | import"
+    )
+
     # OLD: Legacy complexity factors (kept for backward compatibility)
     complexity_aggregate: Optional[int] = Field(
         default=None,
@@ -182,6 +238,34 @@ class HybridQuoteRequest(BaseModel):
         ge=0,
         description="Known quoted total if available (for comparison)"
     )
+
+    @field_validator("duration_type")
+    @classmethod
+    def validate_duration_type(cls, v: Optional[str]) -> Optional[str]:
+        if v is not None and v not in ("half_day", "full_day", "multi_day"):
+            raise ValueError("duration_type must be one of: half_day, full_day, multi_day")
+        return v
+
+    @field_validator("geographic_zone")
+    @classmethod
+    def validate_geographic_zone(cls, v: Optional[str]) -> Optional[str]:
+        if v is not None and v not in ("core", "secondary", "north_premium", "extended", "red_flag"):
+            raise ValueError("geographic_zone must be one of: core, secondary, north_premium, extended, red_flag")
+        return v
+
+    @field_validator("premium_client_level")
+    @classmethod
+    def validate_premium_client_level(cls, v: Optional[str]) -> Optional[str]:
+        if v is not None and v not in ("standard", "premium_1", "premium_2", "premium_3"):
+            raise ValueError("premium_client_level must be one of: standard, premium_1, premium_2, premium_3")
+        return v
+
+    @field_validator("supply_chain_risk")
+    @classmethod
+    def validate_supply_chain_risk(cls, v: Optional[str]) -> Optional[str]:
+        if v is not None and v not in ("standard", "extended", "import"):
+            raise ValueError("supply_chain_risk must be one of: standard, extended, import")
+        return v
 
     @field_validator("category")
     @classmethod

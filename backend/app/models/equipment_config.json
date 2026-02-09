@@ -1,0 +1,35 @@
+{
+  "equipment_items": [
+    {
+      "id": "crane",
+      "name_fr": "Grue",
+      "name_en": "Crane",
+      "daily_cost": 25.00
+    },
+    {
+      "id": "scaffolding",
+      "name_fr": "Echafaudage",
+      "name_en": "Scaffolding",
+      "daily_cost": 25.00
+    },
+    {
+      "id": "dumpster",
+      "name_fr": "Conteneur a dechets",
+      "name_en": "Dumpster",
+      "daily_cost": 25.00
+    },
+    {
+      "id": "generator",
+      "name_fr": "Generatrice",
+      "name_en": "Generator",
+      "daily_cost": 25.00
+    },
+    {
+      "id": "compressor",
+      "name_fr": "Compresseur",
+      "name_en": "Compressor",
+      "daily_cost": 25.00
+    }
+  ],
+  "_note": "All daily_cost values are symbolic placeholders ($25/day). Laurent needs to provide real rental costs."
+}
