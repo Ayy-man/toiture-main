@@ -35,6 +35,7 @@ export function QuoteActions({ quote, category, sqft }: QuoteActionsProps) {
           category={category}
           sqft={sqft}
           date={dateStr}
+          locale={locale}
         />
       ).toBlob();
 

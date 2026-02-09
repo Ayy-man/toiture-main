@@ -57,55 +57,43 @@ function useTierData(): { tiers: TierData[]; factorConfig: FactorConfig } {
   const tiers: TierData[] = [
     {
       tier: 1,
-      name: locale === 'fr' ? "Simple / Standard" : "Simple / Standard",
-      description: locale === 'fr'
-        ? "Maison plain-pied, toit plat a faible pente (0-4/12), acces facile par entree, pas de grue, 1-2 sections, materiaux standards"
-        : "Single-story house, flat to low pitch (0-4/12), easy driveway access, no crane, 1-2 sections, standard materials",
+      name: t.complexity.tiers.tier1.name,
+      description: t.complexity.tiers.tier1.description,
       scoreRange: "0-16",
       hoursAdded: 0,
     },
     {
       tier: 2,
-      name: locale === 'fr' ? "Modere" : "Moderate",
-      description: locale === 'fr'
-        ? "Maison 2 etages, pente 4/12 a 6/12, bon acces rue, quelques penetrations, 2-3 sections, arrachage standard"
-        : "Two-story house, 4/12 to 6/12 pitch, good street access, some penetrations, 2-3 sections, standard tear-off",
+      name: t.complexity.tiers.tier2.name,
+      description: t.complexity.tiers.tier2.description,
       scoreRange: "17-33",
       hoursAdded: 4,
     },
     {
       tier: 3,
-      name: locale === 'fr' ? "Complexe" : "Complex",
-      description: locale === 'fr'
-        ? "2 etages avec forte pente (6/12-8/12), acces limite, penetrations multiples, 3-4 sections, arrachage multi-couches"
-        : "Two-story with steep pitch (6/12-8/12), limited access, multiple penetrations, 3-4 sections, multi-layer tear-off",
+      name: t.complexity.tiers.tier3.name,
+      description: t.complexity.tiers.tier3.description,
       scoreRange: "34-50",
       hoursAdded: 8,
     },
     {
       tier: 4,
-      name: locale === 'fr' ? "Haute complexite" : "High Complexity",
-      description: locale === 'fr'
-        ? "3 etages ou pente 8/12+, acces difficile (grue recommandee), penetrations nombreuses, 4+ sections, equipement securite requis"
-        : "Three-story or 8/12+ pitch, difficult access (crane recommended), many penetrations, 4+ sections, safety equipment required",
+      name: t.complexity.tiers.tier4.name,
+      description: t.complexity.tiers.tier4.description,
       scoreRange: "51-66",
       hoursAdded: 16,
     },
     {
       tier: 5,
-      name: locale === 'fr' ? "Tres haute complexite" : "Very High Complexity",
-      description: locale === 'fr'
-        ? "3 etages, pente 10/12+, grue requise, acces extreme (centre-ville), penetrations etendues, 5+ sections, couches multiples"
-        : "Three-story, 10/12+ pitch, crane required, extreme access (downtown), extensive penetrations, 5+ sections, multiple layers",
+      name: t.complexity.tiers.tier5.name,
+      description: t.complexity.tiers.tier5.description,
       scoreRange: "67-83",
       hoursAdded: 24,
     },
     {
       tier: 6,
-      name: locale === 'fr' ? "Extreme" : "Extreme",
-      description: locale === 'fr'
-        ? "Commercial/haute elevation, pente extreme, grue obligatoire, acces dangereux (echafaudage + harnais), travaux structuraux, conditions hivernales"
-        : "Commercial/high-rise, extreme pitch, crane mandatory, hazardous access (scaffolding + harness), structural work, winter conditions",
+      name: t.complexity.tiers.tier6.name,
+      description: t.complexity.tiers.tier6.description,
       scoreRange: "84-100",
       hoursAdded: 40,
     },
@@ -115,62 +103,60 @@ function useTierData(): { tiers: TierData[]; factorConfig: FactorConfig } {
   const factorConfig: FactorConfig = {
     roof_pitch: {
       options: [
-        { key: "flat", hours: 0, label: locale === 'fr' ? "Plat (0-2/12)" : "Flat (0-2/12)" },
-        { key: "low", hours: 1, label: locale === 'fr' ? "Faible (3/12-4/12)" : "Low (3/12-4/12)" },
-        { key: "medium", hours: 2, label: locale === 'fr' ? "Moyen (5/12-6/12)" : "Medium (5/12-6/12)" },
-        { key: "steep", hours: 4, label: locale === 'fr' ? "Forte (7/12-8/12)" : "Steep (7/12-8/12)" },
-        { key: "very_steep", hours: 8, label: locale === 'fr' ? "Tres forte (9/12+)" : "Very Steep (9/12+)" },
+        { key: "flat", hours: 0, label: t.complexity.factors.roofPitch.flat },
+        { key: "low", hours: 1, label: t.complexity.factors.roofPitch.low },
+        { key: "medium", hours: 2, label: t.complexity.factors.roofPitch.medium },
+        { key: "steep", hours: 4, label: t.complexity.factors.roofPitch.steep },
+        { key: "very_steep", hours: 8, label: t.complexity.factors.roofPitch.verySteep },
       ],
     },
     access_difficulty: {
       options: [
-        { key: "no_crane", hours: 6, label: locale === 'fr' ? "Pas d'acces pour grue" : "No crane access" },
-        { key: "narrow_driveway", hours: 2, label: locale === 'fr' ? "Entree etroite" : "Narrow driveway" },
-        { key: "street_blocking", hours: 3, label: locale === 'fr' ? "Blocage de rue requis" : "Street blocking required" },
-        { key: "high_elevation", hours: 4, label: locale === 'fr' ? "Haute elevation (3+ etages)" : "High elevation (3+ stories)" },
-        { key: "difficult_terrain", hours: 2, label: locale === 'fr' ? "Terrain difficile" : "Difficult terrain" },
-        { key: "no_material_drop", hours: 3, label: locale === 'fr' ? "Pas de zone de depot" : "No material drop zone" },
+        { key: "no_crane", hours: 6, label: t.complexity.factors.accessDifficulty.noCrane },
+        { key: "narrow_driveway", hours: 2, label: t.complexity.factors.accessDifficulty.narrowDriveway },
+        { key: "street_blocking", hours: 3, label: t.complexity.factors.accessDifficulty.streetBlocking },
+        { key: "high_elevation", hours: 4, label: t.complexity.factors.accessDifficulty.highElevation },
+        { key: "difficult_terrain", hours: 2, label: t.complexity.factors.accessDifficulty.difficultTerrain },
+        { key: "no_material_drop", hours: 3, label: t.complexity.factors.accessDifficulty.noMaterialDrop },
       ],
     },
     demolition: {
       options: [
-        { key: "none", hours: 0, label: locale === 'fr' ? "Aucun" : "None" },
-        { key: "single_layer", hours: 2, label: locale === 'fr' ? "Une couche" : "Single layer" },
-        { key: "multi_layer", hours: 6, label: locale === 'fr' ? "Multi-couches" : "Multi-layer" },
-        { key: "structural", hours: 10, label: locale === 'fr' ? "Structural" : "Structural" },
+        { key: "none", hours: 0, label: t.complexity.factors.demolition.none },
+        { key: "single_layer", hours: 2, label: t.complexity.factors.demolition.singleLayer },
+        { key: "multi_layer", hours: 6, label: t.complexity.factors.demolition.multiLayer },
+        { key: "structural", hours: 10, label: t.complexity.factors.demolition.structural },
       ],
     },
     penetrations: {
       hours_per_item: 0.5,
-      label: locale === 'fr'
-        ? "Nombre de penetrations (events, tuyaux, puits de lumiere)"
-        : "Number of penetrations (vents, pipes, skylights)",
+      label: t.complexity.factors.penetrations.label,
     },
     security: {
       options: [
-        { key: "harness", hours: 1, label: locale === 'fr' ? "Harnais de securite" : "Safety harness" },
-        { key: "scaffolding", hours: 4, label: locale === 'fr' ? "Echafaudage" : "Scaffolding" },
-        { key: "guardrails", hours: 2, label: locale === 'fr' ? "Garde-corps" : "Guardrails" },
-        { key: "winter_safety", hours: 3, label: locale === 'fr' ? "Securite hivernale" : "Winter safety" },
+        { key: "harness", hours: 1, label: t.complexity.factors.security.harness },
+        { key: "scaffolding", hours: 4, label: t.complexity.factors.security.scaffolding },
+        { key: "guardrails", hours: 2, label: t.complexity.factors.security.guardrails },
+        { key: "winter_safety", hours: 3, label: t.complexity.factors.security.winterSafety },
       ],
     },
     material_removal: {
       options: [
-        { key: "none", hours: 0, label: locale === 'fr' ? "Aucun" : "None" },
-        { key: "standard", hours: 2, label: locale === 'fr' ? "Standard" : "Standard" },
-        { key: "heavy", hours: 4, label: locale === 'fr' ? "Lourd" : "Heavy" },
-        { key: "hazardous", hours: 6, label: locale === 'fr' ? "Dangereux (amiante)" : "Hazardous (asbestos)" },
+        { key: "none", hours: 0, label: t.complexity.factors.materialRemoval.none },
+        { key: "standard", hours: 2, label: t.complexity.factors.materialRemoval.standard },
+        { key: "heavy", hours: 4, label: t.complexity.factors.materialRemoval.heavy },
+        { key: "hazardous", hours: 6, label: t.complexity.factors.materialRemoval.hazardous },
       ],
     },
     roof_sections: {
       hours_per_item_above: 1,
       baseline: 2,
-      label: locale === 'fr' ? "Nombre de sections de toit" : "Number of roof sections",
+      label: t.complexity.factors.roofSections.label,
     },
     previous_layers: {
       hours_per_item_above: 2,
       baseline: 1,
-      label: locale === 'fr' ? "Nombre de couches precedentes" : "Number of previous layers",
+      label: t.complexity.factors.previousLayers.label,
     },
   };
 
@@ -192,11 +178,11 @@ export function FullQuoteForm() {
 
   // Equipment items from equipment_config.json (hardcoded to avoid async load)
   const equipmentOptions = [
-    { id: "crane", label: locale === 'fr' ? "Grue" : "Crane", dailyCost: 25 },
-    { id: "scaffolding", label: locale === 'fr' ? "Echafaudage" : "Scaffolding", dailyCost: 25 },
-    { id: "dumpster", label: locale === 'fr' ? "Conteneur a dechets" : "Dumpster", dailyCost: 25 },
-    { id: "generator", label: locale === 'fr' ? "Generatrice" : "Generator", dailyCost: 25 },
-    { id: "compressor", label: locale === 'fr' ? "Compresseur" : "Compressor", dailyCost: 25 },
+    { id: "crane", label: t.complexity.equipment.crane, dailyCost: 25 },
+    { id: "scaffolding", label: t.complexity.equipment.scaffolding, dailyCost: 25 },
+    { id: "dumpster", label: t.complexity.equipment.dumpster, dailyCost: 25 },
+    { id: "generator", label: t.complexity.equipment.generator, dailyCost: 25 },
+    { id: "compressor", label: t.complexity.equipment.compressor, dailyCost: 25 },
   ];
 
   // Form setup with Tier 2 (Moderate) defaults

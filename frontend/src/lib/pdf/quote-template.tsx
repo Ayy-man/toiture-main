@@ -6,6 +6,8 @@ import {
   StyleSheet,
 } from "@react-pdf/renderer";
 import type { HybridQuoteResponse, WorkItem, PricingTier } from "@/types/hybrid-quote";
+import { fr } from "@/lib/i18n/fr";
+import { en } from "@/lib/i18n/en";
 
 const styles = StyleSheet.create({
   page: {
@@ -101,11 +103,12 @@ interface QuotePDFDocumentProps {
   category: string;
   sqft: number;
   date: string;
+  locale?: string; // "fr" | "en", defaults to "fr"
 }
 
-// Format number as CAD currency (French Canadian format)
-function formatCAD(amount: number): string {
-  return new Intl.NumberFormat("fr-CA", {
+// Format number as CAD currency (locale-aware format)
+function formatCAD(amount: number, locale: string = "fr"): string {
+  return new Intl.NumberFormat(locale === "en" ? "en-CA" : "fr-CA", {
     style: "currency",
     currency: "CAD",
     minimumFractionDigits: 0,
@@ -118,7 +121,11 @@ export function QuotePDFDocument({
   category,
   sqft,
   date,
+  locale = "fr",
 }: QuotePDFDocumentProps) {
+  // Select translation set based on locale
+  const t = locale === "en" ? en : fr;
+
   // Get Standard tier for pricing
   const standardTier = quote.pricing_tiers.find(
     (tier) => tier.tier === "Standard"
@@ -129,31 +136,31 @@ export function QuotePDFDocument({
       <Page size="A4" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.title}>SOUMISSION</Text>
-          <Text style={styles.subtitle}>Toiture LV</Text>
+          <Text style={styles.title}>{t.pdf.title}</Text>
+          <Text style={styles.subtitle}>{t.pdf.company}</Text>
         </View>
 
         {/* Job Info */}
         <View style={styles.section}>
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>Date:</Text>
+            <Text style={styles.infoLabel}>{t.pdf.dateLabel}</Text>
             <Text style={styles.infoValue}>{date}</Text>
           </View>
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>Categorie:</Text>
+            <Text style={styles.infoLabel}>{t.pdf.categoryLabel}</Text>
             <Text style={styles.infoValue}>{category}</Text>
           </View>
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>Superficie:</Text>
+            <Text style={styles.infoLabel}>{t.pdf.areaLabel}</Text>
             <Text style={styles.infoValue}>
-              {sqft.toLocaleString("fr-CA")} pi2
+              {sqft.toLocaleString(locale === "en" ? "en-CA" : "fr-CA")} {t.pdf.areaUnit}
             </Text>
           </View>
         </View>
 
         {/* Work Items - NO HOURS (client facing) */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Travaux</Text>
+          <Text style={styles.sectionTitle}>{t.pdf.workItemsTitle}</Text>
           {quote.work_items.map((item: WorkItem, index: number) => (
             <View key={index} style={styles.workItem}>
               <Text style={styles.bullet}>•</Text>
@@ -164,27 +171,26 @@ export function QuotePDFDocument({
 
         {/* Summary */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Sommaire</Text>
+          <Text style={styles.sectionTitle}>{t.pdf.summaryTitle}</Text>
           <View style={styles.summaryRow}>
-            <Text>Materiaux</Text>
-            <Text>{formatCAD(standardTier.materials_cost)}</Text>
+            <Text>{t.pdf.materials}</Text>
+            <Text>{formatCAD(standardTier.materials_cost, locale)}</Text>
           </View>
           <View style={styles.summaryRow}>
-            <Text>Main-d&apos;oeuvre</Text>
-            <Text>{formatCAD(standardTier.labor_cost)}</Text>
+            <Text>{t.pdf.labor}</Text>
+            <Text>{formatCAD(standardTier.labor_cost, locale)}</Text>
           </View>
           <View style={styles.totalRow}>
-            <Text style={styles.totalLabel}>TOTAL</Text>
+            <Text style={styles.totalLabel}>{t.pdf.total}</Text>
             <Text style={styles.totalValue}>
-              {formatCAD(standardTier.total_price)}
+              {formatCAD(standardTier.total_price, locale)}
             </Text>
           </View>
         </View>
 
         {/* Footer */}
         <Text style={styles.footer}>
-          Cette soumission est valide pour 30 jours a compter de la date
-          d&apos;emission.
+          {t.pdf.footer}
         </Text>
       </Page>
     </Document>
