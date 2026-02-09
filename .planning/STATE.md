@@ -31,13 +31,13 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 19 | Complete | 3/3 | 100% |
 | 20 | Complete | 3/3 | 100% |
 | 21 | Complete | 3/3 | 100% |
-| 22 | In Progress | 1/3 | 33% |
+| 22 | In Progress | 2/3 | 67% |
 
-**Overall:** 41/45 plans complete for v1 + sprint (91%)
+**Overall:** 42/45 plans complete for v1 + sprint (93%)
 
 ```
 v1 Progress:     [██████████████████░░] 94%
-Sprint Progress: [███████████████░░░░░] 67%
+Sprint Progress: [████████████████░░░░] 75%
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
@@ -47,7 +47,7 @@ Sprint Progress: [███████████████░░░░░] 
 | 19 | Data Quality & Labeling Fixes | Feb 11 | Complete (3/3) |
 | 20 | Materials Database & Import | Feb 10-12 | Complete (3/3) |
 | 21 | Complexity System Rebuild | Feb 11 | Complete (3/3) |
-| 22 | New Estimation Input Fields | Feb 12 | In Progress (1/3) |
+| 22 | New Estimation Input Fields | Feb 12 | In Progress (2/3) |
 | 23 | Submission Workflow & Editing | Feb 13 | Planned |
 | 24 | Export, Send & Red Flags | Feb 13-14 | Planned |
 | 25 | UI Polish & Dark Mode | Feb 13 | Planned |
@@ -319,6 +319,11 @@ Sprint Progress: [███████████████░░░░░] 
 | Bilingual equipment config pattern | 22-01 | name_fr/name_en fields enable i18n without code changes |
 | Equipment costs placeholder at $25/day | 22-01 | Awaiting real rental costs from Laurent |
 | Enum field validators for Phase 22 | 22-01 | duration_type, geographic_zone, premium_client_level, supply_chain_risk |
+| Equipment options hardcoded in component | 22-02 | Avoids async loading complexity, bilingual via locale check |
+| Live crew total calculation with form.watch() | 22-02 | Derived value pattern for totalCrew display |
+| Conditional rendering for multi-day day picker | 22-02 | Day picker only renders when duration_type === 'multi_day' |
+| Conditional supply chain warning | 22-02 | Warning only shows for extended/import risk levels |
+| Backward compatible API submission | 22-02 | Only send non-default values to backend (undefined for omitted fields) |
 
 ## Session History
 
@@ -364,11 +369,12 @@ Sprint Progress: [███████████████░░░░░] 
 | 2026-02-09 | Plan 19-03 executed | Compliance monitoring UI and conditional sqft validation |
 | 2026-02-09 | Plan 21-03 executed | Full quote form integration with tier selector and backend orchestrator |
 | 2026-02-09 | Plan 22-01 executed | Schema fields, equipment config, i18n keys, RadioGroup component |
+| 2026-02-09 | Plan 22-02 executed | 3 new Card sections in full-quote form (Crew & Duration, Location & Client, Equipment & Supply Chain) |
 
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Phase 22 Plan 01 complete — next is Phase 22 Plan 02 (Form UI implementation)
+Stopped at: Phase 22 Plan 02 complete — next is Phase 22 Plan 03 (Backend integration)
 Resume file: None
 
 ## Blockers
@@ -405,7 +411,8 @@ Resume file: None
 - Phase 20 complete (3/3 plans) - Materials database import, search API, selector UI
 - Phase 21 complete (3/3 plans) - Complexity system fully rebuilt with 6-tier 0-100 scale
 - Phase 22-01 complete - Schema fields, equipment config, i18n keys, RadioGroup for 7 new field groups
-- Next: Phase 22-02 (form UI), Phase 22-03 (backend integration), then Phases 23-25
+- Phase 22-02 complete - 3 new Card sections in full-quote form with all 6 field groups wired to API
+- Next: Phase 22-03 (backend integration), then Phases 23-25
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
