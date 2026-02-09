@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -33,6 +33,10 @@ import {
 } from "@/components/ui/table";
 import { useLanguage } from "@/lib/i18n";
 import { Calculator, Loader2, AlertCircle, Package } from "lucide-react";
+import {
+  MaterialSelector,
+  type SelectedMaterial,
+} from "@/components/estimateur/material-selector";
 
 const materialsSchema = z.object({
   sqft: z.number().min(100).max(100000),
@@ -74,6 +78,7 @@ export function MaterialsForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<MaterialsResponse | null>(null);
+  const [selectedMaterials, setSelectedMaterials] = useState<SelectedMaterial[]>([]);
 
   const form = useForm<MaterialsFormData>({
     resolver: zodResolver(materialsSchema),
@@ -83,11 +88,16 @@ export function MaterialsForm() {
       complexity: 50,
       has_chimney: false,
       has_skylights: false,
-      material_lines: 10,
+      material_lines: 0,
       labor_lines: 5,
       has_subs: false,
     },
   });
+
+  // Auto-update material_lines based on selected materials
+  useEffect(() => {
+    form.setValue("material_lines", selectedMaterials.length);
+  }, [selectedMaterials, form]);
 
   const onSubmit = async (data: MaterialsFormData) => {
     setLoading(true);
@@ -185,15 +195,24 @@ export function MaterialsForm() {
                 </Select>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="material_lines">
-                  {t.fullQuote.lignesMateriaux}
-                </Label>
-                <Input
-                  id="material_lines"
-                  type="number"
-                  {...form.register("material_lines", { valueAsNumber: true })}
+              <div className="space-y-2 md:col-span-2">
+                <MaterialSelector
+                  selectedMaterials={selectedMaterials}
+                  onSelectionChange={setSelectedMaterials}
                 />
+              </div>
+
+              <div className="space-y-2 md:col-span-2">
+                <div className="rounded-lg border p-3 bg-muted/30">
+                  <div className="flex items-center justify-between">
+                    <Label className="text-sm font-medium">
+                      {t.materialSelector.lignesAuto}
+                    </Label>
+                    <span className="text-sm font-bold">
+                      {selectedMaterials.length}
+                    </span>
+                  </div>
+                </div>
               </div>
 
               <div className="space-y-2">
