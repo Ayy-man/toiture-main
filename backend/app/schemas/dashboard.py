@@ -56,3 +56,20 @@ class DashboardCharts(BaseModel):
     revenue_by_category: List[RevenueByCategory]
     monthly_trend: List[MonthlyTrend]
     top_clients: List[TopClient]
+
+
+class EstimatorCompliance(BaseModel):
+    """Sqft completion rate for a single estimator."""
+    name: str
+    total_estimates: int
+    sqft_completed: int
+    completion_rate: float  # 0.0 to 1.0
+
+
+class ComplianceReport(BaseModel):
+    """Compliance report for sqft data entry tracking."""
+    overall_completion_rate: float  # 0.0 to 1.0
+    estimators: List[EstimatorCompliance]
+    alert: bool  # True if overall rate < 80%
+    total_estimates: int
+    total_with_sqft: int

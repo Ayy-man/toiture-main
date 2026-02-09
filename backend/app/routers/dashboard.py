@@ -2,13 +2,16 @@
 
 import logging
 from collections import defaultdict
+from datetime import datetime, timedelta
 from typing import Optional
 
 from fastapi import APIRouter, HTTPException, Query
 
 from app.schemas.dashboard import (
+    ComplianceReport,
     DashboardCharts,
     DashboardMetrics,
+    EstimatorCompliance,
     MonthlyTrend,
     RevenueByCategory,
     RevenueByYear,
@@ -186,3 +189,71 @@ def get_dashboard_charts(
     except Exception as e:
         logger.error(f"Failed to fetch dashboard charts: {e}")
         raise HTTPException(status_code=500, detail="Failed to fetch dashboard charts")
+
+
+@router.get("/compliance", response_model=ComplianceReport)
+def get_compliance_report(
+    days: int = Query(default=30, ge=1, le=365, description="Number of days to look back"),
+):
+    """Get sqft data entry compliance report.
+
+    Returns overall and per-estimator sqft completion rates.
+    Alert triggers if overall rate drops below 80%.
+    """
+    supabase = get_supabase()
+    if supabase is None:
+        raise HTTPException(
+            status_code=503, detail="Supabase not configured. Compliance unavailable."
+        )
+
+    try:
+        cutoff = (datetime.utcnow() - timedelta(days=days)).isoformat()
+
+        # Fetch estimates within time window
+        # Select only needed columns: sqft, created_by, category
+        result = supabase.table("estimates").select(
+            "sqft, created_by, category"
+        ).gte("created_at", cutoff).execute()
+
+        rows = result.data
+
+        # Exclude Service Call category from sqft requirement
+        non_service_rows = [r for r in rows if r.get("category") != "Service Call"]
+
+        total = len(non_service_rows)
+        with_sqft = sum(1 for r in non_service_rows if r.get("sqft") and r["sqft"] > 0)
+        overall_rate = with_sqft / total if total > 0 else 1.0
+
+        # Per-estimator breakdown
+        estimator_data: dict = {}
+        for row in non_service_rows:
+            name = row.get("created_by") or "Unknown"
+            if name not in estimator_data:
+                estimator_data[name] = {"total": 0, "with_sqft": 0}
+            estimator_data[name]["total"] += 1
+            if row.get("sqft") and row["sqft"] > 0:
+                estimator_data[name]["with_sqft"] += 1
+
+        estimators = [
+            EstimatorCompliance(
+                name=name,
+                total_estimates=data["total"],
+                sqft_completed=data["with_sqft"],
+                completion_rate=data["with_sqft"] / data["total"] if data["total"] > 0 else 1.0,
+            )
+            for name, data in sorted(estimator_data.items())
+        ]
+
+        return ComplianceReport(
+            overall_completion_rate=overall_rate,
+            estimators=estimators,
+            alert=overall_rate < 0.8,
+            total_estimates=total,
+            total_with_sqft=with_sqft,
+        )
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Failed to fetch compliance report: {e}")
+        raise HTTPException(status_code=500, detail="Failed to fetch compliance report")
