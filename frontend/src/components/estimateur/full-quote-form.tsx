@@ -32,12 +32,15 @@ import {
 import { TierSelector, type TierData } from "./tier-selector";
 import { FactorChecklist, type FactorValues, type FactorConfig } from "./factor-checklist";
 import { QuoteResult } from "./quote-result";
+import { SubmissionEditor } from "./submission-editor";
 import {
   hybridQuoteFormSchema,
   type HybridQuoteFormData,
 } from "@/lib/schemas/hybrid-quote";
 import { submitHybridQuote } from "@/lib/api/hybrid-quote";
 import type { HybridQuoteResponse, HybridQuoteRequest } from "@/types/hybrid-quote";
+import { createSubmission } from "@/lib/api/submissions";
+import type { Submission, LineItem as SubmissionLineItem } from "@/types/submission";
 import { CATEGORIES } from "@/lib/schemas";
 import { useLanguage } from "@/lib/i18n";
 import { Loader2, Calculator, Layers, Wrench, AlertCircle, Users, MapPin, Package } from "lucide-react";
@@ -183,6 +186,7 @@ export function FullQuoteForm() {
   const [result, setResult] = useState<HybridQuoteResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [submission, setSubmission] = useState<Submission | null>(null);
 
   const { tiers, factorConfig } = useTierData();
 
@@ -1055,12 +1059,67 @@ export function FullQuoteForm() {
 
       {/* Right Column - Result (sticky on desktop) */}
       <div className="lg:w-[420px] lg:sticky lg:top-4 mt-6 lg:mt-0">
-        {result ? (
-          <QuoteResult
-            quote={result}
-            category={category}
-            sqft={sqft}
-            inputParams={form.getValues()}
+        {result && !submission ? (
+          <>
+            <QuoteResult
+              quote={result}
+              category={category}
+              sqft={sqft}
+              inputParams={form.getValues()}
+            />
+            <Button
+              className="w-full mt-4"
+              onClick={async () => {
+                // Convert HybridQuoteResponse to submission line items
+                const standardTier = result.pricing_tiers.find(t => t.tier === "Standard");
+                const hourlyRate = result.total_labor_hours > 0
+                  ? (standardTier?.labor_cost || 0) / result.total_labor_hours
+                  : 0;
+
+                const lineItems: SubmissionLineItem[] = [
+                  ...result.work_items.map((wi, i) => ({
+                    type: 'labor' as const,
+                    name: wi.name,
+                    quantity: wi.labor_hours,
+                    unit_price: Math.round(hourlyRate * 100) / 100,
+                    total: Math.round(wi.labor_hours * hourlyRate * 100) / 100,
+                    order: i,
+                  })),
+                  ...result.materials.map((mat, i) => ({
+                    type: 'material' as const,
+                    material_id: mat.material_id,
+                    name: `Material #${mat.material_id}`,
+                    quantity: mat.quantity,
+                    unit_price: mat.unit_price,
+                    total: mat.total,
+                    order: result.work_items.length + i,
+                  })),
+                ];
+
+                try {
+                  const sub = await createSubmission({
+                    category,
+                    sqft,
+                    created_by: form.getValues("created_by") || "estimateur",
+                    line_items: lineItems,
+                    pricing_tiers: result.pricing_tiers,
+                    selected_tier: "Standard",
+                  });
+                  setSubmission(sub);
+                } catch (err) {
+                  setError(err instanceof Error ? err.message : "Failed to create submission");
+                }
+              }}
+            >
+              {t.submission.createSubmission}
+            </Button>
+          </>
+        ) : submission ? (
+          <SubmissionEditor
+            initialData={submission}
+            onUpdate={(updated) => setSubmission(updated)}
+            userRole="estimator"
+            userName={form.getValues("created_by") || "estimateur"}
           />
         ) : (
           <div className="hidden lg:flex flex-col items-center justify-center rounded-xl border border-dashed border-border/50 bg-muted/20 p-8 text-center min-h-[400px]">

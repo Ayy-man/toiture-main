@@ -13,6 +13,7 @@ export function EstimateurTabs() {
     { href: "/estimateur", label: t.estimateur.prix },
     { href: "/estimateur/materiaux", label: t.estimateur.materiaux },
     { href: "/estimateur/complet", label: t.estimateur.soumissionComplete },
+    { href: "/estimateur/soumissions", label: t.submission?.submissions || "Soumissions" },
   ];
 
   return (
