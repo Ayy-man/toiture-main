@@ -551,7 +551,7 @@ Plans:
 
 ---
 
-## Phase 21: Complexity System Rebuild
+## Phase 21: Complexity System Rebuild ✓
 
 **Goal:** Replace current 6-factor slider (0-56) with tier-based system (0-100) that maps to real-world scenarios roofers understand
 
@@ -559,14 +559,14 @@ Plans:
 
 **Requirements:** CX-01, CX-02, CX-03, CX-04
 
-**Status:** Planned (2026-02-09)
+**Status:** Complete (2026-02-09)
 
 **Plans:** 3 plans
 
 Plans:
-- [ ] 21-01-PLAN.md — Backend config JSON, complexity calculator service, schema update with new tier + factor fields
-- [ ] 21-02-PLAN.md — Frontend TierSelector visual card grid and FactorChecklist collapsible panel components
-- [ ] 21-03-PLAN.md — Integration: wire components into form, update types/schemas/i18n, backend orchestrator wiring
+- [x] 21-01-PLAN.md — Backend config JSON, complexity calculator service, schema update with new tier + factor fields
+- [x] 21-02-PLAN.md — Frontend TierSelector visual card grid and FactorChecklist collapsible panel components
+- [x] 21-03-PLAN.md — Integration: wire components into form, update types/schemas/i18n, backend orchestrator wiring
 
 **Success Criteria:**
 1. 6 named tiers (0-100) with descriptions: site, roof, access for each tier
