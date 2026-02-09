@@ -34,13 +34,13 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 22 | Complete | 2/2 | 100% |
 | 23 | Complete | 3/3 | 100% |
 | 24 | Complete | 3/3 | 100% |
-| 25 | In Progress | 1/3 | 33% |
+| 25 | In Progress | 2/3 | 67% |
 
-**Overall:** 49/54 plans complete for v1 + sprint (91%)
+**Overall:** 50/54 plans complete for v1 + sprint (93%)
 
 ```
-v1 Progress:     [██████████████████░░] 91%
-Sprint Progress: [█████████████████░░░] 83% (19-25)
+v1 Progress:     [██████████████████░░] 93%
+Sprint Progress: [██████████████████░░] 89% (19-25)
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
@@ -53,7 +53,7 @@ Sprint Progress: [█████████████████░░░] 
 | 22 | New Estimation Input Fields | Feb 12 | Complete (2/2) |
 | 23 | Submission Workflow & Editing | Feb 13 | Complete (3/3) |
 | 24 | Export, Send & Red Flags | Feb 13-14 | Complete (3/3) |
-| 25 | UI Polish & Dark Mode | Feb 13 | In Progress (1/3) |
+| 25 | UI Polish & Dark Mode | Feb 13 | In Progress (2/3) |
 
 **Business logic gaps (need Laurent/Amin input):**
 - Complexity: base time values per job type, time multipliers per tier
@@ -346,6 +346,7 @@ Sprint Progress: [█████████████████░░░] 
 | Dismissible flags tracked in local state | 24-03 | Immediate UI feedback, batch dismiss call on send to reduce API calls |
 | Direct import of translation objects in PDF template | 25-02 | @react-pdf/renderer cannot use React hooks, direct import required for bilingual support |
 | Replace all locale ternaries with translation keys | 25-02 | Centralized translations enable consistency and easy maintenance across tier/factor/equipment/PDF labels |
+| hsl(var(--chart-1)) for LV brick red in charts | 25-03 | Recharts accepts string CSS variables, adapts lightness (34% light / 50% dark) automatically |
 
 ## Session History
 
@@ -400,11 +401,12 @@ Sprint Progress: [█████████████████░░░] 
 | 2026-02-10 | Plan 24-03 executed | Send dialog UI with red flag banner, API client extensions, bilingual i18n |
 | 2026-02-10 | Plan 25-01 executed | Dark mode toggle with next-themes, ThemeToggle component, 7 blocking fixes |
 | 2026-02-10 | Plan 25-02 executed | i18n cleanup for tier/factor/PDF labels - moved 30+ locale ternaries to translation files (PREVIOUS SESSION) |
+| 2026-02-10 | Plan 25-03 executed | Dashboard charts dark mode audit - Task 1 complete (Recharts CSS variables), Task 2 pending human verification |
 
 ## Session Continuity
 
 Last session: 2026-02-10
-Stopped at: Completed 25-01-PLAN.md (Dark Mode Toggle) — Phase 25 in progress (1/3 plans complete)
+Stopped at: Completed 25-03-PLAN.md (Dashboard Charts Dark Mode) - Task 1 complete, Task 2 checkpoint pending human verification
 Resume file: None
 
 ## Blockers
@@ -455,7 +457,9 @@ Resume file: None
 - Phase 24-03 complete - Send dialog with 3 send options (now/schedule/draft), red flag banner component, API client extensions (getRedFlags/sendSubmission/dismissFlags), bilingual i18n (18 keys FR/EN)
 - Phase 24 complete (3/3 plans) - Export, send, and red flag warning system fully implemented
 - Phase 25-01 complete - Dark mode toggle with next-themes, ThemeToggle component, SSR-safe theme switching
-- Phase 25 in progress (1/3 plans complete)
+- Phase 25-02 complete - i18n cleanup for tier/factor/PDF labels, centralized translations, removed locale ternaries
+- Phase 25-03 in progress (Task 1 complete) - Dashboard charts dark mode with CSS variables, Task 2 checkpoint pending human verification
+- Phase 25 in progress (2/3 plans complete, 1 checkpoint pending)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
