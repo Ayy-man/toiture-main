@@ -29,12 +29,14 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 15 | Complete | 1/1 | 100% |
 | 16 | Complete | 1/1 | 100% |
 | 19 | In Progress | 1/3 | 33% |
+| 20 | In Progress | 1/3 | 33% |
+| 21 | In Progress | 1/3 | 33% |
 
-**Overall:** 32/36 plans complete for v1 + sprint (89%)
+**Overall:** 34/42 plans complete for v1 + sprint (81%)
 
 ```
 v1 Progress:     [██████████████████░░] 94%
-Sprint Progress: [████░░░░░░░░░░░░░░░░] 20%
+Sprint Progress: [██████░░░░░░░░░░░░░░] 29%
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
@@ -43,7 +45,7 @@ Sprint Progress: [████░░░░░░░░░░░░░░░░] 
 |-------|------|-----------------|--------|
 | 19 | Data Quality & Labeling Fixes | Feb 11 | In Progress (1/3) |
 | 20 | Materials Database & Import | Feb 10-12 | Planned |
-| 21 | Complexity System Rebuild | Feb 11 | Planned |
+| 21 | Complexity System Rebuild | Feb 11 | In Progress (1/3) |
 | 22 | New Estimation Input Fields | Feb 12 | Planned |
 | 23 | Submission Workflow & Editing | Feb 13 | Planned |
 | 24 | Export, Send & Red Flags | Feb 13-14 | Planned |
@@ -298,6 +300,11 @@ Sprint Progress: [████░░░░░░░░░░░░░░░░] 
 | Revenue → Quote Value terminology | 19-01 | Data represents quoted amounts, not invoiced revenue |
 | Disclaimer banner above charts | 19-01 | Clarifies quoted vs invoiced revenue distinction |
 | Chart titles via i18n keys | 19-01 | Enables proper EN/FR translation for all chart titles |
+| JSON config for complexity business rules | 21-01 | Hour values externalized for no-code adjustments by Laurent |
+| Module-level config caching for tiers | 21-01 | Same pattern as predictor.py, loaded once at import |
+| Backward compatibility for old complexity | 21-01 | Old 6-slider format (0-56) still works via Optional fields |
+| Additive labor hour formula | 21-01 | total = base + tier + factors (not percentage multipliers) |
+| Placeholder hour values in config | 21-01 | All values need Laurent validation before production |
 
 ## Session History
 
@@ -334,11 +341,12 @@ Sprint Progress: [████░░░░░░░░░░░░░░░░] 
 | 2026-02-01 | Plan 15-01 executed | Frontend design overhaul with Lyra preset |
 | 2026-02-01 | Plan 16-01 executed | I18n language toggle with EN/FR persistence |
 | 2026-02-09 | Plan 19-01 executed | Revenue label corrections - apercu dashboard |
+| 2026-02-09 | Plan 21-01 executed | Tier-based complexity config and calculator service |
 
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed Phase 19 Plan 01 - revenue label corrections
+Stopped at: Completed Phase 21 Plan 01 - tier-based complexity backend foundation
 Resume file: None
 
 ## Blockers
@@ -362,7 +370,8 @@ Resume file: None
 - Phase 14 Full Quote Frontend complete: ComplexityPresets, QuoteResult, PDF export
 - Phase 16 I18n complete: EN/FR toggle with localStorage persistence
 - Phase 19-01 complete: Revenue labels corrected to "Quote Value" with disclaimer banner
-- Next: Phase 19-02 and 19-03 (Data quality fixes), then Phase 20 (Materials database)
+- Phase 21-01 complete: Tier-based complexity config (6 tiers, 8 factors) and calculator service
+- Next: Phase 21-02 (frontend tier UI), Phase 19-02/03 (data quality), Phase 20 (materials DB)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
