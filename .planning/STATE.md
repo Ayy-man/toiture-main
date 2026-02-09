@@ -32,13 +32,13 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 20 | Complete | 3/3 | 100% |
 | 21 | Complete | 3/3 | 100% |
 | 22 | Complete | 2/2 | 100% |
-| 23 | In Progress | 1/3 | 33% |
+| 23 | In Progress | 2/3 | 67% |
 
-**Overall:** 43/47 plans complete for v1 + sprint (91%)
+**Overall:** 44/47 plans complete for v1 + sprint (94%)
 
 ```
-v1 Progress:     [██████████████████░░] 91%
-Sprint Progress: [███████████████░░░░░] 83% (19-23)
+v1 Progress:     [██████████████████░░] 94%
+Sprint Progress: [████████████████░░░░] 88% (19-23)
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
@@ -49,7 +49,7 @@ Sprint Progress: [███████████████░░░░░] 
 | 20 | Materials Database & Import | Feb 10-12 | Complete (3/3) |
 | 21 | Complexity System Rebuild | Feb 11 | Complete (3/3) |
 | 22 | New Estimation Input Fields | Feb 12 | Complete (2/2) |
-| 23 | Submission Workflow & Editing | Feb 13 | In Progress (1/3) |
+| 23 | Submission Workflow & Editing | Feb 13 | In Progress (2/3) |
 | 24 | Export, Send & Red Flags | Feb 13-14 | Planned |
 | 25 | UI Polish & Dark Mode | Feb 13 | Planned |
 
@@ -330,6 +330,9 @@ Sprint Progress: [███████████████░░░░░] 
 | State machine with VALID_TRANSITIONS dict | 23-01 | Prevents invalid status transitions with clear 400 errors |
 | Admin role check via X-User-Role header | 23-01 | Consistent with Phase 7 trust model (frontend auth, backend trusts same-origin) |
 | Bilingual upsell rules in JSON config | 23-01 | Matches equipment_config.json pattern for i18n support |
+| TypeScript types mirror backend Pydantic schemas | 23-02 | Zero impedance mismatch between frontend and backend |
+| ADMIN_USERS env var for role assignment | 23-02 | Simple comma-separated list, case-insensitive, no JWT complexity |
+| @dnd-kit for drag-and-drop line item reordering | 23-02 | React 19 compatible, accessible, well-maintained |
 
 ## Session History
 
@@ -377,11 +380,12 @@ Sprint Progress: [███████████████░░░░░] 
 | 2026-02-09 | Plan 22-01 executed | Schema fields, equipment config, i18n keys, RadioGroup component |
 | 2026-02-09 | Plan 22-02 executed | 3 new Card sections in full-quote form (Crew & Duration, Location & Client, Equipment & Supply Chain) |
 | 2026-02-09 | Plan 23-01 executed | Submission workflow backend (SQL DDL, schemas, service, router, upsell rules) |
+| 2026-02-09 | Plan 23-02 executed | Submission frontend infrastructure (types, API client, schemas, auth extension, i18n, badge) |
 
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Phase 23-01 complete (1/3 plans) — next is Phase 23-02 (Submission Frontend UI)
+Stopped at: Phase 23-02 complete (2/3 plans) — next is Phase 23-03 (Submission UI Integration)
 Resume file: None
 
 ## Blockers
@@ -421,9 +425,11 @@ Resume file: None
 - Phase 22-02 complete - 3 new Card sections in full-quote form with all 6 field groups wired to API
 - Phase 22 complete (2/2 plans) - New estimation input fields fully integrated
 - Phase 23-01 complete - Submission workflow backend: SQL DDL, Pydantic schemas (11 models), service (11 functions), router (11 endpoints), upsell rules JSON
+- Phase 23-02 complete - Submission frontend infrastructure: @dnd-kit install, 10 TypeScript types, 11-function API client, Zod schemas, auth extension (username/role from ADMIN_USERS), 70+ i18n keys (FR/EN), SubmissionStatusBadge component
 - Submission API: 11 endpoints including return-to-draft for rejected/pending submissions
 - State machine: VALID_TRANSITIONS dict enforces draft->pending->approved/rejected workflow
-- Next: Phase 23-02 (Submission Frontend UI), Phase 23-03 (Integration), then Phases 24-25
+- Auth RBAC: SessionData extended with username and role, ADMIN_USERS env var for role assignment
+- Next: Phase 23-03 (Submission UI Integration), then Phases 24-25
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
