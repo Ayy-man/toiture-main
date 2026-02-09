@@ -1,7 +1,7 @@
 # Roadmap: TOITURELV Cortex
 
 **Created:** 2026-01-18
-**Updated:** 2026-02-09
+**Updated:** 2026-02-09 (Phases 19-21 complete)
 **Phases:** 25
 **Requirements:** 51
 
@@ -27,9 +27,9 @@
 | 16 | I18n Language Toggle | Site-wide EN/FR toggle with persistence | I18N-01 to I18N-04 | 4 |
 | 17 | Production Fixes | Fix production issues after deploy | PROD-01 to PROD-07 | 7 |
 | 18 | Feedback Review Page | Retours page with insights and analytics | FB-01 to FB-04 | 4 |
-| 19 | Data Quality & Labeling Fixes | Fix revenue labels, flag 2022 data, sqft mandatory | DQ-01 to DQ-03 | 5 |
-| 20 | Materials Database & Import | Import 672-item XLS, build searchable selector | MAT-03 to MAT-06 | 7 |
-| 21 | Complexity System Rebuild | 6-tier (0-100) time-based system for roofers | CX-01 to CX-04 | 8 |
+| 19 | Data Quality & Labeling Fixes ✓ | Fix revenue labels, flag 2022 data, sqft mandatory | DQ-01 to DQ-03 | 5 |
+| 20 | Materials Database & Import ✓ | Import 672-item XLS, build searchable selector | MAT-03 to MAT-06 | 7 |
+| 21 | Complexity System Rebuild ✓ | 6-tier (0-100) time-based system for roofers | CX-01 to CX-04 | 8 |
 | 22 | New Estimation Input Fields | Crew, duration, zone, premium, access, tools, supply chain | FIELD-01 to FIELD-07 | 9 |
 | 23 | Submission Workflow & Editing | Editable quotes, approval workflow, notes, upsells | SUB-01 to SUB-05 | 10 |
 | 24 | Export, Send & Red Flags | DOCX export, send options, warning system | EXP-01 to EXP-04 | 5 |
@@ -487,7 +487,7 @@ Plans:
 
 ---
 
-## Phase 19: Data Quality & Labeling Fixes
+## Phase 19: Data Quality & Labeling Fixes ✓
 
 **Goal:** Fix critical data quality issues and misleading labels identified by Laurent (consolidates former Phase 12)
 
@@ -495,14 +495,14 @@ Plans:
 
 **Requirements:** DQ-01, DQ-02, DQ-03, DQ-04, DQ-05 (formerly LF-01 to LF-03)
 
-**Status:** Planned (2026-02-09)
+**Status:** Complete (2026-02-09)
 
 **Plans:** 3 plans
 
 Plans:
-- [ ] 19-01-PLAN.md — Revenue label replacement + chart disclaimers (DQ-01, DQ-02)
-- [ ] 19-02-PLAN.md — 2022 data quality flag + backend compliance endpoint (DQ-03, DQ-05 backend)
-- [ ] 19-03-PLAN.md — Sqft required field + estimator dropdown + compliance dashboard (DQ-04, DQ-05 frontend)
+- [x] 19-01-PLAN.md — Revenue label replacement + chart disclaimers (DQ-01, DQ-02)
+- [x] 19-02-PLAN.md — 2022 data quality flag + backend compliance endpoint (DQ-03, DQ-05 backend)
+- [x] 19-03-PLAN.md — Sqft required field + estimator dropdown + compliance dashboard (DQ-04, DQ-05 frontend)
 
 **Success Criteria:**
 1. ALL instances of "Revenue"/"Revenu" changed to "Total Quote Value"/"Valeur totale des soumissions" across frontend + backend
@@ -519,7 +519,7 @@ Plans:
 
 ---
 
-## Phase 20: Materials Database & Import
+## Phase 20: Materials Database & Import ✓
 
 **Goal:** Import Laurent's 672-item materials XLS into platform and build searchable material selector UI
 
