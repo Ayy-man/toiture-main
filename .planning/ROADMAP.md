@@ -497,10 +497,12 @@ Plans:
 
 **Status:** Planned (2026-02-09)
 
-**Plans:** 0 plans
+**Plans:** 3 plans
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 19 to break down)
+- [ ] 19-01-PLAN.md — Revenue label replacement + chart disclaimers (DQ-01, DQ-02)
+- [ ] 19-02-PLAN.md — 2022 data quality flag + backend compliance endpoint (DQ-03, DQ-05 backend)
+- [ ] 19-03-PLAN.md — Sqft required field + estimator dropdown + compliance dashboard (DQ-04, DQ-05 frontend)
 
 **Success Criteria:**
 1. ALL instances of "Revenue"/"Revenu" changed to "Total Quote Value"/"Valeur totale des soumissions" across frontend + backend
