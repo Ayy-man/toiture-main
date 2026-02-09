@@ -23,12 +23,17 @@ export default function ApercuPage() {
       {/* KPI Cards */}
       <MetricsCards metrics={metrics} isLoading={metricsLoading} />
 
+      {/* Disclaimer Banner */}
+      <div className="rounded-lg border border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950 px-4 py-3 text-sm text-blue-800 dark:text-blue-200">
+        {t.apercu.disclaimer}
+      </div>
+
       {/* Charts Grid */}
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Revenue by Year - spans 2 columns */}
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Revenu par annee</CardTitle>
+            <CardTitle>{t.apercu.valeurParAnnee}</CardTitle>
           </CardHeader>
           <CardContent>
             <RevenueChart
@@ -41,7 +46,7 @@ export default function ApercuPage() {
         {/* Revenue by Category */}
         <Card>
           <CardHeader>
-            <CardTitle>Revenu par categorie</CardTitle>
+            <CardTitle>{t.apercu.valeurParCategorie}</CardTitle>
           </CardHeader>
           <CardContent>
             <CategoryChart
@@ -54,7 +59,7 @@ export default function ApercuPage() {
         {/* Monthly Trend - spans 2 columns */}
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Tendance mensuelle</CardTitle>
+            <CardTitle>{t.apercu.tendanceMensuelle}</CardTitle>
           </CardHeader>
           <CardContent>
             <TrendChart
@@ -67,7 +72,7 @@ export default function ApercuPage() {
         {/* Top Clients */}
         <Card>
           <CardHeader>
-            <CardTitle>Top clients</CardTitle>
+            <CardTitle>{t.apercu.topClients}</CardTitle>
           </CardHeader>
           <CardContent>
             <TopClients
