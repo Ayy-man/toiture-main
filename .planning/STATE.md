@@ -28,22 +28,22 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 14 | Complete | 3/3 | 100% |
 | 15 | Complete | 1/1 | 100% |
 | 16 | Complete | 1/1 | 100% |
-| 19 | In Progress | 1/3 | 33% |
+| 19 | In Progress | 2/3 | 67% |
 | 20 | In Progress | 2/3 | 67% |
 | 21 | In Progress | 2/3 | 67% |
 
-**Overall:** 36/42 plans complete for v1 + sprint (86%)
+**Overall:** 37/42 plans complete for v1 + sprint (88%)
 
 ```
 v1 Progress:     [██████████████████░░] 94%
-Sprint Progress: [████████░░░░░░░░░░░░] 38%
+Sprint Progress: [█████████░░░░░░░░░░░] 42%
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
 
 | Phase | Name | Sprint Deadline | Status |
 |-------|------|-----------------|--------|
-| 19 | Data Quality & Labeling Fixes | Feb 11 | In Progress (1/3) |
+| 19 | Data Quality & Labeling Fixes | Feb 11 | In Progress (2/3) |
 | 20 | Materials Database & Import | Feb 10-12 | In Progress (2/3) |
 | 21 | Complexity System Rebuild | Feb 11 | In Progress (2/3) |
 | 22 | New Estimation Input Fields | Feb 12 | Planned |
@@ -311,6 +311,9 @@ Sprint Progress: [████████░░░░░░░░░░░░] 
 | Exclude labor items from material search | 20-02 | Material search should only return materials (item_type filter) |
 | DFS clustering for duplicates | 20-01 | Captures transitive relationships in duplicate groups |
 | Flag both items in duplicate pairs | 20-01 | Manual review needed to determine canonical item |
+| Data quality flag as TEXT column | 19-02 | Flexible tagging strategy for multiple quality issue types |
+| Service Call exclusion from sqft compliance | 19-02 | Service calls legitimately have no sqft requirement |
+| Compliance alert threshold 80% | 19-02 | Industry-standard compliance threshold for data quality |
 
 ## Session History
 
@@ -351,11 +354,12 @@ Sprint Progress: [████████░░░░░░░░░░░░] 
 | 2026-02-09 | Plan 20-01 executed | Materials database import scripts and SQL DDL |
 | 2026-02-09 | Plan 21-02 executed | TierSelector and FactorChecklist UI components |
 | 2026-02-09 | Plan 20-02 executed | Materials search and categories API endpoints |
+| 2026-02-09 | Plan 19-02 executed | Data quality flags and compliance endpoint |
 
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed Phase 20 Plan 02 - Materials search and categories API endpoints
+Stopped at: Completed Phase 19 Plan 02 - Data quality flags and compliance endpoint
 Resume file: None
 
 ## Blockers
@@ -383,7 +387,8 @@ Resume file: None
 - Phase 20-02 complete: Materials search API (GET /materials/search, /materials/categories)
 - Phase 21-01 complete: Tier-based complexity config (6 tiers, 8 factors) and calculator service
 - Phase 21-02 complete: TierSelector and FactorChecklist UI components
-- Next: Phase 20-03 (materials UI), Phase 19-02/03 (data quality), Phase 21-03 (hybrid endpoint)
+- Phase 19-02 complete: Data quality flags, compliance endpoint (GET /dashboard/compliance)
+- Next: Phase 20-03 (materials UI), Phase 19-03 (compliance UI), Phase 21-03 (hybrid endpoint)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
