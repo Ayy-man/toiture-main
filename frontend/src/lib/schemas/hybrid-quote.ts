@@ -24,6 +24,27 @@ export const hybridQuoteFormSchema = z.object({
   factor_previous_layers_count: z.number().int().min(0).default(0),
   manual_extra_hours: z.number().min(0).default(0),
 
+  // NEW: Employee count (Phase 22)
+  employee_compagnons: z.number().int().min(0).max(20).default(0),
+  employee_apprentis: z.number().int().min(0).max(20).default(0),
+  employee_manoeuvres: z.number().int().min(0).max(20).default(0),
+
+  // NEW: Duration (Phase 22)
+  duration_type: z.enum(['half_day', 'full_day', 'multi_day']).default('full_day'),
+  duration_days: z.number().int().min(1).max(30).optional(),
+
+  // NEW: Geographic zone (Phase 22)
+  geographic_zone: z.enum(['core', 'secondary', 'north_premium', 'extended', 'red_flag']).optional(),
+
+  // NEW: Premium client level (Phase 22)
+  premium_client_level: z.enum(['standard', 'premium_1', 'premium_2', 'premium_3']).default('standard'),
+
+  // NEW: Equipment items (Phase 22)
+  equipment_items: z.array(z.string()).default([]),
+
+  // NEW: Supply chain risk (Phase 22)
+  supply_chain_risk: z.enum(['standard', 'extended', 'import']).default('standard'),
+
   // Line item counts
   material_lines: z.number().int().min(0).max(100),
   labor_lines: z.number().int().min(0).max(50),

@@ -28,6 +28,17 @@ export interface HybridQuoteRequest {
   factor_previous_layers_count?: number;     // 0+
   manual_extra_hours?: number;               // upward override
 
+  // NEW: Phase 22 fields
+  employee_compagnons?: number;
+  employee_apprentis?: number;
+  employee_manoeuvres?: number;
+  duration_type?: 'half_day' | 'full_day' | 'multi_day';
+  duration_days?: number;
+  geographic_zone?: 'core' | 'secondary' | 'north_premium' | 'extended' | 'red_flag';
+  premium_client_level?: 'standard' | 'premium_1' | 'premium_2' | 'premium_3';
+  equipment_items?: string[];
+  supply_chain_risk?: 'standard' | 'extended' | 'import';
+
   // LEGACY: Old complexity factors (still accepted for backward compat)
   complexity_aggregate?: number;   // 0-56
   access_difficulty?: number;      // 0-10
