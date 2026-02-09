@@ -135,7 +135,7 @@ export function SendDialog({
           {/* Send option selection */}
           <RadioGroup
             value={sendOption}
-            onValueChange={(v) => setSendOption(v as "now" | "schedule" | "draft")}
+            onValueChange={(v: string) => setSendOption(v as "now" | "schedule" | "draft")}
             className="space-y-3"
           >
             <div className="flex items-center space-x-3">
