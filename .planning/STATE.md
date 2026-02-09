@@ -32,13 +32,14 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 20 | Complete | 3/3 | 100% |
 | 21 | Complete | 3/3 | 100% |
 | 22 | Complete | 2/2 | 100% |
-| 23 | In Progress | 2/3 | 67% |
+| 23 | Complete | 3/3 | 100% |
+| 24 | In Progress | 2/3 | 67% |
 
-**Overall:** 44/47 plans complete for v1 + sprint (94%)
+**Overall:** 47/51 plans complete for v1 + sprint (92%)
 
 ```
-v1 Progress:     [██████████████████░░] 94%
-Sprint Progress: [████████████████░░░░] 88% (19-23)
+v1 Progress:     [██████████████████░░] 92%
+Sprint Progress: [█████████████████░░░] 85% (19-24)
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
@@ -49,8 +50,8 @@ Sprint Progress: [████████████████░░░░] 
 | 20 | Materials Database & Import | Feb 10-12 | Complete (3/3) |
 | 21 | Complexity System Rebuild | Feb 11 | Complete (3/3) |
 | 22 | New Estimation Input Fields | Feb 12 | Complete (2/2) |
-| 23 | Submission Workflow & Editing | Feb 13 | In Progress (2/3) |
-| 24 | Export, Send & Red Flags | Feb 13-14 | Planned |
+| 23 | Submission Workflow & Editing | Feb 13 | Complete (3/3) |
+| 24 | Export, Send & Red Flags | Feb 13-14 | In Progress (2/3) |
 | 25 | UI Polish & Dark Mode | Feb 13 | Planned |
 
 **Business logic gaps (need Laurent/Amin input):**
@@ -333,6 +334,9 @@ Sprint Progress: [████████████████░░░░] 
 | TypeScript types mirror backend Pydantic schemas | 23-02 | Zero impedance mismatch between frontend and backend |
 | ADMIN_USERS env var for role assignment | 23-02 | Simple comma-separated list, case-insensitive, no JWT complexity |
 | @dnd-kit for drag-and-drop line item reordering | 23-02 | React 19 compatible, accessible, well-maintained |
+| Lazy-init Resend client pattern | 24-02 | Graceful degradation when RESEND_API_KEY not configured |
+| Bilingual red flag messages (fr/en) | 24-02 | i18n support for Quebec French primary with English translation |
+| Audit trail for dismissed red flags | 24-02 | Risk acknowledgment tracked in JSONB audit_log with timestamp |
 
 ## Session History
 
@@ -381,11 +385,13 @@ Sprint Progress: [████████████████░░░░] 
 | 2026-02-09 | Plan 22-02 executed | 3 new Card sections in full-quote form (Crew & Duration, Location & Client, Equipment & Supply Chain) |
 | 2026-02-09 | Plan 23-01 executed | Submission workflow backend (SQL DDL, schemas, service, router, upsell rules) |
 | 2026-02-09 | Plan 23-02 executed | Submission frontend infrastructure (types, API client, schemas, auth extension, i18n, badge) |
+| 2026-02-09 | Plan 24-01 executed | DOCX export template with docx package |
+| 2026-02-09 | Plan 24-02 executed | Red flag evaluator, email service, send/red-flag/dismiss endpoints |
 
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Phase 23-02 complete (2/3 plans) — next is Phase 23-03 (Submission UI Integration)
+Stopped at: Phase 24 in progress (2/3 plans) — next is Plan 24-03 (Send Dialog UI)
 Resume file: None
 
 ## Blockers
@@ -429,7 +435,11 @@ Resume file: None
 - Submission API: 11 endpoints including return-to-draft for rejected/pending submissions
 - State machine: VALID_TRANSITIONS dict enforces draft->pending->approved/rejected workflow
 - Auth RBAC: SessionData extended with username and role, ADMIN_USERS env var for role assignment
-- Next: Phase 23-03 (Submission UI Integration), then Phases 24-25
+- Phase 23-03 complete - Submission UI integration: editor pages, quote export buttons, workflow actions
+- Phase 23 complete (3/3 plans) - Submission workflow fully implemented
+- Phase 24-01 complete - DOCX export template with docx package for client-facing quotes
+- Phase 24-02 complete - Red flag evaluator (5 categories: budget/geographic/material/crew/margin), email service (Resend SDK), 3 new endpoints (GET red-flags, POST send, POST dismiss-flags)
+- Next: Phase 24-03 (Send Dialog UI), then Phase 25 (UI Polish & Dark Mode)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
