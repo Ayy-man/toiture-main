@@ -433,6 +433,7 @@ export const en = {
     backToList: "Back to List",
     refresh: "Refresh",
     upsells: "upsells",
+    send: "Send",
   },
   sendDialog: {
     titre: "Send Submission",

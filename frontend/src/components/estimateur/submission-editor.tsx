@@ -6,6 +6,7 @@ import { SortableLineItem } from "@/components/estimateur/sortable-line-item";
 import { NotesPanel } from "@/components/estimateur/notes-panel";
 import { UpsellDialog } from "@/components/estimateur/upsell-dialog";
 import { SubmissionStatusBadge } from "@/components/estimateur/submission-status-badge";
+import { SendDialog } from "@/components/submissions/send-dialog";
 import {
   updateSubmission,
   finalizeSubmission,
@@ -25,7 +26,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { AlertCircle, Loader2 } from "lucide-react";
+import { AlertCircle, Loader2, Send } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import { useToast } from "@/hooks/use-toast";
 
@@ -55,10 +56,12 @@ export function SubmissionEditor({
   const [showMaterialSelector, setShowMaterialSelector] = useState(false);
   const [showRejectDialog, setShowRejectDialog] = useState(false);
   const [rejectReason, setRejectReason] = useState("");
+  const [showSendDialog, setShowSendDialog] = useState(false);
 
   // Derived state
   const isDraft = submission.status === "draft";
   const isPending = submission.status === "pending_approval";
+  const isApproved = submission.status === "approved";
   const isRejected = submission.status === "rejected";
   const isAdmin = userRole === "admin";
 
@@ -530,6 +533,12 @@ export function SubmissionEditor({
             {t.submission.awaitingApproval}
           </p>
         )}
+        {isApproved && (
+          <Button onClick={() => setShowSendDialog(true)} disabled={isLoading}>
+            <Send className="mr-2 size-4" />
+            {t.submission.send || "Envoyer"}
+          </Button>
+        )}
         {(isRejected || (isPending && !isAdmin)) && (
           <Button variant="outline" onClick={handleReturnToDraft} disabled={isLoading}>
             {t.submission.returnToDraft}
@@ -605,6 +614,22 @@ export function SubmissionEditor({
         suggestions={upsellSuggestions}
         onCreateUpsell={handleCreateUpsell}
         locale={locale}
+      />
+
+      {/* Send Dialog */}
+      <SendDialog
+        open={showSendDialog}
+        onOpenChange={setShowSendDialog}
+        submissionId={submission.id}
+        onSendComplete={(status) => {
+          toast({
+            title: status === "sent"
+              ? (t.sendDialog?.envoyeAvecSucces || "Soumission envoyee")
+              : status === "scheduled"
+              ? (t.sendDialog?.planifieAvecSucces || "Envoi planifie")
+              : (t.sendDialog?.brouillonSauvegarde || "Brouillon sauvegarde"),
+          });
+        }}
       />
     </div>
   );
