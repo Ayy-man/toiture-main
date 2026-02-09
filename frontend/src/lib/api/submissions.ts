@@ -412,3 +412,60 @@ export async function getUpsellSuggestions(id: string): Promise<UpsellSuggestion
 
   return response.json();
 }
+
+// Red flag types
+export interface RedFlag {
+  category: string;
+  severity: "warning" | "critical";
+  message_fr: string;
+  message_en: string;
+  dismissible: boolean;
+}
+
+// Send request types
+export interface SendSubmissionRequest {
+  send_option: "now" | "schedule" | "draft";
+  recipient_email?: string;
+  email_subject?: string;
+  email_body?: string;
+  scheduled_send_at?: string; // ISO datetime string
+}
+
+export async function getRedFlags(submissionId: string): Promise<RedFlag[]> {
+  const res = await fetch(`${API_URL}/submissions/${submissionId}/red-flags`);
+  if (!res.ok) throw new Error(`Failed to get red flags: ${res.status}`);
+  return res.json();
+}
+
+export async function sendSubmission(
+  submissionId: string,
+  request: SendSubmissionRequest
+): Promise<{ status: string; send_status: string }> {
+  const res = await fetch(`${API_URL}/submissions/${submissionId}/send`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(request),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: "Send failed" }));
+    throw new Error(err.detail || `Send failed: ${res.status}`);
+  }
+  return res.json();
+}
+
+export async function dismissFlags(
+  submissionId: string,
+  categories: string[],
+  dismissedBy: string = "estimator"
+): Promise<{ status: string }> {
+  const res = await fetch(`${API_URL}/submissions/${submissionId}/dismiss-flags`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      dismissed_categories: categories,
+      dismissed_by: dismissedBy,
+    }),
+  });
+  if (!res.ok) throw new Error(`Failed to dismiss flags: ${res.status}`);
+  return res.json();
+}
