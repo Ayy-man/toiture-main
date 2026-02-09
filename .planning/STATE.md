@@ -380,8 +380,10 @@ Resume file: None
 - Phase 16 I18n complete: EN/FR toggle with localStorage persistence
 - Phase 19-01 complete: Revenue labels corrected to "Quote Value" with disclaimer banner
 - Phase 20-01 complete: Materials import scripts (SQL DDL, CSV import, fuzzy deduplication)
+- Phase 20-02 complete: Materials search API (GET /materials/search, /materials/categories)
 - Phase 21-01 complete: Tier-based complexity config (6 tiers, 8 factors) and calculator service
-- Next: Phase 20-02/03 (materials API/UI), Phase 19-02/03 (data quality), Phase 21-02 (tier UI)
+- Phase 21-02 complete: TierSelector and FactorChecklist UI components
+- Next: Phase 20-03 (materials UI), Phase 19-02/03 (data quality), Phase 21-03 (hybrid endpoint)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
