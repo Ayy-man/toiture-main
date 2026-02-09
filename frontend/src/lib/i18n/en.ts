@@ -35,6 +35,10 @@ export const en = {
     complexiteLabel: "Complexity",
     complexiteDescription: "Job complexity (1 = simple, 100 = very complex)",
     erreurGenerique: "An error occurred",
+    estimateurNom: "Estimator",
+    selectEstimateur: "Select estimator",
+    autre: "Other",
+    sqftRequis: "Square footage is required for this category",
   },
   // Price tab result display
   resultat: {
@@ -101,6 +105,21 @@ export const en = {
     confianceElevee: "High",
     confianceMoyenne: "Medium",
     confianceFaible: "Low",
+  },
+  materialSelector: {
+    rechercher: "Search for a material...",
+    aucunResultat: "No materials found.",
+    selectionner: "Select materials...",
+    materiauSelectionnes: "materials selected",
+    touteCategories: "All categories",
+    ajouterPersonnalise: "Add custom material",
+    nomPersonnalise: "Material name",
+    prixPersonnalise: "Unit price",
+    unitePersonnalisee: "Unit",
+    ajouter: "Add",
+    annuler: "Cancel",
+    supprimer: "Remove",
+    lignesAuto: "Material lines (auto)",
   },
   historique: {
     titre: "Quote History",

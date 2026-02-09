@@ -9,8 +9,9 @@
  */
 export interface HybridQuoteRequest {
   // Core job parameters
-  sqft: number;
+  sqft?: number;
   category: string;
+  created_by?: string;
 
   // NEW: Tier-based complexity (Phase 21)
   complexity_tier?: number;        // 1-6

@@ -2,7 +2,7 @@
 
 from typing import List, Literal, Optional
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 # Allowed categories for roofing jobs
@@ -23,12 +23,13 @@ ALLOWED_CATEGORIES = [
 class EstimateRequest(BaseModel):
     """Request model for estimate endpoint."""
 
-    sqft: float = Field(gt=0, le=100000, description="Square footage of roof")
+    sqft: Optional[float] = Field(default=None, le=100000, description="Square footage of roof")
     category: str = Field(description="Job category")
     material_lines: int = Field(default=5, ge=0, le=100)
     labor_lines: int = Field(default=2, ge=0, le=50)
     has_subs: Literal[0, 1] = 0
     complexity: int = Field(default=10, ge=1, le=100)
+    created_by: Optional[str] = Field(default=None, max_length=100, description="Estimator name")
 
     @field_validator("category")
     @classmethod
@@ -47,6 +48,16 @@ class EstimateRequest(BaseModel):
                 f"Invalid category '{v}'. Must be one of: {', '.join(ALLOWED_CATEGORIES)}"
             )
         return v
+
+    @model_validator(mode="after")
+    def validate_sqft_required(self) -> "EstimateRequest":
+        """Validate that sqft is required for non-Service Call categories."""
+        if self.category != "Service Call":
+            if self.sqft is None or self.sqft <= 0:
+                raise ValueError(
+                    "Square footage is required and must be positive for this category"
+                )
+        return self
 
 
 class SimilarCase(BaseModel):

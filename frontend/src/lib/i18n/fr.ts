@@ -35,6 +35,10 @@ export const fr = {
     complexiteLabel: "Complexite",
     complexiteDescription: "Complexite du projet (1 = simple, 100 = tres complexe)",
     erreurGenerique: "Une erreur s'est produite",
+    estimateurNom: "Estimateur",
+    selectEstimateur: "Selectionnez un estimateur",
+    autre: "Autre",
+    sqftRequis: "La superficie est requise pour cette categorie",
   },
   // Prix tab result display
   resultat: {
@@ -101,6 +105,21 @@ export const fr = {
     confianceElevee: "Elevee",
     confianceMoyenne: "Moyenne",
     confianceFaible: "Faible",
+  },
+  materialSelector: {
+    rechercher: "Rechercher un materiau...",
+    aucunResultat: "Aucun materiau trouve.",
+    selectionner: "Selectionner des materiaux...",
+    materiauSelectionnes: "materiaux selectionnes",
+    touteCategories: "Toutes les categories",
+    ajouterPersonnalise: "Ajouter un materiau personnalise",
+    nomPersonnalise: "Nom du materiau",
+    prixPersonnalise: "Prix unitaire",
+    unitePersonnalisee: "Unite",
+    ajouter: "Ajouter",
+    annuler: "Annuler",
+    supprimer: "Retirer",
+    lignesAuto: "Lignes de materiaux (auto)",
   },
   historique: {
     titre: "Historique des soumissions",

@@ -7,7 +7,7 @@ import { CATEGORIES } from "../schemas";
  */
 export const hybridQuoteFormSchema = z.object({
   // Core job parameters
-  sqft: z.number().positive().max(100000),
+  sqft: z.number().min(0).max(100000).optional(),
   category: z.enum(CATEGORIES, { message: "Invalid category" }),
 
   // NEW: Tier-based complexity
@@ -35,6 +35,20 @@ export const hybridQuoteFormSchema = z.object({
 
   // Known price
   quoted_total: z.number().nonnegative().nullable().optional(),
+
+  // Estimator field
+  created_by: z.string().optional(),
+}).superRefine((data, ctx) => {
+  // Conditional sqft validation: required for all categories except "Service Call"
+  if (data.category !== "Service Call") {
+    if (data.sqft === undefined || data.sqft === null || data.sqft <= 0) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Square footage is required for this category",
+        path: ["sqft"],
+      });
+    }
+  }
 });
 
 export type HybridQuoteFormData = z.infer<typeof hybridQuoteFormSchema>;

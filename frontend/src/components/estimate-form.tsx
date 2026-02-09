@@ -58,6 +58,7 @@ export function EstimateForm() {
       labor_lines: 2,
       has_subs: false,
       complexity: 10,
+      created_by: undefined,
     },
   });
 
@@ -107,6 +108,33 @@ export function EstimateForm() {
     <div className="space-y-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          {/* Estimator Dropdown */}
+          <FormField
+            control={form.control}
+            name="created_by"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t.estimateur.estimateurNom}</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  value={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder={t.estimateur.selectEstimateur} />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="Steven">Steven</SelectItem>
+                    <SelectItem value="Laurent">Laurent</SelectItem>
+                    <SelectItem value="Autre">{t.estimateur.autre}</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           {/* Square Footage */}
           <FormField
             control={form.control}

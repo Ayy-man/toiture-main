@@ -28,8 +28,9 @@ export type Category = (typeof CATEGORIES)[number];
 export const estimateFormSchema = z.object({
   sqft: z
     .number()
-    .positive("Square footage must be positive")
-    .max(100000, "Square footage cannot exceed 100,000"),
+    .min(0, "Square footage cannot be negative")
+    .max(100000, "Square footage cannot exceed 100,000")
+    .optional(),
   category: z.enum(CATEGORIES, {
     message: "Invalid category",
   }),
@@ -49,6 +50,18 @@ export const estimateFormSchema = z.object({
     .int("Complexity must be a whole number")
     .min(1, "Complexity must be at least 1")
     .max(100, "Complexity cannot exceed 100"),
+  created_by: z.string().optional(),
+}).superRefine((data, ctx) => {
+  // Conditional sqft validation: required for all categories except "Service Call"
+  if (data.category !== "Service Call") {
+    if (data.sqft === undefined || data.sqft === null || data.sqft <= 0) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Square footage is required for this category",
+        path: ["sqft"],
+      });
+    }
+  }
 });
 
 export type EstimateFormData = z.infer<typeof estimateFormSchema>;

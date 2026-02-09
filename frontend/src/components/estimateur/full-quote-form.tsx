@@ -70,6 +70,7 @@ export function FullQuoteForm() {
       has_chimney: false,
       has_skylights: false,
       has_subs: false,
+      created_by: undefined,
     },
   });
 
@@ -104,6 +105,7 @@ export function FullQuoteForm() {
         labor_lines: data.labor_lines,
         has_subs: data.has_subs,
         quoted_total: data.quoted_total,
+        created_by: data.created_by,
       };
 
       // Submit to API
@@ -138,6 +140,33 @@ export function FullQuoteForm() {
               </div>
             </CardHeader>
             <CardContent className="space-y-6">
+              {/* Estimator Dropdown */}
+              <FormField
+                control={form.control}
+                name="created_by"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium">{t.estimateur.estimateurNom}</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="h-11">
+                          <SelectValue placeholder={t.estimateur.selectEstimateur} />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Steven">Steven</SelectItem>
+                        <SelectItem value="Laurent">Laurent</SelectItem>
+                        <SelectItem value="Autre">{t.estimateur.autre}</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               {/* Primary inputs - side by side on larger screens */}
               <div className="grid gap-4 sm:grid-cols-2">
                 {/* Square Footage */}

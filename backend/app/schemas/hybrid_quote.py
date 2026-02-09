@@ -27,13 +27,18 @@ class HybridQuoteRequest(BaseModel):
     """
 
     # Core job parameters
-    sqft: float = Field(
-        gt=0,
+    sqft: Optional[float] = Field(
+        default=None,
         le=100000,
         description="Square footage of roof area"
     )
     category: str = Field(
         description="Job category (e.g., Bardeaux, Elastomere)"
+    )
+    created_by: Optional[str] = Field(
+        default=None,
+        max_length=100,
+        description="Estimator name"
     )
 
     # NEW: Tier-based complexity (Phase 21)
@@ -195,6 +200,16 @@ class HybridQuoteRequest(BaseModel):
                 f"Invalid category '{v}'. Must be one of: {', '.join(ALLOWED_CATEGORIES)}"
             )
         return v
+
+    @model_validator(mode="after")
+    def validate_sqft_required(self) -> "HybridQuoteRequest":
+        """Validate that sqft is required for non-Service Call categories."""
+        if self.category != "Service Call":
+            if self.sqft is None or self.sqft <= 0:
+                raise ValueError(
+                    "Square footage is required and must be positive for this category"
+                )
+        return self
 
     @model_validator(mode="after")
     def validate_complexity(self) -> "HybridQuoteRequest":
