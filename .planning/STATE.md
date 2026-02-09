@@ -28,19 +28,20 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 14 | Complete | 3/3 | 100% |
 | 15 | Complete | 1/1 | 100% |
 | 16 | Complete | 1/1 | 100% |
+| 19 | In Progress | 1/3 | 33% |
 
-**Overall:** 31/33 plans complete for v1 (94%) | Sprint phases 19-25: 0% (not started)
+**Overall:** 32/36 plans complete for v1 + sprint (89%)
 
 ```
 v1 Progress:     [██████████████████░░] 94%
-Sprint Progress: [░░░░░░░░░░░░░░░░░░░░] 0%
+Sprint Progress: [████░░░░░░░░░░░░░░░░] 20%
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
 
 | Phase | Name | Sprint Deadline | Status |
 |-------|------|-----------------|--------|
-| 19 | Data Quality & Labeling Fixes | Feb 11 | Planned |
+| 19 | Data Quality & Labeling Fixes | Feb 11 | In Progress (1/3) |
 | 20 | Materials Database & Import | Feb 10-12 | Planned |
 | 21 | Complexity System Rebuild | Feb 11 | Planned |
 | 22 | New Estimation Input Fields | Feb 12 | Planned |
@@ -294,6 +295,9 @@ Sprint Progress: [░░░░░░░░░░░░░░░░░░░░] 
 | @react-pdf/renderer for client-side PDF | 14-03 | No server roundtrip, faster UX |
 | PDF excludes labor hours | 14-03 | Client-facing quotes hide internal details |
 | Standard tier for PDF display | 14-03 | Middle tier represents typical pricing |
+| Revenue → Quote Value terminology | 19-01 | Data represents quoted amounts, not invoiced revenue |
+| Disclaimer banner above charts | 19-01 | Clarifies quoted vs invoiced revenue distinction |
+| Chart titles via i18n keys | 19-01 | Enables proper EN/FR translation for all chart titles |
 
 ## Session History
 
@@ -329,11 +333,12 @@ Sprint Progress: [░░░░░░░░░░░░░░░░░░░░] 
 | 2026-02-01 | Plan 14-03 executed | PDF export with client-facing template |
 | 2026-02-01 | Plan 15-01 executed | Frontend design overhaul with Lyra preset |
 | 2026-02-01 | Plan 16-01 executed | I18n language toggle with EN/FR persistence |
+| 2026-02-09 | Plan 19-01 executed | Revenue label corrections - apercu dashboard |
 
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Sprint phases 19-25 added to roadmap, ready for planning/execution
+Stopped at: Completed Phase 19 Plan 01 - revenue label corrections
 Resume file: None
 
 ## Blockers
@@ -356,7 +361,8 @@ Resume file: None
 - Phase 13 Hybrid Quote complete: POST /estimate/hybrid with service call detection and LLM merger
 - Phase 14 Full Quote Frontend complete: ComplexityPresets, QuoteResult, PDF export
 - Phase 16 I18n complete: EN/FR toggle with localStorage persistence
-- Next: Phase 8-02 (Deployment execution) or Phase 12 (Laurent Feedback Fixes)
+- Phase 19-01 complete: Revenue labels corrected to "Quote Value" with disclaimer banner
+- Next: Phase 19-02 and 19-03 (Data quality fixes), then Phase 20 (Materials database)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
