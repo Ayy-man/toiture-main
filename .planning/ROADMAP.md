@@ -673,10 +673,12 @@ Plans:
 
 **Status:** Planned (2026-02-09)
 
-**Plans:** 0 plans
+**Plans:** 3 plans
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 24 to break down)
+- [ ] 24-01-PLAN.md — DOCX quote template generation and export button (Wave 1)
+- [ ] 24-02-PLAN.md — Red flag evaluator, email service, send/dismiss API endpoints (Wave 1)
+- [ ] 24-03-PLAN.md — Send dialog UI, red flag banner, i18n keys for send/flags (Wave 2)
 
 **Success Criteria:**
 1. **DOCX export**: Generates Word document alongside existing PDF
