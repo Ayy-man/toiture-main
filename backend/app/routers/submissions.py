@@ -1,6 +1,6 @@
 """Submissions router for editable quote workflow with approval process.
 
-This router provides 11 endpoints for the complete submission lifecycle:
+This router provides 14 endpoints for the complete submission lifecycle:
 - POST /submissions: Create new submission
 - GET /submissions: List submissions with filters
 - GET /submissions/{id}: Get submission details
@@ -12,6 +12,9 @@ This router provides 11 endpoints for the complete submission lifecycle:
 - POST /submissions/{id}/notes: Add note
 - POST /submissions/{id}/upsells: Create upsell child
 - GET /submissions/{id}/upsell-suggestions: Get upsell options
+- GET /submissions/{id}/red-flags: Evaluate red flags (Phase 24)
+- POST /submissions/{id}/send: Send/schedule/draft quote (Phase 24)
+- POST /submissions/{id}/dismiss-flags: Log dismissed red flags (Phase 24)
 
 Role-based access:
 - Approve/reject endpoints require X-User-Role: admin header (403 for non-admin)
@@ -20,10 +23,16 @@ Role-based access:
 """
 
 import logging
-from typing import Optional
+from datetime import datetime
+from typing import List, Optional
 
 from fastapi import APIRouter, Body, Header, HTTPException, Query
 
+from app.schemas.red_flag import (
+    DismissFlagsRequest,
+    RedFlagResponse,
+    SendSubmissionRequest,
+)
 from app.schemas.submission import (
     NoteCreate,
     SubmissionCreate,
@@ -31,6 +40,8 @@ from app.schemas.submission import (
     SubmissionUpdate,
     UpsellCreate,
 )
+from app.services.email_service import send_quote_email
+from app.services.red_flag_evaluator import evaluate_red_flags
 from app.services.submission_service import (
     add_note,
     approve_submission,
@@ -44,6 +55,7 @@ from app.services.submission_service import (
     return_to_draft_submission,
     update_submission,
 )
+from app.services.supabase_client import get_supabase
 
 logger = logging.getLogger(__name__)
 
@@ -394,4 +406,202 @@ async def get_upsell_suggestions_endpoint(submission_id: str):
         raise
     except Exception as e:
         logger.error(f"Get upsell suggestions endpoint error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# Phase 24: Red flags, send, and dismiss endpoints
+
+
+@router.get("/submissions/{submission_id}/red-flags", response_model=List[RedFlagResponse])
+async def get_red_flags(submission_id: str):
+    """Evaluate red flags for a submission before sending.
+
+    Checks 5 risk categories:
+    - Budget mismatch: Client quoted 30%+ below predicted
+    - Geographic: Site >60km from LV HQ
+    - Material risk: Imported materials (6+ weeks)
+    - Crew availability: Multi-day during peak season
+    - Low margin: Margin <15%
+
+    Args:
+        submission_id: Submission UUID
+
+    Returns:
+        List of applicable red flags with bilingual messages
+
+    Raises:
+        404: If submission not found
+        503: If database not available
+    """
+    supabase = get_supabase()
+    if not supabase:
+        raise HTTPException(503, "Database not available")
+
+    try:
+        result = supabase.table("submissions").select("*").eq("id", submission_id).single().execute()
+        if not result.data:
+            raise HTTPException(404, "Submission not found")
+
+        submission = result.data
+        # Extract request data fields that red flags check
+        # Phase 22 fields are stored in the submission record
+        request_data = {
+            "quoted_total": submission.get("quoted_total"),
+            "geographic_zone": submission.get("geographic_zone"),
+            "supply_chain_risk": submission.get("supply_chain_risk"),
+            "duration_type": submission.get("duration_type"),
+        }
+
+        flags = evaluate_red_flags(submission, request_data)
+        return flags
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Get red flags endpoint error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/submissions/{submission_id}/send")
+async def send_submission(submission_id: str, request: SendSubmissionRequest):
+    """Send, schedule, or save submission as draft.
+
+    Send options:
+    - now: Immediately send email via Resend API
+    - schedule: Store scheduled_send_at for future delivery
+    - draft: Save email details without sending
+
+    Args:
+        submission_id: Submission UUID
+        request: Send request with send_option, recipient_email, etc.
+
+    Returns:
+        Dict with status and send_status fields
+
+    Raises:
+        400: If not approved or validation fails
+        404: If submission not found
+        503: If database not available
+    """
+    supabase = get_supabase()
+    if not supabase:
+        raise HTTPException(503, "Database not available")
+
+    try:
+        result = supabase.table("submissions").select("*").eq("id", submission_id).single().execute()
+        if not result.data:
+            raise HTTPException(404, "Submission not found")
+
+        submission = result.data
+
+        # Only approved submissions can be sent
+        if submission.get("status") != "approved":
+            raise HTTPException(400, "Only approved submissions can be sent")
+
+        update_data = {
+            "recipient_email": request.recipient_email,
+            "email_subject": request.email_subject,
+            "email_body": request.email_body,
+        }
+
+        if request.send_option == "draft":
+            update_data["send_status"] = "draft"
+
+        elif request.send_option == "now":
+            if not request.recipient_email:
+                raise HTTPException(400, "recipient_email required for send now")
+
+            # Send email via Resend
+            subject = request.email_subject or f"Soumission - Toiture LV - {submission.get('category', '')}"
+            body = request.email_body or "<p>Veuillez trouver ci-joint votre soumission.</p><p>Toiture LV</p>"
+
+            try:
+                # Note: PDF/DOCX generation happens on frontend for now
+                # Future iteration will pass attachments as base64 or generate server-side
+                await send_quote_email(
+                    to_email=request.recipient_email,
+                    subject=subject,
+                    body=body,
+                )
+                update_data["send_status"] = "sent"
+                update_data["sent_at"] = datetime.utcnow().isoformat()
+            except RuntimeError as e:
+                update_data["send_status"] = "failed"
+                # Log error in audit_log
+                audit_entry = {
+                    "action": "send_failed",
+                    "timestamp": datetime.utcnow().isoformat(),
+                    "error": str(e)
+                }
+                existing_audit = submission.get("audit_log", []) or []
+                existing_audit.append(audit_entry)
+                update_data["audit_log"] = existing_audit
+
+        elif request.send_option == "schedule":
+            if not request.recipient_email:
+                raise HTTPException(400, "recipient_email required for scheduled send")
+            if not request.scheduled_send_at:
+                raise HTTPException(400, "scheduled_send_at required for scheduled send")
+
+            update_data["send_status"] = "scheduled"
+            update_data["scheduled_send_at"] = request.scheduled_send_at.isoformat()
+            # Note: Actual scheduled delivery via QStash is out of scope for MVP
+            # Scheduled submissions can be picked up by a future cron job
+
+        supabase.table("submissions").update(update_data).eq("id", submission_id).execute()
+
+        return {"status": "ok", "send_status": update_data.get("send_status", "draft")}
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Send submission endpoint error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/submissions/{submission_id}/dismiss-flags")
+async def dismiss_red_flags(submission_id: str, request: DismissFlagsRequest):
+    """Log dismissed red flags in audit trail.
+
+    Records which red flag categories were dismissed by which user,
+    with timestamp. This creates an audit trail for risk acknowledgment.
+
+    Args:
+        submission_id: Submission UUID
+        request: Dismissed categories and user attribution
+
+    Returns:
+        Dict with status and count of dismissed flags
+
+    Raises:
+        404: If submission not found
+        503: If database not available
+    """
+    supabase = get_supabase()
+    if not supabase:
+        raise HTTPException(503, "Database not available")
+
+    try:
+        result = supabase.table("submissions").select("audit_log").eq("id", submission_id).single().execute()
+        if not result.data:
+            raise HTTPException(404, "Submission not found")
+
+        audit_entry = {
+            "action": "red_flags_dismissed",
+            "timestamp": datetime.utcnow().isoformat(),
+            "dismissed_by": request.dismissed_by,
+            "categories": [c.value for c in request.dismissed_categories],
+        }
+
+        existing_audit = result.data.get("audit_log", []) or []
+        existing_audit.append(audit_entry)
+
+        supabase.table("submissions").update({"audit_log": existing_audit}).eq("id", submission_id).execute()
+
+        return {"status": "ok", "dismissed": len(request.dismissed_categories)}
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Dismiss red flags endpoint error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
