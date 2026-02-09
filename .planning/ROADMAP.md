@@ -1,7 +1,7 @@
 # Roadmap: TOITURELV Cortex
 
 **Created:** 2026-01-18
-**Updated:** 2026-02-09 (Phases 19-22 complete)
+**Updated:** 2026-02-10 (Phase 23 plans revised)
 **Phases:** 25
 **Requirements:** 51
 
@@ -636,13 +636,14 @@ Plans:
 
 **Requirements:** SUB-01 to SUB-05
 
-**Status:** Planned (2026-02-09)
+**Status:** Planned (2026-02-10)
 
-**Plans:** 2 plans
+**Plans:** 3 plans
 
 Plans:
-- [ ] 23-01-PLAN.md — Backend: SQL DDL, Pydantic schemas, service layer, FastAPI router (10 endpoints), upsell rules JSON
-- [ ] 23-02-PLAN.md — Frontend: dnd-kit install, TypeScript types, API client, auth RBAC, 5 new components (editor, sortable items, notes, upsell dialog, status badge), full-quote-form integration, i18n
+- [ ] 23-01-PLAN.md — Backend: SQL DDL, Pydantic schemas, service layer, FastAPI router (11 endpoints), upsell rules JSON
+- [ ] 23-02-PLAN.md — Frontend infrastructure: dnd-kit install, TypeScript types, API client, Zod schema, auth RBAC extension, i18n keys, status badge component
+- [ ] 23-03-PLAN.md — Frontend components + integration: sortable line items, notes panel, upsell dialog, submission editor, full-quote-form wiring, submission list, Soumissions tab
 
 **Success Criteria:**
 1. **Editable submissions**: After AI generates quote, each line item can be modified (quantity, price), removed, or reordered
@@ -653,8 +654,9 @@ Plans:
 6. **Approval flow**: Only admin (Laurent) can approve — estimators can create and suggest changes
 7. Approval log maintained for audit trail
 8. **Upsell system**: After main submission, auto-suggest related services by job type
-9. Upsell rules: Bardeau → heating cables, gutters, ventilation; Élastomère → drain, insulation, maintenance; Metal → gutters, snow guards, warranty; Any → inspection plan, maintenance contract
+9. Upsell rules: Bardeau → heating cables, gutters, ventilation; Elastomere → drain, insulation, maintenance; Metal → gutters, snow guards, warranty; Any → inspection plan, maintenance contract
 10. Each upsell generates as a SEPARATE submission document linked to parent
+11. **Bonus: Return to Draft** — rejected or pending submissions can be returned to draft for re-editing
 
 **Dependencies:** Phase 20 (materials DB for adding items), Phase 22 (new fields in submissions)
 
@@ -755,3 +757,4 @@ After Phases 19-25:
 ---
 *Roadmap created: 2026-01-18*
 *Sprint phases 19-25 added: 2026-02-09*
+*Phase 23 plans revised: 2026-02-10*
