@@ -29,14 +29,14 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 15 | Complete | 1/1 | 100% |
 | 16 | Complete | 1/1 | 100% |
 | 19 | In Progress | 1/3 | 33% |
-| 20 | In Progress | 1/3 | 33% |
-| 21 | In Progress | 1/3 | 33% |
+| 20 | In Progress | 2/3 | 67% |
+| 21 | In Progress | 2/3 | 67% |
 
-**Overall:** 34/42 plans complete for v1 + sprint (81%)
+**Overall:** 36/42 plans complete for v1 + sprint (86%)
 
 ```
 v1 Progress:     [██████████████████░░] 94%
-Sprint Progress: [██████░░░░░░░░░░░░░░] 29%
+Sprint Progress: [████████░░░░░░░░░░░░] 38%
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
@@ -44,8 +44,8 @@ Sprint Progress: [██████░░░░░░░░░░░░░░] 
 | Phase | Name | Sprint Deadline | Status |
 |-------|------|-----------------|--------|
 | 19 | Data Quality & Labeling Fixes | Feb 11 | In Progress (1/3) |
-| 20 | Materials Database & Import | Feb 10-12 | In Progress (1/3) |
-| 21 | Complexity System Rebuild | Feb 11 | In Progress (1/3) |
+| 20 | Materials Database & Import | Feb 10-12 | In Progress (2/3) |
+| 21 | Complexity System Rebuild | Feb 11 | In Progress (2/3) |
 | 22 | New Estimation Input Fields | Feb 12 | Planned |
 | 23 | Submission Workflow & Editing | Feb 13 | Planned |
 | 24 | Export, Send & Red Flags | Feb 13-14 | Planned |
@@ -307,6 +307,8 @@ Sprint Progress: [██████░░░░░░░░░░░░░░] 
 | Placeholder hour values in config | 21-01 | All values need Laurent validation before production |
 | pandas for CSV processing | 20-01 | Robust UTF-8 BOM handling and data validation |
 | RapidFuzz token_sort_ratio | 20-01 | Better for materials with reordered words |
+| ILIKE for fuzzy material search | 20-02 | Case-insensitive substring matching, efficient for Postgres |
+| Exclude labor items from material search | 20-02 | Material search should only return materials (item_type filter) |
 | DFS clustering for duplicates | 20-01 | Captures transitive relationships in duplicate groups |
 | Flag both items in duplicate pairs | 20-01 | Manual review needed to determine canonical item |
 
@@ -347,11 +349,13 @@ Sprint Progress: [██████░░░░░░░░░░░░░░] 
 | 2026-02-09 | Plan 19-01 executed | Revenue label corrections - apercu dashboard |
 | 2026-02-09 | Plan 21-01 executed | Tier-based complexity config and calculator service |
 | 2026-02-09 | Plan 20-01 executed | Materials database import scripts and SQL DDL |
+| 2026-02-09 | Plan 21-02 executed | TierSelector and FactorChecklist UI components |
+| 2026-02-09 | Plan 20-02 executed | Materials search and categories API endpoints |
 
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed Phase 20 Plan 01 - materials database import foundation
+Stopped at: Completed Phase 20 Plan 02 - Materials search and categories API endpoints
 Resume file: None
 
 ## Blockers
