@@ -34,12 +34,13 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 22 | Complete | 2/2 | 100% |
 | 23 | Complete | 3/3 | 100% |
 | 24 | Complete | 3/3 | 100% |
+| 25 | In Progress | 1/3 | 33% |
 
-**Overall:** 48/51 plans complete for v1 + sprint (94%)
+**Overall:** 49/54 plans complete for v1 + sprint (91%)
 
 ```
-v1 Progress:     [██████████████████░░] 94%
-Sprint Progress: [██████████████████░░] 90% (19-24)
+v1 Progress:     [██████████████████░░] 91%
+Sprint Progress: [█████████████████░░░] 83% (19-25)
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
@@ -52,7 +53,7 @@ Sprint Progress: [██████████████████░░] 
 | 22 | New Estimation Input Fields | Feb 12 | Complete (2/2) |
 | 23 | Submission Workflow & Editing | Feb 13 | Complete (3/3) |
 | 24 | Export, Send & Red Flags | Feb 13-14 | Complete (3/3) |
-| 25 | UI Polish & Dark Mode | Feb 13 | Planned |
+| 25 | UI Polish & Dark Mode | Feb 13 | In Progress (1/3) |
 
 **Business logic gaps (need Laurent/Amin input):**
 - Complexity: base time values per job type, time multipliers per tier
@@ -397,12 +398,13 @@ Sprint Progress: [██████████████████░░] 
 | 2026-02-09 | Plan 24-02 executed | Red flag evaluator, email service, send/red-flag/dismiss endpoints (PREVIOUS SESSION) |
 | 2026-02-10 | Plan 24-01 re-executed | DOCX export with bilingual QuoteActions button |
 | 2026-02-10 | Plan 24-03 executed | Send dialog UI with red flag banner, API client extensions, bilingual i18n |
-| 2026-02-10 | Plan 25-02 executed | i18n cleanup for tier/factor/PDF labels - moved 30+ locale ternaries to translation files (CURRENT SESSION) |
+| 2026-02-10 | Plan 25-01 executed | Dark mode toggle with next-themes, ThemeToggle component, 7 blocking fixes |
+| 2026-02-10 | Plan 25-02 executed | i18n cleanup for tier/factor/PDF labels - moved 30+ locale ternaries to translation files (PREVIOUS SESSION) |
 
 ## Session Continuity
 
 Last session: 2026-02-10
-Stopped at: Completed 25-02-PLAN.md (i18n cleanup) — Phase 25 in progress (1/3 plans complete)
+Stopped at: Completed 25-01-PLAN.md (Dark Mode Toggle) — Phase 25 in progress (1/3 plans complete)
 Resume file: None
 
 ## Blockers
@@ -452,7 +454,8 @@ Resume file: None
 - Phase 24-02 complete - Red flag evaluator (5 categories: budget/geographic/material/crew/margin), email service (Resend SDK), 3 new endpoints (GET red-flags, POST send, POST dismiss-flags)
 - Phase 24-03 complete - Send dialog with 3 send options (now/schedule/draft), red flag banner component, API client extensions (getRedFlags/sendSubmission/dismissFlags), bilingual i18n (18 keys FR/EN)
 - Phase 24 complete (3/3 plans) - Export, send, and red flag warning system fully implemented
-- Next: Phase 25 (UI Polish & Dark Mode)
+- Phase 25-01 complete - Dark mode toggle with next-themes, ThemeToggle component, SSR-safe theme switching
+- Phase 25 in progress (1/3 plans complete)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
