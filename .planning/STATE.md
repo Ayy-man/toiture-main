@@ -29,14 +29,14 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 15 | Complete | 1/1 | 100% |
 | 16 | Complete | 1/1 | 100% |
 | 19 | Complete | 3/3 | 100% |
-| 20 | In Progress | 2/3 | 67% |
+| 20 | Complete | 3/3 | 100% |
 | 21 | Complete | 3/3 | 100% |
 
-**Overall:** 39/42 plans complete for v1 + sprint (93%)
+**Overall:** 40/42 plans complete for v1 + sprint (95%)
 
 ```
 v1 Progress:     [██████████████████░░] 94%
-Sprint Progress: [████████████░░░░░░░░] 52%
+Sprint Progress: [██████████████░░░░░░] 62%
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
@@ -44,7 +44,7 @@ Sprint Progress: [████████████░░░░░░░░] 
 | Phase | Name | Sprint Deadline | Status |
 |-------|------|-----------------|--------|
 | 19 | Data Quality & Labeling Fixes | Feb 11 | Complete (3/3) |
-| 20 | Materials Database & Import | Feb 10-12 | In Progress (2/3) |
+| 20 | Materials Database & Import | Feb 10-12 | Complete (3/3) |
 | 21 | Complexity System Rebuild | Feb 11 | Complete (3/3) |
 | 22 | New Estimation Input Fields | Feb 12 | Planned |
 | 23 | Submission Workflow & Editing | Feb 13 | Planned |
@@ -354,6 +354,7 @@ Sprint Progress: [████████████░░░░░░░░] 
 | 2026-02-09 | Plan 20-01 executed | Materials database import scripts and SQL DDL |
 | 2026-02-09 | Plan 21-02 executed | TierSelector and FactorChecklist UI components |
 | 2026-02-09 | Plan 20-02 executed | Materials search and categories API endpoints |
+| 2026-02-09 | Plan 20-03 executed | Material selector UI with searchable multi-select |
 | 2026-02-09 | Plan 19-02 executed | Data quality flags and compliance endpoint |
 | 2026-02-09 | Plan 19-03 executed | Compliance monitoring UI and conditional sqft validation |
 | 2026-02-09 | Plan 21-03 executed | Full quote form integration with tier selector and backend orchestrator |
@@ -387,14 +388,16 @@ Resume file: None
 - Phase 19-01 complete: Revenue labels corrected to "Quote Value" with disclaimer banner
 - Phase 20-01 complete: Materials import scripts (SQL DDL, CSV import, fuzzy deduplication)
 - Phase 20-02 complete: Materials search API (GET /materials/search, /materials/categories)
+- Phase 20-03 complete: MaterialSelector component (searchable multi-select, category filter, custom materials)
 - Phase 21-01 complete: Tier-based complexity config (6 tiers, 8 factors) and calculator service
 - Phase 21-02 complete: TierSelector and FactorChecklist UI components
 - Phase 21-03 complete: Full quote form with TierSelector + FactorChecklist, backend orchestrator integration
 - Phase 19-02 complete: Data quality flags, compliance endpoint (GET /dashboard/compliance)
 - Phase 19-03 complete: Conditional sqft validation, estimator dropdown, compliance UI on Apercu
-- Phase 19 complete (3/3 plans)
+- Phase 19 complete (3/3 plans) - Data quality, labeling fixes, compliance monitoring
+- Phase 20 complete (3/3 plans) - Materials database import, search API, selector UI
 - Phase 21 complete (3/3 plans) - Complexity system fully rebuilt with 6-tier 0-100 scale
-- Next: Phase 20-03 (materials UI), Phase 22 (new estimation fields)
+- Next: Phase 22 (new estimation fields), Phase 23 (submission workflow), Phase 24 (export/send/red flags), Phase 25 (UI polish/dark mode)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
