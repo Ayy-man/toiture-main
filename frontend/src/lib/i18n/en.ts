@@ -205,6 +205,7 @@ export const en = {
     aLucarnes: "Skylights",
     aSousTraitants: "Subcontractors",
     exporterPDF: "Export PDF",
+    exportDOCX: "Export DOCX",
     // Section headers and descriptions
     complexiteProjet: "Project Complexity",
     complexiteDescription: "Select a level or customize factors",

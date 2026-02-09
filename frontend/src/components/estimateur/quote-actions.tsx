@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { pdf } from "@react-pdf/renderer";
 import { Button } from "@/components/ui/button";
-import { FileDown, Loader2 } from "lucide-react";
+import { FileDown, FileText, Loader2 } from "lucide-react";
 import { QuotePDFDocument } from "@/lib/pdf/quote-template";
+import { generateQuoteDOCX } from "@/lib/docx/quote-template";
 import type { HybridQuoteResponse } from "@/types/hybrid-quote";
 import { useLanguage } from "@/lib/i18n";
 
@@ -15,8 +16,9 @@ interface QuoteActionsProps {
 }
 
 export function QuoteActions({ quote, category, sqft }: QuoteActionsProps) {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [isExporting, setIsExporting] = useState(false);
+  const [isExportingDOCX, setIsExportingDOCX] = useState(false);
 
   async function handleExportPDF() {
     setIsExporting(true);
@@ -52,6 +54,36 @@ export function QuoteActions({ quote, category, sqft }: QuoteActionsProps) {
     }
   }
 
+  async function handleExportDOCX() {
+    setIsExportingDOCX(true);
+    try {
+      const now = new Date();
+      const dateStr = now.toLocaleDateString("fr-CA");
+      const filenameDateStr = now.toISOString().split("T")[0];
+
+      const blob = await generateQuoteDOCX(
+        quote,
+        category,
+        sqft,
+        dateStr,
+        locale as "fr" | "en"
+      );
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `Soumission-${category}-${filenameDateStr}.docx`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("DOCX export failed:", error);
+    } finally {
+      setIsExportingDOCX(false);
+    }
+  }
+
   return (
     <div className="flex flex-wrap gap-3 pt-4 border-t">
       <Button
@@ -72,17 +104,25 @@ export function QuoteActions({ quote, category, sqft }: QuoteActionsProps) {
         )}
       </Button>
 
-      {/* Future buttons for Send and Save (Phase 14C) */}
-      {/*
-      <Button variant="outline" disabled>
-        <Mail className="mr-2 h-4 w-4" />
-        {t.fullQuote.envoyer}
+      <Button
+        variant="outline"
+        onClick={handleExportDOCX}
+        disabled={isExportingDOCX}
+      >
+        {isExportingDOCX ? (
+          <>
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            {t.common.chargement}
+          </>
+        ) : (
+          <>
+            <FileText className="mr-2 h-4 w-4" />
+            {(t.fullQuote as any).exporterDOCX || (t.fullQuote as any).exportDOCX}
+          </>
+        )}
       </Button>
-      <Button variant="outline" disabled>
-        <Save className="mr-2 h-4 w-4" />
-        {t.fullQuote.sauvegarder}
-      </Button>
-      */}
+
+      {/* Future buttons for Send (Phase 24-02/03) */}
     </div>
   );
 }

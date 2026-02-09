@@ -205,6 +205,7 @@ export const fr = {
     aLucarnes: "Lucarnes",
     aSousTraitants: "Sous-traitants",
     exporterPDF: "Exporter PDF",
+    exporterDOCX: "Exporter DOCX",
     // Section headers and descriptions
     complexiteProjet: "Complexité du projet",
     complexiteDescription: "Sélectionnez un niveau ou personnalisez les facteurs",
