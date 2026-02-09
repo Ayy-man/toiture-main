@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "tiers": [
+    {
+      "tier": 1,
+      "name_fr": "Simple / Standard",
+      "name_en": "Simple / Standard",
+      "score_min": 0,
+      "score_max": 16,
+      "description_fr": "Maison plain-pied, toit plat a faible pente (0-4/12), acces facile par entree, pas de grue, 1-2 sections, materiaux standards",
+      "description_en": "Single-story house, flat to low pitch (0-4/12), easy driveway access, no crane, 1-2 sections, standard materials",
+      "base_hours_added": 0
+    },
+    {
+      "tier": 2,
+      "name_fr": "Modere",
+      "name_en": "Moderate",
+      "score_min": 17,
+      "score_max": 33,
+      "description_fr": "Maison 2 etages, pente 4/12 a 6/12, bon acces rue, quelques penetrations, 2-3 sections, arrachage standard",
+      "description_en": "Two-story house, 4/12 to 6/12 pitch, good street access, some penetrations, 2-3 sections, standard tear-off",
+      "base_hours_added": 4
+    },
+    {
+      "tier": 3,
+      "name_fr": "Complexe",
+      "name_en": "Complex",
+      "score_min": 34,
+      "score_max": 50,
+      "description_fr": "2 etages avec forte pente (6/12-8/12), acces limite, penetrations multiples, 3-4 sections, arrachage multi-couches",
+      "description_en": "Two-story with steep pitch (6/12-8/12), limited access, multiple penetrations, 3-4 sections, multi-layer tear-off",
+      "base_hours_added": 8
+    },
+    {
+      "tier": 4,
+      "name_fr": "Haute complexite",
+      "name_en": "High Complexity",
+      "score_min": 51,
+      "score_max": 66,
+      "description_fr": "3 etages ou pente 8/12+, acces difficile (grue recommandee), penetrations nombreuses, 4+ sections, equipement securite requis",
+      "description_en": "Three-story or 8/12+ pitch, difficult access (crane recommended), many penetrations, 4+ sections, safety equipment required",
+      "base_hours_added": 16
+    },
+    {
+      "tier": 5,
+      "name_fr": "Tres haute complexite",
+      "name_en": "Very High Complexity",
+      "score_min": 67,
+      "score_max": 83,
+      "description_fr": "3 etages, pente 10/12+, grue requise, acces extreme (centre-ville), penetrations etendues, 5+ sections, couches multiples",
+      "description_en": "Three-story, 10/12+ pitch, crane required, extreme access (downtown), extensive penetrations, 5+ sections, multiple layers",
+      "base_hours_added": 24
+    },
+    {
+      "tier": 6,
+      "name_fr": "Extreme",
+      "name_en": "Extreme",
+      "score_min": 84,
+      "score_max": 100,
+      "description_fr": "Commercial/haute elevation, pente extreme, grue obligatoire, acces dangereux (echafaudage + harnais), travaux structuraux, conditions hivernales",
+      "description_en": "Commercial/high-rise, extreme pitch, crane mandatory, hazardous access (scaffolding + harness), structural work, winter conditions",
+      "base_hours_added": 40
+    }
+  ],
+  "factors": {
+    "roof_pitch": {
+      "type": "dropdown",
+      "options": {
+        "flat": {"hours": 0, "label_fr": "Plat (0-2/12)", "label_en": "Flat (0-2/12)"},
+        "low": {"hours": 1, "label_fr": "Faible (3/12-4/12)", "label_en": "Low (3/12-4/12)"},
+        "medium": {"hours": 2, "label_fr": "Moyen (5/12-6/12)", "label_en": "Medium (5/12-6/12)"},
+        "steep": {"hours": 4, "label_fr": "Forte (7/12-8/12)", "label_en": "Steep (7/12-8/12)"},
+        "very_steep": {"hours": 8, "label_fr": "Tres forte (9/12+)", "label_en": "Very Steep (9/12+)"}
+      }
+    },
+    "access_difficulty": {
+      "type": "checklist",
+      "options": {
+        "no_crane": {"hours": 6, "label_fr": "Pas d'acces pour grue", "label_en": "No crane access"},
+        "narrow_driveway": {"hours": 2, "label_fr": "Entree etroite", "label_en": "Narrow driveway"},
+        "street_blocking": {"hours": 3, "label_fr": "Blocage de rue requis", "label_en": "Street blocking required"},
+        "high_elevation": {"hours": 4, "label_fr": "Haute elevation (3+ etages)", "label_en": "High elevation (3+ stories)"},
+        "difficult_terrain": {"hours": 2, "label_fr": "Terrain difficile", "label_en": "Difficult terrain"},
+        "no_material_drop": {"hours": 3, "label_fr": "Pas de zone de depot", "label_en": "No material drop zone"}
+      }
+    },
+    "demolition": {
+      "type": "dropdown",
+      "options": {
+        "none": {"hours": 0, "label_fr": "Aucun", "label_en": "None"},
+        "single_layer": {"hours": 2, "label_fr": "Une couche", "label_en": "Single layer"},
+        "multi_layer": {"hours": 6, "label_fr": "Multi-couches", "label_en": "Multi-layer"},
+        "structural": {"hours": 10, "label_fr": "Structural", "label_en": "Structural"}
+      }
+    },
+    "penetrations": {
+      "type": "number",
+      "hours_per_item": 0.5,
+      "label_fr": "Nombre de penetrations (events, tuyaux, puits de lumiere)",
+      "label_en": "Number of penetrations (vents, pipes, skylights)"
+    },
+    "security": {
+      "type": "checklist",
+      "options": {
+        "harness": {"hours": 1, "label_fr": "Harnais de securite", "label_en": "Safety harness"},
+        "scaffolding": {"hours": 4, "label_fr": "Echafaudage", "label_en": "Scaffolding"},
+        "guardrails": {"hours": 2, "label_fr": "Garde-corps", "label_en": "Guardrails"},
+        "winter_safety": {"hours": 3, "label_fr": "Securite hivernale", "label_en": "Winter safety"}
+      }
+    },
+    "material_removal": {
+      "type": "dropdown",
+      "options": {
+        "none": {"hours": 0, "label_fr": "Aucun", "label_en": "None"},
+        "standard": {"hours": 2, "label_fr": "Standard", "label_en": "Standard"},
+        "heavy": {"hours": 4, "label_fr": "Lourd", "label_en": "Heavy"},
+        "hazardous": {"hours": 6, "label_fr": "Dangereux (amiante)", "label_en": "Hazardous (asbestos)"}
+      }
+    },
+    "roof_sections": {
+      "type": "number",
+      "hours_per_item_above": 1,
+      "baseline": 2,
+      "label_fr": "Nombre de sections de toit",
+      "label_en": "Number of roof sections"
+    },
+    "previous_layers": {
+      "type": "number",
+      "hours_per_item_above": 2,
+      "baseline": 1,
+      "label_fr": "Nombre de couches precedentes",
+      "label_en": "Number of previous layers"
+    }
+  },
+  "base_time_per_category": {
+    "Bardeaux": {"hours_per_1000sqft": 16, "min_hours": 8},
+    "Elastomere": {"hours_per_1000sqft": 20, "min_hours": 12},
+    "Metal": {"hours_per_1000sqft": 24, "min_hours": 10},
+    "TPO": {"hours_per_1000sqft": 18, "min_hours": 10},
+    "EPDM": {"hours_per_1000sqft": 18, "min_hours": 10},
+    "Autres": {"hours_per_1000sqft": 20, "min_hours": 10}
+  },
+  "_note": "PLACEHOLDER VALUES - Laurent must validate base_time, tier hours, and factor hours before production use"
+}
