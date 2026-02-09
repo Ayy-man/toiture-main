@@ -31,12 +31,13 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 19 | Complete | 3/3 | 100% |
 | 20 | Complete | 3/3 | 100% |
 | 21 | Complete | 3/3 | 100% |
+| 22 | In Progress | 1/3 | 33% |
 
-**Overall:** 40/42 plans complete for v1 + sprint (95%)
+**Overall:** 41/45 plans complete for v1 + sprint (91%)
 
 ```
 v1 Progress:     [██████████████████░░] 94%
-Sprint Progress: [██████████████░░░░░░] 62%
+Sprint Progress: [███████████████░░░░░] 67%
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
@@ -46,7 +47,7 @@ Sprint Progress: [██████████████░░░░░░] 
 | 19 | Data Quality & Labeling Fixes | Feb 11 | Complete (3/3) |
 | 20 | Materials Database & Import | Feb 10-12 | Complete (3/3) |
 | 21 | Complexity System Rebuild | Feb 11 | Complete (3/3) |
-| 22 | New Estimation Input Fields | Feb 12 | Planned |
+| 22 | New Estimation Input Fields | Feb 12 | In Progress (1/3) |
 | 23 | Submission Workflow & Editing | Feb 13 | Planned |
 | 24 | Export, Send & Red Flags | Feb 13-14 | Planned |
 | 25 | UI Polish & Dark Mode | Feb 13 | Planned |
@@ -314,6 +315,10 @@ Sprint Progress: [██████████████░░░░░░] 
 | Data quality flag as TEXT column | 19-02 | Flexible tagging strategy for multiple quality issue types |
 | Service Call exclusion from sqft compliance | 19-02 | Service calls legitimately have no sqft requirement |
 | Compliance alert threshold 80% | 19-02 | Industry-standard compliance threshold for data quality |
+| All Phase 22 fields Optional with None defaults | 22-01 | Backward compatibility for existing quotes |
+| Bilingual equipment config pattern | 22-01 | name_fr/name_en fields enable i18n without code changes |
+| Equipment costs placeholder at $25/day | 22-01 | Awaiting real rental costs from Laurent |
+| Enum field validators for Phase 22 | 22-01 | duration_type, geographic_zone, premium_client_level, supply_chain_risk |
 
 ## Session History
 
@@ -358,11 +363,12 @@ Sprint Progress: [██████████████░░░░░░] 
 | 2026-02-09 | Plan 19-02 executed | Data quality flags and compliance endpoint |
 | 2026-02-09 | Plan 19-03 executed | Compliance monitoring UI and conditional sqft validation |
 | 2026-02-09 | Plan 21-03 executed | Full quote form integration with tier selector and backend orchestrator |
+| 2026-02-09 | Plan 22-01 executed | Schema fields, equipment config, i18n keys, RadioGroup component |
 
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Phases 19, 20, 21 complete — next is Phase 22 (New Estimation Input Fields)
+Stopped at: Phase 22 Plan 01 complete — next is Phase 22 Plan 02 (Form UI implementation)
 Resume file: None
 
 ## Blockers
@@ -370,6 +376,7 @@ Resume file: None
 1. ~~**Materials XLS file**~~: ✅ Available at `cortex-data/LV Material List.csv`
 2. **Business logic rules**: Complexity time multipliers, crew suggestion rules, premium surcharges — need from Laurent
 3. **Google Maps API budget**: Geographic zone auto-calculation requires API approval from Amin
+4. **Equipment rental costs**: Phase 22-01 created equipment config with $25/day placeholders — need real costs from Laurent
 
 ## Notes
 
@@ -397,7 +404,8 @@ Resume file: None
 - Phase 19 complete (3/3 plans) - Data quality, labeling fixes, compliance monitoring
 - Phase 20 complete (3/3 plans) - Materials database import, search API, selector UI
 - Phase 21 complete (3/3 plans) - Complexity system fully rebuilt with 6-tier 0-100 scale
-- Next: Phase 22 (new estimation fields), Phase 23 (submission workflow), Phase 24 (export/send/red flags), Phase 25 (UI polish/dark mode)
+- Phase 22-01 complete - Schema fields, equipment config, i18n keys, RadioGroup for 7 new field groups
+- Next: Phase 22-02 (form UI), Phase 22-03 (backend integration), then Phases 23-25
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
