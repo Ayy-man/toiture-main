@@ -32,12 +32,13 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 20 | Complete | 3/3 | 100% |
 | 21 | Complete | 3/3 | 100% |
 | 22 | Complete | 2/2 | 100% |
+| 23 | In Progress | 1/3 | 33% |
 
-**Overall:** 42/44 plans complete for v1 + sprint (95%)
+**Overall:** 43/47 plans complete for v1 + sprint (91%)
 
 ```
-v1 Progress:     [██████████████████░░] 95%
-Sprint Progress: [████████████████████] 100% (19-22)
+v1 Progress:     [██████████████████░░] 91%
+Sprint Progress: [███████████████░░░░░] 83% (19-23)
 ```
 
 ## Current Sprint — Deadline: February 16, 2026
@@ -48,7 +49,7 @@ Sprint Progress: [████████████████████] 
 | 20 | Materials Database & Import | Feb 10-12 | Complete (3/3) |
 | 21 | Complexity System Rebuild | Feb 11 | Complete (3/3) |
 | 22 | New Estimation Input Fields | Feb 12 | Complete (2/2) |
-| 23 | Submission Workflow & Editing | Feb 13 | Planned |
+| 23 | Submission Workflow & Editing | Feb 13 | In Progress (1/3) |
 | 24 | Export, Send & Red Flags | Feb 13-14 | Planned |
 | 25 | UI Polish & Dark Mode | Feb 13 | Planned |
 
@@ -324,6 +325,11 @@ Sprint Progress: [████████████████████] 
 | Conditional rendering for multi-day day picker | 22-02 | Day picker only renders when duration_type === 'multi_day' |
 | Conditional supply chain warning | 22-02 | Warning only shows for extended/import risk levels |
 | Backward compatible API submission | 22-02 | Only send non-default values to backend (undefined for omitted fields) |
+| Fetch-append-write for JSONB operations | 23-01 | Acceptable for single-user-per-submission concurrency, Supabase client lacks || operator |
+| Return-to-draft accessible to all users | 23-01 | Estimators need to fix rejected submissions and correct pending ones |
+| State machine with VALID_TRANSITIONS dict | 23-01 | Prevents invalid status transitions with clear 400 errors |
+| Admin role check via X-User-Role header | 23-01 | Consistent with Phase 7 trust model (frontend auth, backend trusts same-origin) |
+| Bilingual upsell rules in JSON config | 23-01 | Matches equipment_config.json pattern for i18n support |
 
 ## Session History
 
@@ -370,11 +376,12 @@ Sprint Progress: [████████████████████] 
 | 2026-02-09 | Plan 21-03 executed | Full quote form integration with tier selector and backend orchestrator |
 | 2026-02-09 | Plan 22-01 executed | Schema fields, equipment config, i18n keys, RadioGroup component |
 | 2026-02-09 | Plan 22-02 executed | 3 new Card sections in full-quote form (Crew & Duration, Location & Client, Equipment & Supply Chain) |
+| 2026-02-09 | Plan 23-01 executed | Submission workflow backend (SQL DDL, schemas, service, router, upsell rules) |
 
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Phase 22 complete (2/2 plans) — next is Phase 23 (Submission Workflow & Editing)
+Stopped at: Phase 23-01 complete (1/3 plans) — next is Phase 23-02 (Submission Frontend UI)
 Resume file: None
 
 ## Blockers
@@ -412,7 +419,11 @@ Resume file: None
 - Phase 21 complete (3/3 plans) - Complexity system fully rebuilt with 6-tier 0-100 scale
 - Phase 22-01 complete - Schema fields, equipment config, i18n keys, RadioGroup for 7 new field groups
 - Phase 22-02 complete - 3 new Card sections in full-quote form with all 6 field groups wired to API
-- Next: Phase 22-03 (backend integration), then Phases 23-25
+- Phase 22 complete (2/2 plans) - New estimation input fields fully integrated
+- Phase 23-01 complete - Submission workflow backend: SQL DDL, Pydantic schemas (11 models), service (11 functions), router (11 endpoints), upsell rules JSON
+- Submission API: 11 endpoints including return-to-draft for rejected/pending submissions
+- State machine: VALID_TRANSITIONS dict enforces draft->pending->approved/rejected workflow
+- Next: Phase 23-02 (Submission Frontend UI), Phase 23-03 (Integration), then Phases 24-25
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
