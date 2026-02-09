@@ -56,3 +56,24 @@ export interface DashboardCharts {
   monthly_trend: MonthlyTrend[];
   top_clients: TopClient[];
 }
+
+/**
+ * Estimator compliance data (per-estimator breakdown).
+ */
+export interface EstimatorCompliance {
+  name: string;
+  total_estimates: number;
+  sqft_completed: number;
+  completion_rate: number;
+}
+
+/**
+ * Compliance report (overall sqft data quality).
+ */
+export interface ComplianceReport {
+  overall_completion_rate: number;
+  estimators: EstimatorCompliance[];
+  alert: boolean;
+  total_estimates: number;
+  total_with_sqft: number;
+}

@@ -1,4 +1,4 @@
-import type { DashboardMetrics, DashboardCharts } from "@/types/dashboard";
+import type { DashboardMetrics, DashboardCharts, ComplianceReport } from "@/types/dashboard";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -42,6 +42,21 @@ export async function fetchDashboardCharts(
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error("Failed to fetch dashboard charts");
+  }
+  return response.json();
+}
+
+/**
+ * Fetch compliance report (sqft data quality).
+ */
+export async function fetchComplianceReport(
+  days: number = 30
+): Promise<ComplianceReport> {
+  const url = `${API_URL}/dashboard/compliance?days=${days}`;
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Failed to fetch compliance report");
   }
   return response.json();
 }
