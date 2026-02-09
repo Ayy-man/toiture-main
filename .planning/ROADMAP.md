@@ -561,10 +561,12 @@ Plans:
 
 **Status:** Planned (2026-02-09)
 
-**Plans:** 0 plans
+**Plans:** 3 plans
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 21 to break down)
+- [ ] 21-01-PLAN.md — Backend config JSON, complexity calculator service, schema update with new tier + factor fields
+- [ ] 21-02-PLAN.md — Frontend TierSelector visual card grid and FactorChecklist collapsible panel components
+- [ ] 21-03-PLAN.md — Integration: wire components into form, update types/schemas/i18n, backend orchestrator wiring
 
 **Success Criteria:**
 1. 6 named tiers (0-100) with descriptions: site, roof, access for each tier
