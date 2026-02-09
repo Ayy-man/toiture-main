@@ -204,6 +204,36 @@ export const fr = {
     retraitMateriauxDesc: "Complexité du démontage",
     securiteDesc: "Niveau de risque du chantier",
     delaiDesc: "Urgence des travaux",
+    // Tier selector
+    tierSelector: "Niveau de complexite",
+    tierSelectorDescription: "Selectionnez le niveau qui correspond au chantier",
+    tierScoreRange: "pts",
+    tierHoursAdded: "h ajoutees",
+    // Tier names
+    tierSimple: "Simple / Standard",
+    tierModerate: "Modere",
+    tierComplex: "Complexe",
+    tierHighComplexity: "Haute complexite",
+    tierVeryHighComplexity: "Tres haute complexite",
+    tierExtreme: "Extreme",
+    // Factor checklist
+    factorAdjustments: "Ajustements detailles",
+    totalAdjustments: "Total des ajustements",
+    factorRoofPitch: "Pente du toit",
+    factorAccessDifficulty: "Difficulte d'acces",
+    factorDemolition: "Demolition",
+    factorPenetrations: "Penetrations",
+    factorSecurity: "Securite",
+    factorMaterialRemoval: "Retrait de materiaux",
+    factorRoofSections: "Sections de toit",
+    factorPreviousLayers: "Couches precedentes",
+    manualExtraHours: "Heures supplementaires manuelles",
+    manualExtraHoursDesc: "Ajout manuel (a la hausse uniquement)",
+    // Complexity hours display
+    baseHours: "Heures de base",
+    tierHours: "Heures du niveau",
+    factorHoursLabel: "Heures des facteurs",
+    totalLaborHours: "Total heures de travail",
   },
   // Retours (Feedback Review) page
   retours: {

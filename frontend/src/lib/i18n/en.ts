@@ -204,6 +204,36 @@ export const en = {
     retraitMateriauxDesc: "Dismantling complexity",
     securiteDesc: "Site risk level",
     delaiDesc: "Work urgency",
+    // Tier selector
+    tierSelector: "Complexity Level",
+    tierSelectorDescription: "Select the level that matches the job site",
+    tierScoreRange: "pts",
+    tierHoursAdded: "hours added",
+    // Tier names
+    tierSimple: "Simple / Standard",
+    tierModerate: "Moderate",
+    tierComplex: "Complex",
+    tierHighComplexity: "High Complexity",
+    tierVeryHighComplexity: "Very High Complexity",
+    tierExtreme: "Extreme",
+    // Factor checklist
+    factorAdjustments: "Detailed Adjustments",
+    totalAdjustments: "Total adjustments",
+    factorRoofPitch: "Roof Pitch",
+    factorAccessDifficulty: "Access Difficulty",
+    factorDemolition: "Demolition",
+    factorPenetrations: "Penetrations",
+    factorSecurity: "Security",
+    factorMaterialRemoval: "Material Removal",
+    factorRoofSections: "Roof Sections",
+    factorPreviousLayers: "Previous Layers",
+    manualExtraHours: "Manual Extra Hours",
+    manualExtraHoursDesc: "Manual addition (upward only)",
+    // Complexity hours display
+    baseHours: "Base hours",
+    tierHours: "Tier hours",
+    factorHoursLabel: "Factor hours",
+    totalLaborHours: "Total labor hours",
   },
   // Retours (Feedback Review) page
   retours: {

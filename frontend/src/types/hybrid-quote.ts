@@ -5,21 +5,36 @@
 
 /**
  * Request model for hybrid quote generation endpoint.
- * Contains job parameters and 6 complexity factors that sum to complexity_aggregate.
+ * Supports both new tier-based system (Phase 21) and legacy 6-slider system.
  */
 export interface HybridQuoteRequest {
   // Core job parameters
   sqft: number;
   category: string;
 
-  // Complexity factors (6 factors that sum to complexity_aggregate)
-  complexity_aggregate: number; // 0-56
-  access_difficulty: number; // 0-10
-  roof_pitch: number; // 0-8
-  penetrations: number; // 0-10
-  material_removal: number; // 0-8
-  safety_concerns: number; // 0-10
-  timeline_constraints: number; // 0-10
+  // NEW: Tier-based complexity (Phase 21)
+  complexity_tier?: number;        // 1-6
+  complexity_score?: number;       // 0-100
+
+  // NEW: Factor checklist (Phase 21)
+  factor_roof_pitch?: string;               // flat|low|medium|steep|very_steep
+  factor_access_difficulty?: string[];       // checklist items
+  factor_demolition?: string;               // none|single_layer|multi_layer|structural
+  factor_penetrations_count?: number;        // 0+
+  factor_security?: string[];               // checklist items
+  factor_material_removal?: string;          // none|standard|heavy|hazardous
+  factor_roof_sections_count?: number;       // 1+
+  factor_previous_layers_count?: number;     // 0+
+  manual_extra_hours?: number;               // upward override
+
+  // LEGACY: Old complexity factors (still accepted for backward compat)
+  complexity_aggregate?: number;   // 0-56
+  access_difficulty?: number;      // 0-10
+  roof_pitch?: number;             // 0-8
+  penetrations?: number;           // 0-10
+  material_removal?: number;       // 0-8
+  safety_concerns?: number;        // 0-10
+  timeline_constraints?: number;   // 0-10
 
   // Optional features
   has_chimney: boolean;
