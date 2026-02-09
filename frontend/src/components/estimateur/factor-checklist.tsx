@@ -232,7 +232,7 @@ export function FactorChecklist({
                     <Checkbox
                       id={`access-${option.key}`}
                       checked={isChecked}
-                      onCheckedChange={(checked) => {
+                      onCheckedChange={(checked: boolean | "indeterminate") => {
                         if (checked) {
                           updateFactor("access_difficulty", [
                             ...value.access_difficulty,
@@ -333,7 +333,7 @@ export function FactorChecklist({
                     <Checkbox
                       id={`security-${option.key}`}
                       checked={isChecked}
-                      onCheckedChange={(checked) => {
+                      onCheckedChange={(checked: boolean | "indeterminate") => {
                         if (checked) {
                           updateFactor("security", [...value.security, option.key]);
                         } else {
