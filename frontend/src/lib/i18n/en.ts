@@ -114,10 +114,15 @@ export const en = {
   },
   apercu: {
     titre: "Dashboard",
-    revenuTotal: "Total Revenue",
+    revenuTotal: "Total Quote Value",
     nombreSoumissions: "Number of Quotes",
     margeMovenne: "Average Margin",
     clientsActifs: "Active Clients",
+    disclaimer: "Note: All amounts shown represent quoted values, not invoiced revenue.",
+    valeurParAnnee: "Quote value by year",
+    valeurParCategorie: "Quote value by category",
+    tendanceMensuelle: "Monthly trend",
+    topClients: "Top clients",
   },
   clients: {
     rechercher: "Search for a client...",

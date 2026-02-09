@@ -114,10 +114,15 @@ export const fr = {
   },
   apercu: {
     titre: "Tableau de bord",
-    revenuTotal: "Revenu total",
+    revenuTotal: "Valeur totale des soumissions",
     nombreSoumissions: "Nombre de soumissions",
     margeMovenne: "Marge moyenne",
     clientsActifs: "Clients actifs",
+    disclaimer: "Note : Tous les montants affichés représentent des valeurs de soumissions, et non des revenus facturés.",
+    valeurParAnnee: "Valeur des soumissions par année",
+    valeurParCategorie: "Valeur des soumissions par catégorie",
+    tendanceMensuelle: "Tendance mensuelle",
+    topClients: "Top clients",
   },
   clients: {
     rechercher: "Rechercher un client...",
