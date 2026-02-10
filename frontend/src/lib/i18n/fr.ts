@@ -557,7 +557,13 @@ export const fr = {
     summaryTitle: "Sommaire",
     materials: "Materiaux",
     labor: "Main-d'oeuvre",
+    subtotal: "Sous-total",
+    tps: "TPS (5%)",
+    tvq: "TVQ (9,975%)",
     total: "TOTAL",
+    signatureTitle: "Acceptation",
+    signatureLine: "Signature du client",
+    signatureDate: "Date",
     footer: "Cette soumission est valide pour 30 jours a compter de la date d'emission.",
   },
 } as const;

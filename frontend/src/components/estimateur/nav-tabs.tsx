@@ -34,8 +34,8 @@ export function EstimateurTabs() {
               className={cn(
                 "py-4 px-1 text-sm font-medium transition-colors",
                 isActive
-                  ? "border-b-2 border-[#8B2323] text-[#8B2323]"
-                  : "text-muted-foreground hover:text-[#8B2323]"
+                  ? "border-b-2 border-primary text-primary"
+                  : "text-muted-foreground hover:text-primary"
               )}
             >
               {tab.label}

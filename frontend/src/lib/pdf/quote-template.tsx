@@ -60,13 +60,46 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingVertical: 6,
   },
+  subtotalRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 6,
+    borderTopWidth: 1,
+    borderTopColor: "#ccc",
+    marginTop: 6,
+  },
+  taxRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 4,
+  },
   totalRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 10,
     borderTopWidth: 2,
     borderTopColor: "#333",
-    marginTop: 10,
+    marginTop: 4,
+  },
+  signatureSection: {
+    marginTop: 50,
+  },
+  signatureTitle: {
+    fontSize: 13,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textTransform: "uppercase",
+  },
+  signatureLine: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#333",
+    marginBottom: 4,
+    paddingBottom: 30,
+  },
+  signatureLabel: {
+    fontSize: 9,
+    color: "#666",
+    marginBottom: 20,
   },
   totalLabel: {
     fontSize: 14,
@@ -180,12 +213,33 @@ export function QuotePDFDocument({
             <Text>{t.pdf.labor}</Text>
             <Text>{formatCAD(standardTier.labor_cost, locale)}</Text>
           </View>
+          <View style={styles.subtotalRow}>
+            <Text>{t.pdf.subtotal}</Text>
+            <Text>{formatCAD(standardTier.total_price, locale)}</Text>
+          </View>
+          <View style={styles.taxRow}>
+            <Text>{t.pdf.tps}</Text>
+            <Text>{formatCAD(standardTier.total_price * 0.05, locale)}</Text>
+          </View>
+          <View style={styles.taxRow}>
+            <Text>{t.pdf.tvq}</Text>
+            <Text>{formatCAD(standardTier.total_price * 0.09975, locale)}</Text>
+          </View>
           <View style={styles.totalRow}>
             <Text style={styles.totalLabel}>{t.pdf.total}</Text>
             <Text style={styles.totalValue}>
-              {formatCAD(standardTier.total_price, locale)}
+              {formatCAD(standardTier.total_price * 1.14975, locale)}
             </Text>
           </View>
+        </View>
+
+        {/* Signature */}
+        <View style={styles.signatureSection}>
+          <Text style={styles.signatureTitle}>{t.pdf.signatureTitle}</Text>
+          <View style={styles.signatureLine} />
+          <Text style={styles.signatureLabel}>{t.pdf.signatureLine}</Text>
+          <View style={styles.signatureLine} />
+          <Text style={styles.signatureLabel}>{t.pdf.signatureDate}</Text>
         </View>
 
         {/* Footer */}

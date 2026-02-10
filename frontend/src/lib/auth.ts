@@ -16,7 +16,7 @@ if (!process.env.APP_PASSWORD) {
 export interface SessionData {
   isAuthenticated: boolean;
   username?: string;           // NEW: user identifier for audit trail
-  role?: 'admin' | 'estimator';  // NEW: role for RBAC
+  role?: 'admin' | 'estimator' | 'viewer';  // Role for RBAC
 }
 
 export const sessionOptions: SessionOptions = {

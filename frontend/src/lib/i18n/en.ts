@@ -558,7 +558,13 @@ export const en = {
     summaryTitle: "Summary",
     materials: "Materials",
     labor: "Labor",
+    subtotal: "Subtotal",
+    tps: "GST (5%)",
+    tvq: "QST (9.975%)",
     total: "TOTAL",
+    signatureTitle: "Acceptance",
+    signatureLine: "Client Signature",
+    signatureDate: "Date",
     footer: "This quote is valid for 30 days from the date of issue.",
   },
 } as const;

@@ -238,7 +238,106 @@ export async function generateQuoteDOCX(
                 ],
               }),
 
-              // Total Row (with top border)
+              // Subtotal Row
+              new TableRow({
+                children: [
+                  new TableCell({
+                    children: [
+                      new Paragraph({
+                        text: locale === "fr" ? "Sous-total" : "Subtotal",
+                      }),
+                    ],
+                    borders: {
+                      top: { style: BorderStyle.SINGLE, size: 6, color: "CCCCCC" },
+                      bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      left: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                    },
+                  }),
+                  new TableCell({
+                    children: [
+                      new Paragraph({
+                        text: formatCAD(standardTier.total_price),
+                        alignment: AlignmentType.RIGHT,
+                      }),
+                    ],
+                    borders: {
+                      top: { style: BorderStyle.SINGLE, size: 6, color: "CCCCCC" },
+                      bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      left: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                    },
+                  }),
+                ],
+              }),
+
+              // TPS/GST Row
+              new TableRow({
+                children: [
+                  new TableCell({
+                    children: [
+                      new Paragraph({
+                        text: locale === "fr" ? "TPS (5%)" : "GST (5%)",
+                      }),
+                    ],
+                    borders: {
+                      top: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      left: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                    },
+                  }),
+                  new TableCell({
+                    children: [
+                      new Paragraph({
+                        text: formatCAD(standardTier.total_price * 0.05),
+                        alignment: AlignmentType.RIGHT,
+                      }),
+                    ],
+                    borders: {
+                      top: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      left: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                    },
+                  }),
+                ],
+              }),
+
+              // TVQ/QST Row
+              new TableRow({
+                children: [
+                  new TableCell({
+                    children: [
+                      new Paragraph({
+                        text: locale === "fr" ? "TVQ (9,975%)" : "QST (9.975%)",
+                      }),
+                    ],
+                    borders: {
+                      top: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      left: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                    },
+                  }),
+                  new TableCell({
+                    children: [
+                      new Paragraph({
+                        text: formatCAD(standardTier.total_price * 0.09975),
+                        alignment: AlignmentType.RIGHT,
+                      }),
+                    ],
+                    borders: {
+                      top: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      left: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                      right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+                    },
+                  }),
+                ],
+              }),
+
+              // Total Row (with top border, includes tax)
               new TableRow({
                 children: [
                   new TableCell({
@@ -264,7 +363,7 @@ export async function generateQuoteDOCX(
                       new Paragraph({
                         children: [
                           new TextRun({
-                            text: formatCAD(standardTier.total_price),
+                            text: formatCAD(standardTier.total_price * 1.14975),
                             bold: true,
                           }),
                         ],
@@ -281,6 +380,57 @@ export async function generateQuoteDOCX(
                 ],
               }),
             ],
+          }),
+
+          // Signature Section
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: locale === "fr" ? "ACCEPTATION" : "ACCEPTANCE",
+                bold: true,
+              }),
+            ],
+            spacing: { before: 600, after: 400 },
+          }),
+
+          // Signature Line
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "___________________________________________",
+              }),
+            ],
+            spacing: { after: 50 },
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: locale === "fr" ? "Signature du client" : "Client Signature",
+                size: 18,
+                color: "666666",
+              }),
+            ],
+            spacing: { after: 300 },
+          }),
+
+          // Date Line
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "___________________________________________",
+              }),
+            ],
+            spacing: { after: 50 },
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "Date",
+                size: 18,
+                color: "666666",
+              }),
+            ],
+            spacing: { after: 300 },
           }),
 
           // Footer
