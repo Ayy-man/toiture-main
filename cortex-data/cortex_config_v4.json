@@ -1,0 +1,62 @@
+{
+  "features": [
+    "sqft_final",
+    "complexity_score",
+    "sqft_x_complexity",
+    "material_line_count",
+    "labor_line_count",
+    "has_subs",
+    "material_labor_ratio",
+    "sqft_squared"
+  ],
+  "target_transform": "log",
+  "best_params": {
+    "learning_rate": 0.08,
+    "max_depth": 4,
+    "min_samples_leaf": 7,
+    "n_estimators": 150
+  },
+  "performance": {
+    "r2": 0.590611123097795,
+    "mae": 2831.760175462469,
+    "pct20": 55.50239234449761
+  },
+  "outlier_bounds": {
+    "max_sqft": 10000,
+    "max_price": 50000
+  },
+  "comparison": [
+    {
+      "Model": "V3 Bardeaux (baseline)",
+      "R\u00b2": 0.648,
+      "MAE": 3486,
+      "\u00b120%": 51
+    },
+    {
+      "Model": "V4 Best (full/log)",
+      "R\u00b2": 0.578,
+      "MAE": 2907,
+      "\u00b120%": 55
+    },
+    {
+      "Model": "V4 Ensemble (GB+RF)",
+      "R\u00b2": 0.557,
+      "MAE": 2919,
+      "\u00b120%": 52
+    },
+    {
+      "Model": "V4 Tuned GB",
+      "R\u00b2": 0.591,
+      "MAE": 2832,
+      "\u00b120%": 56
+    }
+  ],
+  "inflation_factors": {
+    "2020": 1.97,
+    "2021": 1.52,
+    "2022": 1.36,
+    "2023": 1.06,
+    "2024": 1.06,
+    "2025": 1.0
+  }
+}

@@ -1,0 +1,2546 @@
+{
+  "1": {
+    "name": "Sous couche Élastomère, fixé mécaniquement",
+    "median_cost": 98.92,
+    "median_sell": 97.0,
+    "usage_count": 73
+  },
+  "2": {
+    "name": "Sous couche Élastomère, fixé mécaniquement",
+    "median_cost": 108.79,
+    "median_sell": 146.9,
+    "usage_count": 2032
+  },
+  "3": {
+    "name": "DRAIN",
+    "median_cost": 94.33,
+    "median_sell": 122.97,
+    "usage_count": 1171
+  },
+  "4": {
+    "name": "MURETS",
+    "median_cost": 147.24,
+    "median_sell": 189.4,
+    "usage_count": 2422
+  },
+  "5": {
+    "name": "Membrane autocollante - Haute temperature ",
+    "median_cost": 302.35,
+    "median_sell": 431.93,
+    "usage_count": 206
+  },
+  "6": {
+    "name": "Plancher",
+    "median_cost": 84.49,
+    "median_sell": 110.0,
+    "usage_count": 749
+  },
+  "7": {
+    "name": "Plancher",
+    "median_cost": 140.0,
+    "median_sell": 185.0,
+    "usage_count": 3441
+  },
+  "8": {
+    "name": "Baissière au drain",
+    "median_cost": 120.04,
+    "median_sell": 178.9,
+    "usage_count": 943
+  },
+  "9": {
+    "name": "drain de coin temporaire ",
+    "median_cost": 96.74,
+    "median_sell": 138.2,
+    "usage_count": 483
+  },
+  "10": {
+    "name": "Blanc",
+    "median_cost": 61.57,
+    "median_sell": 87.96,
+    "usage_count": 955
+  },
+  "11": {
+    "name": "Laine rose ",
+    "median_cost": 19.35,
+    "median_sell": 27.64,
+    "usage_count": 1209
+  },
+  "13": {
+    "name": "POUR DRAIN ECONOMIQUE",
+    "median_cost": 45.4,
+    "median_sell": 61.53,
+    "usage_count": 1686
+  },
+  "14": {
+    "name": "Cheminé",
+    "median_cost": 14.0,
+    "median_sell": 45.0,
+    "usage_count": 106
+  },
+  "15": {
+    "name": "Noir",
+    "median_cost": 21.35,
+    "median_sell": 30.5,
+    "usage_count": 442
+  },
+  "16": {
+    "name": "Drip du haut finition ",
+    "median_cost": 21.35,
+    "median_sell": 30.5,
+    "usage_count": 471
+  },
+  "17": {
+    "name": "27 x 35  /   124 pieds linéaire",
+    "median_cost": 25.88,
+    "median_sell": 37.01,
+    "usage_count": 562
+  },
+  "18": {
+    "name": "Petit pent house ",
+    "median_cost": 32.0,
+    "median_sell": 45.71,
+    "usage_count": 59
+  },
+  "20": {
+    "name": "TOITURE PRINCIPALE",
+    "median_cost": 38.0,
+    "median_sell": 50.0,
+    "usage_count": 2001
+  },
+  "21": {
+    "name": "Blanc",
+    "median_cost": 11.99,
+    "median_sell": 15.0,
+    "usage_count": 27
+  },
+  "22": {
+    "name": "95 feuilles",
+    "median_cost": 6.0,
+    "median_sell": 10.0,
+    "usage_count": 14
+  },
+  "23": {
+    "name": "4' x 8'",
+    "median_cost": 9.0,
+    "median_sell": 12.86,
+    "usage_count": 16
+  },
+  "25": {
+    "name": "Avant noue - lucarne",
+    "median_cost": 34.56,
+    "median_sell": 49.37,
+    "usage_count": 342
+  },
+  "26": {
+    "name": "24x24 custom",
+    "median_cost": 86.03,
+    "median_sell": 122.9,
+    "usage_count": 399
+  },
+  "27": {
+    "name": "Un (1) FF 40 x 60 CL/ CL",
+    "median_cost": 700.0,
+    "median_sell": 1000.0,
+    "usage_count": 339
+  },
+  "28": {
+    "name": "Soprasmart",
+    "median_cost": 55.29,
+    "median_sell": 78.99,
+    "usage_count": 164
+  },
+  "29": {
+    "name": "Noir noir noir",
+    "median_cost": 16.48,
+    "median_sell": 21.42,
+    "usage_count": 150
+  },
+  "30": {
+    "name": "RELEVÉ ET SURFACE HOR/VER.",
+    "median_cost": 211.53,
+    "median_sell": 250.0,
+    "usage_count": 912
+  },
+  "31": {
+    "name": "Cut Seal asphalt a membrane ",
+    "median_cost": 29.21,
+    "median_sell": 41.73,
+    "usage_count": 316
+  },
+  "32": {
+    "name": "noir",
+    "median_cost": 9.11,
+    "median_sell": 15.0,
+    "usage_count": 2006
+  },
+  "34": {
+    "name": "4 unité par poteau, 8 fois = 32 mcx",
+    "median_cost": 128.27,
+    "median_sell": 166.75,
+    "usage_count": 35
+  },
+  "36": {
+    "name": "couleur a determiner",
+    "median_cost": 61.08,
+    "median_sell": 81.0,
+    "usage_count": 289
+  },
+  "37": {
+    "name": "Noir",
+    "median_cost": 19.44,
+    "median_sell": 25.27,
+    "usage_count": 42
+  },
+  "38": {
+    "name": "bardeaux iko ",
+    "median_cost": 43.25,
+    "median_sell": 55.0,
+    "usage_count": 2216
+  },
+  "39": {
+    "name": "Noir",
+    "median_cost": 63.25,
+    "median_sell": 78.0,
+    "usage_count": 1715
+  },
+  "40": {
+    "name": "POUR TOIT PLAT",
+    "median_cost": 109.58,
+    "median_sell": 146.11,
+    "usage_count": 923
+  },
+  "41": {
+    "name": "LANDMARK® PRO MAX DEF ESPRESSO - 2650",
+    "median_cost": 31.67,
+    "median_sell": 42.23,
+    "usage_count": 9
+  },
+  "43": {
+    "name": "puits de lumière sur mesure avec ventilation (Salle de bain)  22x44",
+    "median_cost": 0.0,
+    "median_sell": 0.0,
+    "usage_count": 3
+  },
+  "44": {
+    "name": "POUR CHEMINÉE",
+    "median_cost": 67.5,
+    "median_sell": 96.43,
+    "usage_count": 1430
+  },
+  "45": {
+    "name": "Nouvelle trappe d'accès",
+    "median_cost": 11.99,
+    "median_sell": 17.13,
+    "usage_count": 447
+  },
+  "46": {
+    "name": "40 lbs ",
+    "median_cost": 75.0,
+    "median_sell": 93.75,
+    "usage_count": 260
+  },
+  "47": {
+    "name": "POUR COLS DE CYGNE",
+    "median_cost": 60.33,
+    "median_sell": 86.19,
+    "usage_count": 704
+  },
+  "48": {
+    "name": "15 fenêtre - Réglette du haut",
+    "median_cost": 20.0,
+    "median_sell": 28.57,
+    "usage_count": 183
+  },
+  "50": {
+    "name": "40 lbs pour circuler milieu ",
+    "median_cost": 50.0,
+    "median_sell": 71.43,
+    "usage_count": 228
+  },
+  "51": {
+    "name": "sortie à vérifier - sécheuse, sdb",
+    "median_cost": 40.0,
+    "median_sell": 57.14,
+    "usage_count": 23
+  },
+  "53": {
+    "name": "RS blanc",
+    "median_cost": 170.0,
+    "median_sell": 220.0,
+    "usage_count": 94
+  },
+  "54": {
+    "name": "Étanchéité plus seal",
+    "median_cost": 75.81,
+    "median_sell": 101.08,
+    "usage_count": 1442
+  },
+  "55": {
+    "name": "6 pieds bas de pente et noue ",
+    "median_cost": 60.45,
+    "median_sell": 80.6,
+    "usage_count": 1749
+  },
+  "56": {
+    "name": "5/12",
+    "median_cost": 15.58,
+    "median_sell": 20.77,
+    "usage_count": 1057
+  },
+  "57": {
+    "name": "Noir",
+    "median_cost": 25.0,
+    "median_sell": 35.71,
+    "usage_count": 722
+  },
+  "58": {
+    "name": "Blanc",
+    "median_cost": 25.0,
+    "median_sell": 35.71,
+    "usage_count": 510
+  },
+  "59": {
+    "name": "pour cheminé et corniche ",
+    "median_cost": 30.03,
+    "median_sell": 39.04,
+    "usage_count": 322
+  },
+  "60": {
+    "name": "cheminé",
+    "median_cost": 9.56,
+    "median_sell": 12.75,
+    "usage_count": 425
+  },
+  "61": {
+    "name": "Garde corps ",
+    "median_cost": 7.99,
+    "median_sell": 11.41,
+    "usage_count": 288
+  },
+  "63": {
+    "name": "Ajouter un nouveau plywood sur l'intégralité du pontage",
+    "median_cost": 0.0,
+    "median_sell": 0.0,
+    "usage_count": 42
+  },
+  "64": {
+    "name": "3600",
+    "median_cost": 34.85,
+    "median_sell": 47.39,
+    "usage_count": 6
+  },
+  "68": {
+    "name": "patch puits de lumière ",
+    "median_cost": 15.0,
+    "median_sell": 21.43,
+    "usage_count": 375
+  },
+  "69": {
+    "name": "Brune",
+    "median_cost": 60.0,
+    "median_sell": 80.0,
+    "usage_count": 889
+  },
+  "70": {
+    "name": "20000l bs",
+    "median_cost": 3.69,
+    "median_sell": 6.75,
+    "usage_count": 8
+  },
+  "71": {
+    "name": "muret de la maison",
+    "median_cost": 16.99,
+    "median_sell": 24.27,
+    "usage_count": 27
+  },
+  "73": {
+    "name": "Duck",
+    "median_cost": 12.24,
+    "median_sell": 15.91,
+    "usage_count": 122
+  },
+  "75": {
+    "name": "Shadow slate",
+    "median_cost": 32.88,
+    "median_sell": 46.81,
+    "usage_count": 6
+  },
+  "76": {
+    "name": "7 Lucanre ",
+    "median_cost": 18.9,
+    "median_sell": 25.2,
+    "usage_count": 855
+  },
+  "77": {
+    "name": "Titanium psu 30",
+    "median_cost": 203.92,
+    "median_sell": 271.89,
+    "usage_count": 56
+  },
+  "78": {
+    "name": "Brun",
+    "median_cost": 105.64,
+    "median_sell": 140.85,
+    "usage_count": 309
+  },
+  "79": {
+    "name": "BRUN",
+    "median_cost": 28.95,
+    "median_sell": 38.6,
+    "usage_count": 44
+  },
+  "80": {
+    "name": "Non applicable sans isolant 185 feuille pour le bassin ",
+    "median_cost": 11.84,
+    "median_sell": 15.39,
+    "usage_count": 70
+  },
+  "81": {
+    "name": "isolant",
+    "median_cost": 130.06,
+    "median_sell": 185.8,
+    "usage_count": 157
+  },
+  "83": {
+    "name": "Isolant de pente ",
+    "median_cost": 177.65,
+    "median_sell": 230.94,
+    "usage_count": 192
+  },
+  "84": {
+    "name": "1 er rang - 8' périmètrique",
+    "median_cost": 14.75,
+    "median_sell": 19.67,
+    "usage_count": 130
+  },
+  "85": {
+    "name": "2 eme rang - 4' périmètrique",
+    "median_cost": 23.5,
+    "median_sell": 31.33,
+    "usage_count": 112
+  },
+  "86": {
+    "name": "6 - 384p/bundle",
+    "median_cost": 19.75,
+    "median_sell": 28.21,
+    "usage_count": 35
+  },
+  "87": {
+    "name": "3200 vis ",
+    "median_cost": 361.18,
+    "median_sell": 469.53,
+    "usage_count": 165
+  },
+  "89": {
+    "name": "pqt de 1000 et 500",
+    "median_cost": 15.99,
+    "median_sell": 22.84,
+    "usage_count": 40
+  },
+  "91": {
+    "name": "Périmètre",
+    "median_cost": 22.58,
+    "median_sell": 32.26,
+    "usage_count": 157
+  },
+  "94": {
+    "name": "BRUN",
+    "median_cost": 61.08,
+    "median_sell": 81.0,
+    "usage_count": 17
+  },
+  "97": {
+    "name": "Brun commerciale ",
+    "median_cost": 7.88,
+    "median_sell": 12.98,
+    "usage_count": 16
+  },
+  "99": {
+    "name": "Isolation de boîte ",
+    "median_cost": 57.99,
+    "median_sell": 82.84,
+    "usage_count": 183
+  },
+  "100": {
+    "name": "Fournir et installer des styrovent sur l’ensemble de la zone en angle précédemment isolée.",
+    "median_cost": 4.77,
+    "median_sell": 6.81,
+    "usage_count": 46
+  },
+  "101": {
+    "name": "2 sortie multiples",
+    "median_cost": 47.35,
+    "median_sell": 67.64,
+    "usage_count": 511
+  },
+  "102": {
+    "name": "shop",
+    "median_cost": 88.72,
+    "median_sell": 110.0,
+    "usage_count": 106
+  },
+  "103": {
+    "name": "Relevé",
+    "median_cost": 80.78,
+    "median_sell": 110.0,
+    "usage_count": 151
+  },
+  "104": {
+    "name": "brun",
+    "median_cost": 5.22,
+    "median_sell": 6.96,
+    "usage_count": 381
+  },
+  "105": {
+    "name": "Membrane extérieur ",
+    "median_cost": 97.06,
+    "median_sell": 138.66,
+    "usage_count": 361
+  },
+  "107": {
+    "name": "12’´",
+    "median_cost": 27.95,
+    "median_sell": 39.93,
+    "usage_count": 45
+  },
+  "108": {
+    "name": "Evac",
+    "median_cost": 55.0,
+    "median_sell": 78.57,
+    "usage_count": 139
+  },
+  "109": {
+    "name": "Drip",
+    "median_cost": 16.66,
+    "median_sell": 23.34,
+    "usage_count": 1891
+  },
+  "110": {
+    "name": "Tour du puits de lumière pour plus d'isolation ",
+    "median_cost": 23.68,
+    "median_sell": 33.83,
+    "usage_count": 59
+  },
+  "111": {
+    "name": "9''1/2 avec clairance 3000vis",
+    "median_cost": 339.0,
+    "median_sell": 484.29,
+    "usage_count": 22
+  },
+  "112": {
+    "name": "3 Arrêts de glace pour les côtés les plus petit, 5 Arrêts de glace pour les plus gros côtés. Total 3",
+    "median_cost": 25.0,
+    "median_sell": 35.71,
+    "usage_count": 33
+  },
+  "115": {
+    "name": "cheminé",
+    "median_cost": 30.0,
+    "median_sell": 42.86,
+    "usage_count": 33
+  },
+  "117": {
+    "name": "Brun commerciale - Avec deux sortie de maximum ",
+    "median_cost": 16.33,
+    "median_sell": 21.77,
+    "usage_count": 20
+  },
+  "118": {
+    "name": "Murres joint de dilation ",
+    "median_cost": 23.2,
+    "median_sell": 30.16,
+    "usage_count": 22
+  },
+  "123": {
+    "name": "Seal ",
+    "median_cost": 280.0,
+    "median_sell": 364.0,
+    "usage_count": 14
+  },
+  "137": {
+    "name": "Seal",
+    "median_cost": 33.32,
+    "median_sell": 43.32,
+    "usage_count": 13
+  },
+  "139": {
+    "name": "8 bundle",
+    "median_cost": 35.69,
+    "median_sell": 45.0,
+    "usage_count": 31
+  },
+  "140": {
+    "name": "23 bundles",
+    "median_cost": 22.0,
+    "median_sell": 31.43,
+    "usage_count": 13
+  },
+  "142": {
+    "name": "Membrane",
+    "median_cost": 230.15,
+    "median_sell": 230.15,
+    "usage_count": 12
+  },
+  "143": {
+    "name": "Bande",
+    "median_cost": 141.75,
+    "median_sell": 141.75,
+    "usage_count": 7
+  },
+  "149": {
+    "name": "18’’ x 18’’",
+    "median_cost": 6.5,
+    "median_sell": 9.29,
+    "usage_count": 5
+  },
+  "152": {
+    "name": "Trappe d'accès Modèle R 30'' x 36''",
+    "median_cost": 650.0,
+    "median_sell": 1125.49,
+    "usage_count": 4
+  },
+  "153": {
+    "name": "Noir",
+    "median_cost": 36.0,
+    "median_sell": 51.43,
+    "usage_count": 24
+  },
+  "154": {
+    "name": "42000 pc",
+    "median_cost": 32.48,
+    "median_sell": 46.4,
+    "usage_count": 3
+  },
+  "155": {
+    "name": "14000 pc",
+    "median_cost": 59.5,
+    "median_sell": 75.0,
+    "usage_count": 7
+  },
+  "158": {
+    "name": "6000 Soprafix ",
+    "median_cost": 152.1,
+    "median_sell": 219.19,
+    "usage_count": 4
+  },
+  "160": {
+    "name": "Noir",
+    "median_cost": 104.35,
+    "median_sell": 135.66,
+    "usage_count": 100
+  },
+  "164": {
+    "name": "Inclu les frais de livraison ",
+    "median_cost": 1200.0,
+    "median_sell": 1714.29,
+    "usage_count": 75
+  },
+  "165": {
+    "name": "Ouverture autour de la fan vérifier ",
+    "median_cost": 58.0,
+    "median_sell": 75.4,
+    "usage_count": 86
+  },
+  "167": {
+    "name": "Relevé + seal ",
+    "median_cost": 115.0,
+    "median_sell": 164.45,
+    "usage_count": 33
+  },
+  "170": {
+    "name": "Plancher",
+    "median_cost": 152.25,
+    "median_sell": 220.76,
+    "usage_count": 45
+  },
+  "171": {
+    "name": "Joint de plancher ",
+    "median_cost": 22.15,
+    "median_sell": 34.71,
+    "usage_count": 9
+  },
+  "172": {
+    "name": "POUR EVENT",
+    "median_cost": 50.0,
+    "median_sell": 71.43,
+    "usage_count": 104
+  },
+  "173": {
+    "name": "Blanc",
+    "median_cost": 4.0,
+    "median_sell": 5.33,
+    "usage_count": 212
+  },
+  "175": {
+    "name": "3'2''",
+    "median_cost": 100.0,
+    "median_sell": 142.86,
+    "usage_count": 33
+  },
+  "176": {
+    "name": "weather stone ",
+    "median_cost": 59.11,
+    "median_sell": 76.84,
+    "usage_count": 4
+  },
+  "177": {
+    "name": "Gris chateaux",
+    "median_cost": 71.92,
+    "median_sell": 93.5,
+    "usage_count": 16
+  },
+  "178": {
+    "name": "Noir",
+    "median_cost": 29.0,
+    "median_sell": 38.67,
+    "usage_count": 88
+  },
+  "179": {
+    "name": "Moffat",
+    "median_cost": 125.0,
+    "median_sell": 178.57,
+    "usage_count": 1854
+  },
+  "180": {
+    "name": "120 pieds ",
+    "median_cost": 55.61,
+    "median_sell": 79.44,
+    "usage_count": 164
+  },
+  "183": {
+    "name": "Bassin inférieur ",
+    "median_cost": 119.0,
+    "median_sell": 170.0,
+    "usage_count": 61
+  },
+  "186": {
+    "name": "Isolant de pente 1%",
+    "median_cost": 4.0,
+    "median_sell": 5.25,
+    "usage_count": 105
+  },
+  "187": {
+    "name": "seal, mettre Seal PS de la shop par dessus ",
+    "median_cost": 55.7,
+    "median_sell": 68.0,
+    "usage_count": 1890
+  },
+  "188": {
+    "name": "15 arrêts de glace par tubes  utiliser du non-murrisable",
+    "median_cost": 11.66,
+    "median_sell": 15.16,
+    "usage_count": 963
+  },
+  "191": {
+    "name": "Roulaux sur la faite à installer même si juste section avant",
+    "median_cost": 203.92,
+    "median_sell": 271.89,
+    "usage_count": 23
+  },
+  "192": {
+    "name": "Black oak",
+    "median_cost": 42.0,
+    "median_sell": 56.0,
+    "usage_count": 3
+  },
+  "195": {
+    "name": "6’x12’x4’ ",
+    "median_cost": 300.0,
+    "median_sell": 428.57,
+    "usage_count": 1918
+  },
+  "197": {
+    "name": "FS C04",
+    "median_cost": 900.0,
+    "median_sell": 1250.0,
+    "usage_count": 212
+  },
+  "198": {
+    "name": "noir double",
+    "median_cost": 28.03,
+    "median_sell": 37.37,
+    "usage_count": 27
+  },
+  "200": {
+    "name": "portion principal ",
+    "median_cost": 1.25,
+    "median_sell": 2.97,
+    "usage_count": 174
+  },
+  "201": {
+    "name": "70.00/ le paquet ",
+    "median_cost": 1.5,
+    "median_sell": 3.44,
+    "usage_count": 76
+  },
+  "205": {
+    "name": "Arrachage",
+    "median_cost": 2.5,
+    "median_sell": 4.98,
+    "usage_count": 26
+  },
+  "210": {
+    "name": "Périmètre des boîtes sur le haut pour asserer la membrane décolé, visser hauteur de la drip pour cac",
+    "median_cost": 152.69,
+    "median_sell": 198.5,
+    "usage_count": 387
+  },
+  "212": {
+    "name": "T2 T3",
+    "median_cost": 106.74,
+    "median_sell": 106.74,
+    "usage_count": 2
+  },
+  "213": {
+    "name": "2575 ",
+    "median_cost": 24.98,
+    "median_sell": 24.98,
+    "usage_count": 2
+  },
+  "214": {
+    "name": "** 3.00 '' **",
+    "median_cost": 24.36,
+    "median_sell": 31.67,
+    "usage_count": 8
+  },
+  "215": {
+    "name": "4 cartouches de boîtes ",
+    "median_cost": 256.94,
+    "median_sell": 300.0,
+    "usage_count": 65
+  },
+  "217": {
+    "name": "T1 et T4",
+    "median_cost": 130.59,
+    "median_sell": 130.59,
+    "usage_count": 2
+  },
+  "220": {
+    "name": "Isolation uréthane plafond cathédrale plus ou moins 200-300pc de l'extérieur, solive de toit en 2''x",
+    "median_cost": 5.25,
+    "median_sell": 7.5,
+    "usage_count": 39
+  },
+  "221": {
+    "name": "4 couches d’épaisseur , 922 x3",
+    "median_cost": 2.0,
+    "median_sell": 3.0,
+    "usage_count": 47
+  },
+  "222": {
+    "name": "Gris régent, acier galvanisé naturel",
+    "median_cost": 17.68,
+    "median_sell": 50.0,
+    "usage_count": 19
+  },
+  "224": {
+    "name": "Plancher",
+    "median_cost": 60.0,
+    "median_sell": 85.71,
+    "usage_count": 27
+  },
+  "226": {
+    "name": "Evac ",
+    "median_cost": 100.0,
+    "median_sell": 191.0,
+    "usage_count": 871
+  },
+  "228": {
+    "name": "ESPRESSO",
+    "median_cost": 44.57,
+    "median_sell": 60.0,
+    "usage_count": 11
+  },
+  "231": {
+    "name": "Baissière drain",
+    "median_cost": 8.24,
+    "median_sell": 10.71,
+    "usage_count": 218
+  },
+  "232": {
+    "name": "TOITURE PRINCIPALE",
+    "median_cost": 17.28,
+    "median_sell": 23.0,
+    "usage_count": 1722
+  },
+  "234": {
+    "name": "5/12",
+    "median_cost": 0.0,
+    "median_sell": 0.0,
+    "usage_count": 793
+  },
+  "235": {
+    "name": "Cheminee",
+    "median_cost": 0.0,
+    "median_sell": 0.0,
+    "usage_count": 43
+  },
+  "237": {
+    "name": "Blanc",
+    "median_cost": 100.0,
+    "median_sell": 120.0,
+    "usage_count": 31
+  },
+  "238": {
+    "name": "Blanc",
+    "median_cost": 20.0,
+    "median_sell": 30.0,
+    "usage_count": 112
+  },
+  "239": {
+    "name": "Blanc",
+    "median_cost": 21.49,
+    "median_sell": 31.0,
+    "usage_count": 78
+  },
+  "240": {
+    "name": "Gentek couleur gris brume ",
+    "median_cost": 5.59,
+    "median_sell": 7.5,
+    "usage_count": 75
+  },
+  "241": {
+    "name": "Vert",
+    "median_cost": 45.0,
+    "median_sell": 60.0,
+    "usage_count": 3
+  },
+  "244": {
+    "name": "120''. - 10' ",
+    "median_cost": 84.5,
+    "median_sell": 120.71,
+    "usage_count": 11
+  },
+  "245": {
+    "name": "Brun",
+    "median_cost": 4.0,
+    "median_sell": 5.2,
+    "usage_count": 9
+  },
+  "252": {
+    "name": "90 degrés ",
+    "median_cost": 13.25,
+    "median_sell": 19.0,
+    "usage_count": 29
+  },
+  "258": {
+    "name": "gris",
+    "median_cost": 65.0,
+    "median_sell": 83.0,
+    "usage_count": 15
+  },
+  "259": {
+    "name": "mitoyen ",
+    "median_cost": 55.0,
+    "median_sell": 70.0,
+    "usage_count": 579
+  },
+  "260": {
+    "name": "Brun",
+    "median_cost": 28.99,
+    "median_sell": 37.0,
+    "usage_count": 8
+  },
+  "261": {
+    "name": "2 par poto",
+    "median_cost": 127.2,
+    "median_sell": 246.69,
+    "usage_count": 1
+  },
+  "262": {
+    "name": "bois",
+    "median_cost": 4.0,
+    "median_sell": 5.2,
+    "usage_count": 11
+  },
+  "263": {
+    "name": "Brun 2 tons",
+    "median_cost": 33.0,
+    "median_sell": 40.0,
+    "usage_count": 56
+  },
+  "264": {
+    "name": "Puits de lumière ",
+    "median_cost": 70.0,
+    "median_sell": 91.0,
+    "usage_count": 15
+  },
+  "265": {
+    "name": "Isolation uréthane mur grenier R24",
+    "median_cost": 4.25,
+    "median_sell": 6.5,
+    "usage_count": 5
+  },
+  "266": {
+    "name": "Isolation uréthane plafond cathédrale métal building,  entre les solives et au dessus ",
+    "median_cost": 3.85,
+    "median_sell": 5.5,
+    "usage_count": 13
+  },
+  "267": {
+    "name": "Infiltration dans les deux gardes robes avant et celui arrière de la salle de bain au dessus de la c",
+    "median_cost": 1.0,
+    "median_sell": 1.5,
+    "usage_count": 17
+  },
+  "268": {
+    "name": "1100 pc",
+    "median_cost": 2.0,
+    "median_sell": 3.3,
+    "usage_count": 13
+  },
+  "270": {
+    "name": "Forrence ( fourrure 3/4”)  ",
+    "median_cost": 0.75,
+    "median_sell": 1.35,
+    "usage_count": 2
+  },
+  "272": {
+    "name": "ancrage permanent ",
+    "median_cost": 5.0,
+    "median_sell": 25.0,
+    "usage_count": 12
+  },
+  "273": {
+    "name": "46X46 (pouces)",
+    "median_cost": 55.0,
+    "median_sell": 75.0,
+    "usage_count": 42
+  },
+  "274": {
+    "name": "EN OPTION À L'UNITÉ, SELON LES BESOINS",
+    "median_cost": 42.0,
+    "median_sell": 65.0,
+    "usage_count": 99
+  },
+  "276": {
+    "name": "T Séparateur",
+    "median_cost": 20.0,
+    "median_sell": 150.0,
+    "usage_count": 5
+  },
+  "277": {
+    "name": "24 x 12 à l'arrière",
+    "median_cost": 48.69,
+    "median_sell": 65.0,
+    "usage_count": 23
+  },
+  "279": {
+    "name": "125Pieds",
+    "median_cost": 550.0,
+    "median_sell": 850.0,
+    "usage_count": 144
+  },
+  "280": {
+    "name": "Section droite de la maison ",
+    "median_cost": 346.39,
+    "median_sell": 500.0,
+    "usage_count": 18
+  },
+  "281": {
+    "name": "Fil lumen ",
+    "median_cost": 296.13,
+    "median_sell": 459.0,
+    "usage_count": 13
+  },
+  "282": {
+    "name": "besoin de 55Pied exactement",
+    "median_cost": 191.96,
+    "median_sell": 425.0,
+    "usage_count": 6
+  },
+  "283": {
+    "name": "Bisauté ",
+    "median_cost": 24.18,
+    "median_sell": 28.5,
+    "usage_count": 44
+  },
+  "285": {
+    "name": "5 sorties de 4''",
+    "median_cost": 275.0,
+    "median_sell": 450.0,
+    "usage_count": 4
+  },
+  "289": {
+    "name": "Frais très longue distance A/R 6hr00",
+    "median_cost": 165.0,
+    "median_sell": 386.1,
+    "usage_count": 69
+  },
+  "290": {
+    "name": "Enlever Fascia et isoler section manquante ",
+    "median_cost": 3.85,
+    "median_sell": 5.5,
+    "usage_count": 11
+  },
+  "291": {
+    "name": "MAXIMUMS",
+    "median_cost": 134.89,
+    "median_sell": 152.0,
+    "usage_count": 181
+  },
+  "293": {
+    "name": "Noir",
+    "median_cost": 30.0,
+    "median_sell": 40.0,
+    "usage_count": 91
+  },
+  "294": {
+    "name": "Isolation pente 1% type 1",
+    "median_cost": 1400.0,
+    "median_sell": 2000.0,
+    "usage_count": 14
+  },
+  "295": {
+    "name": "POUR TREPIED ELECTRIQUE",
+    "median_cost": 23.0,
+    "median_sell": 35.0,
+    "usage_count": 28
+  },
+  "296": {
+    "name": "Pour laine contaminer",
+    "median_cost": 689.0,
+    "median_sell": 840.0,
+    "usage_count": 13
+  },
+  "298": {
+    "name": "Monaco",
+    "median_cost": 1350.0,
+    "median_sell": 1650.0,
+    "usage_count": 80
+  },
+  "300": {
+    "name": "beige",
+    "median_cost": 9.11,
+    "median_sell": 14.0,
+    "usage_count": 136
+  },
+  "301": {
+    "name": "Monter les matériaux avec échelle à moteur",
+    "median_cost": 300.0,
+    "median_sell": 500.0,
+    "usage_count": 269
+  },
+  "302": {
+    "name": "Collé pleine adhérence à la duotak",
+    "median_cost": 63.69,
+    "median_sell": 75.0,
+    "usage_count": 64
+  },
+  "304": {
+    "name": "Beige ou blanc",
+    "median_cost": 5.09,
+    "median_sell": 30.0,
+    "usage_count": 29
+  },
+  "305": {
+    "name": "Sortie de 4’’ mural salle de bain",
+    "median_cost": 12.0,
+    "median_sell": 45.0,
+    "usage_count": 18
+  },
+  "306": {
+    "name": "25 pieds",
+    "median_cost": 50.0,
+    "median_sell": 62.5,
+    "usage_count": 36
+  },
+  "308": {
+    "name": "12 bundle",
+    "median_cost": 35.69,
+    "median_sell": 45.0,
+    "usage_count": 11
+  },
+  "309": {
+    "name": "Mur avant et arrière",
+    "median_cost": 16.86,
+    "median_sell": 22.0,
+    "usage_count": 5
+  },
+  "310": {
+    "name": "Mur coupe feu ",
+    "median_cost": 20.49,
+    "median_sell": 26.02,
+    "usage_count": 6
+  },
+  "311": {
+    "name": "shim",
+    "median_cost": 5.56,
+    "median_sell": 13.0,
+    "usage_count": 41
+  },
+  "314": {
+    "name": "Contour des solin de cheminé",
+    "median_cost": 13.0,
+    "median_sell": 32.0,
+    "usage_count": 8
+  },
+  "318": {
+    "name": "Blanc",
+    "median_cost": 22.0,
+    "median_sell": 25.0,
+    "usage_count": 121
+  },
+  "319": {
+    "name": "Blanc",
+    "median_cost": 11.0,
+    "median_sell": 13.2,
+    "usage_count": 113
+  },
+  "321": {
+    "name": "Permis inclus",
+    "median_cost": 1000.0,
+    "median_sell": 1225.0,
+    "usage_count": 12
+  },
+  "322": {
+    "name": "grue",
+    "median_cost": 350.0,
+    "median_sell": 450.0,
+    "usage_count": 11
+  },
+  "325": {
+    "name": "Désinstaller",
+    "median_cost": 850.0,
+    "median_sell": 1000.0,
+    "usage_count": 9
+  },
+  "326": {
+    "name": "Cuivre ",
+    "median_cost": 115.0,
+    "median_sell": 275.0,
+    "usage_count": 27
+  },
+  "327": {
+    "name": "kaki",
+    "median_cost": 7.99,
+    "median_sell": 12.0,
+    "usage_count": 152
+  },
+  "329": {
+    "name": "3'' 3/8 ",
+    "median_cost": 135.0,
+    "median_sell": 150.0,
+    "usage_count": 218
+  },
+  "331": {
+    "name": "Blanc",
+    "median_cost": 2.99,
+    "median_sell": 6.0,
+    "usage_count": 15
+  },
+  "332": {
+    "name": "2 - 3 jours ",
+    "median_cost": 250.0,
+    "median_sell": 500.0,
+    "usage_count": 356
+  },
+  "333": {
+    "name": "Brun",
+    "median_cost": 58.19,
+    "median_sell": 100.0,
+    "usage_count": 22
+  },
+  "335": {
+    "name": "Équipe véhicule ",
+    "median_cost": 165.0,
+    "median_sell": 250.0,
+    "usage_count": 90
+  },
+  "336": {
+    "name": "Réinstaller ",
+    "median_cost": 0.0,
+    "median_sell": 10.0,
+    "usage_count": 15
+  },
+  "337": {
+    "name": "Ct10 brun",
+    "median_cost": 120.0,
+    "median_sell": 150.0,
+    "usage_count": 5
+  },
+  "339": {
+    "name": "Frais unique ",
+    "median_cost": 0.0,
+    "median_sell": 79.99,
+    "usage_count": 1
+  },
+  "340": {
+    "name": "un bundle",
+    "median_cost": 38.08,
+    "median_sell": 45.0,
+    "usage_count": 4
+  },
+  "341": {
+    "name": "11''",
+    "median_cost": 350.0,
+    "median_sell": 480.0,
+    "usage_count": 15
+  },
+  "342": {
+    "name": "2 CLAPETS",
+    "median_cost": 220.0,
+    "median_sell": 385.0,
+    "usage_count": 15
+  },
+  "348": {
+    "name": "Sous couche ",
+    "median_cost": 83.47,
+    "median_sell": 100.0,
+    "usage_count": 4
+  },
+  "349": {
+    "name": "Noir",
+    "median_cost": 100.0,
+    "median_sell": 149.0,
+    "usage_count": 7
+  },
+  "351": {
+    "name": "Fermeture de chantier ",
+    "median_cost": 800.0,
+    "median_sell": 960.0,
+    "usage_count": 7
+  },
+  "352": {
+    "name": "REMPLACEMENT TURBINE",
+    "median_cost": 250.0,
+    "median_sell": 300.0,
+    "usage_count": 8
+  },
+  "354": {
+    "name": "2' de fascia plus le bas, calculer 1 feuille par 8 pieds avec les plis l'over en reglette. 200' de l",
+    "median_cost": 75.0,
+    "median_sell": 90.0,
+    "usage_count": 31
+  },
+  "355": {
+    "name": "POUR TOIT PLAT",
+    "median_cost": 19.99,
+    "median_sell": 27.0,
+    "usage_count": 68
+  },
+  "356": {
+    "name": "retour sur travaux",
+    "median_cost": 250.0,
+    "median_sell": 445.0,
+    "usage_count": 22
+  },
+  "357": {
+    "name": "Couvert de boite",
+    "median_cost": 41.29,
+    "median_sell": 60.0,
+    "usage_count": 81
+  },
+  "358": {
+    "name": "Blanc",
+    "median_cost": 15.0,
+    "median_sell": 15.0,
+    "usage_count": 76
+  },
+  "359": {
+    "name": "Blanc",
+    "median_cost": 15.0,
+    "median_sell": 15.0,
+    "usage_count": 66
+  },
+  "360": {
+    "name": "D4 aluminium",
+    "median_cost": 9.5,
+    "median_sell": 9.5,
+    "usage_count": 15
+  },
+  "365": {
+    "name": "solin sur mesure ",
+    "median_cost": 175.0,
+    "median_sell": 200.0,
+    "usage_count": 2
+  },
+  "366": {
+    "name": "clous pour réparation ancestrale ",
+    "median_cost": 1.0,
+    "median_sell": 1.5,
+    "usage_count": 9
+  },
+  "367": {
+    "name": "Installation sur toutes les surfaces ",
+    "median_cost": 132.28,
+    "median_sell": 155.0,
+    "usage_count": 12
+  },
+  "368": {
+    "name": "Surface net : 3200pc Coefficient de perte 9% = 3488pc",
+    "median_cost": 4.0,
+    "median_sell": 5.0,
+    "usage_count": 5
+  },
+  "369": {
+    "name": "1 morceau ",
+    "median_cost": 0.4,
+    "median_sell": 1.25,
+    "usage_count": 9
+  },
+  "371": {
+    "name": "Ancrage rouge à toit de pente ",
+    "median_cost": 590.66,
+    "median_sell": 590.66,
+    "usage_count": 6
+  },
+  "372": {
+    "name": "LIVRAISON ",
+    "median_cost": 84.7,
+    "median_sell": 122.82,
+    "usage_count": 71
+  },
+  "373": {
+    "name": "Avant et arrière ",
+    "median_cost": 51.55,
+    "median_sell": 100.0,
+    "usage_count": 33
+  },
+  "374": {
+    "name": "LIvraison Plateau Mont royal",
+    "median_cost": 72.0,
+    "median_sell": 125.0,
+    "usage_count": 51
+  },
+  "375": {
+    "name": "Noir",
+    "median_cost": 30.0,
+    "median_sell": 120.0,
+    "usage_count": 13
+  },
+  "376": {
+    "name": "Brun",
+    "median_cost": 10.0,
+    "median_sell": 15.0,
+    "usage_count": 8
+  },
+  "377": {
+    "name": "BRUN",
+    "median_cost": 89.0,
+    "median_sell": 140.0,
+    "usage_count": 7
+  },
+  "378": {
+    "name": "surface de 750 pc",
+    "median_cost": 80.52,
+    "median_sell": 96.0,
+    "usage_count": 17
+  },
+  "379": {
+    "name": "Grillage",
+    "median_cost": 4.0,
+    "median_sell": 5.0,
+    "usage_count": 17
+  },
+  "380": {
+    "name": "doubler jeux d'air",
+    "median_cost": 2.0,
+    "median_sell": 4.0,
+    "usage_count": 13
+  },
+  "381": {
+    "name": "Fourni par Groupe Bedard ",
+    "median_cost": 1280.0,
+    "median_sell": 1700.0,
+    "usage_count": 11
+  },
+  "382": {
+    "name": "hotte de cuisine",
+    "median_cost": 250.0,
+    "median_sell": 300.0,
+    "usage_count": 27
+  },
+  "383": {
+    "name": "Parapet ",
+    "median_cost": 52.0,
+    "median_sell": 70.0,
+    "usage_count": 13
+  },
+  "387": {
+    "name": "Coin de la rue, Section cheminé extérieur ",
+    "median_cost": 250.0,
+    "median_sell": 420.0,
+    "usage_count": 16
+  },
+  "388": {
+    "name": "Bleu Ardoise",
+    "median_cost": 6.74,
+    "median_sell": 10.0,
+    "usage_count": 5
+  },
+  "389": {
+    "name": "Brun",
+    "median_cost": 5.95,
+    "median_sell": 10.09,
+    "usage_count": 9
+  },
+  "390": {
+    "name": "Coin  90 degré ",
+    "median_cost": 2.0,
+    "median_sell": 5.5,
+    "usage_count": 14
+  },
+  "392": {
+    "name": "Sopra-iso 3\" (10% perte) x 2571 panneaux 4'x4'",
+    "median_cost": 643.5,
+    "median_sell": 731.25,
+    "usage_count": 4
+  },
+  "393": {
+    "name": "8 lucarnes à retirer. Retirer le revêtement mural en bois des lucarnes, conserver le bois pour réins",
+    "median_cost": 100.0,
+    "median_sell": 125.0,
+    "usage_count": 20
+  },
+  "394": {
+    "name": "Câble de l'électricien Sebastien Barcelo avec capteurs 120 pi",
+    "median_cost": 695.0,
+    "median_sell": 850.0,
+    "usage_count": 17
+  },
+  "395": {
+    "name": "3600",
+    "median_cost": 9.5,
+    "median_sell": 25.0,
+    "usage_count": 14
+  },
+  "396": {
+    "name": "PRODUIT NON DISPONIBLE ACTUELLEMENT - Fournir et installer une membrane autocollante DRYROOF® SA WAT",
+    "median_cost": 45.0,
+    "median_sell": 75.0,
+    "usage_count": 2
+  },
+  "398": {
+    "name": "Mur mitoyen entre la maison et le garage ",
+    "median_cost": 135.0,
+    "median_sell": 190.0,
+    "usage_count": 18
+  },
+  "399": {
+    "name": "Maison uniquement - Fournier et installer un ventilateur Maximum de type VMAX pour toit cathédrale s",
+    "median_cost": 370.0,
+    "median_sell": 500.0,
+    "usage_count": 8
+  },
+  "400": {
+    "name": "Fournir et installer une membrane autocollante DRYROOF® SA WATERPROOFING UNDERLAYMENT de Certainteed",
+    "median_cost": 103.9,
+    "median_sell": 120.0,
+    "usage_count": 3
+  },
+  "402": {
+    "name": "13000pc",
+    "median_cost": 0.75,
+    "median_sell": 1.1,
+    "usage_count": 8
+  },
+  "406": {
+    "name": "24''",
+    "median_cost": 137.5,
+    "median_sell": 226.88,
+    "usage_count": 11
+  },
+  "407": {
+    "name": "Avant et arrière seulement ",
+    "median_cost": 42.0,
+    "median_sell": 65.0,
+    "usage_count": 5
+  },
+  "408": {
+    "name": "Protège feuille ",
+    "median_cost": 7.0,
+    "median_sell": 12.0,
+    "usage_count": 8
+  },
+  "411": {
+    "name": "Blanc",
+    "median_cost": 303.41,
+    "median_sell": 304.0,
+    "usage_count": 46
+  },
+  "412": {
+    "name": "Horizontale ",
+    "median_cost": 267.24,
+    "median_sell": 320.0,
+    "usage_count": 7
+  },
+  "415": {
+    "name": "D4.5",
+    "median_cost": 2.0,
+    "median_sell": 4.0,
+    "usage_count": 16
+  },
+  "419": {
+    "name": "slope correction ",
+    "median_cost": 275.0,
+    "median_sell": 385.0,
+    "usage_count": 25
+  },
+  "426": {
+    "name": "inspection 34 points",
+    "median_cost": 110.0,
+    "median_sell": 850.0,
+    "usage_count": 21
+  },
+  "427": {
+    "name": "30' x 5 ' forme irrégulière ",
+    "median_cost": 1600.0,
+    "median_sell": 2500.0,
+    "usage_count": 3
+  },
+  "428": {
+    "name": "couper bande pour aller par dessus vis sous la drip pour protéger à long therme, peut importe la mem",
+    "median_cost": 231.0,
+    "median_sell": 335.45,
+    "usage_count": 22
+  },
+  "429": {
+    "name": "Beige ou crème ",
+    "median_cost": 12.1,
+    "median_sell": 19.97,
+    "usage_count": 24
+  },
+  "430": {
+    "name": "30x36",
+    "median_cost": 742.5,
+    "median_sell": 994.95,
+    "usage_count": 19
+  },
+  "432": {
+    "name": "Relevé de 1 pieds ",
+    "median_cost": 147.24,
+    "median_sell": 0.0,
+    "usage_count": 46
+  },
+  "435": {
+    "name": "Périmètre dernier rang ",
+    "median_cost": 41.18,
+    "median_sell": 51.48,
+    "usage_count": 10
+  },
+  "440": {
+    "name": "Noir",
+    "median_cost": 31.0,
+    "median_sell": 37.0,
+    "usage_count": 5
+  },
+  "445": {
+    "name": "Acier pour Élastomère ",
+    "median_cost": 17.5,
+    "median_sell": 25.5,
+    "usage_count": 2
+  },
+  "451": {
+    "name": "PÉRIMÈTRE LUCARNE",
+    "median_cost": 8.25,
+    "median_sell": 12.0,
+    "usage_count": 1
+  },
+  "453": {
+    "name": "Blanc",
+    "median_cost": 12.85,
+    "median_sell": 13.93,
+    "usage_count": 20
+  },
+  "459": {
+    "name": "Noir métal pour capé",
+    "median_cost": 31.9,
+    "median_sell": 29.9,
+    "usage_count": 3
+  },
+  "464": {
+    "name": "Coin noir 2’’x2’’ ben ordinaire  noir en métal ",
+    "median_cost": 26.18,
+    "median_sell": 26.18,
+    "usage_count": 1
+  },
+  "468": {
+    "name": "Noir",
+    "median_cost": 25.82,
+    "median_sell": 21.82,
+    "usage_count": 1
+  },
+  "471": {
+    "name": "Moulure de finition - fin de bardeaux ",
+    "median_cost": 11.37,
+    "median_sell": 11.37,
+    "usage_count": 1
+  },
+  "472": {
+    "name": "Mur et boîte ",
+    "median_cost": 2.69,
+    "median_sell": 0.91,
+    "usage_count": 2
+  },
+  "473": {
+    "name": "BLANC",
+    "median_cost": 2.56,
+    "median_sell": 2.56,
+    "usage_count": 6
+  },
+  "474": {
+    "name": "Acier ",
+    "median_cost": 26.18,
+    "median_sell": 26.18,
+    "usage_count": 4
+  },
+  "479": {
+    "name": "120 ft w clips",
+    "median_cost": 129.99,
+    "median_sell": 400.0,
+    "usage_count": 14
+  },
+  "480": {
+    "name": "Câble chauffant pour la partie gauche de la maison avec problème de pont de glace + gouttière",
+    "median_cost": 169.99,
+    "median_sell": 320.0,
+    "usage_count": 7
+  },
+  "488": {
+    "name": "Blanc",
+    "median_cost": 15.0,
+    "median_sell": 20.0,
+    "usage_count": 13
+  },
+  "493": {
+    "name": "MURETS",
+    "median_cost": 147.24,
+    "median_sell": 147.24,
+    "usage_count": 9
+  },
+  "495": {
+    "name": "4x4’’ bois traité ",
+    "median_cost": 15.0,
+    "median_sell": 20.0,
+    "usage_count": 3
+  },
+  "496": {
+    "name": "Acier ",
+    "median_cost": 79.99,
+    "median_sell": 90.0,
+    "usage_count": 13
+  },
+  "497": {
+    "name": "Dimension plus grande ",
+    "median_cost": 50.0,
+    "median_sell": 100.0,
+    "usage_count": 5
+  },
+  "498": {
+    "name": "Blanc",
+    "median_cost": 0.94,
+    "median_sell": 1.25,
+    "usage_count": 28
+  },
+  "501": {
+    "name": "Bronze",
+    "median_cost": 12.0,
+    "median_sell": 20.0,
+    "usage_count": 32
+  },
+  "505": {
+    "name": "Clous 2’’et demis pour clous les cap sur ridg vent",
+    "median_cost": 11.0,
+    "median_sell": 11.0,
+    "usage_count": 2
+  },
+  "528": {
+    "name": "Solin cap d'évent ",
+    "median_cost": 31.97,
+    "median_sell": 31.97,
+    "usage_count": 4
+  },
+  "529": {
+    "name": "Couleur Sable",
+    "median_cost": 10.25,
+    "median_sell": 12.3,
+    "usage_count": 1
+  },
+  "530": {
+    "name": "Nortwest brun commercial ",
+    "median_cost": 17.31,
+    "median_sell": 40.5,
+    "usage_count": 2
+  },
+  "549": {
+    "name": "Support électrique ",
+    "median_cost": 16.0,
+    "median_sell": 20.0,
+    "usage_count": 19
+  },
+  "555": {
+    "name": "Pour les deux sorties de salle de bain dans la boîte du puits de lumière",
+    "median_cost": 57.99,
+    "median_sell": 57.99,
+    "usage_count": 6
+  },
+  "557": {
+    "name": "pour sortie multiple",
+    "median_cost": 42.99,
+    "median_sell": 42.99,
+    "usage_count": 17
+  },
+  "558": {
+    "name": "Blanc",
+    "median_cost": 12.5,
+    "median_sell": 21.0,
+    "usage_count": 10
+  },
+  "559": {
+    "name": "2 boites de 60",
+    "median_cost": 1.25,
+    "median_sell": 1.72,
+    "usage_count": 7
+  },
+  "564": {
+    "name": "Brun commercial ",
+    "median_cost": 3.34,
+    "median_sell": 4.84,
+    "usage_count": 2
+  },
+  "578": {
+    "name": "sortie multiple x2/ 24 x 24 /  ",
+    "median_cost": 46.5,
+    "median_sell": 46.5,
+    "usage_count": 19
+  },
+  "579": {
+    "name": "EDL C08",
+    "median_cost": 183.5,
+    "median_sell": 227.7,
+    "usage_count": 96
+  },
+  "580": {
+    "name": "TCR 014",
+    "median_cost": 768.0,
+    "median_sell": 1000.0,
+    "usage_count": 5
+  },
+  "581": {
+    "name": "6,7,8 - 12,13,14,15, - 18",
+    "median_cost": 335.0,
+    "median_sell": 390.0,
+    "usage_count": 8
+  },
+  "583": {
+    "name": "noir",
+    "median_cost": 12.99,
+    "median_sell": 12.99,
+    "usage_count": 7
+  },
+  "586": {
+    "name": "vis a métal ",
+    "median_cost": 59.94,
+    "median_sell": 74.92,
+    "usage_count": 8
+  },
+  "593": {
+    "name": "Blanc",
+    "median_cost": 4.59,
+    "median_sell": 8.0,
+    "usage_count": 1
+  },
+  "610": {
+    "name": "isolation",
+    "median_cost": 479.0,
+    "median_sell": 500.0,
+    "usage_count": 1
+  },
+  "611": {
+    "name": "1 store black-out",
+    "median_cost": 450.0,
+    "median_sell": 615.0,
+    "usage_count": 8
+  },
+  "612": {
+    "name": "3030",
+    "median_cost": 957.5,
+    "median_sell": 1000.0,
+    "usage_count": 12
+  },
+  "613": {
+    "name": "Charcoal",
+    "median_cost": 4900.32,
+    "median_sell": 5823.49,
+    "usage_count": 2
+  },
+  "614": {
+    "name": "ISOLANT DE CANNELURE",
+    "median_cost": 0.0,
+    "median_sell": 1.0,
+    "usage_count": 3
+  },
+  "615": {
+    "name": "Bundle",
+    "median_cost": 74.8,
+    "median_sell": 93.5,
+    "usage_count": 28
+  },
+  "616": {
+    "name": "89L calculer par alexis",
+    "median_cost": 500.0,
+    "median_sell": 600.0,
+    "usage_count": 7
+  },
+  "619": {
+    "name": "Bronze",
+    "median_cost": 6.7,
+    "median_sell": 5.0,
+    "usage_count": 4
+  },
+  "620": {
+    "name": "120120",
+    "median_cost": 900.0,
+    "median_sell": 1100.0,
+    "usage_count": 9
+  },
+  "630": {
+    "name": "FS M08",
+    "median_cost": 1300.0,
+    "median_sell": 1600.0,
+    "usage_count": 19
+  },
+  "631": {
+    "name": "0100100",
+    "median_cost": 1441.0,
+    "median_sell": 1700.0,
+    "usage_count": 6
+  },
+  "635": {
+    "name": "Blanc",
+    "median_cost": 25.28,
+    "median_sell": 42.0,
+    "usage_count": 8
+  },
+  "637": {
+    "name": "Modèle TCR POUR TOIT PLAT ",
+    "median_cost": 1415.0,
+    "median_sell": 1415.0,
+    "usage_count": 3
+  },
+  "638": {
+    "name": "ZTR 4' 022",
+    "median_cost": 175.0,
+    "median_sell": 175.0,
+    "usage_count": 2
+  },
+  "639": {
+    "name": "BLANC",
+    "median_cost": 5.65,
+    "median_sell": 6.65,
+    "usage_count": 3
+  },
+  "642": {
+    "name": "noir",
+    "median_cost": 180.0,
+    "median_sell": 230.0,
+    "usage_count": 11
+  },
+  "648": {
+    "name": "90 cm x90 cm ",
+    "median_cost": 1790.0,
+    "median_sell": 2125.0,
+    "usage_count": 6
+  },
+  "657": {
+    "name": "FOND DE CLOUAGE ",
+    "median_cost": 18.0,
+    "median_sell": 25.0,
+    "usage_count": 38
+  },
+  "662": {
+    "name": "Rabais palette DBM",
+    "median_cost": 195.0,
+    "median_sell": 225.0,
+    "usage_count": 50
+  },
+  "663": {
+    "name": "MURET SUR LES COTÉS LATÉRAUX (PAS À L'ARRIÈRE)",
+    "median_cost": 6.47,
+    "median_sell": 9.95,
+    "usage_count": 13
+  },
+  "665": {
+    "name": "Couleur a déterminer",
+    "median_cost": 6.6,
+    "median_sell": 8.0,
+    "usage_count": 1
+  },
+  "668": {
+    "name": "SOPRAFLOW",
+    "median_cost": 190.0,
+    "median_sell": 280.0,
+    "usage_count": 2
+  },
+  "674": {
+    "name": "pour air conditionné",
+    "median_cost": 120.0,
+    "median_sell": 240.0,
+    "usage_count": 4
+  },
+  "678": {
+    "name": "section décontamination ",
+    "median_cost": 300.0,
+    "median_sell": 400.0,
+    "usage_count": 3
+  },
+  "682": {
+    "name": "25 pieds",
+    "median_cost": 4.4,
+    "median_sell": 8.0,
+    "usage_count": 3
+  },
+  "684": {
+    "name": "croisé",
+    "median_cost": 6.79,
+    "median_sell": 9.95,
+    "usage_count": 5
+  },
+  "686": {
+    "name": "Pour boîte 24'' x 24''",
+    "median_cost": 360.0,
+    "median_sell": 480.0,
+    "usage_count": 33
+  },
+  "687": {
+    "name": "APPEL DE SERVICE URGENCE SOIR",
+    "median_cost": 250.0,
+    "median_sell": 550.0,
+    "usage_count": 300
+  },
+  "689": {
+    "name": "sortie multiple",
+    "median_cost": 58.85,
+    "median_sell": 85.33,
+    "usage_count": 33
+  },
+  "693": {
+    "name": "boîte de bois pour puits de lumière VELUX CFP6090",
+    "median_cost": 800.0,
+    "median_sell": 1500.0,
+    "usage_count": 27
+  },
+  "694": {
+    "name": "Base de traitaux électriquw ",
+    "median_cost": 8.0,
+    "median_sell": 15.0,
+    "usage_count": 1
+  },
+  "695": {
+    "name": "support électrique",
+    "median_cost": 11.44,
+    "median_sell": 18.0,
+    "usage_count": 6
+  },
+  "698": {
+    "name": "C06-FS-i89",
+    "median_cost": 600.0,
+    "median_sell": 702.65,
+    "usage_count": 7
+  },
+  "699": {
+    "name": "À rehausser ",
+    "median_cost": 0.0,
+    "median_sell": 0.0,
+    "usage_count": 418
+  },
+  "700": {
+    "name": "Cheminé",
+    "median_cost": 0.0,
+    "median_sell": 0.0,
+    "usage_count": 29
+  },
+  "701": {
+    "name": "FCSD+C08+1045",
+    "median_cost": 511.0,
+    "median_sell": 550.0,
+    "usage_count": 14
+  },
+  "704": {
+    "name": "FAÇADE",
+    "median_cost": 95.0,
+    "median_sell": 125.0,
+    "usage_count": 15
+  },
+  "705": {
+    "name": "blanc crème",
+    "median_cost": 13.04,
+    "median_sell": 17.99,
+    "usage_count": 18
+  },
+  "706": {
+    "name": "23.5x78 3/4 modele a reconfirmer",
+    "median_cost": 1328.0,
+    "median_sell": 1850.0,
+    "usage_count": 8
+  },
+  "707": {
+    "name": "Couleur à vérifier ",
+    "median_cost": 0.0,
+    "median_sell": 0.0,
+    "usage_count": 13
+  },
+  "712": {
+    "name": "gg1 speciale fsch ( manuel)",
+    "median_cost": 238.0,
+    "median_sell": 350.0,
+    "usage_count": 3
+  },
+  "717": {
+    "name": "EDM-M08",
+    "median_cost": 146.0,
+    "median_sell": 195.0,
+    "usage_count": 18
+  },
+  "720": {
+    "name": "MATERIAUX NOIR",
+    "median_cost": 308.0,
+    "median_sell": 421.96,
+    "usage_count": 16
+  },
+  "728": {
+    "name": "Muret",
+    "median_cost": 31.49,
+    "median_sell": 23.59,
+    "usage_count": 2
+  },
+  "729": {
+    "name": "Pour contreplaqué sur muret surélevé ",
+    "median_cost": 33.59,
+    "median_sell": 25.16,
+    "usage_count": 2
+  },
+  "741": {
+    "name": "Drip sur mesure ",
+    "median_cost": 165.0,
+    "median_sell": 222.75,
+    "usage_count": 7
+  },
+  "746": {
+    "name": "Ancestrale ventilée  26 x 68 pouces ",
+    "median_cost": 1415.0,
+    "median_sell": 2020.0,
+    "usage_count": 3
+  },
+  "748": {
+    "name": "ZOZ211",
+    "median_cost": 36.3,
+    "median_sell": 60.26,
+    "usage_count": 55
+  },
+  "753": {
+    "name": "2 sorties ventilation SDB et cuisine avec 6' d'entretoit",
+    "median_cost": 550.0,
+    "median_sell": 787.5,
+    "usage_count": 1
+  },
+  "757": {
+    "name": "21''1/2 x 46''1/4",
+    "median_cost": 611.0,
+    "median_sell": 800.0,
+    "usage_count": 13
+  },
+  "758": {
+    "name": "6003B EKL",
+    "median_cost": 161.0,
+    "median_sell": 190.0,
+    "usage_count": 24
+  },
+  "765": {
+    "name": "Installer en usine ",
+    "median_cost": 548.5,
+    "median_sell": 700.0,
+    "usage_count": 4
+  },
+  "768": {
+    "name": "confort plus",
+    "median_cost": 1538.0,
+    "median_sell": 1774.5,
+    "usage_count": 2
+  },
+  "769": {
+    "name": "installer sur place ",
+    "median_cost": 238.0,
+    "median_sell": 325.0,
+    "usage_count": 3
+  },
+  "772": {
+    "name": "Solin plus membrane",
+    "median_cost": 237.6,
+    "median_sell": 275.0,
+    "usage_count": 13
+  },
+  "774": {
+    "name": "FSCD",
+    "median_cost": 511.0,
+    "median_sell": 600.0,
+    "usage_count": 1
+  },
+  "775": {
+    "name": "FSLD",
+    "median_cost": 511.0,
+    "median_sell": 589.98,
+    "usage_count": 4
+  },
+  "777": {
+    "name": "cxp 100100",
+    "median_cost": 600.0,
+    "median_sell": 900.0,
+    "usage_count": 3
+  },
+  "778": {
+    "name": "1 câble chauffant de 250Pieds",
+    "median_cost": 768.9,
+    "median_sell": 1237.93,
+    "usage_count": 4
+  },
+  "780": {
+    "name": "brun",
+    "median_cost": 3.0,
+    "median_sell": 7.0,
+    "usage_count": 3
+  },
+  "788": {
+    "name": "6008NB",
+    "median_cost": 117.0,
+    "median_sell": 135.0,
+    "usage_count": 4
+  },
+  "793": {
+    "name": "100 P",
+    "median_cost": 500.0,
+    "median_sell": 850.0,
+    "usage_count": 43
+  },
+  "794": {
+    "name": "câble chauffant 100' auto-régulant électricien",
+    "median_cost": 500.0,
+    "median_sell": 800.0,
+    "usage_count": 8
+  },
+  "795": {
+    "name": "Parapet de chaque côté de la toiture",
+    "median_cost": 27.5,
+    "median_sell": 36.38,
+    "usage_count": 6
+  },
+  "796": {
+    "name": "PARAPET",
+    "median_cost": 0.0,
+    "median_sell": 0.0,
+    "usage_count": 16
+  },
+  "798": {
+    "name": "voir pascal et alexis pour le modele de clips",
+    "median_cost": 55.0,
+    "median_sell": 110.0,
+    "usage_count": 147
+  },
+  "800": {
+    "name": "12 '' x  24''",
+    "median_cost": 0.0,
+    "median_sell": 0.0,
+    "usage_count": 214
+  },
+  "808": {
+    "name": "store préinstaller",
+    "median_cost": 922.9,
+    "median_sell": 1153.63,
+    "usage_count": 8
+  },
+  "810": {
+    "name": "100 pieds ",
+    "median_cost": 124.95,
+    "median_sell": 344.49,
+    "usage_count": 2
+  },
+  "811": {
+    "name": "Évent à changer",
+    "median_cost": 0.0,
+    "median_sell": 0.0,
+    "usage_count": 9
+  },
+  "830": {
+    "name": "Kemforte ",
+    "median_cost": 270.0,
+    "median_sell": 330.0,
+    "usage_count": 1
+  },
+  "836": {
+    "name": "7.5''",
+    "median_cost": 300.0,
+    "median_sell": 450.0,
+    "usage_count": 3
+  },
+  "840": {
+    "name": "VSS-C04-i89",
+    "median_cost": 2091.0,
+    "median_sell": 2404.65,
+    "usage_count": 3
+  },
+  "841": {
+    "name": "Pré installer",
+    "median_cost": 511.0,
+    "median_sell": 575.0,
+    "usage_count": 10
+  },
+  "843": {
+    "name": "X1 avec 4 clapets / x1 avec 1 clapet",
+    "median_cost": 0.0,
+    "median_sell": 0.0,
+    "usage_count": 13
+  },
+  "844": {
+    "name": "6002b",
+    "median_cost": 123.0,
+    "median_sell": 133.0,
+    "usage_count": 3
+  },
+  "845": {
+    "name": "CONDMANER LES DEUX CHEMINÉES ACTUELLES",
+    "median_cost": 440.0,
+    "median_sell": 880.0,
+    "usage_count": 7
+  },
+  "851": {
+    "name": "Arrière lucarnes",
+    "median_cost": 33.0,
+    "median_sell": 41.25,
+    "usage_count": 3
+  },
+  "866": {
+    "name": "ouvrant manuel",
+    "median_cost": 1144.0,
+    "median_sell": 1325.0,
+    "usage_count": 5
+  },
+  "868": {
+    "name": "préinstallé",
+    "median_cost": 238.0,
+    "median_sell": 260.0,
+    "usage_count": 1
+  },
+  "869": {
+    "name": "confort+",
+    "median_cost": 1473.0,
+    "median_sell": 1621.0,
+    "usage_count": 3
+  },
+  "870": {
+    "name": "CMDG4646",
+    "median_cost": 1168.0,
+    "median_sell": 1323.0,
+    "usage_count": 1
+  },
+  "871": {
+    "name": "CMDG 2246",
+    "median_cost": 608.0,
+    "median_sell": 712.0,
+    "usage_count": 1
+  },
+  "878": {
+    "name": "1 avec stores",
+    "median_cost": 678.0,
+    "median_sell": 800.0,
+    "usage_count": 7
+  },
+  "884": {
+    "name": "Bord de mur ",
+    "median_cost": 88.0,
+    "median_sell": 245.0,
+    "usage_count": 5
+  },
+  "886": {
+    "name": "laurent dit qu'on en a a shop",
+    "median_cost": 15.0,
+    "median_sell": 160.0,
+    "usage_count": 2
+  },
+  "891": {
+    "name": "grattage de la peinture écaillée",
+    "median_cost": 0.5,
+    "median_sell": 0.8,
+    "usage_count": 2
+  },
+  "892": {
+    "name": "sable",
+    "median_cost": 35.0,
+    "median_sell": 40.0,
+    "usage_count": 6
+  },
+  "925": {
+    "name": "coupe et pertes de temps  changement de revêtement + Ajustements",
+    "median_cost": 300.0,
+    "median_sell": 1430.51,
+    "usage_count": 1
+  },
+  "932": {
+    "name": "49x49",
+    "median_cost": 700.0,
+    "median_sell": 1000.0,
+    "usage_count": 3
+  },
+  "936": {
+    "name": "25 km est moins",
+    "median_cost": 399.0,
+    "median_sell": 399.0,
+    "usage_count": 98
+  },
+  "940": {
+    "name": "store intégré préinstallé",
+    "median_cost": 444.0,
+    "median_sell": 533.0,
+    "usage_count": 4
+  },
+  "942": {
+    "name": "confort+",
+    "median_cost": 521.0,
+    "median_sell": 625.0,
+    "usage_count": 6
+  },
+  "943": {
+    "name": "store intégré",
+    "median_cost": 623.0,
+    "median_sell": 748.0,
+    "usage_count": 3
+  },
+  "952": {
+    "name": "2004D",
+    "median_cost": 790.0,
+    "median_sell": 948.0,
+    "usage_count": 3
+  },
+  "957": {
+    "name": "HAUTEUR DE L'ENTRETOIT À CONFIRMER LORS DE LA VISITE",
+    "median_cost": 89.0,
+    "median_sell": 116.0,
+    "usage_count": 2
+  },
+  "968": {
+    "name": "OUVRANT MANUEL",
+    "median_cost": 1473.0,
+    "median_sell": 1768.0,
+    "usage_count": 2
+  },
+  "970": {
+    "name": "VS avec FSCH",
+    "median_cost": 1593.0,
+    "median_sell": 2104.0,
+    "usage_count": 1
+  },
+  "978": {
+    "name": "ouvrant solaire avec interrupteur",
+    "median_cost": 3000.0,
+    "median_sell": 3600.0,
+    "usage_count": 2
+  },
+  "1004": {
+    "name": "69 x 38",
+    "median_cost": 75.0,
+    "median_sell": 125.0,
+    "usage_count": 15
+  },
+  "1007": {
+    "name": "c08 preinstalled",
+    "median_cost": 511.0,
+    "median_sell": 700.0,
+    "usage_count": 4
+  },
+  "1013": {
+    "name": "Solin plus membrane",
+    "median_cost": 161.0,
+    "median_sell": 195.0,
+    "usage_count": 6
+  },
+  "1016": {
+    "name": "solin sur mesure ",
+    "median_cost": 1323.0,
+    "median_sell": 1650.0,
+    "usage_count": 1
+  },
+  "1021": {
+    "name": "installés",
+    "median_cost": 22.0,
+    "median_sell": 35.48,
+    "usage_count": 4
+  },
+  "1022": {
+    "name": "FS-M08 CONFORT+",
+    "median_cost": 729.0,
+    "median_sell": 879.89,
+    "usage_count": 5
+  },
+  "1023": {
+    "name": "NOIR 15x 10' x 3 - skylight - VIS NON APPARENTE",
+    "median_cost": 1.8,
+    "median_sell": 2.15,
+    "usage_count": 10
+  },
+  "1031": {
+    "name": "57x84",
+    "median_cost": 1238.0,
+    "median_sell": 2176.0,
+    "usage_count": 1
+  },
+  "1034": {
+    "name": "installation comprise et trape de sortie ",
+    "median_cost": 100.0,
+    "median_sell": 272.0,
+    "usage_count": 1
+  },
+  "1039": {
+    "name": "25 pieds",
+    "median_cost": 202.0,
+    "median_sell": 375.0,
+    "usage_count": 3
+  },
+  "1051": {
+    "name": "ventilation de ''hut'' de cuisine et salle de bain, voir plan d'architecte final pour emplacement",
+    "median_cost": 180.0,
+    "median_sell": 220.0,
+    "usage_count": 2
+  },
+  "1053": {
+    "name": "SUR MESURE 73 X 73",
+    "median_cost": 1071.5,
+    "median_sell": 1425.0,
+    "usage_count": 2
+  },
+  "1058": {
+    "name": "4'5'' x 36'' x 2.5'' façade - brun métro",
+    "median_cost": 30.0,
+    "median_sell": 35.0,
+    "usage_count": 2
+  },
+  "1077": {
+    "name": "Gris Brume",
+    "median_cost": 39.0,
+    "median_sell": 42.0,
+    "usage_count": 2
+  },
+  "1078": {
+    "name": "Gris Brume",
+    "median_cost": 40.0,
+    "median_sell": 43.0,
+    "usage_count": 2
+  },
+  "1079": {
+    "name": "Gris Brume ",
+    "median_cost": 28.0,
+    "median_sell": 31.0,
+    "usage_count": 2
+  },
+  "1081": {
+    "name": "Gris Brume",
+    "median_cost": 12.0,
+    "median_sell": 14.0,
+    "usage_count": 2
+  },
+  "1082": {
+    "name": "Gris Brume",
+    "median_cost": 35.0,
+    "median_sell": 37.0,
+    "usage_count": 2
+  }
+}

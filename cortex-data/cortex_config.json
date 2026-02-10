@@ -1,0 +1,34 @@
+{
+  "model_type": "GradientBoosting",
+  "features": [
+    "sqft_final",
+    "job_category_encoded",
+    "has_subs"
+  ],
+  "category_mapping": {
+    "Bardeaux": 0,
+    "Ferblanterie": 1,
+    "Gutters": 2,
+    "Heat Cables": 3,
+    "Insulation": 4,
+    "Other": 5,
+    "Service Call": 6,
+    "Skylights": 7,
+    "Unknown": 8,
+    "Ventilation": 9,
+    "\u00c9lastom\u00e8re": 10
+  },
+  "inflation_factors": {
+    "2020": 1.97,
+    "2021": 1.52,
+    "2022": 1.36,
+    "2023": 1.06,
+    "2024": 1.06,
+    "2025": 1.0
+  },
+  "metrics": {
+    "mae": 8096.436075439362,
+    "r2": 0.7001261939205746
+  },
+  "currency": "CAD"
+}

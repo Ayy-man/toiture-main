@@ -1,0 +1,132 @@
+{
+  "chimney_materials": [
+    {
+      "material_id": 17,
+      "rate_with_feature": 0.121,
+      "rate_without_feature": 0.055,
+      "ratio": 2.19
+    },
+    {
+      "material_id": 38,
+      "rate_with_feature": 0.675,
+      "rate_without_feature": 0.125,
+      "ratio": 5.41
+    },
+    {
+      "material_id": 39,
+      "rate_with_feature": 0.611,
+      "rate_without_feature": 0.056,
+      "ratio": 10.82
+    },
+    {
+      "material_id": 40,
+      "rate_with_feature": 0.327,
+      "rate_without_feature": 0.031,
+      "ratio": 10.56
+    },
+    {
+      "material_id": 52,
+      "rate_with_feature": 0.541,
+      "rate_without_feature": 0.069,
+      "ratio": 7.85
+    },
+    {
+      "material_id": 54,
+      "rate_with_feature": 0.523,
+      "rate_without_feature": 0.043,
+      "ratio": 12.14
+    },
+    {
+      "material_id": 55,
+      "rate_with_feature": 0.605,
+      "rate_without_feature": 0.066,
+      "ratio": 9.22
+    },
+    {
+      "material_id": 56,
+      "rate_with_feature": 0.401,
+      "rate_without_feature": 0.024,
+      "ratio": 16.76
+    },
+    {
+      "material_id": 59,
+      "rate_with_feature": 0.105,
+      "rate_without_feature": 0.015,
+      "ratio": 6.94
+    },
+    {
+      "material_id": 60,
+      "rate_with_feature": 0.12,
+      "rate_without_feature": 0.027,
+      "ratio": 4.48
+    },
+    {
+      "material_id": 76,
+      "rate_with_feature": 0.318,
+      "rate_without_feature": 0.019,
+      "ratio": 16.57
+    },
+    {
+      "material_id": 78,
+      "rate_with_feature": 0.119,
+      "rate_without_feature": 0.006,
+      "ratio": 18.9
+    },
+    {
+      "material_id": 104,
+      "rate_with_feature": 0.119,
+      "rate_without_feature": 0.019,
+      "ratio": 6.3
+    },
+    {
+      "material_id": 187,
+      "rate_with_feature": 0.469,
+      "rate_without_feature": 0.095,
+      "ratio": 4.93
+    },
+    {
+      "material_id": 195,
+      "rate_with_feature": 0.456,
+      "rate_without_feature": 0.138,
+      "ratio": 3.32
+    },
+    {
+      "material_id": 233,
+      "rate_with_feature": 0.296,
+      "rate_without_feature": 0.014,
+      "ratio": 21.3
+    },
+    {
+      "material_id": 234,
+      "rate_with_feature": 0.304,
+      "rate_without_feature": 0.016,
+      "ratio": 18.69
+    },
+    {
+      "material_id": 307,
+      "rate_with_feature": 0.109,
+      "rate_without_feature": 0.035,
+      "ratio": 3.09
+    },
+    {
+      "material_id": 672,
+      "rate_with_feature": 0.107,
+      "rate_without_feature": 0.034,
+      "ratio": 3.15
+    },
+    {
+      "material_id": 699,
+      "rate_with_feature": 0.105,
+      "rate_without_feature": 0.034,
+      "ratio": 3.1
+    }
+  ],
+  "skylight_materials": [
+    {
+      "material_id": 687,
+      "rate_with_feature": 0.123,
+      "rate_without_feature": 0.011,
+      "ratio": 11.18
+    }
+  ]
+}

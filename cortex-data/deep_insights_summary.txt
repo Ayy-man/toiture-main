@@ -1,0 +1,105 @@
+
+================================================================================
+                    TOITURELV - DEEP INSIGHTS SUMMARY
+                    Generated: 2025-12-29 19:34
+================================================================================
+
+CUSTOMER INSIGHTS
+-----------------
+  Total Unique Clients:           4,565
+  One-Time Clients:               3,078 (67.4%)
+  Repeat Clients:                 1,487 (32.6%)
+  Avg Quotes per Repeat Client:   3.2
+  
+  Revenue from Repeat Clients:    $84.7M (71.2%)
+  Revenue from One-Time Clients:  $34.2M (28.8%)
+  
+  Top 20 Clients Revenue:         $20.9M (17.6% of total)
+  Median Client LTV:              $9,373
+  Mean Client LTV:                $20,515
+
+CLIENT SEGMENTATION
+-------------------
+  VIP Clients ($100K+):           170
+  High Value ($50-100K):          224
+  Medium ($20-50K):               853
+  Standard ($5-20K):              1,749
+  Small (<$5K):                   1,569
+
+PROFITABILITY INSIGHTS
+----------------------
+  Best Margin Category:           Inspection (46.8%)
+  Median Profit per Hour:         $75/hr (excl. 2022)
+  
+  High Margin Jobs (>35%):        1,858 (22.4%)
+  Low Margin Jobs (<20%):         528 (6.4%)
+
+CATEGORY GROWTH (2023→2025)
+---------------------------
+  Élastomère          : +6339%
+  Inspection          : +6127%
+  Skylights           : +2452%
+  Unknown             : +1026%
+  Insulation          : +678%
+
+SEASONALITY PATTERNS
+--------------------
+  Peak Month:                     Aug ($13.6M)
+  Slowest Month:                  Dec ($3.2M)
+  Seasonal Swing:                 323% variation
+  
+  Best Day for Quotes:            Tuesday-Thursday (most activity)
+  Weekend Activity:               4.8% of revenue
+
+QUOTE COMPLEXITY
+----------------
+  Median Line Items:              10
+  Simple Jobs (<5 items):         2,061
+  Complex Jobs (>15 items):       2,437
+  
+  Complexity Impact on Margin:
+    1-5 items:                    ~29.5% margin
+    11-15 items:                  ~24.9% margin
+    20+ items:                    ~27.7% margin
+
+CORTEX ALGORITHM INPUTS
+-----------------------
+  Key Pricing Drivers (by correlation):
+    1. Square Footage              (strongest predictor)
+    2. Labor Hours                 
+    3. Material Cost               
+    4. Complexity Score            
+    
+  Data Quality by Category:
+    Unknown             : 63% complete (HIGH)
+    Skylights           : 67% complete (HIGH)
+    Élastomère          : 72% complete (HIGH)
+    Bardeaux            : 82% complete (HIGH)
+    Other               : 82% complete (HIGH)
+
+STRATEGIC RECOMMENDATIONS
+-------------------------
+  1. CUSTOMER RETENTION: 33% repeat rate is good, but 67% one-time 
+     clients represent reactivation opportunity worth $34.2M
+
+  2. VIP PROGRAM: Top 20 clients = 18% of revenue. Consider dedicated 
+     account management for high-value relationships.
+
+  3. MARGIN OPTIMIZATION: Inspection has 47% margins - 
+     investigate why and apply learnings to lower-margin categories.
+
+  4. SEASONAL PLANNING: 323% revenue swing between peak/trough months.
+     Consider off-season promotions or maintenance programs.
+
+  5. DATA QUALITY: Improve sqft capture rate (currently ~33%) for better 
+     Cortex algorithm accuracy.
+
+FILES GENERATED
+---------------
+  - customer_insights.png (6 charts)
+  - profitability_deep_dive.png (6 charts)
+  - operational_patterns.png (6 charts)
+  - cortex_pricing_inputs.png (6 charts)
+  - deep_insights_summary.txt (this report)
+
+================================================================================

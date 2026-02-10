@@ -1,0 +1,143 @@
+
+================================================================================
+TOITURELV MASTER QUOTES - DATA DICTIONARY
+================================================================================
+Generated: 2025-12-29 18:28
+Records: 10,032 total, 8,321 valid for analysis
+
+IDENTIFIERS
+-----------
+quote_id            : Unique quote identifier (from C-Cube)
+created_at          : Quote creation timestamp
+year                : Year extracted from created_at
+quarter             : Quarter (1-4)
+month               : Month (1-12)
+day_of_week         : Day of week (0=Monday, 6=Sunday)
+week_of_year        : Week number (1-52)
+
+QUOTE BASICS (from C-Cube)
+--------------------------
+quoted_total        : Final quote price to customer ($)
+quoted_hours        : Total hours recorded in C-Cube
+quoted_area         : Square footage from C-Cube (often null)
+subtotal            : Subtotal before adjustments ($)
+additional_cost     : Additional costs added ($)
+rebate              : Rebate/discount applied ($)
+deposit_required    : Whether deposit was required (boolean)
+deposit_paid        : Whether deposit was paid (boolean)
+
+CLIENT/PROJECT INFO
+-------------------
+client_id           : Client identifier
+project_id          : Project identifier
+building_id         : Building identifier
+stage_id            : Quote stage/status identifier
+
+EXTRACTED DATA
+--------------
+sqft_final          : Square footage (extracted from descriptions or quoted_area)
+sqft_source         : Source of sqft data
+extracted_pitch     : Roof pitch (e.g., 6 for 6/12 pitch)
+extracted_layers    : Number of layers to remove
+
+JOB INFORMATION
+---------------
+job_name            : Raw job name from quote lines (e.g., "40FR Chantier Elastomère")
+job_code            : Numeric code (e.g., '40' from '40FR')
+job_lang            : Language code ('FR' or 'EN')
+job_category        : Standardized category (Élastomère, Bardeaux, etc.)
+job_line_count      : Number of line items in quote
+
+MATERIALS
+---------
+material_line_count : Number of material line items
+material_unique_count: Number of unique materials used
+material_cost_total : Total cost of materials ($) - sum of (unit_cost * quantity)
+material_sell_total : Total sell price of materials ($) - sum of (sell_price * quantity)
+material_margin_pct : Material margin percentage
+material_qty_total  : Total quantity of all materials
+
+LABOR
+-----
+labor_line_count    : Number of labor line items
+labor_hours_total   : Total hours quoted
+labor_sell_rate_median: Median hourly sell rate ($/hr)
+labor_cost_rate_median: Median hourly cost rate ($/hr)
+labor_cost_total    : Total labor cost ($)
+labor_sell_total    : Total labor sell ($)
+labor_margin_pct    : Labor margin percentage
+
+SUBCONTRACTORS
+--------------
+sub_line_count      : Number of subcontractor items
+sub_cost_total      : Total subcontractor costs ($)
+sub_sell_total      : Total subcontractor sell price ($)
+sub_margin_pct      : Subcontractor margin percentage
+
+CALCULATED METRICS
+------------------
+total_cost_calculated: materials + labor + subs costs ($)
+total_sell_calculated: materials + labor + subs sells ($)
+overall_margin      : quoted_total - total_cost_calculated ($)
+overall_margin_pct  : Overall margin as percentage
+material_pct        : Materials as % of quoted_total
+labor_pct           : Labor as % of quoted_total
+sub_pct             : Subs as % of quoted_total
+effective_hourly_rate: quoted_total / labor_hours_total ($/hr)
+price_per_sqft      : quoted_total / sqft_final ($/sqft)
+cost_per_sqft       : total_cost / sqft_final ($/sqft)
+complexity_score    : Total number of all line items
+
+FLAGS
+-----
+has_materials       : Boolean - quote includes materials
+has_labor           : Boolean - quote includes labor
+has_subs            : Boolean - quote includes subcontractors
+anomaly_flags       : Pipe-separated list of detected issues
+is_valid_for_analysis: Boolean - passes quality filters
+
+DESCRIPTIONS (for text mining)
+------------------------------
+job_description     : Primary job description text
+material_descriptions: Concatenated material descriptions (first 5)
+sub_descriptions    : Concatenated subcontractor descriptions (first 3)
+
+================================================================================
+ANOMALY FLAGS EXPLAINED
+================================================================================
+NEGATIVE_TOTAL      : Quote total is negative
+VERY_HIGH_TOTAL     : Quote total > $500,000
+ZERO_TOTAL          : Quote total is $0
+NEGATIVE_MARGIN     : Overall margin is negative
+VERY_HIGH_MARGIN    : Overall margin > 70%
+VERY_LOW_MARGIN     : Overall margin < 10%
+NO_MATERIALS        : No materials in quote
+NO_LABOR            : No labor hours in quote
+UNUSUAL_MATERIAL_RATIO: Materials > 90% of total
+UNUSUAL_LABOR_RATIO : Labor > 90% of total
+
+================================================================================
+JOB CATEGORIES
+================================================================================
+Élastomère          : Elastomeric membrane roofing (flat roofs)
+Bardeaux            : Asphalt shingle roofing (sloped roofs)
+Service Call        : Repairs, inspections, small jobs
+Ferblanterie        : Metal work, flashing, soffits
+Skylights           : Skylight installation/repair
+Heat Cables         : Heating cable installation
+Gutters             : Gutter work
+Ventilation         : Roof ventilation systems
+Insulation          : Insulation work
+Inspection          : Roof inspections/evaluations
+Other               : Uncategorized jobs
+
+================================================================================
+SOURCE TABLES FROM C-CUBE
+================================================================================
+Quotes Data Export_clean.csv  → Main quote records
+Quote Materials_clean.csv     → Material line items
+Quote Lines_clean.csv         → Job type/description line items
+Quote Time Lines_clean.csv    → Labor/time line items
+Quote Sub Lines_clean.csv     → Subcontractor line items
+
+================================================================================

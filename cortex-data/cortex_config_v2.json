@@ -1,0 +1,60 @@
+{
+  "features": [
+    "sqft_final",
+    "cat_enc",
+    "has_subs",
+    "material_line_count",
+    "labor_line_count"
+  ],
+  "category_mapping": {
+    "Bardeaux": 0,
+    "Ferblanterie": 1,
+    "Gutters": 2,
+    "Heat Cables": 3,
+    "Other": 4,
+    "Service Call": 5,
+    "Skylights": 6,
+    "Unknown": 7,
+    "Ventilation": 8,
+    "\u00c9lastom\u00e8re": 9
+  },
+  "material_markup": {
+    "Bardeaux": 0.32452339984111966,
+    "Ferblanterie": 0.9229372347811995,
+    "Gutters": 0.24727451457362126,
+    "Heat Cables": 0.260845279427516,
+    "Other": 0.3125074403855459,
+    "Service Call": 0.43025140571805554,
+    "Skylights": 0.3436898529784591,
+    "Unknown": 0.1276823171157453,
+    "Ventilation": 0.33086297298496814,
+    "\u00c9lastom\u00e8re": 0.3015074468093546
+  },
+  "labor_rate": {
+    "Bardeaux": 89.26110413740567,
+    "Ferblanterie": 18000.0,
+    "Gutters": 100.0,
+    "Heat Cables": 100.0,
+    "Other": 138.5151800542588,
+    "Service Call": 133.04524739583334,
+    "Skylights": 122.28844702961864,
+    "Unknown": 89.8847064935767,
+    "Ventilation": 97.33962264150944,
+    "\u00c9lastom\u00e8re": 111.20085201689243
+  },
+  "inflation_factors": {
+    "2020": 1.97,
+    "2021": 1.52,
+    "2022": 1.36,
+    "2023": 1.06,
+    "2024": 1.06,
+    "2025": 1.0
+  },
+  "metrics": {
+    "material_model_r2": 0.4886895253423057,
+    "labor_model_r2": 0.1731292612514077,
+    "combined_r2": 0.4886386353339802,
+    "combined_mae": 8257.240011648044,
+    "within_20pct": 47.12153518123667
+  }
+}

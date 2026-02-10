@@ -1,0 +1,17 @@
+job_category,size_bucket,count,p25,p50,p75
+Élastomère,Small,51,8687,18936,47304
+Élastomère,Medium,70,15332,23500,30496
+Élastomère,Large,33,21750,31744,49223
+Unknown,Small,32,4453,7702,10660
+Unknown,Medium,71,13865,20230,33450
+Unknown,Large,15,23038,35600,68632
+Skylights,Small,5,2941,3074,82871
+Skylights,Medium,26,3506,5149,18351
+Skylights,Large,73,2537,4109,6122
+Bardeaux,Small,207,1908,3512,6075
+Bardeaux,Medium,645,8055,9493,11946
+Bardeaux,Large,259,12842,18934,29400
+Other,Small,278,6414,11411,19013
+Other,Medium,694,19852,22802,28510
+Other,Large,204,39957,53391,82090
+Service Call,Small,10,1529,3673,7003
