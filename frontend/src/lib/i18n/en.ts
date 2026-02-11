@@ -5,6 +5,9 @@ export const en = {
     apercu: "Overview",
     clients: "Clients",
     retours: "Feedback",
+    dashboard: "Dashboard",
+    review: "Review",
+    navigation: "Navigation",
   },
   estimateur: {
     prix: "Price",
@@ -130,6 +133,8 @@ export const en = {
     dateFin: "End Date",
     exporter: "Export CSV",
     aucunResultat: "No results",
+    aucuneSoumission: "No quotes found",
+    aucuneSoumissionDesc: "Quotes will appear here",
   },
   apercu: {
     titre: "Dashboard",
@@ -165,6 +170,8 @@ export const en = {
     sur: "of",
     precedent: "Previous",
     suivant: "Next",
+    noData: "No data",
+    noResults: "No results",
   },
   fullQuote: {
     titre: "Full Quote",
@@ -566,5 +573,17 @@ export const en = {
     signatureLine: "Client Signature",
     signatureDate: "Date",
     footer: "This quote is valid for 30 days from the date of issue.",
+  },
+  wizard: {
+    step1: "Project",
+    step2: "Complexity",
+    step3: "Crew",
+    step4: "Equipment",
+    step5: "Review",
+    next: "Next",
+    back: "Back",
+    generateQuote: "Generate AI Quote",
+    stepOf: "Step {current} of {total}",
+    reviewInstructions: "Review your inputs before generating the quote",
   },
 } as const;

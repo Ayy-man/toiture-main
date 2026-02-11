@@ -5,6 +5,9 @@ export const fr = {
     apercu: "Apercu",
     clients: "Clients",
     retours: "Retours",
+    dashboard: "Tableau de bord",
+    review: "Revision",
+    navigation: "Navigation",
   },
   estimateur: {
     prix: "Prix",
@@ -130,6 +133,8 @@ export const fr = {
     dateFin: "Date fin",
     exporter: "Exporter CSV",
     aucunResultat: "Aucun resultat",
+    aucuneSoumission: "Aucune soumission trouvee",
+    aucuneSoumissionDesc: "Les soumissions apparaitront ici",
   },
   apercu: {
     titre: "Tableau de bord",
@@ -165,6 +170,8 @@ export const fr = {
     sur: "sur",
     precedent: "Precedent",
     suivant: "Suivant",
+    noData: "Aucune donnee",
+    noResults: "Aucun resultat",
   },
   fullQuote: {
     titre: "Soumission complete",
@@ -565,5 +572,17 @@ export const fr = {
     signatureLine: "Signature du client",
     signatureDate: "Date",
     footer: "Cette soumission est valide pour 30 jours a compter de la date d'emission.",
+  },
+  wizard: {
+    step1: "Projet",
+    step2: "Complexite",
+    step3: "Equipe",
+    step4: "Equipement",
+    step5: "Revision",
+    next: "Suivant",
+    back: "Retour",
+    generateQuote: "Generer la soumission IA",
+    stepOf: "Etape {current} de {total}",
+    reviewInstructions: "Verifiez vos informations avant de generer la soumission",
   },
 } as const;
