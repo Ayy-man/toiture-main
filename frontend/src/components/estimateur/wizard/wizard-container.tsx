@@ -18,7 +18,8 @@ import { createSubmission } from "@/lib/api/submissions";
 import type { Submission, LineItem as SubmissionLineItem } from "@/types/submission";
 import { QuoteResult } from "../quote-result";
 import { SubmissionEditor } from "../submission-editor";
-import type { TierData, FactorConfig } from "../tier-selector";
+import type { TierData } from "../tier-selector";
+import type { FactorConfig } from "../factor-checklist";
 
 // Import step components (will be created in Task 2)
 import { StepBasics } from "./step-basics";
@@ -528,9 +529,8 @@ export function WizardContainer() {
               {currentStep === 3 && <StepMaterials />}
               {currentStep === 4 && (
                 <StepReview
-                  tiers={tiers}
-                  factorConfig={factorConfig}
-                  isLoading={isLoading}
+                  onSubmit={handleSubmit}
+                  isSubmitting={isLoading}
                 />
               )}
             </motion.div>

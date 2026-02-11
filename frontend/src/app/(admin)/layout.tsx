@@ -26,6 +26,12 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
     historique: t.nav.historique,
     apercu: t.nav.apercu,
     clients: t.nav.clients,
+    dashboard: t.nav.dashboard,
+    review: t.nav.review,
+    retours: t.nav.retours,
+    complet: t.fullQuote.titre,
+    materiaux: t.estimateur.materiaux,
+    soumissions: t.submission.submissions,
   };
 
   return (
@@ -48,6 +54,16 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
                   <BreadcrumbItem>
                     <BreadcrumbPage>
                       {routeLabels[segments[0]] || segments[0]}
+                    </BreadcrumbPage>
+                  </BreadcrumbItem>
+                </>
+              )}
+              {segments.length > 1 && (
+                <>
+                  <BreadcrumbSeparator className="hidden md:block" />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>
+                      {routeLabels[segments[1]] || segments[1]}
                     </BreadcrumbPage>
                   </BreadcrumbItem>
                 </>

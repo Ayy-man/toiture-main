@@ -15,7 +15,7 @@ import {
   SidebarRail,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Calculator, History, LayoutDashboard, Users, Home, MessageSquare } from "lucide-react";
+import { Calculator, History, LayoutDashboard, Users, Home, MessageSquare, BarChart3, ClipboardCheck } from "lucide-react";
 import { useLanguage, type Locale } from "@/lib/i18n";
 
 function useNavItems() {
@@ -26,6 +26,8 @@ function useNavItems() {
     { title: t.nav.apercu, href: "/apercu", icon: LayoutDashboard },
     { title: t.nav.clients, href: "/clients", icon: Users },
     { title: t.nav.retours, href: "/retours", icon: MessageSquare },
+    { title: t.nav.dashboard, href: "/dashboard", icon: BarChart3 },
+    { title: t.nav.review, href: "/review", icon: ClipboardCheck },
   ];
 }
 
@@ -140,6 +142,7 @@ function SidebarUserInfo() {
 export function AppSidebar() {
   const pathname = usePathname();
   const navItems = useNavItems();
+  const { t } = useLanguage();
 
   return (
     <Sidebar collapsible="icon">
@@ -152,7 +155,7 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel>{t.nav.navigation}</SidebarGroupLabel>
           <SidebarMenu>
             {navItems.map((item) => (
               <SidebarMenuItem key={item.href}>
