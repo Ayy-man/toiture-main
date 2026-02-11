@@ -4,14 +4,23 @@ import { useState, useRef, useEffect, KeyboardEvent } from "react";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { VoiceInputButton } from "./voice-input-button";
 
 interface ChatInputProps {
   onSend: (message: string) => void;
   disabled?: boolean;
   placeholder?: string;
+  onVoiceTranscript?: (text: string) => void;
+  voiceLanguage?: "fr-CA" | "en-US";
 }
 
-export function ChatInput({ onSend, disabled = false, placeholder = "Type a message..." }: ChatInputProps) {
+export function ChatInput({
+  onSend,
+  disabled = false,
+  placeholder = "Type a message...",
+  onVoiceTranscript,
+  voiceLanguage = "fr-CA"
+}: ChatInputProps) {
   const [value, setValue] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -44,6 +53,14 @@ export function ChatInput({ onSend, disabled = false, placeholder = "Type a mess
     }
   };
 
+  const handleVoiceTranscript = (text: string) => {
+    // Append voice transcription to current input value
+    setValue(prev => prev ? prev + " " + text : text);
+    if (onVoiceTranscript) {
+      onVoiceTranscript(text);
+    }
+  };
+
   return (
     <div className="border rounded-xl p-2 bg-background">
       <div className="flex gap-2 items-end">
@@ -63,6 +80,13 @@ export function ChatInput({ onSend, disabled = false, placeholder = "Type a mess
             "max-h-32 overflow-y-auto"
           )}
         />
+        {onVoiceTranscript && (
+          <VoiceInputButton
+            onTranscript={handleVoiceTranscript}
+            language={voiceLanguage}
+            disabled={disabled}
+          />
+        )}
         <Button
           onClick={handleSend}
           disabled={disabled || !value.trim()}

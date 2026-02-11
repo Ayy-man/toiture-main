@@ -18,7 +18,7 @@ export interface Message {
 }
 
 export function ChatContainer() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Local state - no API calls (Plan 03 will add backend integration)
@@ -39,6 +39,7 @@ export function ChatContainer() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [sessionState, setSessionState] = useState("greeting");
+  const [inputValue, setInputValue] = useState("");
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
@@ -97,6 +98,11 @@ export function ChatContainer() {
     setSessionState("greeting");
   };
 
+  const handleVoiceTranscript = (text: string) => {
+    // Voice transcript appends to current input value
+    setInputValue(prev => prev ? prev + " " + text : text);
+  };
+
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)]">
       {/* Fixed Header */}
@@ -153,6 +159,8 @@ export function ChatContainer() {
           onSend={handleSend}
           disabled={isLoading}
           placeholder={t.chat.placeholder}
+          onVoiceTranscript={handleVoiceTranscript}
+          voiceLanguage={locale === "fr" ? "fr-CA" : "en-US"}
         />
       </div>
     </div>
