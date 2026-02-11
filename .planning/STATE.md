@@ -36,9 +36,9 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 24 | Complete | 3/3 | 100% |
 | 25 | Complete | 3/3 | 100% |
 | 26 | In Progress | 4/5 | 80% |
-| 27 | In Progress | 1/3 | 33% |
+| 27 | In Progress | 2/4 | 50% |
 
-**Overall:** 56/58 plans complete for v1 + sprint (97%)
+**Overall:** 57/59 plans complete for v1 + sprint (97%)
 
 ```
 v1 Progress:     [████████████████████] 100%
@@ -360,6 +360,13 @@ Sprint Progress: [████████████████████] 
 | 3-level confidence thresholds (>=0.7, >=0.4, <0.4) | 26-04 | Matches backend needs_review flag (0.5) with visual buffer |
 | Collapsible reasoning auto-expands during streaming | 26-04 | Shows progress without forcing user to click |
 | Similarity badges use same color thresholds as confidence | 26-04 | Consistent color language (green=good, amber=ok, red=caution) |
+| In-memory session store for chat (module-level dict) | 27-01 | Same pattern as predictor.py - sufficient for MVP, no DB overhead |
+| TTL cleanup on access (not background thread) | 27-01 | Simple 24-hour eviction, no complexity |
+| Bilingual system prompts (FR/EN) for LLM | 27-01 | Quebec market needs French roofing terminology mapping |
+| Context-aware suggestion pills based on state | 27-01 | Guides user through required fields (greeting, need_sqft, etc) |
+| Greeting detection for first message | 27-01 | Natural conversation UX - skip to extraction if real content |
+| JSON extraction with regex fallback | 27-01 | Handles LLM markdown variations (same as hybrid_quote.py) |
+| Service Call sqft exemption in chat | 27-01 | Matches backend HybridQuoteRequest validation |
 
 ## Session History
 
@@ -421,11 +428,12 @@ Sprint Progress: [████████████████████] 
 | 2026-02-12 | Plan 26-05 executed | Page transitions & polish - framer-motion PageTransition wrapper, hover effects on all tables, dark-mode-compatible styling (3m 50s, 2 tasks, 5 files) |
 | 2026-02-12 | Plan 26-04 executed | Animated AI result display - AnimatedPrice counting animation, ConfidenceBadge (3-level), PricingTable (3-tier), collapsible reasoning with streaming dots, similar cases card grid (8m 40s, 2 tasks, 10 files) |
 | 2026-02-12 | Plan 27-02 executed | Chat UI components and /chat page - 5 chat components (ChatMessage, ChatInput, SuggestionPills, TypingIndicator, ChatContainer), page route, sidebar nav (2nd position), 18 i18n keys (3m 26s, 2 tasks, 10 files) |
+| 2026-02-12 | Plan 27-01 executed | Backend chat endpoint - conversational quote generation with GPT-4o-mini field extraction, in-memory session store, bilingual Quebec French/English support (3m 39s, 2 tasks, 5 files) |
 
 ## Session Continuity
 
 Last session: 2026-02-12
-Stopped at: Completed 27-02-PLAN.md (Chat UI Components and Page)
+Stopped at: Completed 27-01-PLAN.md (Backend Chat Endpoint)
 Resume file: None
 
 ## Blockers
