@@ -35,9 +35,9 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 23 | Complete | 3/3 | 100% |
 | 24 | Complete | 3/3 | 100% |
 | 25 | Complete | 3/3 | 100% |
-| 26 | In Progress | 2/5 | 40% |
+| 26 | In Progress | 3/5 | 60% |
 
-**Overall:** 53/56 plans complete for v1 + sprint (95%)
+**Overall:** 54/56 plans complete for v1 + sprint (96%)
 
 ```
 v1 Progress:     [████████████████████] 100%
@@ -352,6 +352,9 @@ Sprint Progress: [████████████████████] 
 | EmptyState component with optional CTA | 26-02 | Consistent empty state design with flexibility for future "Create" actions |
 | Toast notifications for all user actions | 26-02 | Immediate feedback improves perceived responsiveness and UX |
 | Send dialog callback pattern for toasts | 26-02 | Parent component handles toasts to avoid duplication |
+| Subtle 8px y-offset for page transitions | 26-05 | Smooth, not jarring transitions - big slides feel disruptive |
+| AnimatePresence mode="wait" for page changes | 26-05 | Ensures old page fades out before new one fades in, clean transitions |
+| hover:bg-muted/50 for table row highlights | 26-05 | Naturally adapts to dark mode via CSS variables, consistent interaction feedback |
 
 ## Session History
 
@@ -410,11 +413,12 @@ Sprint Progress: [████████████████████] 
 | 2026-02-11 | Plan 26-03 executed | 5-step wizard with framer-motion animations, progress bar, per-step validation (8m 19s, 2 tasks, 10 files) |
 | 2026-02-12 | Plan 26-01 executed | Navigation UX fixes: orphaned pages moved into admin layout, sidebar expanded to 7 items, i18n fixes, breadcrumb sub-routes, login redesign (9m, 2 tasks, 12 files) |
 | 2026-02-12 | Plan 26-02 executed | Skeleton loaders, toast notifications, empty states - 5 skeleton components created, toasts wired into all user actions (11m 13s, 2 tasks, 15 files, 2 bug fixes) |
+| 2026-02-12 | Plan 26-05 executed | Page transitions & polish - framer-motion PageTransition wrapper, hover effects on all tables, dark-mode-compatible styling (3m 50s, 2 tasks, 5 files) |
 
 ## Session Continuity
 
 Last session: 2026-02-12
-Stopped at: Completed 26-02-PLAN.md (Skeleton Loaders, Toast Notifications & Empty States)
+Stopped at: Completed 26-05-PLAN.md (Page Transitions & Polish)
 Resume file: None
 
 ## Blockers
@@ -469,7 +473,10 @@ Resume file: None
 - Phase 25-03 in progress (Task 1 complete) - Dashboard charts dark mode with CSS variables, Task 2 checkpoint pending human verification
 - Phase 25 in progress (2/3 plans complete, 1 checkpoint pending)
 - Phase 26-03 complete - 5-step wizard with framer-motion (WizardContainer + 5 step components, animated transitions, progress bar, per-step validation)
-- Phase 26 in progress (1/5 plans complete)
+- Phase 26-01 complete - Navigation UX fixes (orphaned pages moved, sidebar expanded to 7 items, i18n fixes, breadcrumb sub-routes, login redesign)
+- Phase 26-02 complete - Skeleton loaders, toast notifications, empty states (5 skeleton components, toasts wired into all user actions)
+- Phase 26-05 complete - Page transitions & polish (framer-motion PageTransition wrapper, table hover effects, dark-mode-compatible styling)
+- Phase 26 in progress (3/5 plans complete)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
