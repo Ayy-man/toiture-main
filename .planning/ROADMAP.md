@@ -2,8 +2,8 @@
 
 **Created:** 2026-01-18
 **Updated:** 2026-02-10 (Phase 23 plans revised)
-**Phases:** 25
-**Requirements:** 51
+**Phases:** 27
+**Requirements:** 71
 
 ## Phase Overview
 
@@ -34,6 +34,8 @@
 | 23 | Submission Workflow & Editing | Editable quotes, approval workflow, notes, upsells | SUB-01 to SUB-05 | 10 |
 | 24 | Export, Send & Red Flags | DOCX export, send options, warning system | EXP-01 to EXP-04 | 5 |
 | 25 | UI Polish & Dark Mode | Dark mode toggle, FR/EN fixes, LV branding | UI-06 to UI-08 | 7 |
+| 26 | UX Overhaul & Polish | Navigation fixes, skeleton loaders, multi-step wizard, animated AI results, framer-motion | UX-01 to UX-12 | 12 |
+| 27 | AI Chat Interface | Conversational quote builder for Steven (mobile-first, natural language input) | CHAT-01 to CHAT-08 | 8 |
 
 ---
 
@@ -732,6 +734,68 @@ Plans:
 
 ---
 
+## Phase 26: UX Overhaul & Polish
+
+**Goal:** Transform the current functional-but-rough UI into a polished, professional experience with proper loading states, consistent navigation, multi-step wizard form, animated AI results, and framer-motion transitions.
+
+**Requirements:** UX-01 to UX-12
+
+**Status:** Not started
+
+**Plans:** 5 plans
+
+Plans:
+- [ ] 26-01-PLAN.md — Navigation, layout & login fixes (orphaned pages, sidebar nav, breadcrumbs, login redesign)
+- [ ] 26-02-PLAN.md — Skeleton loaders, toast notifications & empty states
+- [ ] 26-03-PLAN.md — Multi-step wizard form (5-step FullQuoteForm with progress bar)
+- [ ] 26-04-PLAN.md — AI result display (animated price, confidence badge, 3-tier pricing, collapsible reasoning)
+- [ ] 26-05-PLAN.md — Framer-motion transitions, color tokens, table polish, final QA
+
+**Success Criteria:**
+1. All pages reachable from sidebar navigation (zero orphaned routes)
+2. Login page matches admin UI design language (shadcn components, branding)
+3. Every loading state uses skeleton loaders (no plain text "Loading...")
+4. Every user action triggers a toast notification
+5. FullQuoteForm displays as a 5-step wizard with progress indicator
+6. AI result shows animated price counting, confidence badge, 3-tier pricing table
+7. Reasoning display is collapsible with streaming animation
+8. All list pages show empty states when no data
+9. Page transitions are smooth (framer-motion)
+10. Works correctly in both light and dark mode
+
+**Dependencies:** Phases 19-25 complete
+**New deps:** framer-motion
+
+---
+
+## Phase 27: AI Chat Interface
+
+**Goal:** Build a conversational AI interface where Steven (estimator) can describe a roofing job in natural language from his phone at the job site, and Cortex builds the quote interactively.
+
+**Requirements:** CHAT-01 to CHAT-08
+
+**Status:** Planned
+
+**Plans:** 4 plans in 2 waves
+
+Plans:
+- [ ] 27-01-PLAN.md — Chat backend: conversational endpoint, LLM field extraction, session management, quote trigger
+- [ ] 27-02-PLAN.md — Chat UI components: message bubbles, auto-resize input, suggestion pills, /chat route, sidebar nav, i18n
+- [ ] 27-03-PLAN.md — Full integration: API client, QuoteSummaryCard, tier selection, submission creation from chat
+- [ ] 27-04-PLAN.md — Mobile polish: Web Speech API voice input, PWA manifest, iOS/Android meta tags
+
+**Success Criteria:**
+1. Steven can describe a job in 1-2 messages and get a complete 3-tier quote
+2. Chat works well on mobile (iPhone Safari, Android Chrome)
+3. Quote can be created as a submission directly from chat
+4. Conversation feels natural — Cortex asks relevant follow-up questions
+5. Quick-reply suggestions speed up common inputs
+
+**Dependencies:** Phase 26 complete, backend conversational endpoint
+**New deps:** shadcn AI components (Message, PromptInput, Suggestion, Reasoning)
+
+---
+
 ## Milestone: v2 Sprint Delivery
 
 **Deadline:** February 16, 2026
@@ -748,6 +812,14 @@ After Phases 19-25:
 - Red flag warnings
 - Dark mode + language fixes
 
+## Milestone: v3 UX & AI Chat
+
+After Phases 26-27:
+- Polished, professional UI with animations and proper UX patterns
+- Multi-step wizard form for estimators
+- AI chat interface for Steven (mobile-first field use)
+- Conversational quote building with natural language
+
 **Out of scope for this milestone (separate projects):**
 - AI Agent (inbound call handling)
 - Solar calculation tool
@@ -760,3 +832,4 @@ After Phases 19-25:
 *Roadmap created: 2026-01-18*
 *Sprint phases 19-25 added: 2026-02-09*
 *Phase 23 plans revised: 2026-02-10*
+*Phases 26-27 added: 2026-02-12 (UX Overhaul + AI Chat)*
