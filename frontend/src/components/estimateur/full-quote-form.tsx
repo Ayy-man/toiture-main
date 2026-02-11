@@ -49,6 +49,7 @@ import { createSubmission } from "@/lib/api/submissions";
 import type { Submission, LineItem as SubmissionLineItem } from "@/types/submission";
 import { CATEGORIES } from "@/lib/schemas";
 import { useLanguage } from "@/lib/i18n";
+import { useToast } from "@/hooks/use-toast";
 import { Loader2, Calculator, Layers, Wrench, AlertCircle, Users, MapPin, Package } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -175,6 +176,7 @@ function useTierData(): { tiers: TierData[]; factorConfig: FactorConfig } {
  */
 export function FullQuoteForm() {
   const { t, locale } = useLanguage();
+  const { toast } = useToast();
   const [result, setResult] = useState<HybridQuoteResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -351,10 +353,18 @@ export function FullQuoteForm() {
       // Submit to API
       const response = await submitHybridQuote(request);
       setResult(response);
+      toast({
+        title: t.fullQuote.titre,
+        description: `${t.fullQuote.total}: ${new Intl.NumberFormat("fr-CA", { style: "currency", currency: "CAD" }).format(response.total_price)}`,
+      });
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : t.fullQuote.erreur
-      );
+      const errorMessage = err instanceof Error ? err.message : t.fullQuote.erreur;
+      setError(errorMessage);
+      toast({
+        title: t.fullQuote.erreur,
+        description: errorMessage,
+        variant: "destructive",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -1024,8 +1034,18 @@ export function FullQuoteForm() {
                     selected_tier: "Standard",
                   });
                   setSubmission(sub);
+                  toast({
+                    title: t.submission.submissionCreated,
+                    description: t.submission.statusDraft,
+                  });
                 } catch (err) {
-                  setError(err instanceof Error ? err.message : "Failed to create submission");
+                  const errorMessage = err instanceof Error ? err.message : "Failed to create submission";
+                  setError(errorMessage);
+                  toast({
+                    title: t.common.erreur,
+                    description: errorMessage,
+                    variant: "destructive",
+                  });
                 }
               }}
             >

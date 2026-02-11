@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ThumbsUp, ThumbsDown, Send, Loader2, CheckCircle } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
+import { useToast } from "@/hooks/use-toast";
 import type { MaterialLineItem } from "@/types/hybrid-quote";
 
 const ISSUE_CATEGORIES = [
@@ -35,6 +36,7 @@ export function FeedbackPanel({
   predictedMaterials,
 }: FeedbackPanelProps) {
   const { t } = useLanguage();
+  const { toast } = useToast();
   const [selectedFeedback, setSelectedFeedback] = useState<
     "positive" | "negative" | null
   >(null);
@@ -98,9 +100,19 @@ export function FeedbackPanel({
       }
 
       setSubmitted(true);
+      toast({
+        title: t.feedback.merci,
+        description: selectedFeedback === "positive" ? t.feedback.precise : t.feedback.imprecise,
+      });
     } catch (err) {
       console.error("Feedback error:", err);
-      setError(t.feedback.erreurEnvoi);
+      const errorMessage = t.feedback.erreurEnvoi;
+      setError(errorMessage);
+      toast({
+        title: t.common.erreur,
+        description: errorMessage,
+        variant: "destructive",
+      });
     } finally {
       setLoading(false);
     }

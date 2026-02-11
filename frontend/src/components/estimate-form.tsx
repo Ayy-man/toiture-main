@@ -34,6 +34,7 @@ import { SimilarCases } from "@/components/similar-cases";
 import { ReasoningDisplay } from "@/components/reasoning-display";
 import { FeedbackPanel } from "@/components/estimateur/feedback-panel";
 import { useLanguage } from "@/lib/i18n";
+import { useToast } from "@/hooks/use-toast";
 
 /**
  * Main estimate form component with all 6 input fields
@@ -41,6 +42,7 @@ import { useLanguage } from "@/lib/i18n";
  */
 export function EstimateForm() {
   const { t } = useLanguage();
+  const { toast } = useToast();
   const [result, setResult] = useState<EstimateResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isStreamingReasoning, setIsStreamingReasoning] = useState(false);
@@ -81,6 +83,10 @@ export function EstimateForm() {
           });
           setIsLoading(false);
           setIsStreamingReasoning(true);
+          toast({
+            title: t.resultat.estimation,
+            description: `${estimateData.similar_cases.length} ${t.casSimilaires.titre.toLowerCase()}`,
+          });
         },
         onReasoningChunk: (chunk) => {
           setStreamedReasoning((prev) => prev + chunk);
@@ -95,12 +101,23 @@ export function EstimateForm() {
           setError(errorMsg);
           setIsLoading(false);
           setIsStreamingReasoning(false);
+          toast({
+            title: t.common.erreur,
+            description: errorMsg,
+            variant: "destructive",
+          });
         },
       });
     } catch (err) {
-      setError(err instanceof Error ? err.message : t.estimateur.erreurGenerique);
+      const errorMessage = err instanceof Error ? err.message : t.estimateur.erreurGenerique;
+      setError(errorMessage);
       setIsLoading(false);
       setIsStreamingReasoning(false);
+      toast({
+        title: t.common.erreur,
+        description: errorMessage,
+        variant: "destructive",
+      });
     }
   }
 
