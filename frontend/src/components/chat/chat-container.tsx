@@ -104,7 +104,7 @@ export function ChatContainer() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)]">
+    <div className="flex flex-col h-[calc(100vh-4rem)]" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
       {/* Fixed Header */}
       <div className="flex items-center justify-between border-b px-4 py-3 bg-background shrink-0">
         <div className="flex items-center gap-3">

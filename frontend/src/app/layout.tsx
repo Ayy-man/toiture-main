@@ -22,6 +22,18 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "TOITURELV Cortex",
   description: "AI-powered roofing price estimates",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  other: {
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+    "apple-mobile-web-app-title": "Cortex",
+    "mobile-web-app-capable": "yes",
+  },
 };
 
 export default function RootLayout({
