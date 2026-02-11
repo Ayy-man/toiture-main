@@ -774,15 +774,15 @@ Plans:
 
 **Requirements:** CHAT-01 to CHAT-08
 
-**Status:** Planned
+**Status:** Complete (2026-02-12) — Human verification pending
 
 **Plans:** 4 plans in 2 waves
 
 Plans:
-- [ ] 27-01-PLAN.md — Chat backend: conversational endpoint, LLM field extraction, session management, quote trigger
-- [ ] 27-02-PLAN.md — Chat UI components: message bubbles, auto-resize input, suggestion pills, /chat route, sidebar nav, i18n
-- [ ] 27-03-PLAN.md — Full integration: API client, QuoteSummaryCard, tier selection, submission creation from chat
-- [ ] 27-04-PLAN.md — Mobile polish: Web Speech API voice input, PWA manifest, iOS/Android meta tags
+- [x] 27-01-PLAN.md — Chat backend: conversational endpoint, LLM field extraction, session management, quote trigger
+- [x] 27-02-PLAN.md — Chat UI components: message bubbles, auto-resize input, suggestion pills, /chat route, sidebar nav, i18n
+- [x] 27-03-PLAN.md — Full integration: API client, QuoteSummaryCard, tier selection, submission creation from chat
+- [x] 27-04-PLAN.md — Mobile polish: Web Speech API voice input, PWA manifest, iOS/Android meta tags
 
 **Success Criteria:**
 1. Steven can describe a job in 1-2 messages and get a complete 3-tier quote
