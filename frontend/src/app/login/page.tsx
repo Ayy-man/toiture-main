@@ -1,6 +1,11 @@
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { authenticate } from "./actions";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Home } from "lucide-react";
 
 interface Props {
   searchParams: Promise<{ redirect?: string; error?: string }>;
@@ -16,37 +21,40 @@ export default async function LoginPage({ searchParams }: Props) {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <form action={authenticate} className="w-full max-w-sm space-y-4 px-4">
-        <h1 className="text-3xl font-bold tracking-tight text-black dark:text-zinc-50 text-center">
-          TOITURELV Cortex
-        </h1>
-        <p className="text-center text-zinc-600 dark:text-zinc-400">
-          Enter password to continue
-        </p>
+    <div className="flex min-h-screen items-center justify-center bg-background">
+      <Card className="w-full max-w-sm">
+        <CardHeader className="text-center">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+            <Home className="h-6 w-6" />
+          </div>
+          <CardTitle className="text-2xl">TOITURELV Cortex</CardTitle>
+          <CardDescription>Enter password to continue</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form action={authenticate} className="space-y-4">
+            <input type="hidden" name="redirect" value={params.redirect || "/"} />
 
-        <input type="hidden" name="redirect" value={params.redirect || "/"} />
+            {params.error && (
+              <p className="text-sm text-destructive text-center">Invalid password</p>
+            )}
 
-        {params.error && (
-          <p className="text-sm text-red-500 text-center">Invalid password</p>
-        )}
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                required
+                autoFocus
+              />
+            </div>
 
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-          autoFocus
-          className="w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-md bg-white dark:bg-zinc-900 text-black dark:text-zinc-50 focus:outline-none focus:ring-2 focus:ring-zinc-500"
-        />
-
-        <button
-          type="submit"
-          className="w-full py-2 bg-zinc-900 dark:bg-zinc-50 text-zinc-50 dark:text-zinc-900 rounded-md font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
-        >
-          Sign In
-        </button>
-      </form>
+            <Button type="submit" className="w-full">
+              Sign In
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
     </div>
   );
 }

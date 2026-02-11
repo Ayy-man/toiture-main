@@ -8,7 +8,7 @@ export default function SoumissionsPage() {
   const { t } = useLanguage();
 
   return (
-    <div className="max-w-2xl">
+    <div className="max-w-4xl">
       <h1 className="text-3xl font-bold tracking-tight mb-6">
         {t.nav.estimateur}
       </h1>
