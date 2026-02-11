@@ -370,6 +370,11 @@ Sprint Progress: [████████████████████] 
 | Graceful degradation for unsupported browsers | 27-04 | Voice button hidden on Firefox (no Web Speech API), appears on Chrome/Safari |
 | Voice transcript appends to existing input | 27-04 | Users can type + speak in same message for mixed input |
 | PWA start_url=/chat for mobile access | 27-04 | Steven's primary mobile use case is chat - one-tap access |
+| Use shadcn/ui useToast over sonner | 27-03 | Project already uses shadcn/ui toast system consistently |
+| Generate session ID client-side with crypto.randomUUID | 27-03 | Browser-native UUID generation, stateless backend sessions |
+| Render QuoteSummaryCard inline as message type | 27-03 | Quote is part of conversation flow, not a separate panel |
+| Build submission payload from quote data + extracted fields | 27-03 | Submission needs line items and pricing tiers from quote response |
+| Collapsible extracted fields panel above messages | 27-03 | Visibility of accumulated data without cluttering chat |
 
 ## Session History
 
@@ -433,11 +438,12 @@ Sprint Progress: [████████████████████] 
 | 2026-02-12 | Plan 27-02 executed | Chat UI components and /chat page - 5 chat components (ChatMessage, ChatInput, SuggestionPills, TypingIndicator, ChatContainer), page route, sidebar nav (2nd position), 18 i18n keys (3m 26s, 2 tasks, 10 files) |
 | 2026-02-12 | Plan 27-01 executed | Backend chat endpoint - conversational quote generation with GPT-4o-mini field extraction, in-memory session store, bilingual Quebec French/English support (3m 39s, 2 tasks, 5 files) |
 | 2026-02-12 | Plan 27-04 executed | Voice input & PWA manifest - Web Speech API with fr-CA/en-US, PWA manifest for mobile home screen, iOS/Android meta tags (1m 50s, 2 tasks, 5 files) |
+| 2026-02-12 | Plan 27-03 executed | Frontend chat integration - API client, QuoteSummaryCard with 3-tier pricing, ChatContainer wired to backend, extracted fields collapsible, inline quote display, submission creation (4m 45s, 2 tasks, 4 files) |
 
 ## Session Continuity
 
 Last session: 2026-02-12
-Stopped at: Completed 27-04-PLAN.md (Voice Input & PWA Manifest)
+Stopped at: Completed 27-03-PLAN.md (Frontend Chat Integration)
 Resume file: None
 
 ## Blockers
@@ -497,8 +503,9 @@ Resume file: None
 - Phase 26-04 complete - Animated AI result display (AnimatedPrice counting, ConfidenceBadge 3-level, PricingTable 3-tier, collapsible reasoning, similar cases card grid)
 - Phase 26-05 complete - Page transitions & polish (framer-motion PageTransition wrapper, table hover effects, dark-mode-compatible styling)
 - Phase 26 in progress (4/5 plans complete)
-- Phase 27-02 complete - Chat UI components (ChatMessage, ChatInput, SuggestionPills, TypingIndicator, ChatContainer), /chat page route, sidebar nav with MessageCircle icon
 - Phase 27-01 complete - Backend chat endpoint with conversational quote generation, in-memory session store, bilingual support
+- Phase 27-02 complete - Chat UI components (ChatMessage, ChatInput, SuggestionPills, TypingIndicator, ChatContainer), /chat page route, sidebar nav with MessageCircle icon
+- Phase 27-03 complete - Frontend chat integration (API client, QuoteSummaryCard with 3-tier pricing, ChatContainer wired to backend, extracted fields collapsible, inline quote display, submission creation)
 - Phase 27-04 complete - Voice input with Web Speech API (fr-CA/en-US), PWA manifest for mobile home screen installation
 - Phase 27 in progress (3/4 plans complete) - AI Chat Interface for mobile quote generation
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
