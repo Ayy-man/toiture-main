@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { Users } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import { useCustomerSearch, useCustomerDetail } from "@/lib/hooks/use-customers";
 import { CustomerSearch } from "@/components/clients/customer-search";
 import { CustomerCard } from "@/components/clients/customer-card";
 import { QuoteHistory } from "@/components/clients/quote-history";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { CardSkeleton } from "@/components/shared/card-skeleton";
+import { EmptyState } from "@/components/shared/empty-state";
 
 export default function ClientsPage() {
   const { t } = useLanguage();
@@ -31,15 +34,15 @@ export default function ClientsPage() {
         onSelectCustomer={handleSelectCustomer}
       />
 
-      {selectedCustomerId && isLoadingCustomer && (
-        <Card>
-          <CardContent className="py-8">
-            <div className="text-center text-muted-foreground">
-              {t.common.chargement}
-            </div>
-          </CardContent>
-        </Card>
+      {!selectedCustomerId && (
+        <EmptyState
+          icon={Users}
+          title={t.clients.rechercher}
+          description="Search for a client above to view their details and quote history"
+        />
       )}
+
+      {selectedCustomerId && isLoadingCustomer && <CardSkeleton />}
 
       {customer && (
         <>

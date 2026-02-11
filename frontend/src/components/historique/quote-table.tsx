@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/i18n";
+import { TableSkeleton } from "@/components/shared/table-skeleton";
 import { columns } from "./quote-columns";
 import type { Quote } from "@/types/quote";
 import type { PaginationState } from "@/lib/hooks/use-quotes";
@@ -53,11 +54,20 @@ export function QuoteTable({
     manualPagination: true,
   });
 
+  // Show skeleton during initial load
+  if (isFetching && data.length === 0) {
+    return (
+      <div className="space-y-4">
+        <TableSkeleton rows={8} columns={6} />
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-4">
       <div className="relative rounded-md border">
-        {/* Loading overlay */}
-        {isFetching && (
+        {/* Loading overlay for subsequent fetches */}
+        {isFetching && data.length > 0 && (
           <div className="absolute inset-0 bg-background/50 flex items-center justify-center z-10">
             <span className="text-muted-foreground">
               {t.common.chargement}

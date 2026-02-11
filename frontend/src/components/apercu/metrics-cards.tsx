@@ -2,6 +2,7 @@
 
 import { DollarSign, FileText, Percent, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardSkeleton } from "@/components/shared/card-skeleton";
 import { useLanguage } from "@/lib/i18n";
 import type { DashboardMetrics } from "@/types/dashboard";
 
@@ -33,17 +34,21 @@ function formatPercent(value: number): string {
   }).format(value / 100);
 }
 
-/**
- * Skeleton placeholder for loading state.
- */
-function MetricSkeleton() {
-  return (
-    <div className="h-8 w-24 animate-pulse rounded bg-muted" />
-  );
-}
-
 export function MetricsCards({ metrics, isLoading }: MetricsCardsProps) {
   const { t } = useLanguage();
+
+  // Show card skeletons during loading
+  if (isLoading) {
+    return (
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+      </div>
+    );
+  }
+
   const cards = [
     {
       title: t.apercu.revenuTotal,
@@ -76,11 +81,7 @@ export function MetricsCards({ metrics, isLoading }: MetricsCardsProps) {
             <card.icon className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            {isLoading ? (
-              <MetricSkeleton />
-            ) : (
-              <div className="text-2xl font-bold">{card.value ?? "-"}</div>
-            )}
+            <div className="text-2xl font-bold">{card.value ?? "-"}</div>
           </CardContent>
         </Card>
       ))}

@@ -529,8 +529,9 @@ export function WizardContainer() {
               {currentStep === 3 && <StepMaterials />}
               {currentStep === 4 && (
                 <StepReview
-                  onSubmit={handleSubmit}
-                  isSubmitting={isLoading}
+                  tiers={tiers}
+                  factorConfig={factorConfig}
+                  isLoading={isLoading}
                 />
               )}
             </motion.div>

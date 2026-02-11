@@ -7,10 +7,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { SubmissionStatusBadge } from "@/components/estimateur/submission-status-badge";
 import { SubmissionEditor } from "@/components/estimateur/submission-editor";
+import { CardSkeleton } from "@/components/shared/card-skeleton";
+import { EmptyState } from "@/components/shared/empty-state";
 import { listSubmissions, getSubmission } from "@/lib/api/submissions";
 import type { SubmissionListItem, Submission } from "@/types/submission";
 import { useLanguage } from "@/lib/i18n";
-import { Loader2, RefreshCw, ArrowLeft } from "lucide-react";
+import { Loader2, RefreshCw, ArrowLeft, FileText } from "lucide-react";
 
 interface SubmissionListProps {
   userRole?: "admin" | "estimator";
@@ -161,19 +163,21 @@ export function SubmissionList({
 
         <TabsContent value={statusFilter} className="space-y-3 mt-4">
           {loading && !submissions.length ? (
-            <div className="flex items-center justify-center py-8">
-              <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+            <div className="space-y-3">
+              <CardSkeleton />
+              <CardSkeleton />
+              <CardSkeleton />
             </div>
           ) : error ? (
             <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4 text-destructive">
               {error}
             </div>
           ) : filteredSubmissions.length === 0 ? (
-            <Card>
-              <CardContent className="py-8 text-center text-muted-foreground">
-                {t.submission.noSubmissions}
-              </CardContent>
-            </Card>
+            <EmptyState
+              icon={FileText}
+              title={t.submission.noSubmissions}
+              description={t.historique.aucuneSoumissionDesc}
+            />
           ) : (
             filteredSubmissions.map((sub) => (
               <Card

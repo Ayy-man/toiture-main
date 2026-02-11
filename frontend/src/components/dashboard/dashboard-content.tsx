@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Loader2 } from "lucide-react";
 import { AccuracyChart } from "./accuracy-chart";
 import { ConfidenceChart } from "./confidence-chart";
 import { CategoryBreakdown } from "./category-breakdown";
 import { StatsCards } from "./stats-cards";
 import { TimeFilter } from "./time-filter";
+import { CardSkeleton } from "@/components/shared/card-skeleton";
+import { ChartSkeleton } from "@/components/shared/chart-skeleton";
 import {
   useAccuracyStats,
   useCategoryBreakdown,
@@ -67,9 +68,21 @@ export function DashboardContent() {
           </div>
           <TimeFilter value={period} onChange={setPeriod} />
         </div>
-        <div className="flex min-h-[400px] items-center justify-center">
-          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+
+        {/* Stats cards skeleton */}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
         </div>
+
+        {/* Charts skeleton */}
+        <div className="grid gap-6 lg:grid-cols-2">
+          <ChartSkeleton />
+          <ChartSkeleton />
+        </div>
+        <ChartSkeleton />
       </div>
     );
   }
