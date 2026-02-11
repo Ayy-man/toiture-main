@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { ChevronDown, AlertTriangle } from "lucide-react";
+import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Collapsible,
@@ -13,6 +14,9 @@ import ReactMarkdown from "react-markdown";
 import type { HybridQuoteResponse } from "@/types/hybrid-quote";
 import { QuoteActions } from "./quote-actions";
 import { FeedbackPanel } from "./feedback-panel";
+import { AnimatedPrice } from "./animated-price";
+import { ConfidenceBadge } from "./confidence-badge";
+import { PricingTable } from "./pricing-table";
 
 export interface QuoteResultProps {
   quote: HybridQuoteResponse;
@@ -64,21 +68,36 @@ export function QuoteResult({ quote, category, sqft, inputParams }: QuoteResultP
   return (
     <Card>
       <CardContent className="pt-6 space-y-6">
-        {/* Confidence Warning Banner */}
-        {quote.overall_confidence < 0.5 && (
-          <div className="flex items-start gap-3 rounded-lg bg-amber-50 border border-amber-200 p-4">
-            <AlertTriangle className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
-            <div className="flex-1">
-              <p className="font-medium text-amber-800">
-                Confiance: {Math.round(quote.overall_confidence * 100)}% -
-                Verification recommandee
-              </p>
-            </div>
-          </div>
-        )}
+        {/* Animated Price Hero */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0 }}
+          className="text-center"
+        >
+          <AnimatedPrice
+            value={standardTier.total_price}
+            className="text-4xl font-bold"
+          />
+        </motion.div>
+
+        {/* Confidence Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="flex justify-center"
+        >
+          <ConfidenceBadge confidence={quote.overall_confidence} />
+        </motion.div>
 
         {/* Header Section */}
-        <div className="text-center border-b pb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="text-center border-b pb-4"
+        >
           <h2 className="text-2xl font-bold mb-2">SOUMISSION</h2>
           <div className="text-sm text-muted-foreground space-y-1">
             <p>
@@ -88,7 +107,19 @@ export function QuoteResult({ quote, category, sqft, inputParams }: QuoteResultP
               <span className="font-medium">Superficie:</span> {sqft} pi2
             </p>
           </div>
-        </div>
+        </motion.div>
+
+        {/* Pricing Tiers */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <PricingTable
+            tiers={quote.pricing_tiers}
+            recommendedTier="Standard"
+          />
+        </motion.div>
 
         {/* Work Items Section */}
         <div className="space-y-3">
