@@ -36,9 +36,9 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 24 | Complete | 3/3 | 100% |
 | 25 | Complete | 3/3 | 100% |
 | 26 | In Progress | 4/5 | 80% |
-| 27 | In Progress | 2/4 | 50% |
+| 27 | In Progress | 3/4 | 75% |
 
-**Overall:** 57/59 plans complete for v1 + sprint (97%)
+**Overall:** 58/59 plans complete for v1 + sprint (98%)
 
 ```
 v1 Progress:     [████████████████████] 100%
@@ -367,6 +367,9 @@ Sprint Progress: [████████████████████] 
 | Greeting detection for first message | 27-01 | Natural conversation UX - skip to extraction if real content |
 | JSON extraction with regex fallback | 27-01 | Handles LLM markdown variations (same as hybrid_quote.py) |
 | Service Call sqft exemption in chat | 27-01 | Matches backend HybridQuoteRequest validation |
+| Graceful degradation for unsupported browsers | 27-04 | Voice button hidden on Firefox (no Web Speech API), appears on Chrome/Safari |
+| Voice transcript appends to existing input | 27-04 | Users can type + speak in same message for mixed input |
+| PWA start_url=/chat for mobile access | 27-04 | Steven's primary mobile use case is chat - one-tap access |
 
 ## Session History
 
@@ -429,11 +432,12 @@ Sprint Progress: [████████████████████] 
 | 2026-02-12 | Plan 26-04 executed | Animated AI result display - AnimatedPrice counting animation, ConfidenceBadge (3-level), PricingTable (3-tier), collapsible reasoning with streaming dots, similar cases card grid (8m 40s, 2 tasks, 10 files) |
 | 2026-02-12 | Plan 27-02 executed | Chat UI components and /chat page - 5 chat components (ChatMessage, ChatInput, SuggestionPills, TypingIndicator, ChatContainer), page route, sidebar nav (2nd position), 18 i18n keys (3m 26s, 2 tasks, 10 files) |
 | 2026-02-12 | Plan 27-01 executed | Backend chat endpoint - conversational quote generation with GPT-4o-mini field extraction, in-memory session store, bilingual Quebec French/English support (3m 39s, 2 tasks, 5 files) |
+| 2026-02-12 | Plan 27-04 executed | Voice input & PWA manifest - Web Speech API with fr-CA/en-US, PWA manifest for mobile home screen, iOS/Android meta tags (1m 50s, 2 tasks, 5 files) |
 
 ## Session Continuity
 
 Last session: 2026-02-12
-Stopped at: Completed 27-01-PLAN.md (Backend Chat Endpoint)
+Stopped at: Completed 27-04-PLAN.md (Voice Input & PWA Manifest)
 Resume file: None
 
 ## Blockers
@@ -494,7 +498,9 @@ Resume file: None
 - Phase 26-05 complete - Page transitions & polish (framer-motion PageTransition wrapper, table hover effects, dark-mode-compatible styling)
 - Phase 26 in progress (4/5 plans complete)
 - Phase 27-02 complete - Chat UI components (ChatMessage, ChatInput, SuggestionPills, TypingIndicator, ChatContainer), /chat page route, sidebar nav with MessageCircle icon
-- Phase 27 in progress (1/3 plans complete) - AI Chat Interface for mobile quote generation
+- Phase 27-01 complete - Backend chat endpoint with conversational quote generation, in-memory session store, bilingual support
+- Phase 27-04 complete - Voice input with Web Speech API (fr-CA/en-US), PWA manifest for mobile home screen installation
+- Phase 27 in progress (3/4 plans complete) - AI Chat Interface for mobile quote generation
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
