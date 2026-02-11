@@ -321,6 +321,16 @@ export const en = {
     week: "week",
     weeks: "weeks",
     placeholderPricing: "Symbolic pricing - awaiting confirmation",
+    // Pricing tiers
+    recommended: "Recommended",
+    basic: "Basic",
+    standard: "Standard",
+    premium: "Premium",
+    markup: "Markup",
+    // Processing time and reasoning
+    analyzedIn: "Analyzed in {seconds} seconds",
+    showReasoning: "Show reasoning",
+    hideReasoning: "Hide reasoning",
   },
   // Retours (Feedback Review) page
   retours: {

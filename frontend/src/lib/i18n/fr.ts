@@ -320,6 +320,16 @@ export const fr = {
     week: "semaine",
     weeks: "semaines",
     placeholderPricing: "Tarification symbolique - en attente de confirmation",
+    // Pricing tiers
+    recommended: "Recommande",
+    basic: "De base",
+    standard: "Standard",
+    premium: "Premium",
+    markup: "Majoration",
+    // Processing time and reasoning
+    analyzedIn: "Analyse en {seconds} secondes",
+    showReasoning: "Voir le raisonnement",
+    hideReasoning: "Masquer le raisonnement",
   },
   // Retours (Feedback Review) page
   retours: {
