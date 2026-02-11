@@ -404,11 +404,12 @@ Sprint Progress: [████████████████████] 
 | 2026-02-10 | Plan 25-02 executed | i18n cleanup for tier/factor/PDF labels - moved 30+ locale ternaries to translation files (PREVIOUS SESSION) |
 | 2026-02-10 | Plan 25-03 executed | Dashboard charts dark mode audit - Task 1 complete (Recharts CSS variables), Task 2 pending human verification |
 | 2026-02-11 | Plan 26-03 executed | 5-step wizard with framer-motion animations, progress bar, per-step validation (8m 19s, 2 tasks, 10 files) |
+| 2026-02-12 | Plan 26-01 executed | Navigation UX fixes: orphaned pages moved into admin layout, sidebar expanded to 7 items, i18n fixes, breadcrumb sub-routes, login redesign (9m, 2 tasks, 12 files) |
 
 ## Session Continuity
 
-Last session: 2026-02-11
-Stopped at: Completed 26-03-PLAN.md (5-Step Wizard with Framer Motion)
+Last session: 2026-02-12
+Stopped at: Completed 26-01-PLAN.md (Navigation & Login UX Fixes)
 Resume file: None
 
 ## Blockers
