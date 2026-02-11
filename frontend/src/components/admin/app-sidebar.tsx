@@ -15,13 +15,14 @@ import {
   SidebarRail,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Calculator, History, LayoutDashboard, Users, Home, MessageSquare, BarChart3, ClipboardCheck } from "lucide-react";
+import { Calculator, History, LayoutDashboard, Users, Home, MessageSquare, BarChart3, ClipboardCheck, MessageCircle } from "lucide-react";
 import { useLanguage, type Locale } from "@/lib/i18n";
 
 function useNavItems() {
   const { t } = useLanguage();
   return [
     { title: t.nav.estimateur, href: "/estimateur", icon: Calculator },
+    { title: t.nav.chat, href: "/chat", icon: MessageCircle },
     { title: t.nav.historique, href: "/historique", icon: History },
     { title: t.nav.apercu, href: "/apercu", icon: LayoutDashboard },
     { title: t.nav.clients, href: "/clients", icon: Users },

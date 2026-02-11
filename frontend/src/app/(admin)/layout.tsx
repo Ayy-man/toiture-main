@@ -30,6 +30,7 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
     dashboard: t.nav.dashboard,
     review: t.nav.review,
     retours: t.nav.retours,
+    chat: t.nav.chat,
     complet: t.fullQuote.titre,
     materiaux: t.estimateur.materiaux,
     soumissions: t.submission.submissions,
