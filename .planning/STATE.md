@@ -35,9 +35,9 @@ See: .planning/PROJECT.md (updated 2026-01-18)
 | 23 | Complete | 3/3 | 100% |
 | 24 | Complete | 3/3 | 100% |
 | 25 | Complete | 3/3 | 100% |
-| 26 | In Progress | 3/5 | 60% |
+| 26 | In Progress | 4/5 | 80% |
 
-**Overall:** 54/56 plans complete for v1 + sprint (96%)
+**Overall:** 55/56 plans complete for v1 + sprint (98%)
 
 ```
 v1 Progress:     [████████████████████] 100%
@@ -355,6 +355,10 @@ Sprint Progress: [████████████████████] 
 | Subtle 8px y-offset for page transitions | 26-05 | Smooth, not jarring transitions - big slides feel disruptive |
 | AnimatePresence mode="wait" for page changes | 26-05 | Ensures old page fades out before new one fades in, clean transitions |
 | hover:bg-muted/50 for table row highlights | 26-05 | Naturally adapts to dark mode via CSS variables, consistent interaction feedback |
+| useSpring with 50 stiffness / 15 damping for AnimatedPrice | 26-04 | Smooth counting animation without excessive bounce |
+| 3-level confidence thresholds (>=0.7, >=0.4, <0.4) | 26-04 | Matches backend needs_review flag (0.5) with visual buffer |
+| Collapsible reasoning auto-expands during streaming | 26-04 | Shows progress without forcing user to click |
+| Similarity badges use same color thresholds as confidence | 26-04 | Consistent color language (green=good, amber=ok, red=caution) |
 
 ## Session History
 
@@ -414,11 +418,12 @@ Sprint Progress: [████████████████████] 
 | 2026-02-12 | Plan 26-01 executed | Navigation UX fixes: orphaned pages moved into admin layout, sidebar expanded to 7 items, i18n fixes, breadcrumb sub-routes, login redesign (9m, 2 tasks, 12 files) |
 | 2026-02-12 | Plan 26-02 executed | Skeleton loaders, toast notifications, empty states - 5 skeleton components created, toasts wired into all user actions (11m 13s, 2 tasks, 15 files, 2 bug fixes) |
 | 2026-02-12 | Plan 26-05 executed | Page transitions & polish - framer-motion PageTransition wrapper, hover effects on all tables, dark-mode-compatible styling (3m 50s, 2 tasks, 5 files) |
+| 2026-02-12 | Plan 26-04 executed | Animated AI result display - AnimatedPrice counting animation, ConfidenceBadge (3-level), PricingTable (3-tier), collapsible reasoning with streaming dots, similar cases card grid (8m 40s, 2 tasks, 10 files) |
 
 ## Session Continuity
 
 Last session: 2026-02-12
-Stopped at: Completed 26-05-PLAN.md (Page Transitions & Polish)
+Stopped at: Completed 26-04-PLAN.md (Animated AI Result Display Components)
 Resume file: None
 
 ## Blockers
@@ -472,11 +477,12 @@ Resume file: None
 - Phase 25-02 complete - i18n cleanup for tier/factor/PDF labels, centralized translations, removed locale ternaries
 - Phase 25-03 in progress (Task 1 complete) - Dashboard charts dark mode with CSS variables, Task 2 checkpoint pending human verification
 - Phase 25 in progress (2/3 plans complete, 1 checkpoint pending)
-- Phase 26-03 complete - 5-step wizard with framer-motion (WizardContainer + 5 step components, animated transitions, progress bar, per-step validation)
 - Phase 26-01 complete - Navigation UX fixes (orphaned pages moved, sidebar expanded to 7 items, i18n fixes, breadcrumb sub-routes, login redesign)
 - Phase 26-02 complete - Skeleton loaders, toast notifications, empty states (5 skeleton components, toasts wired into all user actions)
+- Phase 26-03 complete - 5-step wizard with framer-motion (WizardContainer + 5 step components, animated transitions, progress bar, per-step validation)
+- Phase 26-04 complete - Animated AI result display (AnimatedPrice counting, ConfidenceBadge 3-level, PricingTable 3-tier, collapsible reasoning, similar cases card grid)
 - Phase 26-05 complete - Page transitions & polish (framer-motion PageTransition wrapper, table hover effects, dark-mode-compatible styling)
-- Phase 26 in progress (3/5 plans complete)
+- Phase 26 in progress (4/5 plans complete)
 - PostgreSQL RPC functions needed in Supabase for analytics dashboard
 
 ## Roadmap Evolution
