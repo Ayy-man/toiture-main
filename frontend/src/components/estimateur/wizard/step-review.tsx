@@ -10,7 +10,8 @@ import {
 import { FileText, Info } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import type { HybridQuoteFormData } from "@/lib/schemas/hybrid-quote";
-import type { TierData, FactorConfig } from "../tier-selector";
+import type { TierData } from "../tier-selector";
+import type { FactorConfig } from "../factor-checklist";
 
 interface StepReviewProps {
   tiers: TierData[];
@@ -84,7 +85,7 @@ export function StepReview({ tiers, factorConfig, isLoading }: StepReviewProps) 
   const getFactorLabel = (type: string, key: string) => {
     const config = factorConfig[type as keyof typeof factorConfig];
     if ('options' in config) {
-      const option = config.options.find((o: any) => o.key === key);
+      const option = config.options.find((o: { key: string; hours: number; label: string }) => o.key === key);
       return option?.label || key;
     }
     return key;
