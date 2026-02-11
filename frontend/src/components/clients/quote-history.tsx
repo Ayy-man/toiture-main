@@ -44,7 +44,7 @@ export function QuoteHistory({ quotes }: QuoteHistoryProps) {
       </TableHeader>
       <TableBody>
         {quotes.map((quote) => (
-          <TableRow key={quote.id}>
+          <TableRow key={quote.id} className="hover:bg-muted/50 transition-colors">
             <TableCell>
               {dateFormatter.format(new Date(quote.created_at))}
             </TableCell>
